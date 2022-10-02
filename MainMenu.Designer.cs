@@ -40,25 +40,42 @@ namespace AutoMir2022
             this.TitleFormMenu = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
             this.swichBarPanel = new System.Windows.Forms.Panel();
-            this.exit = new System.Windows.Forms.Button();
-            this.config = new System.Windows.Forms.Button();
-            this.reports = new System.Windows.Forms.Button();
-            this.Sklad = new System.Windows.Forms.Button();
-            this.returnButton = new System.Windows.Forms.Button();
-            this.expendeture = new System.Windows.Forms.Button();
-            this.Kassa = new System.Windows.Forms.Button();
-            this.wholesale = new System.Windows.Forms.Button();
-            this.retailButton = new System.Windows.Forms.Button();
-            this.productSection = new System.Windows.Forms.Button();
+            this.info = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.розничнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оптоваяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поступлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьИзБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.приходРасходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обменТоварамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.операцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.кассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.складToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.расходыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.курсВалютыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетПоМестуНаСкладеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.неактивныеТоварыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.возвратToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.возвратToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.возвратДняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменаПродажиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.конфигурацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.swichBarPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBar
             // 
-            this.SideBar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.SideBar.BackColor = System.Drawing.Color.LightSlateGray;
             this.SideBar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SideBar.Controls.Add(this.loginBox);
             this.SideBar.Controls.Add(this.TitleFormMenu);
@@ -144,190 +161,232 @@ namespace AutoMir2022
             // logo
             // 
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(3, 0);
+            this.logo.Location = new System.Drawing.Point(35, 10);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(267, 76);
+            this.logo.Size = new System.Drawing.Size(198, 68);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
             // swichBarPanel
             // 
-            this.swichBarPanel.BackColor = System.Drawing.SystemColors.Info;
-            this.swichBarPanel.Controls.Add(this.exit);
-            this.swichBarPanel.Controls.Add(this.config);
-            this.swichBarPanel.Controls.Add(this.reports);
-            this.swichBarPanel.Controls.Add(this.Sklad);
-            this.swichBarPanel.Controls.Add(this.returnButton);
-            this.swichBarPanel.Controls.Add(this.expendeture);
-            this.swichBarPanel.Controls.Add(this.Kassa);
-            this.swichBarPanel.Controls.Add(this.wholesale);
-            this.swichBarPanel.Controls.Add(this.retailButton);
-            this.swichBarPanel.Controls.Add(this.productSection);
+            this.swichBarPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.swichBarPanel.Controls.Add(this.info);
             this.swichBarPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.swichBarPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.swichBarPanel.Location = new System.Drawing.Point(277, 0);
             this.swichBarPanel.Name = "swichBarPanel";
-            this.swichBarPanel.Size = new System.Drawing.Size(396, 518);
+            this.swichBarPanel.Size = new System.Drawing.Size(806, 518);
             this.swichBarPanel.TabIndex = 1;
             // 
-            // exit
+            // info
             // 
-            this.exit.BackColor = System.Drawing.Color.Transparent;
-            this.exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.exit.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.exit.Location = new System.Drawing.Point(41, 437);
-            this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(323, 40);
-            this.exit.TabIndex = 10;
-            this.exit.Text = "Выход";
-            this.exit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.exit.UseVisualStyleBackColor = false;
+            this.info.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.info.Location = new System.Drawing.Point(35, 104);
+            this.info.Name = "info";
+            this.info.Size = new System.Drawing.Size(759, 400);
+            this.info.TabIndex = 0;
+            this.info.Text = "Здесь место для важной информации!\n\nможно для все, или индивидуально для определе" +
+    "нного пользователя. \nНапример\n1. Сегодня приготовить отчет для админа. \n2. ... ";
             // 
-            // config
+            // panel1
             // 
-            this.config.BackColor = System.Drawing.Color.Transparent;
-            this.config.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.config.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.config.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.config.Location = new System.Drawing.Point(41, 391);
-            this.config.Name = "config";
-            this.config.Size = new System.Drawing.Size(323, 40);
-            this.config.TabIndex = 9;
-            this.config.Text = "Конфигурации БД";
-            this.config.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.config.UseVisualStyleBackColor = false;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.Controls.Add(this.menuStrip1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(277, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(806, 40);
+            this.panel1.TabIndex = 2;
             // 
-            // reports
+            // menuStrip1
             // 
-            this.reports.BackColor = System.Drawing.Color.Transparent;
-            this.reports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reports.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.reports.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.reports.Location = new System.Drawing.Point(41, 345);
-            this.reports.Name = "reports";
-            this.reports.Size = new System.Drawing.Size(323, 40);
-            this.reports.TabIndex = 8;
-            this.reports.Text = "Отчеты";
-            this.reports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.reports.UseVisualStyleBackColor = false;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.продажаToolStripMenuItem,
+            this.поступлениеToolStripMenuItem,
+            this.операцииToolStripMenuItem,
+            this.отчетыToolStripMenuItem,
+            this.возвратToolStripMenuItem,
+            this.конфигурацияToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(806, 33);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // Sklad
+            // продажаToolStripMenuItem
             // 
-            this.Sklad.BackColor = System.Drawing.Color.Transparent;
-            this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Sklad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Sklad.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Sklad.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Sklad.Location = new System.Drawing.Point(41, 204);
-            this.Sklad.Name = "Sklad";
-            this.Sklad.Size = new System.Drawing.Size(323, 40);
-            this.Sklad.TabIndex = 7;
-            this.Sklad.Text = "Склад";
-            this.Sklad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Sklad.UseVisualStyleBackColor = false;
+            this.продажаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.розничнаяToolStripMenuItem,
+            this.оптоваяToolStripMenuItem});
+            this.продажаToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.продажаToolStripMenuItem.Name = "продажаToolStripMenuItem";
+            this.продажаToolStripMenuItem.Size = new System.Drawing.Size(104, 29);
+            this.продажаToolStripMenuItem.Text = "Продажа";
             // 
-            // returnButton
+            // розничнаяToolStripMenuItem
             // 
-            this.returnButton.BackColor = System.Drawing.Color.Transparent;
-            this.returnButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.returnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.returnButton.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.returnButton.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.returnButton.Location = new System.Drawing.Point(41, 253);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(323, 40);
-            this.returnButton.TabIndex = 6;
-            this.returnButton.Text = "Возврат товара";
-            this.returnButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.returnButton.UseVisualStyleBackColor = false;
+            this.розничнаяToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.розничнаяToolStripMenuItem.Name = "розничнаяToolStripMenuItem";
+            this.розничнаяToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.розничнаяToolStripMenuItem.Text = "Розничная";
+            this.розничнаяToolStripMenuItem.Click += new System.EventHandler(this.розничнаяToolStripMenuItem_Click);
             // 
-            // expendeture
+            // оптоваяToolStripMenuItem
             // 
-            this.expendeture.BackColor = System.Drawing.Color.Transparent;
-            this.expendeture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.expendeture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.expendeture.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.expendeture.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.expendeture.Location = new System.Drawing.Point(41, 299);
-            this.expendeture.Name = "expendeture";
-            this.expendeture.Size = new System.Drawing.Size(323, 40);
-            this.expendeture.TabIndex = 5;
-            this.expendeture.Text = "Расходы";
-            this.expendeture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.expendeture.UseVisualStyleBackColor = false;
+            this.оптоваяToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.оптоваяToolStripMenuItem.Name = "оптоваяToolStripMenuItem";
+            this.оптоваяToolStripMenuItem.Size = new System.Drawing.Size(180, 30);
+            this.оптоваяToolStripMenuItem.Text = "Оптовая";
             // 
-            // Kassa
+            // поступлениеToolStripMenuItem
             // 
-            this.Kassa.BackColor = System.Drawing.Color.Transparent;
-            this.Kassa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Kassa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Kassa.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Kassa.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.Kassa.Location = new System.Drawing.Point(41, 158);
-            this.Kassa.Name = "Kassa";
-            this.Kassa.Size = new System.Drawing.Size(323, 40);
-            this.Kassa.TabIndex = 4;
-            this.Kassa.Text = "Касса";
-            this.Kassa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Kassa.UseVisualStyleBackColor = false;
+            this.поступлениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьИзБДToolStripMenuItem,
+            this.приходРасходToolStripMenuItem,
+            this.обменТоварамиToolStripMenuItem});
+            this.поступлениеToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.поступлениеToolStripMenuItem.Name = "поступлениеToolStripMenuItem";
+            this.поступлениеToolStripMenuItem.Size = new System.Drawing.Size(138, 29);
+            this.поступлениеToolStripMenuItem.Text = "Поступление";
             // 
-            // wholesale
+            // добавитьИзБДToolStripMenuItem
             // 
-            this.wholesale.BackColor = System.Drawing.Color.Transparent;
-            this.wholesale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.wholesale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wholesale.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wholesale.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.wholesale.Location = new System.Drawing.Point(41, 113);
-            this.wholesale.Name = "wholesale";
-            this.wholesale.Size = new System.Drawing.Size(323, 40);
-            this.wholesale.TabIndex = 3;
-            this.wholesale.Text = "Оптовая продажа";
-            this.wholesale.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.wholesale.UseVisualStyleBackColor = false;
+            this.добавитьИзБДToolStripMenuItem.Name = "добавитьИзБДToolStripMenuItem";
+            this.добавитьИзБДToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
+            this.добавитьИзБДToolStripMenuItem.Text = "Добавить из БД";
             // 
-            // retailButton
+            // приходРасходToolStripMenuItem
             // 
-            this.retailButton.BackColor = System.Drawing.Color.Transparent;
-            this.retailButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.retailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.retailButton.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.retailButton.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.retailButton.Location = new System.Drawing.Point(41, 67);
-            this.retailButton.Name = "retailButton";
-            this.retailButton.Size = new System.Drawing.Size(323, 40);
-            this.retailButton.TabIndex = 2;
-            this.retailButton.Text = "Розничная продажа";
-            this.retailButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.retailButton.UseVisualStyleBackColor = false;
-            this.retailButton.Click += new System.EventHandler(this.retailButton_Click);
+            this.приходРасходToolStripMenuItem.Name = "приходРасходToolStripMenuItem";
+            this.приходРасходToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
+            this.приходРасходToolStripMenuItem.Text = "Приход/Расход";
             // 
-            // productSection
+            // обменТоварамиToolStripMenuItem
             // 
-            this.productSection.BackColor = System.Drawing.Color.Transparent;
-            this.productSection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.productSection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.productSection.Font = new System.Drawing.Font("Noto Sans", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.productSection.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.productSection.Location = new System.Drawing.Point(41, 20);
-            this.productSection.Name = "productSection";
-            this.productSection.Size = new System.Drawing.Size(323, 40);
-            this.productSection.TabIndex = 0;
-            this.productSection.Text = "Поступление товара";
-            this.productSection.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.productSection.UseVisualStyleBackColor = false;
+            this.обменТоварамиToolStripMenuItem.Name = "обменТоварамиToolStripMenuItem";
+            this.обменТоварамиToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
+            this.обменТоварамиToolStripMenuItem.Text = "Обмен товарами";
+            // 
+            // операцииToolStripMenuItem
+            // 
+            this.операцииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.кассаToolStripMenuItem,
+            this.складToolStripMenuItem,
+            this.расходыToolStripMenuItem,
+            this.курсВалютыToolStripMenuItem});
+            this.операцииToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.операцииToolStripMenuItem.Name = "операцииToolStripMenuItem";
+            this.операцииToolStripMenuItem.Size = new System.Drawing.Size(113, 29);
+            this.операцииToolStripMenuItem.Text = "Операции";
+            // 
+            // кассаToolStripMenuItem
+            // 
+            this.кассаToolStripMenuItem.Name = "кассаToolStripMenuItem";
+            this.кассаToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.кассаToolStripMenuItem.Text = "Касса";
+            // 
+            // складToolStripMenuItem
+            // 
+            this.складToolStripMenuItem.Name = "складToolStripMenuItem";
+            this.складToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.складToolStripMenuItem.Text = "Склад";
+            // 
+            // расходыToolStripMenuItem
+            // 
+            this.расходыToolStripMenuItem.Name = "расходыToolStripMenuItem";
+            this.расходыToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.расходыToolStripMenuItem.Text = "Расходы";
+            // 
+            // курсВалютыToolStripMenuItem
+            // 
+            this.курсВалютыToolStripMenuItem.Name = "курсВалютыToolStripMenuItem";
+            this.курсВалютыToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.курсВалютыToolStripMenuItem.Text = "Курс валюты";
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отчетПоМестуНаСкладеToolStripMenuItem,
+            this.неактивныеТоварыToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // отчетПоМестуНаСкладеToolStripMenuItem
+            // 
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Name = "отчетПоМестуНаСкладеToolStripMenuItem";
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(305, 30);
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Text = "Отчет по месту на складе";
+            // 
+            // неактивныеТоварыToolStripMenuItem
+            // 
+            this.неактивныеТоварыToolStripMenuItem.Name = "неактивныеТоварыToolStripMenuItem";
+            this.неактивныеТоварыToolStripMenuItem.Size = new System.Drawing.Size(305, 30);
+            this.неактивныеТоварыToolStripMenuItem.Text = "Неактивные товары";
+            // 
+            // возвратToolStripMenuItem
+            // 
+            this.возвратToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.возвратToolStripMenuItem1,
+            this.возвратДняToolStripMenuItem,
+            this.отменаПродажиToolStripMenuItem});
+            this.возвратToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.возвратToolStripMenuItem.Name = "возвратToolStripMenuItem";
+            this.возвратToolStripMenuItem.Size = new System.Drawing.Size(166, 29);
+            this.возвратToolStripMenuItem.Text = "Возврат/Отмена";
+            // 
+            // возвратToolStripMenuItem1
+            // 
+            this.возвратToolStripMenuItem1.Name = "возвратToolStripMenuItem1";
+            this.возвратToolStripMenuItem1.Size = new System.Drawing.Size(233, 30);
+            this.возвратToolStripMenuItem1.Text = "Возврат";
+            // 
+            // возвратДняToolStripMenuItem
+            // 
+            this.возвратДняToolStripMenuItem.Name = "возвратДняToolStripMenuItem";
+            this.возвратДняToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
+            this.возвратДняToolStripMenuItem.Text = "Возврат дня";
+            // 
+            // отменаПродажиToolStripMenuItem
+            // 
+            this.отменаПродажиToolStripMenuItem.Name = "отменаПродажиToolStripMenuItem";
+            this.отменаПродажиToolStripMenuItem.Size = new System.Drawing.Size(233, 30);
+            this.отменаПродажиToolStripMenuItem.Text = "Отмена продажи";
+            // 
+            // конфигурацияToolStripMenuItem
+            // 
+            this.конфигурацияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.базаДанныхToolStripMenuItem,
+            this.пользователиToolStripMenuItem});
+            this.конфигурацияToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.конфигурацияToolStripMenuItem.Name = "конфигурацияToolStripMenuItem";
+            this.конфигурацияToolStripMenuItem.Size = new System.Drawing.Size(150, 29);
+            this.конфигурацияToolStripMenuItem.Text = "Конфигурация";
+            // 
+            // базаДанныхToolStripMenuItem
+            // 
+            this.базаДанныхToolStripMenuItem.Name = "базаДанныхToolStripMenuItem";
+            this.базаДанныхToolStripMenuItem.Size = new System.Drawing.Size(207, 30);
+            this.базаДанныхToolStripMenuItem.Text = "База данных";
+            // 
+            // пользователиToolStripMenuItem
+            // 
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(207, 30);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 518);
+            this.ClientSize = new System.Drawing.Size(1083, 518);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.swichBarPanel);
             this.Controls.Add(this.SideBar);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RightToLeftLayout = true;
@@ -337,6 +396,10 @@ namespace AutoMir2022
             this.loginBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.swichBarPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,16 +416,31 @@ namespace AutoMir2022
         private System.Windows.Forms.TextBox userName;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Panel swichBarPanel;
-        private System.Windows.Forms.Button exit;
-        private System.Windows.Forms.Button config;
-        private System.Windows.Forms.Button reports;
-        private System.Windows.Forms.Button Sklad;
-        private System.Windows.Forms.Button returnButton;
-        private System.Windows.Forms.Button expendeture;
-        private System.Windows.Forms.Button Kassa;
-        private System.Windows.Forms.Button wholesale;
-        private System.Windows.Forms.Button retailButton;
-        private System.Windows.Forms.Button productSection;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem продажаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem розничнаяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оптоваяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поступлениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem операцииToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem кассаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem складToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem расходыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьИзБДToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem приходРасходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem обменТоварамиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem курсВалютыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетПоМестуНаСкладеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem неактивныеТоварыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem возвратToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem возвратToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem возвратДняToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отменаПродажиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem конфигурацияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem базаДанныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox info;
     }
 
 }

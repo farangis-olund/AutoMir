@@ -31,8 +31,12 @@ namespace AutoMir2022
             retail.Show();
             //this.Close();
         }
-        
-                
-     
+
+        private void розничнаяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var retail = new retail();
+            retail.Show();
+            //this.Close();
+        }
     }
 }
