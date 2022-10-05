@@ -12,9 +12,7 @@ namespace Core.DB
                                                     "password=1234;" +
                                                     "database=AutoMir2022;";
 
-        /// <summary>
-        /// Return response by query
-        /// </summary>
+        // return query to datatable
         public DataTable GetByQuery(string query)
         {
             DataTable dataTable = new DataTable();

@@ -14,116 +14,75 @@ namespace AutoMir2022
     public partial class retail : Form
 
     {
-    //    class DataTableInfoGetSet
-    //    {
-    //        public string sqlString;
-    //        public DataTable GetDataFromDatabaseinDataTable()
-    //        {
-    //            DataTable dt = new DataTable();
-
-    //            //connection to database
-    //            string connstring = "server=localhost;port=5432;user id=postgres;password=1234;database=AutoMir2022;";
-    //            // Making connection with Npgsql provider
-    //            NpgsqlConnection conn = new NpgsqlConnection(connstring);
-    //            conn.Open();
-    //            NpgsqlCommand comm = new NpgsqlCommand();
-    //            comm.Connection = conn;
-    //            comm.CommandType = CommandType.Text;
-    //            comm.CommandText = sqlString;
-                
-    //            NpgsqlDataReader dr = comm.ExecuteReader();
-    //            if (dr.HasRows)
-    //            {
-    //                dt.Load(dr);
-
-    //            }
-
-    //            comm.Dispose();
-    //            conn.Close();
-    //            return dt;
-    //        }
-
-    //        public DataTable selectColundDistinct(DataTable mydataTable, string columnName)
-    //        {
-    //            DataView view = new DataView(mydataTable);
-    //            DataTable distinctValues = view.ToTable(true, columnName);
-    //            return distinctValues;
-
-
-    //        }
-
-    //    }
-
-    //    class Cleaner
-    //    {
-    //        public void cleanCombobox()
-    //        {
-    //            if (myCombobox.Text != "")
-    //            {
-    //                string brandText = myCombobox.Text;
-    //            }
-    //            else
-    //            {
-    //                myCombobox.SelectedItem = null;
-    //            }
-    //        }
-
-    //        private ComboBox myCombobox; // field
-    //        public ComboBox MyCombobox   // property
-    //        {
-    //            get { return myCombobox; }
-    //            set { myCombobox = value; }
-                
-    //        }
-
-            
-
-    //}
         public retail()
         {
             InitializeComponent();
 
             showAllTovar();
+            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
 
-
-        }
-
-        //public void dbconncectionTovar(string sqlString)
-        //{
-
-        //    RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-        //    dataGridView1.AutoGenerateColumns = true;
-        //    dataGridView1.DataSource = roznProdazhaObj.Index();
-
-
-        //    //fill the ComboBoxs for search
-            
-            
+            // add course valuty
+            kursValyuti.Text = "Курс валюты= "+ roznProdazhaObj.GetCursValyuti().ToString()+ "ТJS";
            
-        //}
+            // add date
+            DateTime today = DateTime.Today;
+            date.Text = today.ToString();
+           
+            // datagrid column width size karzina 1
 
+            dataGridView1.Columns[0].Width = 120;
+            dataGridView1.Columns[1].Width = 260;
+            dataGridView1.Columns[2].Width = 80;
+            dataGridView1.Columns[3].Width = 80;
+            dataGridView1.Columns[4].Width = 240;
+            dataGridView1.Columns[5].Width = 120;
+            dataGridView1.Columns[6].Width = 60;
+            dataGridView1.Columns[7].Width = 80;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-       private void retail_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-       
-        private void Brand_SelectionChangeCommitted(object sender, EventArgs e)
-        {
             
+        }
+
+        private void selectedRowsButton_Click(object sender, System.EventArgs e)
+        {
+
+            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
+            DataTable alternativa = new DataTable();                    
+            string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
+
+            //add array data to karzina 2... info about tovar
+            string[,] arrayForfilter = new string[1, 2];
+
+            for (int i = 0; i < 1; i++)
+            {
+
+                //get alternativa from table tovar for geting all possibla alternativ goods
+                
+                arrayForfilter[0,0]= "альтернатива";
+                arrayForfilter[0, 1] = arrayforKarzina2[5];
+                alternativa = roznProdazhaObj.ByFilterTovar(arrayForfilter);
+
+
+                foreach (DataRow dr in alternativa.Rows)
+                {
+                    // datagrid column width size karzina 2
+                    // "SELECT артикул, наименование, бренд, марка, "
+                    // +модель, альтернатива, количество, розн_цена__euro_, группа
+
+                    dataGridView2.Rows.Add(dr[5], dr[0], dr[1], dr[2], dr[6], dr[7]);
+                    
+                }
+
+            }
 
         }
+        private void retail_Load(object sender, EventArgs e)
+        {
+
+        }
+
+              
 
         private void search_Click(object sender, EventArgs e)
         {
@@ -149,7 +108,7 @@ namespace AutoMir2022
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             dataGridView1.AutoGenerateColumns = true;
             DataTable mydataTable = new DataTable();
-            mydataTable = roznProdazhaObj.ByFilter(filterQueryColumn);
+            mydataTable = roznProdazhaObj.ByFilterTovar(filterQueryColumn);
             dataGridView1.DataSource = mydataTable;
 
             
@@ -169,19 +128,19 @@ namespace AutoMir2022
             dataGridView1.DataSource = mydataTable;
 
             Brand.DisplayMember = "бренд";
-            Brand.DataSource = roznProdazhaObj.selectColundDistinct(mydataTable, "бренд");
+            Brand.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "бренд");
 
             marka.DisplayMember = "марка";
-            marka.DataSource = roznProdazhaObj.selectColundDistinct(mydataTable, "марка");
+            marka.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "марка");
 
             gruppa.DisplayMember = "группа";
-            gruppa.DataSource = roznProdazhaObj.selectColundDistinct(mydataTable, "группа");
+            gruppa.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "группа");
 
             artikul.DisplayMember = "артикул";
-            artikul.DataSource = roznProdazhaObj.selectColundDistinct(mydataTable, "артикул");
+            artikul.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "артикул");
 
             naimenovanie.DisplayMember = "наименование";
-            naimenovanie.DataSource = roznProdazhaObj.selectColundDistinct(mydataTable, "наименование");
+            naimenovanie.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "наименование");
 
             Brand.SelectedItem = null;
             marka.SelectedItem = null;
@@ -190,6 +149,36 @@ namespace AutoMir2022
             naimenovanie.SelectedItem = null;
 
         }
-    }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+       
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
+            {
+                double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena"].Value);
+                double b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
+                dataGridView2.Rows[e.RowIndex].Cells[6].Value = (a * b).ToString("0.00");
+
+            }
+
+            if (dataGridView2.Columns[e.ColumnIndex].Name == "vibor")
+            {
+                //double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells[6].Value);
+                //double b = Convert.ToDouble(suma.Text);
+                
+                //suma.Text = (a + b).ToString("0.00");
+
+            }
+
+        }
+
+
 
     }
+
+}

@@ -1,0 +1,6 @@
+ // add colund with checkbox for chosed tovar record
+DataGridViewCheckBoxColumn dgvCmb = new 	DataGridViewCheckBoxColumn();
+dgvCmb.ValueType = typeof(bool);
+dgvCmb.Name = "Выбрать";
+dgvCmb.HeaderText = "CheckBox";
+dataGridView1.Columns.Add(dgvCmb);
