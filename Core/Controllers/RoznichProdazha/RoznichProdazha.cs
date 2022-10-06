@@ -13,19 +13,20 @@ namespace Core.Controllers.RoznProdazha
 
         public DataTable Index()
         {
-            DataTable dataTable = new DataTable();
-            dataTable = db.GetByQuery("Select артикул, наименование, бренд, марка, " +
-                "модель, альтернатива, количество, розн_цена__euro_, группа  FROM public.товар");
+            //DataTable dataTable = new DataTable();
+            //dataTable = db.GetByQuery("Select артикул, наименование, бренд, марка, " +
+            //    "модель, альтернатива, количество, розн_цена__euro_, группа  FROM public.товар");
 
-            return dataTable;
+            return db.GetByQuery("Select артикул, наименование, бренд, марка, " +
+                "модель, альтернатива, количество, розн_цена__euro_, группа,место_на_складе  FROM public.товар");
         }
 
         public DataTable ByFilterTovar(string[,] filter)
         {
                         
-            DataTable dataTable = new DataTable();
+            //DataTable dataTable = new DataTable();
             string sqlQuery= "SELECT артикул, наименование, бренд, марка, " +
-                "модель, альтернатива, количество, розн_цена__euro_, группа FROM public.товар WHERE ";
+                "модель, альтернатива, количество, розн_цена__euro_, группа, место_на_складе FROM public.товар WHERE ";
             
             for (int i = 0; i < (filter.Length) /2; i++)
             {
@@ -33,20 +34,20 @@ namespace Core.Controllers.RoznProdazha
             }
             sqlQuery=sqlQuery.Remove(sqlQuery.Length - 5, 5);
             
-            dataTable = db.GetByQuery(sqlQuery);
+            //dataTable = db.GetByQuery(sqlQuery);
 
             // other code
 
-            return dataTable;
+            return db.GetByQuery(sqlQuery); ;
         }
 
         public double GetCursValyuti()
         {
-            double CursValyuti = new double();
+            //double CursValyuti = new double();
             DataTable dt = new DataTable();
             dt = db.GetByQuery("SELECT курс_валюты FROM public.курс_валюты ORDER BY дата DESC LIMIT 1;");
-            CursValyuti= Convert.ToDouble(dt.Rows[0]["курс_валюты"].ToString());
-            return CursValyuti;
+            //CursValyuti= Convert.ToDouble(dt.Rows[0]["курс_валюты"].ToString());
+            return Convert.ToDouble(dt.Rows[0]["курс_валюты"].ToString()); 
         }
                
         public DataTable selectColumnDistinct(DataTable mydataTable, string columnName)
@@ -70,16 +71,11 @@ namespace Core.Controllers.RoznProdazha
             return array;
         }
     
-        public DataTable getInfoKarzina2(string artikul)
+         public DataTable getviborVariant(string artikul)
         {
-            DataTable infoKarzina2 = new DataTable();
-            
-            
-           
-                        
-            return infoKarzina2;
+            return db.GetByQuery("Select артикул, наименование, бренд, марка, " +
+                "модель, место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул LIKE" + artikul);
         }
-        
         public void someFunction()
         {
             // do some action
