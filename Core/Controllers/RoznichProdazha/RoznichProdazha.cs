@@ -74,13 +74,34 @@ namespace Core.Controllers.RoznProdazha
          public DataTable getviborVariant(string artikul)
         {
             return db.GetByQuery("Select артикул, наименование, бренд, марка, " +
-                "модель, место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул LIKE" + artikul);
+                "модель, место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул LIKE '" + artikul + "'");
         }
+        
+        public double getRoundDecimal(double number)
+        {
+            return Math.Round(number, 2);
+        }
+
+        public DataGridView ochistkaDataGridVeiw(ref DataGridView dataGridView)
+        {
+            if (dataGridView.DataSource != null)
+            {
+                dataGridView.DataSource = null;
+            }
+            else
+            {
+                dataGridView.Rows.Clear();
+            }
+            return dataGridView;
+        }
+
         public void someFunction()
         {
             // do some action
         }
 
+
+    
     }
 
 }
