@@ -59,7 +59,7 @@ namespace AutoMir2022
             this.kursValyutiText = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.viborProdovets = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.oformitZakaz = new System.Windows.Forms.Button();
             this.date = new System.Windows.Forms.Label();
             this.kontrolProdazhaChek = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -99,13 +99,6 @@ namespace AutoMir2022
             this.variant1 = new System.Windows.Forms.RadioButton();
             this.ochistkaKarzina2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.karzina3 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.ochistkaKorzini3 = new System.Windows.Forms.Button();
-            this.proverkaKasi = new System.Windows.Forms.TabPage();
-            this.mestoSklad = new System.Windows.Forms.TabPage();
-            this.otmenaProdazhiRozn = new System.Windows.Forms.TabPage();
-            this.kontCheka = new System.Windows.Forms.TabPage();
             this.alternativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,6 +125,8 @@ namespace AutoMir2022
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.karzina3 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.artikulKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanieKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -141,6 +136,11 @@ namespace AutoMir2022
             this.tsenaKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumaKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mestoKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ochistkaKorzini3 = new System.Windows.Forms.Button();
+            this.proverkaKasi = new System.Windows.Forms.TabPage();
+            this.mestoSklad = new System.Windows.Forms.TabPage();
+            this.otmenaProdazhiRozn = new System.Windows.Forms.TabPage();
+            this.kontCheka = new System.Windows.Forms.TabPage();
             this.topPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -164,7 +164,7 @@ namespace AutoMir2022
             this.topPanel.Controls.Add(this.groupBox1);
             this.topPanel.Controls.Add(this.label2);
             this.topPanel.Controls.Add(this.viborProdovets);
-            this.topPanel.Controls.Add(this.button1);
+            this.topPanel.Controls.Add(this.oformitZakaz);
             this.topPanel.Controls.Add(this.date);
             this.topPanel.Controls.Add(this.kontrolProdazhaChek);
             this.topPanel.Controls.Add(this.groupBox2);
@@ -249,17 +249,18 @@ namespace AutoMir2022
             this.viborProdovets.Size = new System.Drawing.Size(165, 29);
             this.viborProdovets.TabIndex = 2;
             // 
-            // button1
+            // oformitZakaz
             // 
-            this.button1.BackColor = System.Drawing.Color.Maroon;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1388, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 36);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Оформить заказ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.oformitZakaz.BackColor = System.Drawing.Color.Maroon;
+            this.oformitZakaz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.oformitZakaz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.oformitZakaz.Location = new System.Drawing.Point(1388, 13);
+            this.oformitZakaz.Name = "oformitZakaz";
+            this.oformitZakaz.Size = new System.Drawing.Size(148, 36);
+            this.oformitZakaz.TabIndex = 8;
+            this.oformitZakaz.Text = "Оформить заказ";
+            this.oformitZakaz.UseVisualStyleBackColor = false;
+            this.oformitZakaz.Click += new System.EventHandler(this.oformitZakaz_Click);
             // 
             // date
             // 
@@ -753,88 +754,6 @@ namespace AutoMir2022
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             // 
-            // karzina3
-            // 
-            this.karzina3.Controls.Add(this.dataGridView3);
-            this.karzina3.Controls.Add(this.ochistkaKorzini3);
-            this.karzina3.Location = new System.Drawing.Point(4, 30);
-            this.karzina3.Name = "karzina3";
-            this.karzina3.Padding = new System.Windows.Forms.Padding(3);
-            this.karzina3.Size = new System.Drawing.Size(1537, 646);
-            this.karzina3.TabIndex = 2;
-            this.karzina3.Text = "Карзина3";
-            this.karzina3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.ColumnHeadersHeight = 35;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.artikulKarzina3,
-            this.naimenovanieKarzina3,
-            this.brandKarzina3,
-            this.markaKarzina3,
-            this.modelKarzina3,
-            this.kolZakazaKarzina3,
-            this.tsenaKarzina3,
-            this.sumaKarzina3,
-            this.mestoKarzina3});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 84);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 25;
-            this.dataGridView3.Size = new System.Drawing.Size(1526, 249);
-            this.dataGridView3.TabIndex = 4;
-            // 
-            // ochistkaKorzini3
-            // 
-            this.ochistkaKorzini3.Location = new System.Drawing.Point(8, 23);
-            this.ochistkaKorzini3.Name = "ochistkaKorzini3";
-            this.ochistkaKorzini3.Size = new System.Drawing.Size(153, 40);
-            this.ochistkaKorzini3.TabIndex = 3;
-            this.ochistkaKorzini3.Text = "Очистить карзину";
-            this.ochistkaKorzini3.UseVisualStyleBackColor = true;
-            this.ochistkaKorzini3.Click += new System.EventHandler(this.ochistkaKorzini3_Click);
-            // 
-            // proverkaKasi
-            // 
-            this.proverkaKasi.Location = new System.Drawing.Point(4, 30);
-            this.proverkaKasi.Name = "proverkaKasi";
-            this.proverkaKasi.Padding = new System.Windows.Forms.Padding(3);
-            this.proverkaKasi.Size = new System.Drawing.Size(1537, 646);
-            this.proverkaKasi.TabIndex = 3;
-            this.proverkaKasi.Text = "Проверка кассы";
-            this.proverkaKasi.UseVisualStyleBackColor = true;
-            // 
-            // mestoSklad
-            // 
-            this.mestoSklad.Location = new System.Drawing.Point(4, 30);
-            this.mestoSklad.Name = "mestoSklad";
-            this.mestoSklad.Padding = new System.Windows.Forms.Padding(3);
-            this.mestoSklad.Size = new System.Drawing.Size(1537, 646);
-            this.mestoSklad.TabIndex = 4;
-            this.mestoSklad.Text = "Место на складе";
-            this.mestoSklad.UseVisualStyleBackColor = true;
-            // 
-            // otmenaProdazhiRozn
-            // 
-            this.otmenaProdazhiRozn.Location = new System.Drawing.Point(4, 30);
-            this.otmenaProdazhiRozn.Name = "otmenaProdazhiRozn";
-            this.otmenaProdazhiRozn.Padding = new System.Windows.Forms.Padding(3);
-            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1537, 646);
-            this.otmenaProdazhiRozn.TabIndex = 5;
-            this.otmenaProdazhiRozn.Text = "Отмена продажи";
-            this.otmenaProdazhiRozn.UseVisualStyleBackColor = true;
-            // 
-            // kontCheka
-            // 
-            this.kontCheka.Location = new System.Drawing.Point(4, 30);
-            this.kontCheka.Name = "kontCheka";
-            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
-            this.kontCheka.Size = new System.Drawing.Size(1537, 646);
-            this.kontCheka.TabIndex = 6;
-            this.kontCheka.Text = "Контроль чека";
-            this.kontCheka.UseVisualStyleBackColor = true;
-            // 
             // alternativa
             // 
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1027,6 +946,38 @@ namespace AutoMir2022
             this.mesto.Name = "mesto";
             this.mesto.Visible = false;
             // 
+            // karzina3
+            // 
+            this.karzina3.Controls.Add(this.dataGridView3);
+            this.karzina3.Controls.Add(this.ochistkaKorzini3);
+            this.karzina3.Location = new System.Drawing.Point(4, 30);
+            this.karzina3.Name = "karzina3";
+            this.karzina3.Padding = new System.Windows.Forms.Padding(3);
+            this.karzina3.Size = new System.Drawing.Size(1537, 646);
+            this.karzina3.TabIndex = 2;
+            this.karzina3.Text = "Карзина3";
+            this.karzina3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.ColumnHeadersHeight = 35;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artikulKarzina3,
+            this.naimenovanieKarzina3,
+            this.brandKarzina3,
+            this.markaKarzina3,
+            this.modelKarzina3,
+            this.kolZakazaKarzina3,
+            this.tsenaKarzina3,
+            this.sumaKarzina3,
+            this.mestoKarzina3});
+            this.dataGridView3.Location = new System.Drawing.Point(6, 84);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 25;
+            this.dataGridView3.Size = new System.Drawing.Size(1526, 249);
+            this.dataGridView3.TabIndex = 4;
+            // 
             // artikulKarzina3
             // 
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
@@ -1095,6 +1046,56 @@ namespace AutoMir2022
             this.mestoKarzina3.HeaderText = "место";
             this.mestoKarzina3.Name = "mestoKarzina3";
             // 
+            // ochistkaKorzini3
+            // 
+            this.ochistkaKorzini3.Location = new System.Drawing.Point(8, 23);
+            this.ochistkaKorzini3.Name = "ochistkaKorzini3";
+            this.ochistkaKorzini3.Size = new System.Drawing.Size(153, 40);
+            this.ochistkaKorzini3.TabIndex = 3;
+            this.ochistkaKorzini3.Text = "Очистить карзину";
+            this.ochistkaKorzini3.UseVisualStyleBackColor = true;
+            this.ochistkaKorzini3.Click += new System.EventHandler(this.ochistkaKorzini3_Click);
+            // 
+            // proverkaKasi
+            // 
+            this.proverkaKasi.Location = new System.Drawing.Point(4, 30);
+            this.proverkaKasi.Name = "proverkaKasi";
+            this.proverkaKasi.Padding = new System.Windows.Forms.Padding(3);
+            this.proverkaKasi.Size = new System.Drawing.Size(1537, 646);
+            this.proverkaKasi.TabIndex = 3;
+            this.proverkaKasi.Text = "Проверка кассы";
+            this.proverkaKasi.UseVisualStyleBackColor = true;
+            // 
+            // mestoSklad
+            // 
+            this.mestoSklad.Location = new System.Drawing.Point(4, 30);
+            this.mestoSklad.Name = "mestoSklad";
+            this.mestoSklad.Padding = new System.Windows.Forms.Padding(3);
+            this.mestoSklad.Size = new System.Drawing.Size(1537, 646);
+            this.mestoSklad.TabIndex = 4;
+            this.mestoSklad.Text = "Место на складе";
+            this.mestoSklad.UseVisualStyleBackColor = true;
+            // 
+            // otmenaProdazhiRozn
+            // 
+            this.otmenaProdazhiRozn.Location = new System.Drawing.Point(4, 30);
+            this.otmenaProdazhiRozn.Name = "otmenaProdazhiRozn";
+            this.otmenaProdazhiRozn.Padding = new System.Windows.Forms.Padding(3);
+            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1537, 646);
+            this.otmenaProdazhiRozn.TabIndex = 5;
+            this.otmenaProdazhiRozn.Text = "Отмена продажи";
+            this.otmenaProdazhiRozn.UseVisualStyleBackColor = true;
+            // 
+            // kontCheka
+            // 
+            this.kontCheka.Location = new System.Drawing.Point(4, 30);
+            this.kontCheka.Name = "kontCheka";
+            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
+            this.kontCheka.Size = new System.Drawing.Size(1537, 646);
+            this.kontCheka.TabIndex = 6;
+            this.kontCheka.Text = "Контроль чека";
+            this.kontCheka.UseVisualStyleBackColor = true;
+            // 
             // retail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -1109,7 +1110,7 @@ namespace AutoMir2022
             this.Name = "retail";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Розничная продажа товаров";
-            this.Load += new System.EventHandler(this.retail_Load);
+           
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1166,7 +1167,7 @@ namespace AutoMir2022
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox Brand;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button oformitZakaz;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage proverkaKasi;
         private System.Windows.Forms.TabPage mestoSklad;

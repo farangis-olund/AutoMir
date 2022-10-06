@@ -9,6 +9,7 @@ using System.Linq;
 using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers.RoznProdazha;
+using NickBuhro.NumToWords.Russian ;
 namespace AutoMir2022
 {
     public partial class retail : Form
@@ -23,11 +24,11 @@ namespace AutoMir2022
 
             // add course valuty
             kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
-           
+
             // add date
             DateTime today = DateTime.Today;
             date.Text = today.ToString();
-           
+
             // datagrid column width size karzina 1
 
             dataGridView1.Columns[0].Width = 120;
@@ -43,6 +44,8 @@ namespace AutoMir2022
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             
+            
+
         }
 
         //add data from karizna 1 to karzina2 when user klicking to row of daagridview1
@@ -50,7 +53,7 @@ namespace AutoMir2022
         {
 
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-            DataTable alternativa = new DataTable();                    
+            DataTable alternativa = new DataTable();
             string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
 
             //add array data to karzina 2... info about tovar
@@ -75,25 +78,25 @@ namespace AutoMir2022
             alternativa = roznProdazhaObj.ByFilterTovar(arrayForfilter);
 
             var index = this.dataGridView2.Rows.Add();
-                
+
             double kurs = Convert.ToDouble(kursValyuti.Text);
-            
+
             int i = 0;
             // datagrid column width size karzina 2
             // "SELECT артикул, наименование, бренд, марка, "
             // +модель, альтернатива, количество, розн_цена__euro_, группа
 
             // когда альтернатива больше или 4 то тогда все элементи из бази останутся такими как есть
-            
-            
+
+
             alternativa.DefaultView.Sort = "розн_цена__euro_ DESC";
-                        
+
             int sumaRowCounter = 0;
             foreach (DataRow dr in alternativa.Rows)
             {
 
-                if (isChecked && i==1) break;    
-                    
+                if (isChecked && i == 1) break;
+
                 if (i == 4) break;
 
                 this.dataGridView2.Rows[index].Cells[0].Value = dr[5];
@@ -101,12 +104,12 @@ namespace AutoMir2022
 
                 // kolichestvo 2,3,4,5
                 this.dataGridView2.Rows[index].Cells[2 + i].Value = dr[6];
-                
-                    // tsena 19,20,21,22
-                    this.dataGridView2.Rows[index].Cells[19 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7])*kurs);
 
-                    // summa 7,9,11,13
-                    this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value =roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+                // tsena 19,20,21,22
+                this.dataGridView2.Rows[index].Cells[19 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+
+                // summa 7,9,11,13
+                this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
 
                 // brand 8,10,12,14
                 this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = dr[2];
@@ -114,27 +117,27 @@ namespace AutoMir2022
                 // artikul 15,16,17,18
                 this.dataGridView2.Rows[index].Cells[15 + i].Value = dr[0];
 
-                    i = i + 1;
+                i = i + 1;
                 sumaRowCounter = sumaRowCounter + 2;
             }
-                if (i < 4 && tolkoOdinArtikul.Checked==false)
-                {
-                for (int k=i; k< 4; k++) {
+            if (i < 4 && tolkoOdinArtikul.Checked == false)
+            {
+                for (int k = i; k < 4; k++) {
 
                     // kolichestvo 2,3,4,5
-                    this.dataGridView2.Rows[index].Cells[2 + k].Value = this.dataGridView2.Rows[index].Cells[(2 +k)-1].Value;
+                    this.dataGridView2.Rows[index].Cells[2 + k].Value = this.dataGridView2.Rows[index].Cells[(2 + k) - 1].Value;
 
-                   
+
                     // brand 8,10,12,14
-                    this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = this.dataGridView2.Rows[index].Cells[(8 + sumaRowCounter)-2].Value;
+                    this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = this.dataGridView2.Rows[index].Cells[(8 + sumaRowCounter) - 2].Value;
 
                     // tsena 19,20,21,22
                     this.dataGridView2.Rows[index].Cells[19 + k].Value = roznProdazhaObj.getRoundDecimal(
-                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(19 + k) - 1].Value))  ;
+                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(19 + k) - 1].Value));
 
                     // summa 7,9,11,13
-                    this.dataGridView2.Rows[index].Cells[7+ sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(
-                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(7 +sumaRowCounter)-2].Value)) ;
+                    this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(
+                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(7 + sumaRowCounter) - 2].Value));
 
                     // artikul 15,16,17,18
                     this.dataGridView2.Rows[index].Cells[15 + k].Value = this.dataGridView2.Rows[index].Cells[(15 + k) - 1].Value;
@@ -142,36 +145,31 @@ namespace AutoMir2022
                 }
 
 
-            }            
-            
+            }
 
-            
 
-        }
-        private void retail_Load(object sender, EventArgs e)
-        {
+
 
         }
-
-              
+     
 
         private void search_Click(object sender, EventArgs e)
         {
             string[] combovalue = new string[5] { Brand.Text, marka.Text, gruppa.Text, artikul.Text, naimenovanie.Text };
             int result = combovalue.Count(s => s != "");
 
-            string[,] comboColName= new string [5,2] { { "бренд", Brand.Text.Trim() } , {"марка", marka.Text.Trim() }, {"группа", gruppa.Text.Trim() }, {"артикул", artikul.Text.Trim() }, { "наименование", naimenovanie.Text.Trim() } };
-            
-            string[,] filterQueryColumn= new string[result, 2];
+            string[,] comboColName = new string[5, 2] { { "бренд", Brand.Text.Trim() }, { "марка", marka.Text.Trim() }, { "группа", gruppa.Text.Trim() }, { "артикул", artikul.Text.Trim() }, { "наименование", naimenovanie.Text.Trim() } };
+
+            string[,] filterQueryColumn = new string[result, 2];
             int j = 0;
-            
-            for (int i = 0;i< comboColName.Length/2-1; i++)
+
+            for (int i = 0; i < comboColName.Length / 2 - 1; i++)
             {
                 if (comboColName[i, 1] != "")
                 {
                     filterQueryColumn[j, 0] = comboColName[i, 0];
                     filterQueryColumn[j, 1] = comboColName[i, 1];
-                    j = j+1;
+                    j = j + 1;
                 }
 
             }
@@ -182,7 +180,7 @@ namespace AutoMir2022
             mydataTable = roznProdazhaObj.ByFilterTovar(filterQueryColumn);
             dataGridView1.DataSource = mydataTable;
 
-            
+
         }
 
         private void showAll_Click(object sender, EventArgs e)
@@ -224,41 +222,34 @@ namespace AutoMir2022
         //datagrid2 karzina2       
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-           
+
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
                 double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
                 double b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
                 dataGridView2.Rows[e.RowIndex].Cells[7].Value = (a * b).ToString("0.00");
 
-                 a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
-                 b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
+                a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
+                b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
                 dataGridView2.Rows[e.RowIndex].Cells[9].Value = (a * b).ToString("0.00");
 
-                 a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
+                a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
                 b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
                 dataGridView2.Rows[e.RowIndex].Cells[11].Value = (a * b).ToString("0.00");
 
-                 a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
-                 b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
-                dataGridView2.Rows[e.RowIndex].Cells[13].Value = (a * b ).ToString("0.00");
+                a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
+                b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
+                dataGridView2.Rows[e.RowIndex].Cells[13].Value = (a * b).ToString("0.00");
 
 
 
             }
 
-            if (dataGridView2.Columns[e.ColumnIndex].Name == "vibor")
-            {
-                //double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells[6].Value);
-                //double b = Convert.ToDouble(suma.Text);
-                
-                //suma.Text = (a + b).ToString("0.00");
-
-            }
+     
 
         }
 
-       
+
 
         private void variantVibor_Click(object sender, EventArgs e)
         {
@@ -266,8 +257,8 @@ namespace AutoMir2022
             bool isChecked = prodazhaSoSkidkoy.Checked;
             if (isChecked && skidkaValue.Text != "")
             {
-                 skidka = Convert.ToDouble(skidkaValue.Text);
-            
+                skidka = Convert.ToDouble(skidkaValue.Text);
+
             }
             else if (isChecked && skidkaValue.Text == "")
             {
@@ -280,8 +271,8 @@ namespace AutoMir2022
             }
             string variantvibor = "";
             double kurs = Convert.ToDouble(kursValyuti.Text);
-            if (variant1.Checked == true)  variantvibor = "artikul1";
-             else if(variant2.Checked == true) variantvibor = "artikul2";
+            if (variant1.Checked == true) variantvibor = "artikul1";
+            else if (variant2.Checked == true) variantvibor = "artikul2";
             else if (variant3.Checked == true) variantvibor = "artikul3";
             else if (variant4.Checked == true) variantvibor = "artikul4";
 
@@ -296,7 +287,7 @@ namespace AutoMir2022
 
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
-               listArtikulKarzina3=roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[variantvibor].Value.ToString());
+                listArtikulKarzina3 = roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[variantvibor].Value.ToString());
                 int index = dataGridView3.Rows.Add();
 
                 foreach (DataRow dr in listArtikulKarzina3.Rows)
@@ -311,18 +302,28 @@ namespace AutoMir2022
                     this.dataGridView3.Rows[index].Cells[4].Value = dr[4];
                     this.dataGridView3.Rows[index].Cells[8].Value = dr[5];
 
+                    if (dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString() == "")
+                    {
+                        MessageBox.Show("Количество заказа не указан!");
+                        RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+                        roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+
+                        ochiskta();
+                    }
+
                     //    данные из карзини 2 количество заказа, цена и сумма
+
                     this.dataGridView3.Rows[index].Cells[5].Value = dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString();
                     this.dataGridView3.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal((Convert.ToDouble(dr[6]) * kurs));
-                    
-                    if (skidka !=0) this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal( 
-                          (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100) ;
-                    
-                    else this.dataGridView3.Rows[index].Cells[7].Value =roznProdazhaObj.getRoundDecimal(
+
+                    if (skidka != 0) this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
+                           (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100);
+
+                    else this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
                           (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs));
 
                 }
-            
+
             }
 
 
@@ -336,24 +337,25 @@ namespace AutoMir2022
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
-            variant1.Checked = false;
-            variant2.Checked = false;
-            variant3.Checked = false;
-            variant4.Checked = false;
 
+            ochiskta();
         }
 
         private void ochistkaKarzina2_Click(object sender, EventArgs e)
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView2);
+
+            ochiskta();
+
+        }
+
+        public void ochiskta()
+        {
             variant1.Checked = false;
             variant2.Checked = false;
             variant3.Checked = false;
             variant4.Checked = false;
-
-
-
         }
 
         private void tolkoOdinArtikul_Click(object sender, EventArgs e)
@@ -363,6 +365,63 @@ namespace AutoMir2022
                 MessageBox.Show("При уже выбранном артикуле, не можете включить данную опцию");
                 tolkoOdinArtikul.Checked = false;
             }
+        }
+
+        private void oformitZakaz_Click(object sender, EventArgs e)
+        {
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
+            if (viborProdovets.Text == "")
+            {
+                MessageBox.Show("Перед оформлением, укажите продавца!");
+                goto endProsess;
+
+            }
+
+            if (spetsPredlozhenie.Checked == true && spetsPredlozhenieValue.Text == "")
+            {
+                MessageBox.Show("Вы указали спец. предложение, но не указали кому оформляется спец.предложение!");
+                goto endProsess;
+
+            }
+
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                
+                //проверка остатка на складе достаточен ли для оформление заказа количество товара
+
+                DataTable kolTovara = roznichProdazhaObj.getviborVariant(dataGridView3.Rows[i].Cells[0].Value.ToString());
+                double kolTovaraDouble = 0;
+                foreach (DataRow dr in kolTovara.Rows)
+                {
+                    kolTovaraDouble = Convert.ToDouble(dr[7]);
+                }
+                    
+                double kolZakaz = Convert.ToDouble(dataGridView3.Rows[i].Cells[5].Value);
+
+                if (kolTovaraDouble < kolZakaz)
+                {
+                    MessageBox.Show("Не достаточное количество товара на складе, остаток артикул "
+                        + dataGridView3.Rows[i].Cells[0].Value.ToString() + " равняется " + kolTovaraDouble.ToString()+ " товар будет удален из карзини!");
+                     dataGridView3.Rows.Clear();
+                    goto endProsess;
+                }
+                //////////////
+                
+                /// получаем сумму с прописью
+                long suma= (long)Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value);
+                string summaPropisyu = RussianConverter.Format(suma, UnitOfMeasure.Ruble);
+                //////////////
+
+                ////////////// получаем последний номер накладной
+
+                int nakNomer =roznichProdazhaObj.getNakladnoyNomer();
+
+            }
+
+
+
+        endProsess: { }
         }
     }
 

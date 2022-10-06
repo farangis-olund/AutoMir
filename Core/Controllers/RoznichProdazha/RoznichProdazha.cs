@@ -74,9 +74,21 @@ namespace Core.Controllers.RoznProdazha
          public DataTable getviborVariant(string artikul)
         {
             return db.GetByQuery("Select артикул, наименование, бренд, марка, " +
-                "модель, место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул LIKE '" + artikul + "'");
+                "модель, место_на_складе, розн_цена__euro_, количество  FROM public.товар WHERE артикул LIKE '" + artikul + "'");
         }
-        
+
+
+
+        public int getNakladnoyNomer()
+        {
+             DataTable dataTable= db.GetByQuery("SELECT MAX(№_Накладной) FROM public.продажа;");
+            
+            
+            int nakNomer = Convert.ToInt32(dataTable.Rows[0]);
+            return nakNomer;
+        }
+
+
         public double getRoundDecimal(double number)
         {
             return Math.Round(number, 2);
