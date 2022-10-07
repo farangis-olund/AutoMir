@@ -79,12 +79,16 @@ namespace Core.Controllers.RoznProdazha
 
 
 
-        public int getNakladnoyNomer()
+        public int getNakladnoyNomer(string nakladText)
         {
-             DataTable dataTable= db.GetByQuery("SELECT MAX(є_Ќакладной) FROM public.продажа;");
-            
-            
-            int nakNomer = Convert.ToInt32(dataTable.Rows[0]);
+            int nakNomer = 0;
+             DataTable dataTable= db.GetByQuery("SELECT кодпродажи FROM public.продажа WHERE накладной_текст LIKE '" + nakladText + "'");
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                nakNomer = Convert.ToInt32(dr[0]);
+            }
+
+           
             return nakNomer;
         }
 
@@ -106,14 +110,27 @@ namespace Core.Controllers.RoznProdazha
             }
             return dataGridView;
         }
+        public void insertProdazha(double kurs, int skidka, string prodovets,
+            string propis, string primech, string naklText, bool chek)
+                {
+            //skidka скидка__%_,     + skidka + "', '"
+            db.insertToDB("INSERT INTO public.продажа ( курс_валюты,  продавец, прописью, примечание, накладной_текст, chek) VALUES " +
+                "('" + kurs + "', '" + prodovets + "'," +
+                " '" + propis + "', '" + primech + "', '" + naklText + "', '" + chek + "')");            
+            
+        }
+
+       
+
+
 
         public void someFunction()
         {
-            // do some action
+            // do some action         
         }
 
 
-    
+
     }
 
 }

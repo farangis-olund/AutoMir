@@ -220,6 +220,7 @@ namespace AutoMir2022
             this.kursValyuti.Name = "kursValyuti";
             this.kursValyuti.Size = new System.Drawing.Size(68, 29);
             this.kursValyuti.TabIndex = 2;
+            this.kursValyuti.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // kursValyutiText
             // 
@@ -300,6 +301,8 @@ namespace AutoMir2022
             this.skidkaValue.Name = "skidkaValue";
             this.skidkaValue.Size = new System.Drawing.Size(62, 29);
             this.skidkaValue.TabIndex = 2;
+            this.skidkaValue.Text = "0";
+            this.skidkaValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // prodazhaSoSkidkoy
             // 
@@ -1110,7 +1113,6 @@ namespace AutoMir2022
             this.Name = "retail";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Розничная продажа товаров";
-           
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             this.groupBox3.ResumeLayout(false);

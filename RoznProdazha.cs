@@ -10,6 +10,7 @@ using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers.RoznProdazha;
 using NickBuhro.NumToWords.Russian ;
+using Core.DB;
 namespace AutoMir2022
 {
     public partial class retail : Form
@@ -24,10 +25,12 @@ namespace AutoMir2022
 
             // add course valuty
             kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
-
+            skidkaValue.Text = "0";
             // add date
-            DateTime today = DateTime.Today;
-            date.Text = today.ToString();
+
+
+            date.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            
 
             // datagrid column width size karzina 1
 
@@ -385,6 +388,14 @@ namespace AutoMir2022
 
             }
 
+            if (dataGridView3.Rows.Count == 0)
+            {
+                MessageBox.Show("Вы не выбрали товар в карзину 3, заказ не оформлен!");
+                goto endProsess;
+
+            }
+
+            double summaKontrakta = 0;
             for (int i = 0; i < dataGridView3.Rows.Count; i++)
             {
                 
@@ -407,18 +418,52 @@ namespace AutoMir2022
                     goto endProsess;
                 }
                 //////////////
+
+                summaKontrakta = summaKontrakta + Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value);
                 
-                /// получаем сумму с прописью
-                long suma= (long)Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value);
-                string summaPropisyu = RussianConverter.Format(suma, UnitOfMeasure.Ruble);
-                //////////////
-
-                ////////////// получаем последний номер накладной
-
-                int nakNomer =roznichProdazhaObj.getNakladnoyNomer();
 
             }
 
+            /// получаем сумму с прописью
+            string diram = summaKontrakta.ToString();
+            diram = diram.Remove(1, diram.Length - 2) + " дирам";
+            long suma = (long)summaKontrakta;
+            
+            string summaPropisyu = RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " "+ diram;
+            ///////////
+            ///
+
+            bool check = kontrolProdazhaChek.Checked;
+           
+            double skidkaSql = Convert.ToDouble(skidkaValue.Text);
+
+            string nakText = "01";
+            
+            double kurs = Convert.ToDouble(kursValyuti.Text);
+
+            
+            DBNpgsql db = new DBNpgsql();
+            db.insertProdazha(kurs, skidkaSql, viborProdovets.Text, summaPropisyu,
+                    spetsPredlozhenieValue.Text, nakText, check);
+            /// получаем код номер накладной
+
+            int nakNomer =roznichProdazhaObj.getNakladnoyNomer(nakText);
+
+            /////////// insert data to table prodazhaTovar
+
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                double tsenaSql = Convert.ToDouble(dataGridView3.Rows[i].Cells[6].Value.ToString());
+                int kolSql = Convert.ToInt32(dataGridView3.Rows[i].Cells[5].Value);
+                db.insertProdazhaTovar(
+                    dataGridView3.Rows[i].Cells[0].Value.ToString(),
+                    kolSql, tsenaSql, nakNomer);
+
+            }
+
+
+
+            MessageBox.Show("Заказ укспешно оформлен!");
 
 
         endProsess: { }
