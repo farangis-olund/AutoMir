@@ -88,7 +88,6 @@ namespace AutoMir2022
             this.showAll = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.karzina2 = new System.Windows.Forms.TabPage();
-            this.addKarzina3 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -252,7 +251,7 @@ namespace AutoMir2022
             // 
             // oformitZakaz
             // 
-            this.oformitZakaz.BackColor = System.Drawing.Color.Maroon;
+            this.oformitZakaz.BackColor = System.Drawing.Color.ForestGreen;
             this.oformitZakaz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.oformitZakaz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.oformitZakaz.Location = new System.Drawing.Point(1388, 13);
@@ -301,7 +300,6 @@ namespace AutoMir2022
             this.skidkaValue.Name = "skidkaValue";
             this.skidkaValue.Size = new System.Drawing.Size(62, 29);
             this.skidkaValue.TabIndex = 2;
-            this.skidkaValue.Text = "0";
             this.skidkaValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // prodazhaSoSkidkoy
@@ -578,7 +576,6 @@ namespace AutoMir2022
             // 
             // karzina2
             // 
-            this.karzina2.Controls.Add(this.addKarzina3);
             this.karzina2.Controls.Add(this.label12);
             this.karzina2.Controls.Add(this.label4);
             this.karzina2.Controls.Add(this.label3);
@@ -597,15 +594,6 @@ namespace AutoMir2022
             this.karzina2.TabIndex = 1;
             this.karzina2.Text = "Карзина2";
             this.karzina2.UseVisualStyleBackColor = true;
-            // 
-            // addKarzina3
-            // 
-            this.addKarzina3.Location = new System.Drawing.Point(162, 29);
-            this.addKarzina3.Name = "addKarzina3";
-            this.addKarzina3.Size = new System.Drawing.Size(189, 39);
-            this.addKarzina3.TabIndex = 12;
-            this.addKarzina3.Text = "Добавить в карзину3";
-            this.addKarzina3.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -1191,7 +1179,6 @@ namespace AutoMir2022
         private System.Windows.Forms.TextBox spetsPredlozhenieValue;
         private System.Windows.Forms.CheckBox spetsPredlozhenie;
         private System.Windows.Forms.Button ochistkaKorzini3;
-        private System.Windows.Forms.Button addKarzina3;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.CheckBox tolkoOdinArtikul;
         private System.Windows.Forms.DataGridViewTextBoxColumn alternativa;

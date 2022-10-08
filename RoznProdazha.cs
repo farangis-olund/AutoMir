@@ -24,8 +24,9 @@ namespace AutoMir2022
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
 
             // add course valuty
+            
             kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
-            skidkaValue.Text = "0";
+            
             // add date
 
 
@@ -35,10 +36,10 @@ namespace AutoMir2022
             // datagrid column width size karzina 1
 
             dataGridView1.Columns[0].Width = 120;
-            dataGridView1.Columns[1].Width = 260;
+            dataGridView1.Columns[1].Width = 320;
             dataGridView1.Columns[2].Width = 80;
             dataGridView1.Columns[3].Width = 80;
-            dataGridView1.Columns[4].Width = 240;
+            dataGridView1.Columns[4].Width = 320;
             dataGridView1.Columns[5].Width = 120;
             dataGridView1.Columns[6].Width = 60;
             dataGridView1.Columns[7].Width = 80;
@@ -54,8 +55,10 @@ namespace AutoMir2022
         //add data from karizna 1 to karzina2 when user klicking to row of daagridview1
         private void selectedRowsButton_Click(object sender, System.EventArgs e)
         {
-
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
+            //проверка на наличие артикула в карзине 2
+
+            
             DataTable alternativa = new DataTable();
             string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
 
@@ -118,6 +121,23 @@ namespace AutoMir2022
                 this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = dr[2];
 
                 // artikul 15,16,17,18
+
+                if (dataGridView2.Rows.Count > 1)
+                {
+                    bool artikul1IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul1");
+                    bool artikul2IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul2");
+                    bool artikul3IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul3");
+                    bool artikul4IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul4");
+
+                    if (artikul1IsExist == true || artikul2IsExist == true || artikul3IsExist == true || artikul4IsExist == true)
+                    {
+                        MessageBox.Show("Данный артикул уже добавлен в карзину!");
+                        this.dataGridView2.Rows.Remove(this.dataGridView2.Rows[index]);
+
+                        goto endProsess;
+                    }
+                }
+                
                 this.dataGridView2.Rows[index].Cells[15 + i].Value = dr[0];
 
                 i = i + 1;
@@ -151,7 +171,7 @@ namespace AutoMir2022
             }
 
 
-
+        endProsess: { }
 
         }
      
@@ -228,6 +248,8 @@ namespace AutoMir2022
 
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
+                
+                
                 double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
                 double b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
                 dataGridView2.Rows[e.RowIndex].Cells[7].Value = (a * b).ToString("0.00");
@@ -298,7 +320,28 @@ namespace AutoMir2022
                     //    Select артикул, наименование, бренд, марка,
                     //    модель,  место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул
 
+                    bool artikulIsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView3, dr[0].ToString(), "artikulKarzina3");
+
+                    if (artikulIsExist == true)
+                    {
+                        MessageBox.Show("Данный артикул уже добавлен в карзину!");
+                        this.dataGridView3.Rows.Remove(this.dataGridView3.Rows[index]);
+
+                        goto endProsess;
+                    }
+
+                    if (Convert.ToInt32(dr[7])< Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value))
+                    {
+                        MessageBox.Show("Количество заказа превышает количество товара в магазине!");
+                        roznProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+                        ochiskta();
+                        dataGridView2.Rows[i].Cells["kolZakaza"].Value = "";
+                        goto endProsess;
+                    }
+
+
                     this.dataGridView3.Rows[index].Cells[0].Value = dr[0];
+                                       
                     this.dataGridView3.Rows[index].Cells[1].Value = dr[1];
                     this.dataGridView3.Rows[index].Cells[2].Value = dr[2];
                     this.dataGridView3.Rows[index].Cells[3].Value = dr[3];
@@ -370,6 +413,40 @@ namespace AutoMir2022
             }
         }
 
+
+        private void proverkaKolTovara()
+        {
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
+                //проверка остатка на складе достаточен ли для оформление заказа количество товара
+
+                DataTable kolTovara = roznichProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                double kolTovaraDouble = 0;
+                foreach (DataRow dr in kolTovara.Rows)
+                {
+                    kolTovaraDouble = Convert.ToDouble(dr[7]);
+                }
+
+                double kolZakaz = Convert.ToDouble(dataGridView3.Rows[i].Cells[5].Value);
+
+                if (kolTovaraDouble < kolZakaz)
+                {
+                    MessageBox.Show("Не достаточное количество товара на складе, остаток артикул "
+                        + dataGridView3.Rows[i].Cells[0].Value.ToString() + " равняется " + kolTovaraDouble.ToString() + " товар будет удален из карзини!");
+                    dataGridView3.Rows.Clear();
+                    ochiskta();
+
+                }
+                //////////////
+
+
+            }
+
+        }
+
+
         private void oformitZakaz_Click(object sender, EventArgs e)
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
@@ -396,6 +473,7 @@ namespace AutoMir2022
             }
 
             double summaKontrakta = 0;
+            
             for (int i = 0; i < dataGridView3.Rows.Count; i++)
             {
                 
@@ -415,6 +493,7 @@ namespace AutoMir2022
                     MessageBox.Show("Не достаточное количество товара на складе, остаток артикул "
                         + dataGridView3.Rows[i].Cells[0].Value.ToString() + " равняется " + kolTovaraDouble.ToString()+ " товар будет удален из карзини!");
                      dataGridView3.Rows.Clear();
+                    ochiskta();
                     goto endProsess;
                 }
                 //////////////
@@ -434,10 +513,12 @@ namespace AutoMir2022
             ///
 
             bool check = kontrolProdazhaChek.Checked;
-           
-            double skidkaSql = Convert.ToDouble(skidkaValue.Text);
+            if (skidkaValue.Text == "") skidkaValue.Text = "0";
+            int skidkaSql = Int16.Parse(skidkaValue.Text);
 
-            string nakText = "01";
+            string nakText = roznichProdazhaObj.getLastNakladnoyText();
+
+            nakText = roznichProdazhaObj.nakTextEncrement(nakText);
             
             double kurs = Convert.ToDouble(kursValyuti.Text);
 
@@ -445,6 +526,7 @@ namespace AutoMir2022
             DBNpgsql db = new DBNpgsql();
             db.insertProdazha(kurs, skidkaSql, viborProdovets.Text, summaPropisyu,
                     spetsPredlozhenieValue.Text, nakText, check);
+            
             /// получаем код номер накладной
 
             int nakNomer =roznichProdazhaObj.getNakladnoyNomer(nakText);
@@ -459,15 +541,25 @@ namespace AutoMir2022
                     dataGridView3.Rows[i].Cells[0].Value.ToString(),
                     kolSql, tsenaSql, nakNomer);
 
+                /////////// update data to table Tovar
+
+                roznichProdazhaObj.updateTovarKol(dataGridView3.Rows[i].Cells[0].Value.ToString(), kolSql);
             }
 
+            
+            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView2);
+            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
 
+            ochiskta();
 
             MessageBox.Show("Заказ укспешно оформлен!");
 
 
         endProsess: { }
         }
+    
+    
+    
     }
 
 }

@@ -26,7 +26,7 @@ namespace Core.Controllers.RoznProdazha
                         
             //DataTable dataTable = new DataTable();
             string sqlQuery= "SELECT артикул, наименование, бренд, марка, " +
-                "модель, альтернатива, количество, розн_цена__euro_, группа, место_на_складе FROM public.товар WHERE ";
+                "модель, альтернатива, количество, розн_цена__euro_, группа, место_на_складе FROM public.товар WHERE количество>0 AND ";
             
             for (int i = 0; i < (filter.Length) /2; i++)
             {
@@ -34,9 +34,6 @@ namespace Core.Controllers.RoznProdazha
             }
             sqlQuery=sqlQuery.Remove(sqlQuery.Length - 5, 5);
             
-            //dataTable = db.GetByQuery(sqlQuery);
-
-            // other code
 
             return db.GetByQuery(sqlQuery); ;
         }
@@ -92,6 +89,22 @@ namespace Core.Controllers.RoznProdazha
             return nakNomer;
         }
 
+        public string getLastNakladnoyText()
+        {
+
+            string nakNomer = "";
+
+            DataTable dataTable = db.GetByQuery("SELECT накладной_текст FROM public.продажа ORDER BY накладной_текст DESC LIMIT 1;");
+            
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                nakNomer =dr[0].ToString();
+            }
+            if (nakNomer == "") nakNomer = "A";
+
+                return nakNomer;
+        }
+
 
         public double getRoundDecimal(double number)
         {
@@ -120,9 +133,92 @@ namespace Core.Controllers.RoznProdazha
             
         }
 
-       
 
 
+        public bool searchDataInDataGridVeiw(ref DataGridView dgv, string artikul, string columnName)
+        {
+
+            bool isExist = false;
+            //dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+                    if (row.Cells[columnName].Value == null) break;
+                    if (row.Cells[columnName].Value.ToString().Equals(artikul)==true)
+                    {
+                        isExist = true;
+                        break;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            return isExist;
+        }
+
+        public int getKolTovara(string artikul)
+        {
+            DataTable dt= db.GetByQuery("Select количество  FROM public.товар WHERE артикул LIKE '" + artikul + "'");
+            int kolTovara = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                kolTovara = Convert.ToInt32(dr[0]);
+            }
+
+            return kolTovara;
+
+        }
+
+
+        public void updateTovarKol(string artikul, int kolichestvo)
+        {
+
+            int kolTovara = getKolTovara(artikul)-kolichestvo;
+            
+
+
+            db.updateDB("UPDATE public.товар SET количество = '" + kolTovara + "' WHERE артикул='" + artikul + "'");
+        }
+
+
+        public string nakTextEncrement(string lastNakl)
+        {
+            string firstPart = "";
+            string secondPart="";
+            string result = "";
+            //A, B, C....AZ
+            
+            if (lastNakl.Length > 1)
+            {
+                firstPart = lastNakl.Remove(lastNakl.Length - 1, 1);
+                secondPart = lastNakl.Remove(0, lastNakl.Length - 1);
+                
+            }
+            else
+            {
+                firstPart = "";
+                secondPart = lastNakl;
+            }
+            if (secondPart == "Z")
+            {
+                result = lastNakl + "A";
+            }
+            else
+            {
+                char c1 = Convert.ToChar(secondPart);
+                c1++;
+                secondPart = c1.ToString();
+                result = firstPart + secondPart;
+            }
+            
+            
+            return result;
+
+
+        }
 
         public void someFunction()
         {
