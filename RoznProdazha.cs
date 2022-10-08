@@ -93,7 +93,11 @@ namespace AutoMir2022
             // +модель, альтернатива, количество, розн_цена__euro_, группа
 
             // когда альтернатива больше или 4 то тогда все элементи из бази останутся такими как есть
-
+            if (alternativa.Rows.Count == 0)
+            {
+                MessageBox.Show("Выбранный артикул данный момент не имеется в наличии!");
+                goto endProsess;
+            }
 
             alternativa.DefaultView.Sort = "розн_цена__euro_ DESC";
 
