@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +12,10 @@ using System.Windows.Forms;
 using Core.Controllers.RoznProdazha;
 using NickBuhro.NumToWords.Russian ;
 using Core.DB;
+using Microsoft.Reporting.WinForms;
+using System.IO;
+using System.Drawing.Printing;
+
 namespace AutoMir2022
 {
     public partial class retail : Form
@@ -58,7 +63,15 @@ namespace AutoMir2022
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             //проверка на наличие артикула в карзине 2
 
-            
+            if (kursValyuti.Text.Trim() == "" || kursValyuti.Text.Trim() == "0")
+            {
+                MessageBox.Show("Курс валюты не указан, для выбора товара укажите курс валюты!");
+                goto endProsess;
+
+            }
+
+
+
             DataTable alternativa = new DataTable();
             string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
 
@@ -83,7 +96,6 @@ namespace AutoMir2022
 
             alternativa = roznProdazhaObj.ByFilterTovar(arrayForfilter);
 
-            var index = this.dataGridView2.Rows.Add();
 
             double kurs = Convert.ToDouble(kursValyuti.Text);
 
@@ -99,7 +111,10 @@ namespace AutoMir2022
                 goto endProsess;
             }
 
+
+
             alternativa.DefaultView.Sort = "розн_цена__euro_ DESC";
+            var index = this.dataGridView2.Rows.Add();
 
             int sumaRowCounter = 0;
             foreach (DataRow dr in alternativa.Rows)
@@ -116,7 +131,19 @@ namespace AutoMir2022
                 this.dataGridView2.Rows[index].Cells[2 + i].Value = dr[6];
 
                 // tsena 19,20,21,22
-                this.dataGridView2.Rows[index].Cells[19 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+                if (dr[7].ToString() != "")
+                {
+                    this.dataGridView2.Rows[index].Cells[19 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+
+                }
+                else
+                {
+                    MessageBox.Show("Цена данного артикула не указан!");
+                    this.dataGridView2.Rows.Remove(this.dataGridView2.Rows[index]);
+
+                    goto endProsess;
+                }
+                   
 
                 // summa 7,9,11,13
                 this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
@@ -337,7 +364,7 @@ namespace AutoMir2022
                     if (Convert.ToInt32(dr[7])< Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value))
                     {
                         MessageBox.Show("Количество заказа превышает количество товара в магазине!");
-                        roznProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+                        roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
                         ochiskta();
                         dataGridView2.Rows[i].Cells["kolZakaza"].Value = "";
                         goto endProsess;
@@ -356,7 +383,7 @@ namespace AutoMir2022
                     {
                         MessageBox.Show("Количество заказа не указан!");
                         RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                        roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+                        roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
                         ochiskta();
                     }
@@ -364,14 +391,23 @@ namespace AutoMir2022
                     //    данные из карзини 2 количество заказа, цена и сумма
 
                     this.dataGridView3.Rows[index].Cells[5].Value = dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString();
-                    this.dataGridView3.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal((Convert.ToDouble(dr[6]) * kurs));
 
-                    if (skidka != 0) this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
-                           (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100);
 
-                    else this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
-                          (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs));
+                    if (skidka != 0)
+                    {
+                        this.dataGridView3.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal(
+                            Convert.ToDouble(dr[6]) * kurs-Convert.ToDouble(dr[6]) * kurs * skidka / 100);
 
+                        this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
+                        (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) -
+                        (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100);
+                    }
+                    else
+                    {
+                        this.dataGridView3.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal((Convert.ToDouble(dr[6]) * kurs));
+                        this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
+                        (Convert.ToDouble(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs));
+                    }
                 }
 
             }
@@ -386,7 +422,7 @@ namespace AutoMir2022
         private void ochistkaKorzini3_Click(object sender, EventArgs e)
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
             ochiskta();
         }
@@ -394,7 +430,7 @@ namespace AutoMir2022
         private void ochistkaKarzina2_Click(object sender, EventArgs e)
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView2);
+            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
 
             ochiskta();
 
@@ -476,6 +512,16 @@ namespace AutoMir2022
 
             }
 
+            
+
+            if (kursValyuti.Text.Trim() == "" || kursValyuti.Text.Trim() == "0")
+            {
+                MessageBox.Show("Курс валюты не указан, для выбора товара укажите курс валюты!");
+                goto endProsess;
+
+            }
+
+
             double summaKontrakta = 0;
             
             for (int i = 0; i < dataGridView3.Rows.Count; i++)
@@ -509,10 +555,10 @@ namespace AutoMir2022
 
             /// получаем сумму с прописью
             string diram = summaKontrakta.ToString();
-            diram = diram.Remove(1, diram.Length - 2) + " дирам";
+            diram = diram.Remove(1, diram.Length - 2) + " дир";
             long suma = (long)summaKontrakta;
             
-            string summaPropisyu = RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " "+ diram;
+            string summaPropisyu =roznichProdazhaObj.FirstCharToUpper(RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " "+ diram);
             ///////////
             ///
 
@@ -550,20 +596,64 @@ namespace AutoMir2022
                 roznichProdazhaObj.updateTovarKol(dataGridView3.Rows[i].Cells[0].Value.ToString(), kolSql);
             }
 
-            
-            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView2);
-            roznichProdazhaObj.ochistkaDataGridVeiw(ref dataGridView3);
+            skidkaValue.Text = "";
+            prodazhaSoSkidkoy.Checked = false;
+            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
             ochiskta();
 
             MessageBox.Show("Заказ укспешно оформлен!");
-
+            printCkekDetails(nakText);
 
         endProsess: { }
         }
-    
-    
-    
+
+        private void btnAddKurs_Click(object sender, EventArgs e)
+        {
+            double kurs=0;
+            DBNpgsql dBNpgsqlObj = new DBNpgsql();
+            double.TryParse(kursValyuti.Text, out kurs);
+            if (kurs == 0)
+            {
+                MessageBox.Show("Курс валюты указан не правильном формате, укажите число с использованием запятой ");
+            }
+            else
+            {
+                dBNpgsqlObj.insertKurs(kurs);
+                MessageBox.Show("Курс валюты успешно добавлен!");
+
+            }
+        }
+
+        public void printCkekDetails(string nakTxt)
+        {
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+            DataTable dt =roznichProdazhaObj.printCkek(nakTxt);
+           
+            LocalReport report = new LocalReport();
+            string path = Path.GetDirectoryName(Application.StartupPath);
+            string fullPath= Path.GetDirectoryName(Application.StartupPath).Remove(path.Length-10) + "\\ChekReportSkidka.rdlc";
+            //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
+            report.ReportPath = fullPath;
+            report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
+            
+            PageSettings pageSettings = new PageSettings();
+            pageSettings.Landscape = true;
+            report.PrintToPrinter();
+
+        }
+
+        private void prodazhaSoSkidkoy_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = prodazhaSoSkidkoy.Checked;
+            if (isChecked && skidkaValue.Text != "" && dataGridView3.Rows.Count>0)
+            {
+                MessageBox.Show("Вы выбрали опцию продажа со скидкой после того как добавили артикули в карзину 3," +
+                                " для того чтобы продажа оформилась со скидкой, сперва выберети скидку а затем добавьте товары в карзину 3!");
+
+            }
+        }
     }
 
 }

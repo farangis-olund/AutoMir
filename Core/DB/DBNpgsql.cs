@@ -92,6 +92,28 @@ namespace Core.DB
 
         }
 
+
+
+        public void insertKurs(double kurs)
+        {
+            // Connect to a PostgreSQL database
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            conn.Open();
+
+            using (var cmd = new NpgsqlCommand("INSERT INTO public.курс_валюты (курс_валюты) VALUES ( @курс_валюты)", conn))
+            {
+
+                cmd.Parameters.AddWithValue("@курс_валюты", kurs);
+                
+                cmd.ExecuteNonQuery();
+
+            }
+
+
+        }
+
+
+
         public void insertProdazhaTovar(string artikul, int kolich, double tsena,
                            int kodprodazhi)
         {

@@ -2,15 +2,24 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <TargetFramework>net472</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>AutoMir2022.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework" Version="17.3.1" />
+    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1537.0" />
     <PackageReference Include="Npgsql" Version="6.0.7" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Core\Controllers\ReportsController\ReportDataset\ReportChekDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReportChekDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -24,6 +33,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
+    <None Update="Core\Controllers\ReportsController\ReportDataset\ReportChekDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportChekDataSet.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Reports\" />
   </ItemGroup>
 </Project>

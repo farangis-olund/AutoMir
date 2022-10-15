@@ -3,6 +3,7 @@ using System.Data;
 using Core.DB;
 using System.Windows.Forms;
 
+
 namespace Core.Controllers.RoznProdazha
 {
 
@@ -38,13 +39,18 @@ namespace Core.Controllers.RoznProdazha
             return db.GetByQuery(sqlQuery); ;
         }
 
-        public double GetCursValyuti()
+        public string GetCursValyuti()
         {
-            //double CursValyuti = new double();
+            string cursValyuti="";
             DataTable dt = new DataTable();
-            dt = db.GetByQuery("SELECT курс_валюты FROM public.курс_валюты ORDER BY дата DESC LIMIT 1;");
-            //CursValyuti= Convert.ToDouble(dt.Rows[0]["курс_валюты"].ToString());
-            return Convert.ToDouble(dt.Rows[0]["курс_валюты"].ToString()); 
+            dt = db.GetByQuery("SELECT курс_валюты FROM public.курс_валюты ORDER BY idkurs DESC LIMIT 1;");
+            if (dt.Rows.Count != 0)
+            {
+                cursValyuti= dt.Rows[0]["курс_валюты"].ToString();
+
+            }
+           
+            return cursValyuti;
         }
                
         public DataTable selectColumnDistinct(DataTable mydataTable, string columnName)
@@ -111,7 +117,7 @@ namespace Core.Controllers.RoznProdazha
             return Math.Round(number, 2);
         }
 
-        public DataGridView ochistkaDataGridVeiw(ref DataGridView dataGridView)
+        public DataGridView OchistkaDataGridVeiw(ref DataGridView dataGridView)
         {
             if (dataGridView.DataSource != null)
             {
@@ -123,7 +129,55 @@ namespace Core.Controllers.RoznProdazha
             }
             return dataGridView;
         }
-        public void insertProdazha(double kurs, int skidka, string prodovets,
+
+
+        public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4)
+        {
+            double summa1 = 0;
+            double summa2 = 0;
+            double summa3 = 0;
+            double summa4 = 0;
+            if (dataGridView.DataSource != null)
+            {
+
+                for (int i = 0; i < dataGridView.Rows.Count; i++)
+                {
+                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                    {
+
+                        summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
+                        summa2 = summa2 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName2].Value);
+                        summa3 = summa3 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName3].Value);
+                        summa4 = summa4 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName4].Value);
+                    }
+
+                    else
+                    {
+                        summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
+                    }
+                }
+
+
+                var index = dataGridView.Rows.Add();
+
+                if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                {
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString();
+                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString();
+                    dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString();
+                    dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString();
+
+                }
+                else
+                {
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString();
+                }
+            }
+            return dataGridView;
+        }
+
+
+        public void InsertProdazha(double kurs, int skidka, string prodovets,
             string propis, string primech, string naklText, bool chek)
                 {
             //skidka скидка__%_,     + skidka + "', '"
@@ -133,6 +187,13 @@ namespace Core.Controllers.RoznProdazha
             
         }
 
+        public void insertKursValyuti(double kurs)
+        {
+            
+            db.insertToDB("INSERT INTO public.курс_валюты ( курс_валюты) VALUES " +
+                "('" + kurs + "')");
+
+        }
 
 
         public bool searchDataInDataGridVeiw(ref DataGridView dgv, string artikul, string columnName)
@@ -218,6 +279,27 @@ namespace Core.Controllers.RoznProdazha
             return result;
 
 
+        }
+
+
+        public DataTable printCkek(string naklTxt) {
+            DataTable dt = db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.chek as chek, e.прописью as propis, e.скидка as skidka, c.место_на_складе as mesto, " +
+                                        "d.артикул as artikul, d.количество as kolichestvo, d.цена as tsena, c.бренд as brand, " +
+                                        "c.марка as marka, c.модель as model FROM public.продажа e , public.продажа_товара d, " +
+                                        "public.товар c WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул AND e.накладной_текст= '" + naklTxt + "'");
+
+            return dt;
+        }
+
+
+        public string FirstCharToUpper(string input)
+        {
+            switch (input)
+            {
+                case null: throw new ArgumentNullException(nameof(input));
+                case "": throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
+                default: return input[0].ToString().ToUpper() + input.Substring(1);
+            }
         }
 
         public void someFunction()

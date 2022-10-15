@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtReportChek" msprop:Generator_TableClassName="DtReportChekDataTable" msprop:Generator_TableVarName="tableDtReportChek" msprop:Generator_RowChangedName="DtReportChekRowChanged" msprop:Generator_TablePropName="DtReportChek" msprop:Generator_RowDeletingName="DtReportChekRowDeleting" msprop:Generator_RowChangingName="DtReportChekRowChanging" msprop:Generator_RowEvHandlerName="DtReportChekRowChangeEventHandler" msprop:Generator_RowDeletedName="DtReportChekRowDeleted" msprop:Generator_RowClassName="DtReportChekRow" msprop:Generator_UserTableName="DtReportChek" msprop:Generator_RowEvArgName="DtReportChekRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Naktext" msprop:Generator_ColumnVarNameInTable="columnNaktext" msprop:Generator_ColumnPropNameInRow="Naktext" msprop:Generator_ColumnPropNameInTable="NaktextColumn" msprop:Generator_UserColumnName="Naktext" type="xs:string" minOccurs="0" />
+              <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:string" minOccurs="0" />
+              <xs:element name="Artikul" msprop:Generator_ColumnVarNameInTable="columnArtikul" msprop:Generator_ColumnPropNameInRow="Artikul" msprop:Generator_ColumnPropNameInTable="ArtikulColumn" msprop:Generator_UserColumnName="Artikul" type="xs:string" minOccurs="0" />
+              <xs:element name="Kolichestvo" msprop:Generator_ColumnVarNameInTable="columnKolichestvo" msprop:Generator_ColumnPropNameInRow="Kolichestvo" msprop:Generator_ColumnPropNameInTable="KolichestvoColumn" msprop:Generator_UserColumnName="Kolichestvo" type="xs:string" minOccurs="0" />
+              <xs:element name="Tsena" msprop:Generator_ColumnVarNameInTable="columnTsena" msprop:Generator_ColumnPropNameInRow="Tsena" msprop:Generator_ColumnPropNameInTable="TsenaColumn" msprop:Generator_UserColumnName="Tsena" type="xs:string" minOccurs="0" />
+              <xs:element name="Brand" msprop:Generator_ColumnVarNameInTable="columnBrand" msprop:Generator_ColumnPropNameInRow="Brand" msprop:Generator_ColumnPropNameInTable="BrandColumn" msprop:Generator_UserColumnName="Brand" type="xs:string" minOccurs="0" />
+              <xs:element name="Marka" msprop:Generator_ColumnVarNameInTable="columnMarka" msprop:Generator_ColumnPropNameInRow="Marka" msprop:Generator_ColumnPropNameInTable="MarkaColumn" msprop:Generator_UserColumnName="Marka" type="xs:string" minOccurs="0" />
+              <xs:element name="Chek" msprop:Generator_ColumnVarNameInTable="columnChek" msprop:Generator_ColumnPropNameInRow="Chek" msprop:Generator_ColumnPropNameInTable="ChekColumn" msprop:Generator_UserColumnName="Chek" type="xs:string" minOccurs="0" />
+              <xs:element name="Model" msprop:Generator_ColumnVarNameInTable="columnModel" msprop:Generator_ColumnPropNameInRow="Model" msprop:Generator_ColumnPropNameInTable="ModelColumn" msprop:Generator_UserColumnName="Model" type="xs:string" minOccurs="0" />
+              <xs:element name="Suma" msprop:Generator_ColumnVarNameInTable="columnSuma" msprop:Generator_ColumnPropNameInRow="Suma" msprop:Generator_ColumnPropNameInTable="SumaColumn" msprop:Generator_UserColumnName="Suma" type="xs:string" minOccurs="0" />
+              <xs:element name="Propis" msprop:Generator_ColumnVarNameInTable="columnPropis" msprop:Generator_ColumnPropNameInRow="Propis" msprop:Generator_ColumnPropNameInTable="PropisColumn" msprop:Generator_UserColumnName="Propis" type="xs:string" minOccurs="0" />
+              <xs:element name="Mesto" msprop:Generator_ColumnVarNameInTable="columnMesto" msprop:Generator_ColumnPropNameInRow="Mesto" msprop:Generator_ColumnPropNameInTable="MestoColumn" msprop:Generator_UserColumnName="Mesto" type="xs:string" minOccurs="0" />
+              <xs:element name="Skidka" msprop:Generator_ColumnVarNameInTable="columnSkidka" msprop:Generator_ColumnPropNameInRow="Skidka" msprop:Generator_ColumnPropNameInTable="SkidkaColumn" msprop:Generator_UserColumnName="Skidka" type="xs:string" minOccurs="0" />
+              <xs:element name="SkidkaSuma" msprop:Generator_ColumnVarNameInTable="columnSkidkaSuma" msprop:Generator_ColumnPropNameInRow="SkidkaSuma" msprop:Generator_ColumnPropNameInTable="SkidkaSumaColumn" msprop:Generator_UserColumnName="SkidkaSuma" type="xs:string" minOccurs="0" />
+              <xs:element name="SummaOplata" msprop:Generator_ColumnVarNameInTable="columnSummaOplata" msprop:Generator_ColumnPropNameInRow="SummaOplata" msprop:Generator_ColumnPropNameInTable="SummaOplataColumn" msprop:Generator_UserColumnName="SummaOplata" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
