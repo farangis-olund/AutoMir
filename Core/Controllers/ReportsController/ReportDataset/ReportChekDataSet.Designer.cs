@@ -309,6 +309,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnSummaOplata;
             
+            private global::System.Data.DataColumn columnKomp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtReportChekDataTable() {
@@ -464,6 +466,14 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KompColumn {
+                get {
+                    return this.columnKomp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,7 +509,23 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtReportChekRow AddDtReportChekRow(string Naktext, string Data, string Artikul, string Kolichestvo, string Tsena, string Brand, string Marka, string Chek, string Model, string Suma, string Propis, string Mesto, string Skidka, string SkidkaSuma, string SummaOplata) {
+            public DtReportChekRow AddDtReportChekRow(
+                        string Naktext, 
+                        string Data, 
+                        string Artikul, 
+                        string Kolichestvo, 
+                        string Tsena, 
+                        string Brand, 
+                        string Marka, 
+                        string Chek, 
+                        string Model, 
+                        string Suma, 
+                        string Propis, 
+                        string Mesto, 
+                        string Skidka, 
+                        string SkidkaSuma, 
+                        string SummaOplata, 
+                        string Komp) {
                 DtReportChekRow rowDtReportChekRow = ((DtReportChekRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Naktext,
@@ -516,7 +542,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         Mesto,
                         Skidka,
                         SkidkaSuma,
-                        SummaOplata};
+                        SummaOplata,
+                        Komp};
                 rowDtReportChekRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtReportChekRow);
                 return rowDtReportChekRow;
@@ -554,6 +581,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnSkidka = base.Columns["Skidka"];
                 this.columnSkidkaSuma = base.Columns["SkidkaSuma"];
                 this.columnSummaOplata = base.Columns["SummaOplata"];
+                this.columnKomp = base.Columns["Komp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,6 +617,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnSkidkaSuma);
                 this.columnSummaOplata = new global::System.Data.DataColumn("SummaOplata", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSummaOplata);
+                this.columnKomp = new global::System.Data.DataColumn("Komp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKomp);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -971,6 +1001,22 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Komp {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportChek.KompColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Komp\' in table \'DtReportChek\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportChek.KompColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNaktextNull() {
                 return this.IsNull(this.tableDtReportChek.NaktextColumn);
             }
@@ -1147,6 +1193,18 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSummaOplataNull() {
                 this[this.tableDtReportChek.SummaOplataColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKompNull() {
+                return this.IsNull(this.tableDtReportChek.KompColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKompNull() {
+                this[this.tableDtReportChek.KompColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using Core.DB;
 using System.Windows.Forms;
-
+using System.Drawing;
 
 namespace Core.Controllers.RoznProdazha
 {
@@ -131,13 +131,13 @@ namespace Core.Controllers.RoznProdazha
         }
 
 
-        public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4)
+        public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4, int yesNo)
         {
             double summa1 = 0;
             double summa2 = 0;
             double summa3 = 0;
             double summa4 = 0;
-            if (dataGridView.DataSource != null)
+            if (dataGridView.Rows.Count>0)
             {
 
                 for (int i = 0; i < dataGridView.Rows.Count; i++)
@@ -156,9 +156,20 @@ namespace Core.Controllers.RoznProdazha
                         summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
                     }
                 }
-
-
-                var index = dataGridView.Rows.Add();
+                var index=0;
+                if (yesNo==0)
+                { 
+                    index = dataGridView.Rows.Add();
+                }
+                else
+                {
+                    index = dataGridView.Rows.Count-1;
+                    summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
+                    summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
+                    summa3 = summa3 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName3].Value);
+                    summa4 = summa4 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName4].Value);
+                }
+                
 
                 if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
                 {
@@ -166,13 +177,21 @@ namespace Core.Controllers.RoznProdazha
                     dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString();
                     dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString();
                     dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString();
+                    
+                    dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
 
                 }
                 else
                 {
                     dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString();
+                    dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
                 }
             }
+
+
+            
+
+
             return dataGridView;
         }
 
@@ -285,8 +304,9 @@ namespace Core.Controllers.RoznProdazha
         public DataTable printCkek(string naklTxt) {
             DataTable dt = db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.chek as chek, e.прописью as propis, e.скидка as skidka, c.место_на_складе as mesto, " +
                                         "d.артикул as artikul, d.количество as kolichestvo, d.цена as tsena, c.бренд as brand, " +
-                                        "c.марка as marka, c.модель as model FROM public.продажа e , public.продажа_товара d, " +
-                                        "public.товар c WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул AND e.накладной_текст= '" + naklTxt + "'");
+                                        "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.продажа e , public.продажа_товара d, " +
+                                        "public.товар c, public.сведения_об_организации g WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул " +
+                                        "AND e.накладной_текст= '" + naklTxt + "'");
 
             return dt;
         }

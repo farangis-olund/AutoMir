@@ -35,7 +35,7 @@ namespace AutoMir2022
             // add date
 
 
-            date.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            date.Text = DateTime.Now.ToString("dd/MM/yyyy");
             
 
             // datagrid column width size karzina 1
@@ -61,7 +61,24 @@ namespace AutoMir2022
         private void selectedRowsButton_Click(object sender, System.EventArgs e)
         {
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-            //проверка на наличие артикула в карзине 2
+
+            //удалаем строку с итогом суммой
+            //
+            
+            int rowNum = dataGridView2.Rows.Count;
+          
+            if (rowNum > 0)
+            { 
+                
+                if (dataGridView2.Rows[rowNum-1].Cells[0].Value == null)
+                {
+                    this.dataGridView2.Rows.Remove(this.dataGridView2.Rows[rowNum-1]);
+
+                }
+            }
+            
+
+
 
             if (kursValyuti.Text.Trim() == "" || kursValyuti.Text.Trim() == "0")
             {
@@ -71,7 +88,7 @@ namespace AutoMir2022
             }
 
 
-
+            //проверка на наличие артикула в карзине 2
             DataTable alternativa = new DataTable();
             string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
 
@@ -201,6 +218,7 @@ namespace AutoMir2022
 
             }
 
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4",0);
 
         endProsess: { }
 
@@ -276,7 +294,7 @@ namespace AutoMir2022
         //datagrid2 karzina2       
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
                 
@@ -297,11 +315,10 @@ namespace AutoMir2022
                 b = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value);
                 dataGridView2.Rows[e.RowIndex].Cells[13].Value = (a * b).ToString("0.00");
 
-
-
             }
 
-     
+            roznichProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
+
 
         }
 
@@ -341,7 +358,7 @@ namespace AutoMir2022
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             DataTable listArtikulKarzina3 = new DataTable();
 
-            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count-1; i++)
             {
                 listArtikulKarzina3 = roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[variantvibor].Value.ToString());
                 int index = dataGridView3.Rows.Add();
@@ -412,7 +429,7 @@ namespace AutoMir2022
 
             }
 
-
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
 
         endProsess: { }
 
@@ -442,6 +459,10 @@ namespace AutoMir2022
             variant2.Checked = false;
             variant3.Checked = false;
             variant4.Checked = false;
+            kontrolProdazhaChek.Checked = false;
+            skidkaValue.Text = "";
+            prodazhaSoSkidkoy.Checked = false;
+
         }
 
         private void tolkoOdinArtikul_Click(object sender, EventArgs e)
@@ -524,7 +545,7 @@ namespace AutoMir2022
 
             double summaKontrakta = 0;
             
-            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            for (int i = 0; i < dataGridView3.Rows.Count-1; i++)
             {
                 
                 //проверка остатка на складе достаточен ли для оформление заказа количество товара
@@ -548,14 +569,14 @@ namespace AutoMir2022
                 }
                 //////////////
 
-                summaKontrakta = summaKontrakta + Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value);
+                summaKontrakta = summaKontrakta + roznichProdazhaObj.getRoundDecimal( Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value));
                 
 
             }
 
             /// получаем сумму с прописью
-            string diram = summaKontrakta.ToString();
-            diram = diram.Remove(1, diram.Length - 2) + " дир";
+            string diram = summaKontrakta.ToString("0.00");
+            diram = diram.Remove(0, diram.Length - 2) + " дир";
             long suma = (long)summaKontrakta;
             
             string summaPropisyu =roznichProdazhaObj.FirstCharToUpper(RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " "+ diram);
@@ -583,9 +604,9 @@ namespace AutoMir2022
 
             /////////// insert data to table prodazhaTovar
 
-            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            for (int i = 0; i < dataGridView3.Rows.Count-1; i++)
             {
-                double tsenaSql = Convert.ToDouble(dataGridView3.Rows[i].Cells[6].Value.ToString());
+                double tsenaSql =roznichProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView3.Rows[i].Cells[6].Value.ToString()));
                 int kolSql = Convert.ToInt32(dataGridView3.Rows[i].Cells[5].Value);
                 db.insertProdazhaTovar(
                     dataGridView3.Rows[i].Cells[0].Value.ToString(),
@@ -596,16 +617,16 @@ namespace AutoMir2022
                 roznichProdazhaObj.updateTovarKol(dataGridView3.Rows[i].Cells[0].Value.ToString(), kolSql);
             }
 
-            skidkaValue.Text = "";
-            prodazhaSoSkidkoy.Checked = false;
+            
+
+            MessageBox.Show("Заказ укспешно оформлен!");
+            
+            printCkekDetails(nakText);
+
             roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
             roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
             ochiskta();
-
-            MessageBox.Show("Заказ укспешно оформлен!");
-            printCkekDetails(nakText);
-
         endProsess: { }
         }
 
@@ -633,7 +654,18 @@ namespace AutoMir2022
            
             LocalReport report = new LocalReport();
             string path = Path.GetDirectoryName(Application.StartupPath);
-            string fullPath= Path.GetDirectoryName(Application.StartupPath).Remove(path.Length-10) + "\\ChekReportSkidka.rdlc";
+            string fullPath = "";
+            bool ischecked = prodazhaSoSkidkoy.Checked;
+            if (ischecked==true)
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + "\\ChekReportSkidka.rdlc";
+
+            }
+            else
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + "\\ChekReport.rdlc";
+
+            }
             //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
             report.ReportPath = fullPath;
             report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
