@@ -81,6 +81,11 @@ namespace Core.Controllers.RoznProdazha
         }
 
 
+        public DataTable getNameSeller()
+        {
+            return db.GetByQuery("Select продавец FROM public.продавцы");
+        }
+
 
         public int getNakladnoyNomer(string nakladText)
         {

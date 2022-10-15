@@ -31,9 +31,14 @@ namespace AutoMir2022
             // add course valuty
             
             kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
-            
-            // add date
 
+            //довавить продавцы в компбо
+            viborProdovets.DisplayMember = "продавец";
+            viborProdovets.DataSource = roznProdazhaObj.getNameSeller();
+            viborProdovets.Text = null;
+
+
+            // add date
 
             date.Text = DateTime.Now.ToString("dd/MM/yyyy");
             
@@ -86,8 +91,8 @@ namespace AutoMir2022
                 goto endProsess;
 
             }
-
-
+           
+            
             //проверка на наличие артикула в карзине 2
             DataTable alternativa = new DataTable();
             string[] arrayforKarzina2 = new List<string>().Concat(roznProdazhaObj.GetDataGridViewRowinArray(ref dataGridView1)).ToArray();
