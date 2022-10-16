@@ -823,7 +823,7 @@
         <DataSetName>DtReportChek</DataSetName>
         <Top>0.42016cm</Top>
         <Left>0.0635cm</Left>
-        <Height>1.29964cm</Height>
+        <Height>1.29965cm</Height>
         <Width>20.50141cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -927,8 +927,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>1.39912cm</Top>
-          <Left>11.14072cm</Left>
+          <Top>1.43087cm</Top>
+          <Left>11.04547cm</Left>
           <Height>0.72637cm</Height>
           <Width>3.33411cm</Width>
           <ZIndex>2</ZIndex>

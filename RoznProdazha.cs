@@ -58,7 +58,13 @@ namespace AutoMir2022
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             
-            
+            SkladFrm myForm = new SkladFrm();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.dataPanel.Controls.Add(myForm);
+            myForm.Show();
+
 
         }
 
@@ -663,12 +669,12 @@ namespace AutoMir2022
             bool ischecked = prodazhaSoSkidkoy.Checked;
             if (ischecked==true)
             {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + "\\ChekReportSkidka.rdlc";
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
 
             }
             else
             {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + "\\ChekReport.rdlc";
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReport.rdlc";
 
             }
             //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 

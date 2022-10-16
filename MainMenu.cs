@@ -19,9 +19,10 @@ namespace AutoMir2022
        
 
         InitializeComponent();
-           
+
+            this.WindowState = FormWindowState.Maximized;
             // TestConnection();
-        
+
         }
 
         
@@ -37,6 +38,20 @@ namespace AutoMir2022
             var retail = new retail();
             retail.Show();
             //this.Close();
+        }
+
+        private void складToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            info.Visible = false;
+            SkladFrm myForm = new SkladFrm();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.PanelData.Controls.Add(myForm);
+            myForm.Show();
+
+            ////var SkladFrm = new SkladFrm();
+            ////SkladFrm.Show();
         }
     }
 }
