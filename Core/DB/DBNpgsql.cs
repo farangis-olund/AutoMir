@@ -1,6 +1,8 @@
 using System;
 using System.Data;
 using Npgsql;
+using NpgsqlTypes;
+
 namespace Core.DB
 {
 
@@ -36,6 +38,35 @@ namespace Core.DB
 
             return dataTable;
         }
+
+
+        public DataTable GetByParametrDate(string query, string parametr)
+        {
+            DataTable dataTable = new DataTable();
+
+            // Connect to a PostgreSQL database
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            conn.Open();
+
+            NpgsqlCommand sql = conn.CreateCommand();
+            sql.CommandType = CommandType.Text;
+            sql.CommandText = query;
+            sql.Parameters.Add(parametr, NpgsqlDbType.Date).Value = DateTime.Now;
+            
+            NpgsqlDataReader dr = sql.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dataTable.Load(dr);
+            }
+
+            sql.Dispose();
+            conn.Close();
+
+            return dataTable;
+        }
+
+
+
 
         public void insertToDB(string query)
         {

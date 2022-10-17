@@ -32,6 +32,7 @@ namespace AutoMir2022
             this.NomerNakladnoyCmb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.show = new System.Windows.Forms.Button();
             this.oplachenoChk = new System.Windows.Forms.CheckBox();
             this.SkladChek = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,6 @@ namespace AutoMir2022
             this.artikul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.Datapanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.skladDGV)).BeginInit();
@@ -85,8 +85,18 @@ namespace AutoMir2022
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(733, 107);
+            this.TopPanel.Size = new System.Drawing.Size(732, 107);
             this.TopPanel.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(615, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 30);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Закрыть";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // show
             // 
@@ -148,7 +158,7 @@ namespace AutoMir2022
             this.Datapanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Datapanel.Location = new System.Drawing.Point(0, 107);
             this.Datapanel.Name = "Datapanel";
-            this.Datapanel.Size = new System.Drawing.Size(733, 462);
+            this.Datapanel.Size = new System.Drawing.Size(732, 462);
             this.Datapanel.TabIndex = 3;
             // 
             // skladDGV
@@ -169,19 +179,21 @@ namespace AutoMir2022
             this.skladDGV.Location = new System.Drawing.Point(0, 0);
             this.skladDGV.Name = "skladDGV";
             this.skladDGV.ReadOnly = true;
-            this.skladDGV.Size = new System.Drawing.Size(733, 462);
+            this.skladDGV.Size = new System.Drawing.Size(732, 462);
             this.skladDGV.TabIndex = 0;
             // 
             // data
             // 
             this.data.HeaderText = "дата";
             this.data.Name = "data";
+            this.data.ReadOnly = true;
             this.data.Visible = false;
             // 
             // oplacheno
             // 
             this.oplacheno.HeaderText = "оплачено";
             this.oplacheno.Name = "oplacheno";
+            this.oplacheno.ReadOnly = true;
             this.oplacheno.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.oplacheno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.oplacheno.Visible = false;
@@ -190,35 +202,28 @@ namespace AutoMir2022
             // 
             this.artikul.HeaderText = "артикул";
             this.artikul.Name = "artikul";
+            this.artikul.ReadOnly = true;
             this.artikul.Width = 200;
             // 
             // naimenovanie
             // 
             this.naimenovanie.HeaderText = "наименование";
             this.naimenovanie.Name = "naimenovanie";
+            this.naimenovanie.ReadOnly = true;
             this.naimenovanie.Width = 350;
             // 
             // suma
             // 
             this.suma.HeaderText = "сумма";
             this.suma.Name = "suma";
+            this.suma.ReadOnly = true;
             this.suma.Width = 140;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(618, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 30);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Закрыть";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SkladFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 569);
+            this.ClientSize = new System.Drawing.Size(732, 569);
             this.Controls.Add(this.Datapanel);
             this.Controls.Add(this.TopPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

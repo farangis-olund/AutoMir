@@ -169,10 +169,20 @@ namespace Core.Controllers.RoznProdazha
                 else
                 {
                     index = dataGridView.Rows.Count-1;
-                    summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
-                    summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
-                    summa3 = summa3 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName3].Value);
-                    summa4 = summa4 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName4].Value);
+                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                    {
+                        summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
+                        summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
+                        summa3 = summa3 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName3].Value);
+                        summa4 = summa4 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName4].Value);
+
+                    }
+                    else
+                    {
+                        summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
+
+                    }
+
                 }
                 
 

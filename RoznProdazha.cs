@@ -10,6 +10,7 @@ using System.Linq;
 using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers.RoznProdazha;
+using Core.Controllers.OtmenaProdazhi;
 using NickBuhro.NumToWords.Russian ;
 using Core.DB;
 using Microsoft.Reporting.WinForms;
@@ -64,6 +65,21 @@ namespace AutoMir2022
             myForm.FormBorderStyle = FormBorderStyle.None;
             this.dataPanel.Controls.Add(myForm);
             myForm.Show();
+
+
+            MestoNaSkladeFrm myFormSklad = new MestoNaSkladeFrm();
+            myFormSklad.TopLevel = false;
+            myFormSklad.AutoScroll = true;
+            myFormSklad.FormBorderStyle = FormBorderStyle.None;
+            this.mestoNaSkladePanel.Controls.Add(myFormSklad);
+            myFormSklad.Show();
+
+            //add nakladnoy tab OtmenaProdazhi
+
+            OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+            nakNomerOtmenaCmb.DisplayMember = "накладной_текст";
+            nakNomerOtmenaCmb.DataSource= otmenaProdazhiObj.SelectNomerNakladnoy();
+            nakNomerOtmenaCmb.Text = null;
 
 
         }
@@ -696,6 +712,41 @@ namespace AutoMir2022
                                 " для того чтобы продажа оформилась со скидкой, сперва выберети скидку а затем добавьте товары в карзину 3!");
 
             }
+        }
+
+        private void showOtmenaBtn_Click(object sender, EventArgs e)
+        {
+            otmenaProdazhiDGV.Rows.Clear();
+            OtmenaProdazhi otmenaProdazhiObt = new OtmenaProdazhi();
+            DataTable dt = otmenaProdazhiObt.SelectDataDGV(nakNomerOtmenaCmb.Text);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    int index = otmenaProdazhiDGV.Rows.Add();
+                    
+                    otmenaProdazhiDGV.Rows[index].Cells[1].Value = dr[0];
+                    otmenaProdazhiDGV.Rows[index].Cells[2].Value = dr[1];
+                    otmenaProdazhiDGV.Rows[index].Cells[3].Value = dr[2];
+                   
+                }
+                otmenaProdazhiDGV.Rows.Add();
+            }
+
+        }
+
+        private void otmenaProdazhiDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+            if (otmenaProdazhiDGV.Columns[e.ColumnIndex].Name == "kolVozvrata")
+            {
+                double a = Convert.ToDouble(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["tsenaOtmena"].Value);
+                double b = Convert.ToDouble(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value);
+                otmenaProdazhiDGV.Rows[e.RowIndex].Cells["sumaVozvrata"].Value = (a * b).ToString("0.00");
+              roznichProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", 1);  
+                
+            }
+            
         }
     }
 
