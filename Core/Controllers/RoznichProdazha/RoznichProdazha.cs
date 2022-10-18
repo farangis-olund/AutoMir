@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using Core.DB;
 using System.Windows.Forms;
+using NickBuhro.NumToWords.Russian;
 using System.Drawing;
 
 namespace Core.Controllers.RoznProdazha
@@ -268,11 +269,11 @@ namespace Core.Controllers.RoznProdazha
         }
 
 
-        public void updateTovarKol(string artikul, int kolichestvo)
+        public void updateTovarKol(string artikul, int kolichestvo, string plyusMinus)
         {
-
-            int kolTovara = getKolTovara(artikul)-kolichestvo;
-            
+            int kolTovara=0;
+            if (plyusMinus == "+") kolTovara = getKolTovara(artikul) + kolichestvo;
+            if (plyusMinus == "-") kolTovara = getKolTovara(artikul) - kolichestvo;
 
 
             db.updateDB("UPDATE public.товар SET количество = '" + kolTovara + "' WHERE артикул='" + artikul + "'");
@@ -336,6 +337,18 @@ namespace Core.Controllers.RoznProdazha
                 default: return input[0].ToString().ToUpper() + input.Substring(1);
             }
         }
+
+        public string SummaPropis(double summa)
+        {
+            string diram = summa.ToString("0.00");
+            diram = diram.Remove(0, diram.Length - 2) + " дир";
+            long suma = (long)summa;
+
+            string summaPropisyu = FirstCharToUpper(RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " " + diram);
+
+            return summaPropisyu;
+        }
+
 
         public void someFunction()
         {
