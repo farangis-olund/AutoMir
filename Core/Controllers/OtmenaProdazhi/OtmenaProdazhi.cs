@@ -4,6 +4,9 @@ using Core.DB;
 using System.Windows.Forms;
 using System.Drawing;
 using Npgsql;
+using Core.Controllers.RoznProdazha;
+using Microsoft.Reporting.WinForms;
+using System.IO;
 
 namespace Core.Controllers.OtmenaProdazhi
 {
@@ -23,6 +26,25 @@ namespace Core.Controllers.OtmenaProdazhi
         {
             return db.GetByParametrDate("Select накладной_текст FROM public.продажа WHERE дата>= @data", "data");
         }
+
+        public int SelectNomerVozvrata()
+        {
+            int kod = 0;
+            DataTable dt= db.GetByQuery("Select код_возврата FROM public.отмена_продажи ORDER BY код_возврата DESC LIMIT 1");
+            if (dt.Rows.Count != 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                  
+                    kod = int.Parse(dr[0].ToString());
+                }
+
+            }
+            kod = kod + 1;
+            return kod;
+
+        }
+
 
 
         public void updateProdazha(string naklTxt, string artikul, int kol)
@@ -50,44 +72,25 @@ namespace Core.Controllers.OtmenaProdazhi
 
         }
 
-        public void InsertOtmenaProdazh(string artikul, string naklText)
+        public void InsertOtmenaProdazh(string naklText, string artikul)
         {
-            //string artikul, int kolProdazhi, double tsena, double suma, int kolVozvrata, string kodKlienta,
-            //DateTime data, string propis, string naklText, bool chek
-
-            //db.insertToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, сумма, количествовозврата, " +
-            //    "кодклиента, дата, прописью, накладной_текст, chek) VALUES " +
-            //   "('" + artikul + "', '" + kolProdazhi + "', '" + tsena + "', '" + suma + "', '" + kolVozvrata + "'," +
-            //   "'" + kodKlienta + "', '" + data + "', '" + propis + "', '" + naklText + "', '" + chek + "') " +
-            //   "USING public.продажа p," +
-            //   "public.продажа_товара pt" +
-            //   "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст ='" + naklText + "' and pt.артикул ='" + artikul + "'");
-
-
+            
             db.insertToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, " +
-                "кодклиента, накладной_текст, chek) " +
-                "SELECT pt.артикул, pt.количество, pt.цена, p.кодклиента, p.накладной_текст, p.chek " +
+                "код_клиента, накладной_текст, чек) " +
+                "SELECT pt.артикул, pt.количество, pt.цена, p.код_клиента, p.накладной_текст, p.chek " +
                  "FROM public.продажа p , public.продажа_товара pt " +
                  "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст= '" + naklText + "' AND pt.артикул ='" + artikul + "'");
 
 
         }
 
-        public void UpdateOtmenaProdazh(string naklText, string artikul, int kol, double suma)
-        {
+       
 
-            db.updateDB("UPDATE public.отмена_продажи " +
-                        "SET количествовозврата ='" + kol + "', сумма ='" + suma + "' " +
-                        "WHERE накладной_текст ='" + naklText + "' and pt.артикул ='" + artikul + "'");
-
-
-        }
-
-        public string SelectSummaOtmenaProdazh(string naklText)
+        public string SelectSummaOtmenaProdazh(string naklText, int kod)
         {
                         
-            DataTable dt= db.GetByQuery("Select Sum(сумма) as сумма" +
-                    " FROM отмена_продажи WHERE накладной_текст ='" + naklText + "'");
+            DataTable dt= db.GetByQuery("Select SUM(сумма) as сумма" +
+                    " FROM отмена_продажи WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'");
             string suma="";
 
             if (dt.Rows.Count != 0)
@@ -109,6 +112,20 @@ namespace Core.Controllers.OtmenaProdazhi
 
 
         }
+
+
+        public DataTable printCkekQuery(string naklTxt, int kod)
+        {
+
+            return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.чек as chek, e.прописью as propis, c.место_на_складе as mesto, " +
+                                 "e.артикул as artikul, e.количество*e.цена as suma , e.количество_возврата as kolichestvo, e.цена as tsena, c.наименование as naimenovanie, c.бренд as brand, " +
+                                 "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.отмена_продажи e, " +
+                                 "public.товар c, public.сведения_об_организации g WHERE e.артикул=c.артикул " +
+                                 "AND e.накладной_текст= '" + naklTxt + "' AND e.код_возврата= '" + kod + "'");
+            
+        }
+
+
 
     }
 }

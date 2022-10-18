@@ -607,17 +607,7 @@ namespace AutoMir2022
 
             }
 
-            ///// получаем сумму с прописью
-            
-            
-            //string diram = summaKontrakta.ToString("0.00");
-            //diram = diram.Remove(0, diram.Length - 2) + " дир";
-            //long suma = (long)summaKontrakta;
-
-            //string summaPropisyu = roznichProdazhaObj.FirstCharToUpper(RussianConverter.Format(suma, UnitOfMeasure.Ruble) + " " + diram);
-            /////////////
-            ///
-
+                        
             bool check = kontrolProdazhaChek.Checked;
             if (skidkaValue.Text == "") skidkaValue.Text = "0";
             int skidkaSql = Int16.Parse(skidkaValue.Text);
@@ -685,30 +675,21 @@ namespace AutoMir2022
         public void printCkekDetails(string nakTxt)
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            DataTable dt = roznichProdazhaObj.printCkek(nakTxt);
-
-            LocalReport report = new LocalReport();
-            string path = Path.GetDirectoryName(Application.StartupPath);
-            string fullPath = "";
+            
             bool ischecked = prodazhaSoSkidkoy.Checked;
             if (ischecked == true)
             {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
+
+                roznichProdazhaObj.printCkek(roznichProdazhaObj.chekProdazhaQuery(nakTxt), "ChekReportSkidka");
 
             }
             else
             {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReport.rdlc";
+                roznichProdazhaObj.printCkek(roznichProdazhaObj.chekProdazhaQuery(nakTxt), "ChekReport");
+
 
             }
-            //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
-            report.ReportPath = fullPath;
-            report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
-
-            PageSettings pageSettings = new PageSettings();
-            pageSettings.Landscape = true;
-            report.PrintToPrinter();
-
+            
         }
 
         private void prodazhaSoSkidkoy_CheckedChanged(object sender, EventArgs e)
@@ -782,10 +763,13 @@ namespace AutoMir2022
         {
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+            DBNpgsql dBNpgsqlObj = new DBNpgsql();
             if (otmenaProdazhiDGV.Rows.Count == 0) {
                 MessageBox.Show("Вы не выбрали товар для отмени продаж!");
                 goto EndProcess; 
             }
+
+            int kod = otmenaProdazhiObj.SelectNomerVozvrata();
             for (int i = 0; i < otmenaProdazhiDGV.Rows.Count - 1; i++)
             {
                 bool isChecked =Convert.ToBoolean(otmenaProdazhiDGV.Rows[i].Cells[0].Value);
@@ -803,10 +787,13 @@ namespace AutoMir2022
                     int kolVozvrata = int.Parse(otmenaProdazhiDGV.Rows[i].Cells["kolVozvrata"].Value.ToString());
                     int kolProdazha = int.Parse(otmenaProdazhiDGV.Rows[i].Cells["kolOtmena"].Value.ToString());
                     double tsena = double.Parse(otmenaProdazhiDGV.Rows[i].Cells["tsenaOtmena"].Value.ToString());
-
+                    
+                    
+                   double suma = kolVozvrata * tsena;
+                   
                     //обновляет таблицу отмена продажа с количеством возврата и суммой 
-                    otmenaProdazhiObj.UpdateOtmenaProdazh(nakNomerOtmenaCmb.Text, otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(),
-                        kolVozvrata, kolVozvrata * tsena);
+                    dBNpgsqlObj.UpdateOtmenaProdazh(nakNomerOtmenaCmb.Text, otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(),
+                        kolVozvrata, suma, kod);
 
                     if (kolVozvrata == kolProdazha) otmenaProdazhiObj.DeleteProdazhaTovara(nakNomerOtmenaCmb.Text,
                        otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString());
@@ -822,11 +809,12 @@ namespace AutoMir2022
             }
 
             //сумма прописю 
-            if (otmenaProdazhiObj.SelectSummaOtmenaProdazh(nakNomerOtmenaCmb.Text) == "")
+            string propis = otmenaProdazhiObj.SelectSummaOtmenaProdazh(nakNomerOtmenaCmb.Text, kod);
+            if (propis != null)
             {
-                string summaPropis = roznichProdazhaObj.SummaPropis(double.Parse(
-                    otmenaProdazhiObj.SelectSummaOtmenaProdazh(nakNomerOtmenaCmb.Text)));
-
+            
+                string summaPropis = roznichProdazhaObj.SummaPropis(double.Parse(propis));
+                otmenaProdazhiObj.UpdatePropisOtmenaProdazh(nakNomerOtmenaCmb.Text, summaPropis);
             }
 
             //при отмени всех товаров удаляем вес заказ из таблицы продажа 
@@ -835,7 +823,17 @@ namespace AutoMir2022
             {
                 otmenaProdazhiObj.DeleteProdazha(nakNomerOtmenaCmb.Text);
             }
-
+            kodVozvrataTxb.Text = kod.ToString();
+            DataTable dt = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
+            string kodKlienta = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                kodKlienta = dr["kodKlienta"].ToString();
+                break;
+            }
+            if (kodKlienta=="") roznichProdazhaObj.printCkek(otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod), "ChekReportOtmenaRozn");
+            else roznichProdazhaObj.printCkek(otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod), "ChekReportOtmenaOpt");
+            otmenaProdazhiDGV.Rows.Clear();
 
 
         EndProcess: { }

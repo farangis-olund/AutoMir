@@ -23,25 +23,28 @@
               <Width>2.8769cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.67075cm</Width>
+              <Width>3.12707cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.54742cm</Width>
+              <Width>1.40617cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.47989cm</Width>
+              <Width>2.05762cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>4.13435cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.53418cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.97885cm</Width>
+              <Width>1.78367cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.1825cm</Width>
+              <Width>1.865cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.51695cm</Width>
+              <Width>1.27883cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -59,7 +62,6 @@
                             <TextRun>
                               <Value />
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -106,7 +108,6 @@
                             <TextRun>
                               <Value>Артикул</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -115,6 +116,52 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>DimGray</Color>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>DimGray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <LeftBorder>
+                          <Color>DimGray</Color>
+                        </LeftBorder>
+                        <RightBorder>
+                          <Color>DimGray</Color>
+                        </RightBorder>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Наименование</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -153,7 +200,6 @@
                             <TextRun>
                               <Value>Бренд</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -200,7 +246,6 @@
                             <TextRun>
                               <Value>Марка</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -247,7 +292,6 @@
                             <TextRun>
                               <Value>Модель</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -294,7 +338,6 @@
                             <TextRun>
                               <Value>Кол-во</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -341,7 +384,6 @@
                             <TextRun>
                               <Value>Цена</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -389,7 +431,6 @@
                               <Label>Сумма</Label>
                               <Value>Сумма</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -436,7 +477,6 @@
                             <TextRun>
                               <Value>Место</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -489,7 +529,7 @@
                               <Value>=IIf(Fields!Chek.Value, Chr(82), Chr(163))</Value>
                               <Style>
                                 <FontFamily>Wingdings 2</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -524,7 +564,7 @@
                             <TextRun>
                               <Value>=Fields!Artikul.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -532,6 +572,41 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Artikul</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>DimGray</Color>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Naimenovanie">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Naimenovanie.Value</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Naimenovanie</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -559,7 +634,7 @@
                             <TextRun>
                               <Value>=Fields!Brand.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -594,7 +669,7 @@
                             <TextRun>
                               <Value>=Fields!Marka.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -629,7 +704,7 @@
                             <TextRun>
                               <Value>=Fields!Model.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -664,7 +739,7 @@
                             <TextRun>
                               <Value>=Fields!Kolichestvo.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -699,7 +774,7 @@
                             <TextRun>
                               <Value>=Fields!Tsena.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -734,7 +809,7 @@
                             <TextRun>
                               <Value>=Fields!Kolichestvo.Value*Fields!Tsena.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -769,7 +844,7 @@
                             <TextRun>
                               <Value>=Fields!Mesto.Value</Value>
                               <Style>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>9pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -808,6 +883,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -824,7 +900,7 @@
         <Top>0.42016cm</Top>
         <Left>0.0635cm</Left>
         <Height>1.29965cm</Height>
-        <Width>20.50141cm</Width>
+        <Width>20.77776cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -837,7 +913,7 @@
     <Height>0.82292in</Height>
     <Style />
   </Body>
-  <Width>8.14967in</Width>
+  <Width>8.22338in</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -1446,6 +1522,10 @@
         </Field>
         <Field Name="Komp">
           <DataField>Komp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Naimenovanie">
+          <DataField>Naimenovanie</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

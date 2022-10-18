@@ -145,6 +145,12 @@ namespace AutoMir2022
             this.mestoNaSkladePanel = new System.Windows.Forms.Panel();
             this.otmenaProdazhiRozn = new System.Windows.Forms.TabPage();
             this.otmenaProdazhiDGV = new System.Windows.Forms.DataGridView();
+            this.viborIzSpiska = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.artikulOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsenaOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumaVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.showOtmenaBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -152,12 +158,8 @@ namespace AutoMir2022
             this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.kontCheka = new System.Windows.Forms.TabPage();
-            this.viborIzSpiska = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.artikulOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsenaOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumaVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kodVozvrataTxb = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.topPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1157,76 +1159,6 @@ namespace AutoMir2022
             this.otmenaProdazhiDGV.TabIndex = 1;
             this.otmenaProdazhiDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.otmenaProdazhiDGV_CellEndEdit);
             // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.showOtmenaBtn);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.otmenaProdazhiBtn);
-            this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1531, 71);
-            this.panel1.TabIndex = 0;
-            // 
-            // showOtmenaBtn
-            // 
-            this.showOtmenaBtn.Location = new System.Drawing.Point(305, 16);
-            this.showOtmenaBtn.Name = "showOtmenaBtn";
-            this.showOtmenaBtn.Size = new System.Drawing.Size(105, 38);
-            this.showOtmenaBtn.TabIndex = 5;
-            this.showOtmenaBtn.Text = "Показать";
-            this.showOtmenaBtn.UseVisualStyleBackColor = true;
-            this.showOtmenaBtn.Click += new System.EventHandler(this.showOtmenaBtn_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(608, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 38);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Печать накладной";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // otmenaProdazhiBtn
-            // 
-            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(454, 16);
-            this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
-            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(142, 39);
-            this.otmenaProdazhiBtn.TabIndex = 3;
-            this.otmenaProdazhiBtn.Text = "Отмена продажи";
-            this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
-            this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
-            // 
-            // nakNomerOtmenaCmb
-            // 
-            this.nakNomerOtmenaCmb.FormattingEnabled = true;
-            this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 18);
-            this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
-            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(166, 29);
-            this.nakNomerOtmenaCmb.TabIndex = 2;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 21);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Накладной №";
-            // 
-            // kontCheka
-            // 
-            this.kontCheka.Location = new System.Drawing.Point(4, 30);
-            this.kontCheka.Name = "kontCheka";
-            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
-            this.kontCheka.Size = new System.Drawing.Size(1537, 636);
-            this.kontCheka.TabIndex = 6;
-            this.kontCheka.Text = "Контроль чека";
-            this.kontCheka.UseVisualStyleBackColor = true;
-            // 
             // viborIzSpiska
             // 
             this.viborIzSpiska.HeaderText = "";
@@ -1267,6 +1199,94 @@ namespace AutoMir2022
             this.sumaVozvrata.Name = "sumaVozvrata";
             this.sumaVozvrata.ReadOnly = true;
             this.sumaVozvrata.Width = 150;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.kodVozvrataTxb);
+            this.panel1.Controls.Add(this.showOtmenaBtn);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.otmenaProdazhiBtn);
+            this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1531, 71);
+            this.panel1.TabIndex = 0;
+            // 
+            // showOtmenaBtn
+            // 
+            this.showOtmenaBtn.Location = new System.Drawing.Point(305, 16);
+            this.showOtmenaBtn.Name = "showOtmenaBtn";
+            this.showOtmenaBtn.Size = new System.Drawing.Size(105, 38);
+            this.showOtmenaBtn.TabIndex = 5;
+            this.showOtmenaBtn.Text = "Показать";
+            this.showOtmenaBtn.UseVisualStyleBackColor = true;
+            this.showOtmenaBtn.Click += new System.EventHandler(this.showOtmenaBtn_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(861, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 38);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Печать накладной";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // otmenaProdazhiBtn
+            // 
+            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(707, 12);
+            this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
+            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(142, 39);
+            this.otmenaProdazhiBtn.TabIndex = 3;
+            this.otmenaProdazhiBtn.Text = "Отмена продажи";
+            this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
+            this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
+            // 
+            // nakNomerOtmenaCmb
+            // 
+            this.nakNomerOtmenaCmb.FormattingEnabled = true;
+            this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 18);
+            this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
+            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(166, 29);
+            this.nakNomerOtmenaCmb.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(111, 21);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Накладной №";
+            // 
+            // kontCheka
+            // 
+            this.kontCheka.Location = new System.Drawing.Point(4, 30);
+            this.kontCheka.Name = "kontCheka";
+            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
+            this.kontCheka.Size = new System.Drawing.Size(1537, 636);
+            this.kontCheka.TabIndex = 6;
+            this.kontCheka.Text = "Контроль чека";
+            this.kontCheka.UseVisualStyleBackColor = true;
+            // 
+            // kodVozvrataTxb
+            // 
+            this.kodVozvrataTxb.Location = new System.Drawing.Point(480, 18);
+            this.kodVozvrataTxb.Name = "kodVozvrataTxb";
+            this.kodVozvrataTxb.Size = new System.Drawing.Size(83, 29);
+            this.kodVozvrataTxb.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(435, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 21);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "КОД";
             // 
             // retail
             // 
@@ -1420,5 +1440,7 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn tsenaOtmena;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolVozvrata;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumaVozvrata;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox kodVozvrataTxb;
     }
 }

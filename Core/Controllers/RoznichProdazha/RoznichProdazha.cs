@@ -4,6 +4,9 @@ using Core.DB;
 using System.Windows.Forms;
 using NickBuhro.NumToWords.Russian;
 using System.Drawing;
+using Microsoft.Reporting.WinForms;
+using System.IO;
+using System.Drawing.Printing;
 
 namespace Core.Controllers.RoznProdazha
 {
@@ -316,15 +319,49 @@ namespace Core.Controllers.RoznProdazha
 
         }
 
-
-        public DataTable printCkek(string naklTxt) {
-            DataTable dt = db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.chek as chek, e.прописью as propis, e.скидка as skidka, c.место_на_складе as mesto, " +
+        public DataTable chekProdazhaQuery(string naklTxt)
+        {
+            return db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.chek as chek, e.прописью as propis, e.скидка as skidka, c.место_на_складе as mesto, " +
                                         "d.артикул as artikul, d.количество as kolichestvo, d.цена as tsena, c.бренд as brand, " +
-                                        "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.продажа e , public.продажа_товара d, " +
+                                        "c.марка as marka, c.модель as model,c.наименование as naimenovanie, g.названиекомпании as komp FROM public.продажа e , public.продажа_товара d, " +
                                         "public.товар c, public.сведения_об_организации g WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул " +
-                                        "AND e.накладной_текст= '" + naklTxt + "'");
+                                        "AND e.накладной_текст='" + naklTxt + "'");
+        }
+        public void printCkek(DataTable dt, string checkType) {
+            
+            
+            LocalReport report = new LocalReport();
+            string path = Path.GetDirectoryName(Application.StartupPath);
+            string fullPath = "";
+            
+            if (checkType == "ChekReportSkidka")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
 
-            return dt;
+            }
+            else if (checkType == "ChekReport")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReport.rdlc";
+
+            }
+            else if (checkType == "ChekReportOtmenaRozn")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
+
+            }
+            else if (checkType == "ChekReportOtmenaOpt")
+            {
+                //fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
+
+            }
+            //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
+            report.ReportPath = fullPath;
+            report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
+
+            PageSettings pageSettings = new PageSettings();
+            pageSettings.Landscape = true;
+            report.PrintToPrinter();
+
         }
 
 
