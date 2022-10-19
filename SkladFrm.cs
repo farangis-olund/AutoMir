@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.Controllers.Sklad;
-using Core.Controllers.RoznProdazha;
+using Core.Controllers.RoznichProdazha;
 
 namespace AutoMir2022
 {

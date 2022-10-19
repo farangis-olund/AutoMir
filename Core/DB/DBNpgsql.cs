@@ -3,12 +3,13 @@ using System.Data;
 using Npgsql;
 using NpgsqlTypes;
 
-namespace Core.DB
+
+namespace Core.DB 
 {
 
     class DBNpgsql
     {
-        private const string CONNECTION_STRING = "server=localhost;" +
+        public const string CONNECTION_STRING = "server=localhost;" +
                                                     "port=5432;" +
                                                     "user id=postgres;" +
                                                     "password=1234;" +

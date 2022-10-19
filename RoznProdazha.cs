@@ -9,7 +9,7 @@ using System.Text;
 using System.Linq;
 using Npgsql;
 using System.Windows.Forms;
-using Core.Controllers.RoznProdazha;
+using Core.Controllers.RoznichProdazha;
 using Core.Controllers.OtmenaProdazhi;
 
 using Core.DB;
@@ -58,7 +58,7 @@ namespace AutoMir2022
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-
+            //forma sklad
             SkladFrm myForm = new SkladFrm();
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
@@ -66,13 +66,24 @@ namespace AutoMir2022
             this.dataPanel.Controls.Add(myForm);
             myForm.Show();
 
-
+            //forma mesto na sklade
             MestoNaSkladeFrm myFormSklad = new MestoNaSkladeFrm();
             myFormSklad.TopLevel = false;
             myFormSklad.AutoScroll = true;
             myFormSklad.FormBorderStyle = FormBorderStyle.None;
             this.mestoNaSkladePanel.Controls.Add(myFormSklad);
             myFormSklad.Show();
+
+            //forma mesto na sklade
+            ChekFrm myFormChek = new ChekFrm();
+            myFormChek.TopLevel = false;
+            myFormChek.AutoScroll = true;
+            myFormChek.FormBorderStyle = FormBorderStyle.None;
+            this.chekPanel.Controls.Add(myFormChek);
+            myFormChek.Show();
+
+
+
 
             //add nakladnoy tab OtmenaProdazhi
 

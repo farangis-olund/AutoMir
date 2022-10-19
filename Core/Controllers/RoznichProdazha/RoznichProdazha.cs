@@ -8,7 +8,7 @@ using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Drawing.Printing;
 
-namespace Core.Controllers.RoznProdazha
+namespace Core.Controllers.RoznichProdazha
 {
 
     class RoznichProdazha
@@ -354,9 +354,23 @@ namespace Core.Controllers.RoznProdazha
                 //fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
 
             }
+            else if (checkType == "ChekReportPeriod")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportPeriod.rdlc";
+
+            }
+
             //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
             report.ReportPath = fullPath;
-            report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
+            if (checkType== "ChekReportPeriod")
+            {
+                report.DataSources.Add(new ReportDataSource("DtReportPeriod", dt));
+            }
+            else
+            {
+                report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
+            }
+            
 
             PageSettings pageSettings = new PageSettings();
             pageSettings.Landscape = true;

@@ -1,24 +1,63 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Core.DB;
+using Npgsql;
+using NpgsqlTypes;
 
-
-namespace Core.Controllers.OtmenaProdazhi
+namespace Core.Controllers.Chek
 {
-    class OtmenaProdazhi
+    class Chek : DBNpgsql
     {
         private DBNpgsql db = new DBNpgsql();
 
-        public DataTable SelectDataDGV(string naklTxt)
+        public DataTable GetByParametrDate(DateTime dataStart, DateTime dataEnd)
         {
-            return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена " +
-                                    "FROM public.продажа e , public.продажа_товара d " +
-                                    "WHERE d.кодпродажи=e.кодпродажи " +
-                                    "AND e.накладной_текст= '" + naklTxt + "'");
+            DataTable dataTable = new DataTable();
+            // Connect to a PostgreSQL database
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            conn.Open();
+
+            NpgsqlCommand sql = conn.CreateCommand();
+            sql.CommandType = CommandType.Text;
+            sql.CommandText = "Select c.наименование as Naimenovanie, d.цена as Tsena, c.артикул as Artilul, SUM(d.количество) as Kolichestvo, SUM(d.количество*d.цена) as Suma FROM public.продажа e , " +
+                               "public.продажа_товара d, public.товар c WHERE e.кодпродажи=d.кодпродажи AND d.артикул=c.артикул AND e.chek=true " +
+                               "AND e.дата>=@dataStart AND e.дата<=@dataEnd GROUP BY c.артикул, c.наименование, d.цена";
+            sql.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
+            sql.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
+
+            NpgsqlDataReader dr = sql.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dataTable.Load(dr);
+            }
+
+            sql.Dispose();
+            conn.Close();
+
+            return dataTable;
         }
 
-        public DataTable SelectNomerNakladnoy()
+
+
+
+
+        public string SelectSumaProdazhiWithChek()
         {
-            return db.GetByParametrDate("Select накладной_текст FROM public.продажа WHERE дата>= @data", "data");
+            
+            DataTable dt= db.GetByParametrDate("Select SUM(d.количество*d.цена) as suma FROM public.продажа e , " +
+                "                               public.продажа_товара d WHERE d.кодпродажи=e.кодпродажи AND дата= @data", "data");
+            string suma ="";
+            if (dt.Rows.Count != 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                   suma = dr[0].ToString();
+                }
+
+            }
+
+            return suma;
         }
 
         public int SelectNomerVozvrata()

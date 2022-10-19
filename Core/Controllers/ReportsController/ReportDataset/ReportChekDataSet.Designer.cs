@@ -26,6 +26,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         
         private DtReportChekDataTable tableDtReportChek;
         
+        private DtReportPeriodDataTable tableDtReportPeriod;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 if ((ds.Tables["DtReportChek"] != null)) {
                     base.Tables.Add(new DtReportChekDataTable(ds.Tables["DtReportChek"]));
                 }
+                if ((ds.Tables["DtReportPeriod"] != null)) {
+                    base.Tables.Add(new DtReportPeriodDataTable(ds.Tables["DtReportPeriod"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         public DtReportChekDataTable DtReportChek {
             get {
                 return this.tableDtReportChek;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DtReportPeriodDataTable DtReportPeriod {
+            get {
+                return this.tableDtReportPeriod;
             }
         }
         
@@ -155,6 +170,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 if ((ds.Tables["DtReportChek"] != null)) {
                     base.Tables.Add(new DtReportChekDataTable(ds.Tables["DtReportChek"]));
                 }
+                if ((ds.Tables["DtReportPeriod"] != null)) {
+                    base.Tables.Add(new DtReportPeriodDataTable(ds.Tables["DtReportPeriod"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                     this.tableDtReportChek.InitVars();
                 }
             }
+            this.tableDtReportPeriod = ((DtReportPeriodDataTable)(base.Tables["DtReportPeriod"]));
+            if ((initTable == true)) {
+                if ((this.tableDtReportPeriod != null)) {
+                    this.tableDtReportPeriod.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDtReportChek = new DtReportChekDataTable();
             base.Tables.Add(this.tableDtReportChek);
+            this.tableDtReportPeriod = new DtReportPeriodDataTable();
+            base.Tables.Add(this.tableDtReportPeriod);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDtReportChek() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeDtReportPeriod() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DtReportChekRowChangeEventHandler(object sender, DtReportChekRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void DtReportPeriodRowChangeEventHandler(object sender, DtReportPeriodRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -720,6 +755,366 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DtReportChekDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DtReportPeriodDataTable : global::System.Data.TypedTableBase<DtReportPeriodRow> {
+            
+            private global::System.Data.DataColumn columnDataStart;
+            
+            private global::System.Data.DataColumn columnArtikul;
+            
+            private global::System.Data.DataColumn columnKolichestvo;
+            
+            private global::System.Data.DataColumn columnTsena;
+            
+            private global::System.Data.DataColumn columnSuma;
+            
+            private global::System.Data.DataColumn columnMesto;
+            
+            private global::System.Data.DataColumn columnKomp;
+            
+            private global::System.Data.DataColumn columnNaimenovanie;
+            
+            private global::System.Data.DataColumn columnDataEnd;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodDataTable() {
+                this.TableName = "DtReportPeriod";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DtReportPeriodDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected DtReportPeriodDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DataStartColumn {
+                get {
+                    return this.columnDataStart;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ArtikulColumn {
+                get {
+                    return this.columnArtikul;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KolichestvoColumn {
+                get {
+                    return this.columnKolichestvo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TsenaColumn {
+                get {
+                    return this.columnTsena;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SumaColumn {
+                get {
+                    return this.columnSuma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MestoColumn {
+                get {
+                    return this.columnMesto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KompColumn {
+                get {
+                    return this.columnKomp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NaimenovanieColumn {
+                get {
+                    return this.columnNaimenovanie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DataEndColumn {
+                get {
+                    return this.columnDataEnd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodRow this[int index] {
+                get {
+                    return ((DtReportPeriodRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtReportPeriodRowChangeEventHandler DtReportPeriodRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtReportPeriodRowChangeEventHandler DtReportPeriodRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtReportPeriodRowChangeEventHandler DtReportPeriodRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DtReportPeriodRowChangeEventHandler DtReportPeriodRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddDtReportPeriodRow(DtReportPeriodRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodRow AddDtReportPeriodRow(string DataStart, string Artikul, string Kolichestvo, string Tsena, string Suma, string Mesto, string Komp, string Naimenovanie, string DataEnd) {
+                DtReportPeriodRow rowDtReportPeriodRow = ((DtReportPeriodRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        DataStart,
+                        Artikul,
+                        Kolichestvo,
+                        Tsena,
+                        Suma,
+                        Mesto,
+                        Komp,
+                        Naimenovanie,
+                        DataEnd};
+                rowDtReportPeriodRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDtReportPeriodRow);
+                return rowDtReportPeriodRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DtReportPeriodDataTable cln = ((DtReportPeriodDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DtReportPeriodDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnDataStart = base.Columns["DataStart"];
+                this.columnArtikul = base.Columns["Artikul"];
+                this.columnKolichestvo = base.Columns["Kolichestvo"];
+                this.columnTsena = base.Columns["Tsena"];
+                this.columnSuma = base.Columns["Suma"];
+                this.columnMesto = base.Columns["Mesto"];
+                this.columnKomp = base.Columns["Komp"];
+                this.columnNaimenovanie = base.Columns["Naimenovanie"];
+                this.columnDataEnd = base.Columns["DataEnd"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnDataStart = new global::System.Data.DataColumn("DataStart", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataStart);
+                this.columnArtikul = new global::System.Data.DataColumn("Artikul", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnArtikul);
+                this.columnKolichestvo = new global::System.Data.DataColumn("Kolichestvo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKolichestvo);
+                this.columnTsena = new global::System.Data.DataColumn("Tsena", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTsena);
+                this.columnSuma = new global::System.Data.DataColumn("Suma", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSuma);
+                this.columnMesto = new global::System.Data.DataColumn("Mesto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMesto);
+                this.columnKomp = new global::System.Data.DataColumn("Komp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKomp);
+                this.columnNaimenovanie = new global::System.Data.DataColumn("Naimenovanie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNaimenovanie);
+                this.columnDataEnd = new global::System.Data.DataColumn("DataEnd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataEnd);
+                this.columnDataStart.Caption = "Data";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodRow NewDtReportPeriodRow() {
+                return ((DtReportPeriodRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DtReportPeriodRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DtReportPeriodRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DtReportPeriodRowChanged != null)) {
+                    this.DtReportPeriodRowChanged(this, new DtReportPeriodRowChangeEvent(((DtReportPeriodRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DtReportPeriodRowChanging != null)) {
+                    this.DtReportPeriodRowChanging(this, new DtReportPeriodRowChangeEvent(((DtReportPeriodRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DtReportPeriodRowDeleted != null)) {
+                    this.DtReportPeriodRowDeleted(this, new DtReportPeriodRowChangeEvent(((DtReportPeriodRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DtReportPeriodRowDeleting != null)) {
+                    this.DtReportPeriodRowDeleting(this, new DtReportPeriodRowChangeEvent(((DtReportPeriodRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveDtReportPeriodRow(DtReportPeriodRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DtReportPeriodDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1252,6 +1647,273 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DtReportPeriodRow : global::System.Data.DataRow {
+            
+            private DtReportPeriodDataTable tableDtReportPeriod;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DtReportPeriodRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDtReportPeriod = ((DtReportPeriodDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DataStart {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.DataStartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DataStart\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.DataStartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Artikul {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.ArtikulColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Artikul\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.ArtikulColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Kolichestvo {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.KolichestvoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Kolichestvo\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.KolichestvoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Tsena {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.TsenaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tsena\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.TsenaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Suma {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.SumaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Suma\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.SumaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Mesto {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.MestoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Mesto\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.MestoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Komp {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.KompColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Komp\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.KompColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Naimenovanie {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.NaimenovanieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Naimenovanie\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.NaimenovanieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DataEnd {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.DataEndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DataEnd\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.DataEndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDataStartNull() {
+                return this.IsNull(this.tableDtReportPeriod.DataStartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDataStartNull() {
+                this[this.tableDtReportPeriod.DataStartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsArtikulNull() {
+                return this.IsNull(this.tableDtReportPeriod.ArtikulColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetArtikulNull() {
+                this[this.tableDtReportPeriod.ArtikulColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKolichestvoNull() {
+                return this.IsNull(this.tableDtReportPeriod.KolichestvoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKolichestvoNull() {
+                this[this.tableDtReportPeriod.KolichestvoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTsenaNull() {
+                return this.IsNull(this.tableDtReportPeriod.TsenaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTsenaNull() {
+                this[this.tableDtReportPeriod.TsenaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSumaNull() {
+                return this.IsNull(this.tableDtReportPeriod.SumaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSumaNull() {
+                this[this.tableDtReportPeriod.SumaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMestoNull() {
+                return this.IsNull(this.tableDtReportPeriod.MestoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMestoNull() {
+                this[this.tableDtReportPeriod.MestoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKompNull() {
+                return this.IsNull(this.tableDtReportPeriod.KompColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKompNull() {
+                this[this.tableDtReportPeriod.KompColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNaimenovanieNull() {
+                return this.IsNull(this.tableDtReportPeriod.NaimenovanieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNaimenovanieNull() {
+                this[this.tableDtReportPeriod.NaimenovanieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDataEndNull() {
+                return this.IsNull(this.tableDtReportPeriod.DataEndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDataEndNull() {
+                this[this.tableDtReportPeriod.DataEndColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1271,6 +1933,40 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtReportChekRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class DtReportPeriodRowChangeEvent : global::System.EventArgs {
+            
+            private DtReportPeriodRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodRowChangeEvent(DtReportPeriodRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DtReportPeriodRow Row {
                 get {
                     return this.eventRow;
                 }
