@@ -8,6 +8,7 @@ using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Drawing.Printing;
 
+
 namespace Core.Controllers.RoznichProdazha
 {
 
@@ -41,7 +42,7 @@ namespace Core.Controllers.RoznichProdazha
             
 
             return db.GetByQuery(sqlQuery); ;
-        }
+         }
 
         public string GetCursValyuti()
         {
@@ -104,26 +105,25 @@ namespace Core.Controllers.RoznichProdazha
             return nakNomer;
         }
 
-        public string getLastNakladnoyText()
+        public int getLastNakladnoyText()
         {
 
-            string nakNomer = "";
+            int nakNomer = 0;
 
-            DataTable dataTable = db.GetByQuery("SELECT накладной_текст FROM public.продажа ORDER BY накладной_текст DESC LIMIT 1;");
+            DataTable dataTable = db.GetByQuery("SELECT кодпродажи FROM public.продажа ORDER BY кодпродажи DESC LIMIT 1;");
             
             foreach (DataRow dr in dataTable.Rows)
             {
-                nakNomer =dr[0].ToString();
+                nakNomer = Convert.ToInt32(dr[0]);
             }
-            if (nakNomer == "") nakNomer = "A";
-
-                return nakNomer;
+               return nakNomer;
         }
 
 
-        public double getRoundDecimal(double number)
+        public string getRoundDecimal(double number)
         {
-            return Math.Round(number, 2);
+            return number.ToString("0.000");
+            //return Math.Round(number, 2);
         }
 
         public DataGridView OchistkaDataGridVeiw(ref DataGridView dataGridView)
@@ -192,17 +192,17 @@ namespace Core.Controllers.RoznichProdazha
 
                 if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
                 {
-                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString();
-                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString();
-                    dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString();
-                    dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString();
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.000");
+                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.000");
+                    dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString("0.000");
+                    dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString("0.000");
                     
                     dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
 
                 }
                 else
                 {
-                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString();
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.000");
                     dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
                 }
             }
@@ -327,58 +327,7 @@ namespace Core.Controllers.RoznichProdazha
                                         "public.товар c, public.сведения_об_организации g WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул " +
                                         "AND e.накладной_текст='" + naklTxt + "'");
         }
-        public void printCkek(DataTable dt, string checkType) {
-            
-            
-            LocalReport report = new LocalReport();
-            string path = Path.GetDirectoryName(Application.StartupPath);
-            string fullPath = "";
-            
-            if (checkType == "ChekReportSkidka")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
-
-            }
-            else if (checkType == "ChekReport")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReport.rdlc";
-
-            }
-            else if (checkType == "ChekReportOtmenaRozn")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
-
-            }
-            else if (checkType == "ChekReportOtmenaOpt")
-            {
-                //fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
-
-            }
-            else if (checkType == "ChekReportPeriod")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportPeriod.rdlc";
-
-            }
-
-            //report.ReportPath = Application.StartupPath.Remove(path.) + "\\ChekReport.rdlc"; 
-            report.ReportPath = fullPath;
-            if (checkType== "ChekReportPeriod")
-            {
-                report.DataSources.Add(new ReportDataSource("DtReportPeriod", dt));
-            }
-            else
-            {
-                report.DataSources.Add(new ReportDataSource("DtReportChek", dt));
-            }
-            
-
-            PageSettings pageSettings = new PageSettings();
-            pageSettings.Landscape = true;
-            report.PrintToPrinter();
-
-        }
-
-
+       
         public string FirstCharToUpper(string input)
         {
             switch (input)
@@ -400,10 +349,47 @@ namespace Core.Controllers.RoznichProdazha
             return summaPropisyu;
         }
 
+        public void RestartKodProdazhi(double summa)
+        {
+            db.updateDB("ALTER SEQUENCE public.продажа_кодпродажи_seq RESTART WITH 1");
+        }
+        
+
+
 
         public void someFunction()
         {
             // do some action         
+        }
+
+
+
+
+        public string GetColumnName(int index)
+        {
+            const int alphabetsCount = 26;
+
+            if (index > alphabetsCount)
+            {
+                int mod = index % alphabetsCount;
+                int columnIndex = index / alphabetsCount;
+
+                // if mod is 0 (clearly divisible) we reached end of one combination. Something like AZ
+                if (mod == 0)
+                {
+                    // reducing column index as index / alphabetsCount will give the next value and we will miss one column.
+                    columnIndex -= 1;
+                    // passing 0 to the function will return character '@' which is invalid
+                    // mod should be the alphabets count. So it takes the last char in the alphabet.
+                    mod = alphabetsCount;
+                }
+                return GetColumnName(columnIndex) + GetColumnName(mod);
+            }
+            else
+            {
+                int code = (index - 1) + (int)'A';
+                return char.ConvertFromUtf32(code);
+            }
         }
 
 

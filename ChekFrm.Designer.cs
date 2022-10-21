@@ -40,6 +40,7 @@ namespace AutoMir2022
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,7 @@ namespace AutoMir2022
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(314, 17);
+            this.label2.Location = new System.Drawing.Point(259, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 20);
             this.label2.TabIndex = 3;
@@ -66,17 +67,17 @@ namespace AutoMir2022
             // 
             this.dateBigin.Location = new System.Drawing.Point(110, 17);
             this.dateBigin.Name = "dateBigin";
-            this.dateBigin.Size = new System.Drawing.Size(186, 26);
+            this.dateBigin.Size = new System.Drawing.Size(133, 26);
             this.dateBigin.TabIndex = 4;
             this.dateBigin.Value = new System.DateTime(2022, 10, 19, 11, 53, 41, 0);
             // 
             // dateEnd
             // 
-            this.dateEnd.Location = new System.Drawing.Point(347, 17);
+            this.dateEnd.Location = new System.Drawing.Point(292, 17);
             this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(186, 26);
+            this.dateEnd.Size = new System.Drawing.Size(128, 26);
             this.dateEnd.TabIndex = 5;
-            this.dateEnd.Value = new System.DateTime(2022, 10, 19, 11, 53, 41, 0);
+            this.dateEnd.Value = new System.DateTime(2022, 10, 20, 0, 0, 0, 0);
             // 
             // sumBtn
             // 
@@ -90,7 +91,7 @@ namespace AutoMir2022
             // 
             // reportBtn
             // 
-            this.reportBtn.Location = new System.Drawing.Point(666, 14);
+            this.reportBtn.Location = new System.Drawing.Point(464, 14);
             this.reportBtn.Name = "reportBtn";
             this.reportBtn.Size = new System.Drawing.Size(86, 29);
             this.reportBtn.TabIndex = 7;
@@ -145,11 +146,22 @@ namespace AutoMir2022
             this.label3.TabIndex = 0;
             this.label3.Text = "Номер накладной";
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "AutoMir2022.Reports.ChekReportPeriod.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(33, 179);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(782, 591);
+            this.reportViewer1.TabIndex = 9;
+            this.reportViewer1.Visible = false;
+            // 
             // ChekFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 198);
+            this.ClientSize = new System.Drawing.Size(823, 633);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.reportBtn);
             this.Controls.Add(this.sumBtn);
@@ -161,6 +173,7 @@ namespace AutoMir2022
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ChekFrm";
             this.Text = "Контроль чека";
+            this.Load += new System.EventHandler(this.ChekFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -180,5 +193,6 @@ namespace AutoMir2022
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

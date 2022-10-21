@@ -7,6 +7,14 @@
     <StartupObject>AutoMir2022.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Reports\ChekReport.rdlc" />
+    <None Remove="Reports\ChekReportPeriod.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\ChekReport.rdlc" />
+    <EmbeddedResource Include="Reports\ChekReportPeriod.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework" Version="17.3.1" />
     <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1537.0" />
     <PackageReference Include="Npgsql" Version="6.0.7" />

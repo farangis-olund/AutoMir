@@ -1322,7 +1322,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Fields!Kolichestvo.Value*Fields!Tsena.Value, "DtReportChek")</Value>
+                      <Value>=Round(Sum(Fields!Kolichestvo.Value*Fields!Tsena.Value, "DtReportChek"),2)</Value>
                       <Style>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>

@@ -19,9 +19,9 @@ namespace Core.Controllers.Chek
 
             NpgsqlCommand sql = conn.CreateCommand();
             sql.CommandType = CommandType.Text;
-            sql.CommandText = "Select c.наименование as Naimenovanie, d.цена as Tsena, c.артикул as Artilul, SUM(d.количество) as Kolichestvo, SUM(d.количество*d.цена) as Suma FROM public.продажа e , " +
+            sql.CommandText = "Select d.артикул, c.наименование as Naimenovanie, d.цена as Tsena, SUM(d.количество) as Kolichestvo, SUM(d.количество*d.цена) as Suma FROM public.продажа e , " +
                                "public.продажа_товара d, public.товар c WHERE e.кодпродажи=d.кодпродажи AND d.артикул=c.артикул AND e.chek=true " +
-                               "AND e.дата>=@dataStart AND e.дата<=@dataEnd GROUP BY c.артикул, c.наименование, d.цена";
+                               "AND e.дата>=@dataStart AND e.дата<=@dataEnd GROUP BY d.артикул, c.наименование, d.цена";
             sql.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
             sql.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
 

@@ -804,8 +804,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnDataStart;
             
-            private global::System.Data.DataColumn columnArtikul;
-            
             private global::System.Data.DataColumn columnKolichestvo;
             
             private global::System.Data.DataColumn columnTsena;
@@ -819,6 +817,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             private global::System.Data.DataColumn columnNaimenovanie;
             
             private global::System.Data.DataColumn columnDataEnd;
+            
+            private global::System.Data.DataColumn columnартикул;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -858,14 +858,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             public global::System.Data.DataColumn DataStartColumn {
                 get {
                     return this.columnDataStart;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ArtikulColumn {
-                get {
-                    return this.columnArtikul;
                 }
             }
             
@@ -927,6 +919,14 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn артикулColumn {
+                get {
+                    return this.columnартикул;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -962,18 +962,18 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DtReportPeriodRow AddDtReportPeriodRow(string DataStart, string Artikul, string Kolichestvo, string Tsena, string Suma, string Mesto, string Komp, string Naimenovanie, string DataEnd) {
+            public DtReportPeriodRow AddDtReportPeriodRow(string DataStart, string Kolichestvo, string Tsena, string Suma, string Mesto, string Komp, string Naimenovanie, string DataEnd, string артикул) {
                 DtReportPeriodRow rowDtReportPeriodRow = ((DtReportPeriodRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DataStart,
-                        Artikul,
                         Kolichestvo,
                         Tsena,
                         Suma,
                         Mesto,
                         Komp,
                         Naimenovanie,
-                        DataEnd};
+                        DataEnd,
+                        артикул};
                 rowDtReportPeriodRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtReportPeriodRow);
                 return rowDtReportPeriodRow;
@@ -997,7 +997,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnDataStart = base.Columns["DataStart"];
-                this.columnArtikul = base.Columns["Artikul"];
                 this.columnKolichestvo = base.Columns["Kolichestvo"];
                 this.columnTsena = base.Columns["Tsena"];
                 this.columnSuma = base.Columns["Suma"];
@@ -1005,6 +1004,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnKomp = base.Columns["Komp"];
                 this.columnNaimenovanie = base.Columns["Naimenovanie"];
                 this.columnDataEnd = base.Columns["DataEnd"];
+                this.columnартикул = base.Columns["артикул"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1012,8 +1012,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             private void InitClass() {
                 this.columnDataStart = new global::System.Data.DataColumn("DataStart", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataStart);
-                this.columnArtikul = new global::System.Data.DataColumn("Artikul", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnArtikul);
                 this.columnKolichestvo = new global::System.Data.DataColumn("Kolichestvo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKolichestvo);
                 this.columnTsena = new global::System.Data.DataColumn("Tsena", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1028,6 +1026,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnNaimenovanie);
                 this.columnDataEnd = new global::System.Data.DataColumn("DataEnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataEnd);
+                this.columnартикул = new global::System.Data.DataColumn("артикул", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnартикул);
                 this.columnDataStart.Caption = "Data";
             }
             
@@ -1678,22 +1678,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Artikul {
-                get {
-                    try {
-                        return ((string)(this[this.tableDtReportPeriod.ArtikulColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Artikul\' in table \'DtReportPeriod\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDtReportPeriod.ArtikulColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Kolichestvo {
                 get {
                     try {
@@ -1806,6 +1790,22 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string артикул {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportPeriod.артикулColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'артикул\' in table \'DtReportPeriod\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportPeriod.артикулColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDataStartNull() {
                 return this.IsNull(this.tableDtReportPeriod.DataStartColumn);
             }
@@ -1814,18 +1814,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDataStartNull() {
                 this[this.tableDtReportPeriod.DataStartColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsArtikulNull() {
-                return this.IsNull(this.tableDtReportPeriod.ArtikulColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetArtikulNull() {
-                this[this.tableDtReportPeriod.ArtikulColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1910,6 +1898,18 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDataEndNull() {
                 this[this.tableDtReportPeriod.DataEndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsартикулNull() {
+                return this.IsNull(this.tableDtReportPeriod.артикулColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetартикулNull() {
+                this[this.tableDtReportPeriod.артикулColumn] = global::System.Convert.DBNull;
             }
         }
         
