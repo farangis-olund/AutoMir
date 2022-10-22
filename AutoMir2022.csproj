@@ -35,6 +35,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="KassaForm\Kassa - Copy %282%29.resx">
+      <DependentUpon>Kassa.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="KassaForm\Kassa - Copy - Copy.resx">
+      <DependentUpon>Kassa - Copy.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="KassaForm\Kassa - Copy.resx">
+      <DependentUpon>Kassa.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -357,16 +357,16 @@ namespace AutoMir2022
                 if (int.TryParse(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value.ToString(), out b))
                 {
                     double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[7].Value = (a * b).ToString("0.000");
+                    dataGridView2.Rows[e.RowIndex].Cells[7].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[9].Value = (a * b).ToString("0.000");
+                    dataGridView2.Rows[e.RowIndex].Cells[9].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[11].Value = (a * b).ToString("0.000");
+                    dataGridView2.Rows[e.RowIndex].Cells[11].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[13].Value = (a * b).ToString("0.000");
+                    dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
                     roznichProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
                 }
                 else

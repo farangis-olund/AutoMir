@@ -38,9 +38,10 @@ namespace AutoMir2022
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.updateBtn = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nakNomerTxb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.proveritBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,19 +102,21 @@ namespace AutoMir2022
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.proveritBtn);
             this.groupBox1.Controls.Add(this.updateBtn);
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.nakNomerTxb);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(27, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(506, 76);
+            this.groupBox1.Size = new System.Drawing.Size(627, 76);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(364, 25);
+            this.updateBtn.Enabled = false;
+            this.updateBtn.Location = new System.Drawing.Point(464, 25);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(113, 28);
             this.updateBtn.TabIndex = 3;
@@ -124,18 +127,19 @@ namespace AutoMir2022
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(327, 33);
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(421, 33);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // nakNomerTxb
             // 
-            this.textBox1.Location = new System.Drawing.Point(170, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 26);
-            this.textBox1.TabIndex = 1;
+            this.nakNomerTxb.Location = new System.Drawing.Point(170, 27);
+            this.nakNomerTxb.Name = "nakNomerTxb";
+            this.nakNomerTxb.Size = new System.Drawing.Size(114, 26);
+            this.nakNomerTxb.TabIndex = 1;
             // 
             // label3
             // 
@@ -155,6 +159,16 @@ namespace AutoMir2022
             this.reportViewer1.Size = new System.Drawing.Size(782, 591);
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.Visible = false;
+            // 
+            // proveritBtn
+            // 
+            this.proveritBtn.Location = new System.Drawing.Point(290, 25);
+            this.proveritBtn.Name = "proveritBtn";
+            this.proveritBtn.Size = new System.Drawing.Size(102, 28);
+            this.proveritBtn.TabIndex = 4;
+            this.proveritBtn.Text = "Проверить";
+            this.proveritBtn.UseVisualStyleBackColor = true;
+            this.proveritBtn.Click += new System.EventHandler(this.proveritBtn_Click);
             // 
             // ChekFrm
             // 
@@ -191,8 +205,9 @@ namespace AutoMir2022
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nakNomerTxb;
         private System.Windows.Forms.Label label3;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button proveritBtn;
     }
 }

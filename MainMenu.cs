@@ -53,5 +53,18 @@ namespace AutoMir2022
             ////var SkladFrm = new SkladFrm();
             ////SkladFrm.Show();
         }
+
+        private void кассаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            info.Visible = false;
+            Kassa myForm = new Kassa();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.PanelData.Controls.Add(myForm);
+            myForm.Show();
+
+
+        }
     }
 }

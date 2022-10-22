@@ -45,7 +45,7 @@ namespace Core.Controllers.Chek
         {
             
             DataTable dt= db.GetByParametrDate("Select SUM(d.количество*d.цена) as suma FROM public.продажа e , " +
-                "                               public.продажа_товара d WHERE d.кодпродажи=e.кодпродажи AND дата= @data", "data");
+                                               "public.продажа_товара d WHERE d.кодпродажи=e.кодпродажи AND дата= @data", "data");
             string suma ="";
             if (dt.Rows.Count != 0)
             {
@@ -160,5 +160,32 @@ namespace Core.Controllers.Chek
 
 
 
+        public void updateChekProdazha(string nakTxt)
+        {
+            db.updateDB("UPDATE public.продажа " +
+                       "SET chek =True" +
+                       " WHERE накладной_текст ='" + nakTxt + "'");
+        }
+
+
+        public string chekProdazhaIsExist(string naklText)
+        {
+            DataTable dt = db.GetByParametrDate("Select chek FROM public.продажа " +
+                                              "WHERE накладной_текст= '" + naklText + "' AND дата= @data", "data");
+            string isExist = "";
+            if (dt.Rows.Count != 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    isExist = dr[0].ToString();
+                }
+
+            }
+
+            return isExist;
+        }
+    
+    
     }
 }

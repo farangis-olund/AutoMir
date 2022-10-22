@@ -23,28 +23,7 @@ namespace AutoMir2022
             dateBigin.Format = DateTimePickerFormat.Custom;
             dateEnd.Format = DateTimePickerFormat.Custom;
 
-            //dateBigin.CustomFormat = "dd.MM.yyyy";
-            //dateEnd.CustomFormat = "dd.MM.yyyy";
-
-            //Chek chekObj = new Chek();
-
-            //string dataStart = dateBigin.Value.ToString("dd.MM.yyyy");
-            //string dataEnd = dateEnd.Value.ToString("dd.MM.yyyy");
-
-
-            //DataTable dt = chekObj.GetByParametrDate(DateTime.Parse(dataStart), DateTime.Parse(dataEnd));
-
-            //reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportPeriod", dt));
-            //ReportParameter[] parms = new ReportParameter[2];
-
-            //parms[0] = new ReportParameter("dataStart", dataStart);
-            //parms[1] = new ReportParameter("dataEnd", dataEnd);
-            ////report.SetParameters(parms);
-            //reportViewer1.LocalReport.SetParameters(parms);
-
-            //reportViewer1.Refresh();
-
-
+           
         }
 
         private void sumBtn_Click(object sender, EventArgs e)
@@ -57,7 +36,14 @@ namespace AutoMir2022
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-           
+
+            Chek chekObj = new Chek();
+            chekObj.updateChekProdazha(nakNomerTxb.Text);
+            MessageBox.Show("Таблица продажа обновлен!");
+            updateBtn.Enabled = false;
+            checkBox1.Enabled = false;
+            checkBox1.Checked = false;
+            nakNomerTxb.Text = null;
 
         }
 
@@ -96,6 +82,17 @@ namespace AutoMir2022
         {
 
             this.reportViewer1.RefreshReport();
+        }
+
+        private void proveritBtn_Click(object sender, EventArgs e)
+        {
+            Chek chekObj = new Chek();
+            string isExist=chekObj.chekProdazhaIsExist(nakNomerTxb.Text);
+            if (isExist == "False")
+            {
+                updateBtn.Enabled = true;
+                checkBox1.Enabled = true;
+            }
         }
     }
 }

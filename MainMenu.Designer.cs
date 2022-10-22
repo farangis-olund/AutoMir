@@ -83,7 +83,7 @@ namespace AutoMir2022
             this.SideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.SideBar.Location = new System.Drawing.Point(0, 0);
             this.SideBar.Name = "SideBar";
-            this.SideBar.Size = new System.Drawing.Size(238, 577);
+            this.SideBar.Size = new System.Drawing.Size(238, 739);
             this.SideBar.TabIndex = 0;
             // 
             // loginBox
@@ -267,6 +267,7 @@ namespace AutoMir2022
             this.кассаToolStripMenuItem.Name = "кассаToolStripMenuItem";
             this.кассаToolStripMenuItem.Size = new System.Drawing.Size(210, 34);
             this.кассаToolStripMenuItem.Text = "Касса";
+            this.кассаToolStripMenuItem.Click += new System.EventHandler(this.кассаToolStripMenuItem_Click);
             // 
             // складToolStripMenuItem
             // 
@@ -380,16 +381,16 @@ namespace AutoMir2022
             this.PanelData.BackColor = System.Drawing.Color.Transparent;
             this.PanelData.Controls.Add(this.info);
             this.PanelData.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
-            this.PanelData.Location = new System.Drawing.Point(238, 36);
+            this.PanelData.Location = new System.Drawing.Point(238, 63);
             this.PanelData.Name = "PanelData";
-            this.PanelData.Size = new System.Drawing.Size(981, 541);
+            this.PanelData.Size = new System.Drawing.Size(981, 664);
             this.PanelData.TabIndex = 1;
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1219, 577);
+            this.ClientSize = new System.Drawing.Size(1219, 739);
             this.Controls.Add(this.panelSwich);
             this.Controls.Add(this.PanelData);
             this.Controls.Add(this.SideBar);

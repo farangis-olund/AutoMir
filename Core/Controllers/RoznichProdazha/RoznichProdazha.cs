@@ -122,7 +122,7 @@ namespace Core.Controllers.RoznichProdazha
 
         public string getRoundDecimal(double number)
         {
-            return number.ToString("0.000");
+            return number.ToString("0.00");
             //return Math.Round(number, 2);
         }
 
@@ -192,17 +192,17 @@ namespace Core.Controllers.RoznichProdazha
 
                 if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
                 {
-                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.000");
-                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.000");
-                    dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString("0.000");
-                    dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString("0.000");
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
+                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.00");
+                    dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString("0.00");
+                    dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString("0.00");
                     
                     dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
 
                 }
                 else
                 {
-                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.000");
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
                     dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
                 }
             }
@@ -283,42 +283,7 @@ namespace Core.Controllers.RoznichProdazha
         }
 
 
-        public string nakTextEncrement(string lastNakl)
-        {
-            string firstPart = "";
-            string secondPart="";
-            string result = "";
-            //A, B, C....AZ
-            
-            if (lastNakl.Length > 1)
-            {
-                firstPart = lastNakl.Remove(lastNakl.Length - 1, 1);
-                secondPart = lastNakl.Remove(0, lastNakl.Length - 1);
-                
-            }
-            else
-            {
-                firstPart = "";
-                secondPart = lastNakl;
-            }
-            if (secondPart == "Z")
-            {
-                result = lastNakl + "A";
-            }
-            else
-            {
-                char c1 = Convert.ToChar(secondPart);
-                c1++;
-                secondPart = c1.ToString();
-                result = firstPart + secondPart;
-            }
-            
-            
-            return result;
-
-
-        }
-
+       
         public DataTable chekProdazhaQuery(string naklTxt)
         {
             return db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.chek as chek, e.прописью as propis, e.скидка as skidka, c.место_на_складе as mesto, " +

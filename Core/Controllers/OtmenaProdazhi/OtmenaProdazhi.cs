@@ -24,7 +24,7 @@ namespace Core.Controllers.OtmenaProdazhi
         public int SelectNomerVozvrata()
         {
             int kod = 0;
-            DataTable dt= db.GetByQuery("Select код_возврата FROM public.отмена_продажи ORDER BY код_возврата DESC LIMIT 1");
+            DataTable dt= db.GetByQuery("Select код_отмена FROM public.отмена_продажи ORDER BY код_возврата DESC LIMIT 1");
             if (dt.Rows.Count != 0)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -84,7 +84,7 @@ namespace Core.Controllers.OtmenaProdazhi
         {
                         
             DataTable dt= db.GetByQuery("Select SUM(сумма) as сумма" +
-                    " FROM отмена_продажи WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'");
+                    " FROM отмена_продажи WHERE накладной_текст ='" + naklText + "' AND код_отмена ='" + kod + "'");
             string suma="";
 
             if (dt.Rows.Count != 0)
@@ -115,7 +115,7 @@ namespace Core.Controllers.OtmenaProdazhi
                                  "e.артикул as artikul, e.количество*e.цена as suma , e.количество_возврата as kolichestvo, e.цена as tsena, c.наименование as naimenovanie, c.бренд as brand, " +
                                  "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.отмена_продажи e, " +
                                  "public.товар c, public.сведения_об_организации g WHERE e.артикул=c.артикул " +
-                                 "AND e.накладной_текст= '" + naklTxt + "' AND e.код_возврата= '" + kod + "'");
+                                 "AND e.накладной_текст= '" + naklTxt + "' AND e.код_отмена= '" + kod + "'");
             
         }
 
