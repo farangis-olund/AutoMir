@@ -42,12 +42,10 @@ namespace AutoMir2022
             this.tsena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.prodazhaPlatezhBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.ProdazhaBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.prodazhaNaklCmb = new System.Windows.Forms.ComboBox();
-            this.prodazhaPlatezhCmb = new System.Windows.Forms.ComboBox();
+            this.KassaCmb = new System.Windows.Forms.ComboBox();
             this.prodazhaData = new System.Windows.Forms.TextBox();
             this.prodazha = new System.Windows.Forms.Button();
             this.vozvrat = new System.Windows.Forms.Button();
@@ -67,38 +65,38 @@ namespace AutoMir2022
             this.groupBox2.Controls.Add(this.updateProdazhaBtn);
             this.groupBox2.Controls.Add(this.pradazhaChek);
             this.groupBox2.Controls.Add(this.pradazhaOplCkb);
-            this.groupBox2.Location = new System.Drawing.Point(408, 19);
+            this.groupBox2.Location = new System.Drawing.Point(311, 21);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(275, 95);
+            this.groupBox2.Size = new System.Drawing.Size(195, 95);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             // 
             // prodazhaChekBtn
             // 
             this.prodazhaChekBtn.Enabled = false;
-            this.prodazhaChekBtn.Location = new System.Drawing.Point(140, 53);
+            this.prodazhaChekBtn.Location = new System.Drawing.Point(116, 53);
             this.prodazhaChekBtn.Name = "prodazhaChekBtn";
-            this.prodazhaChekBtn.Size = new System.Drawing.Size(129, 31);
+            this.prodazhaChekBtn.Size = new System.Drawing.Size(66, 31);
             this.prodazhaChekBtn.TabIndex = 10;
-            this.prodazhaChekBtn.Text = "Обновить";
+            this.prodazhaChekBtn.Text = "ОК";
             this.prodazhaChekBtn.UseVisualStyleBackColor = true;
             this.prodazhaChekBtn.Click += new System.EventHandler(this.prodazhaChekBtn_Click);
             // 
             // updateProdazhaBtn
             // 
             this.updateProdazhaBtn.Enabled = false;
-            this.updateProdazhaBtn.Location = new System.Drawing.Point(140, 17);
+            this.updateProdazhaBtn.Location = new System.Drawing.Point(116, 18);
             this.updateProdazhaBtn.Name = "updateProdazhaBtn";
-            this.updateProdazhaBtn.Size = new System.Drawing.Size(129, 31);
+            this.updateProdazhaBtn.Size = new System.Drawing.Size(66, 31);
             this.updateProdazhaBtn.TabIndex = 4;
-            this.updateProdazhaBtn.Text = "Обновить";
+            this.updateProdazhaBtn.Text = "ОК";
             this.updateProdazhaBtn.UseVisualStyleBackColor = true;
             this.updateProdazhaBtn.Click += new System.EventHandler(this.updateProdazhaBtn_Click);
             // 
             // pradazhaChek
             // 
             this.pradazhaChek.AutoSize = true;
-            this.pradazhaChek.Location = new System.Drawing.Point(12, 57);
+            this.pradazhaChek.Location = new System.Drawing.Point(6, 57);
             this.pradazhaChek.Name = "pradazhaChek";
             this.pradazhaChek.Size = new System.Drawing.Size(57, 24);
             this.pradazhaChek.TabIndex = 9;
@@ -108,7 +106,7 @@ namespace AutoMir2022
             // pradazhaOplCkb
             // 
             this.pradazhaOplCkb.AutoSize = true;
-            this.pradazhaOplCkb.Location = new System.Drawing.Point(12, 17);
+            this.pradazhaOplCkb.Location = new System.Drawing.Point(6, 21);
             this.pradazhaOplCkb.Name = "pradazhaOplCkb";
             this.pradazhaOplCkb.Size = new System.Drawing.Size(104, 24);
             this.pradazhaOplCkb.TabIndex = 8;
@@ -118,11 +116,12 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 120);
+            this.label1.Location = new System.Drawing.Point(631, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Дата ";
+            this.label1.Text = "Дата";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // prodazhaDGV
             // 
@@ -135,10 +134,10 @@ namespace AutoMir2022
             this.kolich,
             this.tsena,
             this.suma});
-            this.prodazhaDGV.Location = new System.Drawing.Point(11, 152);
+            this.prodazhaDGV.Location = new System.Drawing.Point(11, 126);
             this.prodazhaDGV.Name = "prodazhaDGV";
             this.prodazhaDGV.ReadOnly = true;
-            this.prodazhaDGV.Size = new System.Drawing.Size(672, 283);
+            this.prodazhaDGV.Size = new System.Drawing.Size(672, 305);
             this.prodazhaDGV.TabIndex = 6;
             // 
             // date
@@ -178,53 +177,31 @@ namespace AutoMir2022
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.prodazhaPlatezhBtn);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.ProdazhaBtn);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.prodazhaNaklCmb);
-            this.groupBox1.Controls.Add(this.prodazhaPlatezhCmb);
+            this.groupBox1.Controls.Add(this.KassaCmb);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Location = new System.Drawing.Point(11, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 93);
+            this.groupBox1.Size = new System.Drawing.Size(285, 93);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            // 
-            // prodazhaPlatezhBtn
-            // 
-            this.prodazhaPlatezhBtn.Location = new System.Drawing.Point(258, 55);
-            this.prodazhaPlatezhBtn.Name = "prodazhaPlatezhBtn";
-            this.prodazhaPlatezhBtn.Size = new System.Drawing.Size(114, 31);
-            this.prodazhaPlatezhBtn.TabIndex = 4;
-            this.prodazhaPlatezhBtn.Text = "Показать";
-            this.prodazhaPlatezhBtn.UseVisualStyleBackColor = true;
-            this.prodazhaPlatezhBtn.Click += new System.EventHandler(this.prodazhaPlatezhBtn_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(12, 59);
+            this.label3.Location = new System.Drawing.Point(8, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "№ Платежной";
             // 
-            // ProdazhaBtn
-            // 
-            this.ProdazhaBtn.Location = new System.Drawing.Point(258, 18);
-            this.ProdazhaBtn.Name = "ProdazhaBtn";
-            this.ProdazhaBtn.Size = new System.Drawing.Size(114, 31);
-            this.ProdazhaBtn.TabIndex = 3;
-            this.ProdazhaBtn.Text = "Показать";
-            this.ProdazhaBtn.UseVisualStyleBackColor = true;
-            this.ProdazhaBtn.Click += new System.EventHandler(this.ProdazhaBtn_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 22);
+            this.label2.Location = new System.Drawing.Point(8, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 20);
             this.label2.TabIndex = 2;
@@ -233,26 +210,29 @@ namespace AutoMir2022
             // prodazhaNaklCmb
             // 
             this.prodazhaNaklCmb.FormattingEnabled = true;
-            this.prodazhaNaklCmb.Location = new System.Drawing.Point(140, 18);
+            this.prodazhaNaklCmb.Location = new System.Drawing.Point(126, 18);
             this.prodazhaNaklCmb.Name = "prodazhaNaklCmb";
-            this.prodazhaNaklCmb.Size = new System.Drawing.Size(98, 28);
+            this.prodazhaNaklCmb.Size = new System.Drawing.Size(136, 28);
             this.prodazhaNaklCmb.TabIndex = 0;
+            this.prodazhaNaklCmb.SelectionChangeCommitted += new System.EventHandler(this.prodazhaNaklCmb_SelectionChangeCommitted);
             // 
-            // prodazhaPlatezhCmb
+            // KassaCmb
             // 
-            this.prodazhaPlatezhCmb.FormattingEnabled = true;
-            this.prodazhaPlatezhCmb.Location = new System.Drawing.Point(140, 59);
-            this.prodazhaPlatezhCmb.Name = "prodazhaPlatezhCmb";
-            this.prodazhaPlatezhCmb.Size = new System.Drawing.Size(98, 28);
-            this.prodazhaPlatezhCmb.TabIndex = 1;
+            this.KassaCmb.FormattingEnabled = true;
+            this.KassaCmb.Location = new System.Drawing.Point(126, 55);
+            this.KassaCmb.Name = "KassaCmb";
+            this.KassaCmb.Size = new System.Drawing.Size(136, 28);
+            this.KassaCmb.TabIndex = 1;
+            this.KassaCmb.SelectionChangeCommitted += new System.EventHandler(this.KassaCmb_SelectionChangeCommitted);
             // 
             // prodazhaData
             // 
-            this.prodazhaData.Location = new System.Drawing.Point(65, 120);
+            this.prodazhaData.Location = new System.Drawing.Point(512, 88);
             this.prodazhaData.Name = "prodazhaData";
             this.prodazhaData.ReadOnly = true;
-            this.prodazhaData.Size = new System.Drawing.Size(184, 26);
+            this.prodazhaData.Size = new System.Drawing.Size(171, 26);
             this.prodazhaData.TabIndex = 2;
+            this.prodazhaData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // prodazha
             // 
@@ -339,7 +319,7 @@ namespace AutoMir2022
 
         #endregion
         private System.Windows.Forms.TextBox prodazhaData;
-        private System.Windows.Forms.ComboBox prodazhaPlatezhCmb;
+        private System.Windows.Forms.ComboBox KassaCmb;
         private System.Windows.Forms.ComboBox prodazhaNaklCmb;
         private System.Windows.Forms.DataGridView prodazhaDGV;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -349,7 +329,6 @@ namespace AutoMir2022
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox pradazhaChek;
         private System.Windows.Forms.CheckBox pradazhaOplCkb;
-        private System.Windows.Forms.Button ProdazhaBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolich;
@@ -357,11 +336,10 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn suma;
         private System.Windows.Forms.Button updateProdazhaBtn;
         private System.Windows.Forms.Button prodazhaChekBtn;
-        private System.Windows.Forms.Button prodazhaPlatezhBtn;
         private System.Windows.Forms.Button prodazha;
         private System.Windows.Forms.Button vozvrat;
         private System.Windows.Forms.Button otmena;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button Close;
+        private new System.Windows.Forms.Button Close;
     }
 }

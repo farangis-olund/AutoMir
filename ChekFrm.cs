@@ -19,11 +19,12 @@ namespace AutoMir2022
         public ChekFrm()
         {
             InitializeComponent();
-            string datatoday = DateTime.Now.ToString("dd/MM/yyyy");
+            DateTime datatoday =Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
             dateBigin.Format = DateTimePickerFormat.Custom;
             dateEnd.Format = DateTimePickerFormat.Custom;
+            dateBigin.Value = datatoday;
+            dateEnd.Value = datatoday;
 
-           
         }
 
         private void sumBtn_Click(object sender, EventArgs e)

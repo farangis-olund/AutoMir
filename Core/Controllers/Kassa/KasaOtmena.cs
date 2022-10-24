@@ -14,42 +14,31 @@ namespace Core.Controllers.KasaOtmena
 
         public DataTable SelectNakNomer()
         {
-            return db.GetByQuery("Select накладной_текст FROM public.отмена_продажи WHERE оплачено =False");
+            return db.GetByQuery("Select накладной_текст FROM public.отмена_продажи WHERE оплачено =False GROUP BY накладной_текст");
 
         }
 
-        public DataTable SelectDataProdazhaKassa(string naklTxt)
+        public DataTable SelectDataOtmena(string naklTxt, int kod)
         {
-            return db.GetByQuery("SELECT e.дата, " +
-                                    "d.артикул, d.количество_возврата, d.количество_возврата*d.цена as сумма" +
-                                    " FROM public.отмена_продажи e , public.продажа_товара d" +
-                                    " WHERE d.кодпродажи=e.кодпродажи " +
-                                    "AND e.накладной_текст= '" + naklTxt + "'");
+            return db.GetByQuery("SELECT дата, " +
+                                    "артикул, количество_возврата, количество_возврата*цена as сумма" +
+                                    " FROM public.отмена_продажи " +
+                                    " WHERE накладной_текст= '" + naklTxt + "'" +
+                                    "AND код_отмена= '" + kod + "'");
         }
 
-        public DataTable SelectDataPlatezhKassa(string naklTxt)
+        public DataTable SelectKodOtmena(string naklTxt)
         {
-            return db.GetByQuery("SELECT дата, код_клиента, сумма_платежа" +
-                                    " FROM public.платежи" +
-                                    " WHERE " +
-                                    "№_платежа= '" + naklTxt + "'");
+            return db.GetByQuery("Select код_отмена FROM public.отмена_продажи " +
+                "WHERE накладной_текст= '" + naklTxt + "' GROUP BY код_отмена");
         }
 
 
-        public void updateProdazha(string naklTxt)
+        public void updateOtmena(string naklTxt, int kod)
         {
-            db.updateDB("UPDATE public.продажа SET оплачено =true WHERE накладной_текст ='" + naklTxt + "'");
+            db.updateDB("UPDATE public.отмена_продажи SET оплачено =true " +
+                "WHERE накладной_текст ='" + naklTxt + "' AND код_отмена ='" + kod + "'");
         }
 
-        public void updatePlatezh(string naklTxt)
-        {
-            db.updateDB("UPDATE public.платежи SET касса =true WHERE №_платежа ='" + naklTxt + "'");
-        }
-
-        public DataTable SelectPlatezh()
-        {
-            return db.GetByQuery("Select №_платежа FROM public.платежи WHERE касса =false");
-
-        }
     }
 }

@@ -44,20 +44,20 @@ namespace Core.Controllers.Chek
         public string SelectSumaProdazhiWithChek()
         {
             
-            DataTable dt= db.GetByParametrDate("Select SUM(d.количество*d.цена) as suma FROM public.продажа e , " +
-                                               "public.продажа_товара d WHERE d.кодпродажи=e.кодпродажи AND дата= @data", "data");
-            string suma ="";
+            DataTable dt= db.GetByParametrDate("Select d.количество*d.цена as suma FROM public.продажа e , " +
+                                               "public.продажа_товара d WHERE d.кодпродажи=e.кодпродажи AND e.chek=true AND e.дата= @data GROUP BY suma", "data");
+            double suma =0;
             if (dt.Rows.Count != 0)
             {
                 foreach (DataRow dr in dt.Rows)
                 {
 
-                   suma = dr[0].ToString();
+                   suma = suma+Convert.ToDouble(dr[0]);
                 }
 
             }
 
-            return suma;
+            return suma.ToString();
         }
 
         public int SelectNomerVozvrata()

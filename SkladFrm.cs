@@ -43,29 +43,7 @@ namespace AutoMir2022
 
         private void ViborNakl_Click(object sender, EventArgs e)
         {
-            Sklad skladObj = new Sklad();
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            DataTable dt =skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
-            if (dt.Rows.Count>0) {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int index = skladDGV.Rows.Add();
-                    skladDGV.Rows[index].Cells[0].Value = dr[0];
-                    skladDGV.Rows[index].Cells[1].Value = dr[1];
-                    skladDGV.Rows[index].Cells[2].Value = dr[2];
-                    skladDGV.Rows[index].Cells[3].Value = dr[3];
-                    skladDGV.Rows[index].Cells[4].Value = dr[4];
-
-                }
-
-                //skladDGV.DataSource = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
-                if (skladDGV.Rows.Count > 0)
-                {
-                    oplachenoChk.Checked = true;
-                    DataTxt.Text = Convert.ToDateTime(skladDGV.Rows[0].Cells[0].Value).ToString("D");
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref skladDGV, "suma", "", "", "", 0);
-                }
-            }
+            
             
             
         }
@@ -90,6 +68,36 @@ namespace AutoMir2022
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void NomerNakladnoyCmb_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            NomerNakladnoyCmb.Text = NomerNakladnoyCmb.GetItemText(NomerNakladnoyCmb.SelectedItem);
+            
+            Sklad skladObj = new Sklad();
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+            DataTable dt = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    int index = skladDGV.Rows.Add();
+                    skladDGV.Rows[index].Cells[0].Value = dr[0];
+                    skladDGV.Rows[index].Cells[1].Value = dr[1];
+                    skladDGV.Rows[index].Cells[2].Value = dr[2];
+                    skladDGV.Rows[index].Cells[3].Value = dr[3];
+                    skladDGV.Rows[index].Cells[4].Value = dr[4];
+
+                }
+
+                //skladDGV.DataSource = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
+                if (skladDGV.Rows.Count > 0)
+                {
+                    oplachenoChk.Checked = true;
+                    DataTxt.Text = Convert.ToDateTime(skladDGV.Rows[0].Cells[0].Value).ToString("D");
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref skladDGV, "suma", "", "", "", 0);
+                }
+            }
         }
     }
 }

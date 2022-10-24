@@ -52,7 +52,7 @@ namespace Core.DB
             NpgsqlCommand sql = conn.CreateCommand();
             sql.CommandType = CommandType.Text;
             sql.CommandText = query;
-            sql.Parameters.Add(parametr, NpgsqlDbType.Date).Value = DateTime.Now;
+            sql.Parameters.Add(parametr, NpgsqlDbType.Date).Value =Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
             
             NpgsqlDataReader dr = sql.ExecuteReader();
             if (dr.HasRows)

@@ -276,7 +276,7 @@ namespace AutoMir2022
 
             for (int i = 0; i < comboColName.Length / 2; i++)
             {
-                if (comboColName[i, 1] != "")
+                if (comboColName[i, 1] != "" && comboColName[i, 1] != "%%")
                 {
                     filterQueryColumn[j, 0] = comboColName[i, 0];
                     filterQueryColumn[j, 1] = comboColName[i, 1];
@@ -636,15 +636,14 @@ namespace AutoMir2022
             bool check = kontrolProdazhaChek.Checked;
             if (skidkaValue.Text == "") skidkaValue.Text = "0";
             int skidkaSql = Int16.Parse(skidkaValue.Text);
-
-            int nakKod = roznichProdazhaObj.getLastNakladnoyText();
-            
-            string nakText = roznichProdazhaObj.GetColumnName(nakKod+1);  /*roznichProdazhaObj.nakTextEncrement(nakText);*/
-
             double kurs = Convert.ToDouble(kursValyuti.Text);
 
 
             DBNpgsql db = new DBNpgsql();
+
+            int nakKod = roznichProdazhaObj.getLastNakladnoyText();
+            string nakText = roznichProdazhaObj.GetColumnName(nakKod+1);  /*roznichProdazhaObj.nakTextEncrement(nakText);*/
+
             db.insertProdazha(kurs, skidkaSql, viborProdovets.Text, roznichProdazhaObj.SummaPropis(summaKontrakta),
                     spetsPredlozhenieValue.Text, nakText, check);
 
@@ -889,6 +888,41 @@ namespace AutoMir2022
         {
             dataGridView1.DataSource=null;
             showAllTovar();
+        }
+
+        private void Brand_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string comboValue = Brand.GetItemText(Brand.SelectedItem);
+            Brand.Text = comboValue;
+            search.PerformClick();
+        }
+
+        private void marka_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string comboValue = marka.GetItemText(marka.SelectedItem);
+            marka.Text = comboValue;
+            search.PerformClick();
+        }
+
+        private void gruppa_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string comboValue = gruppa.GetItemText(gruppa.SelectedItem);
+            gruppa.Text = comboValue;
+            search.PerformClick();
+        }
+
+        private void artikul_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string comboValue = artikul.GetItemText(artikul.SelectedItem);
+            artikul.Text = comboValue;
+            search.PerformClick();
+        }
+
+        private void naimenovanie_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string comboValue = naimenovanie.GetItemText(naimenovanie.SelectedItem);
+            naimenovanie.Text = comboValue;
+            search.PerformClick();
         }
     }
 }

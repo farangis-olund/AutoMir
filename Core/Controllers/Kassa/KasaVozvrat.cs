@@ -14,7 +14,7 @@ namespace Core.Controllers.KasaVozvrat
 
         public DataTable SelectNakNomer()
         {
-            return db.GetByQuery("Select накладной_текст FROM public.возврат WHERE оплачено =False");
+            return db.GetByQuery("Select накладной_текст FROM public.возврат WHERE оплачено =False GROUP BY накладной_текст");
 
         }
 
@@ -33,24 +33,14 @@ namespace Core.Controllers.KasaVozvrat
             return db.GetByQuery("SELECT код_возврата" +
                                     " FROM public.возврат" +
                                     " WHERE " +
-                                    "накладной_текст= '" + naklTxt + "'");
+                                    "накладной_текст= '" + naklTxt + "' GROUP BY код_возврата");
         }
 
 
-        public void updateProdazha(string naklTxt)
+        public void updateVozvrat(string naklTxt, int kod)
         {
-            db.updateDB("UPDATE public.продажа SET оплачено =true WHERE накладной_текст ='" + naklTxt + "'");
+            db.updateDB("UPDATE public.возврат SET оплачено =true WHERE накладной_текст ='" + naklTxt + "' AND код_возврата ='" + kod + "'");
         }
 
-        public void updatePlatezh(string naklTxt)
-        {
-            db.updateDB("UPDATE public.платежи SET касса =true WHERE №_платежа ='" + naklTxt + "'");
-        }
-
-        public DataTable SelectPlatezh()
-        {
-            return db.GetByQuery("Select №_платежа FROM public.платежи WHERE касса =false");
-
-        }
     }
 }

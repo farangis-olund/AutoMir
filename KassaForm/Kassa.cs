@@ -24,41 +24,7 @@ namespace AutoMir2022
             showAllcombo();
         }
 
-        private void ProdazhaBtn_Click(object sender, EventArgs e)
-        {
-            prodazhaDGV.Rows.Clear();
-            prodazhaPlatezhCmb.Text = null; 
-            KasaProdazha kasaObj = new KasaProdazha();
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            DataTable dt = kasaObj.SelectDataProdazhaKassa(prodazhaNaklCmb.Text);
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int index = prodazhaDGV.Rows.Add();
-                    prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
-                    prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
-                    prodazhaDGV.Columns[1].HeaderText = "Артикул";
-                    prodazhaDGV.Rows[index].Cells[2].Value = dr[2];
-                    prodazhaDGV.Rows[index].Cells[3].Value = dr[3];
-                    prodazhaDGV.Rows[index].Cells[4].Value = dr[4];
-                    prodazhaDGV.Columns[2].Visible = true;
-                    prodazhaDGV.Columns[3].Visible = true;
-                    pradazhaChek.Checked =Convert.ToBoolean(dr[5]);
-                }
-
-                //skladDGV.DataSource = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
-                if (prodazhaDGV.Rows.Count > 0)
-                {
-                    prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
-                   
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
-                    updateProdazhaBtn.Enabled = true;
-                    prodazhaChekBtn.Enabled = true;
-                }
-            }
-
-        }
+        
 
         private void prodazhaChekBtn_Click(object sender, EventArgs e)
         {
@@ -77,106 +43,90 @@ namespace AutoMir2022
         private void updateProdazhaBtn_Click(object sender, EventArgs e)
         {
             KasaProdazha kasaObj = new KasaProdazha();
-            if (pradazhaOplCkb.Checked == true && prodazhaNaklCmb.Text!="")
-            {
-                kasaObj.updateProdazha(prodazhaNaklCmb.Text);
-                showAllcombo();
-                MessageBox.Show("Обновление успешно внесено!");
-            }
+            KasaOtmena kasaOtmenaObj = new KasaOtmena();
+            KasaVozvrat kasaVozvratObj = new KasaVozvrat();
             
-            else if (pradazhaOplCkb.Checked == true && prodazhaPlatezhCmb.Text != "")
+            //продажа
+            if (label3.Text == "№ Платежной")
             {
-                kasaObj.updatePlatezh(prodazhaPlatezhCmb.Text);
-                showAllcombo();
-                MessageBox.Show("Обновление успешно внесено!");
-            }
-            else { MessageBox.Show("Данные заданны некоректно или неправильном формате, обновление не внесен!");
-            }
-
-
-        }
-
-        private void prodazhaPlatezhBtn_Click(object sender, EventArgs e)
-        {
-            prodazhaDGV.Rows.Clear();
-            prodazhaNaklCmb.Text = null;
-            if (prodazhaPlatezhCmb.Text != null)
-            {
-                RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                KasaProdazha kasaObj = new KasaProdazha();
-
-                DataTable dt = kasaObj.SelectDataPlatezhKassa( prodazhaPlatezhCmb.Text);
-                if (dt.Rows.Count > 0)
+                if (pradazhaOplCkb.Checked == true && prodazhaNaklCmb.Text != "")
                 {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        int index = prodazhaDGV.Rows.Add();
-                        prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
-                        prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
-                        prodazhaDGV.Columns[1].HeaderText = "Код клиента";
-                        prodazhaDGV.Rows[index].Cells[4].Value = dr[2];
-                        prodazhaDGV.Columns[2].Visible = false;
-                        prodazhaDGV.Columns[3].Visible = false;
+                    kasaObj.updateProdazha(prodazhaNaklCmb.Text);
+                    showAllcombo();
+                    MessageBox.Show("Обновление успешно внесено!");
+                }
 
-                    }
-
-                    //skladDGV.DataSource = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
-                    if (prodazhaDGV.Rows.Count > 0)
-                    {
-                        prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
-
-                        roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
-                        updateProdazhaBtn.Enabled = true;
-                    }
+                else if (pradazhaOplCkb.Checked == true && KassaCmb.Text != "")
+                {
+                    kasaObj.updatePlatezh(KassaCmb.Text);
+                    showAllcombo();
+                    MessageBox.Show("Обновление успешно внесено!");
+                }
+                else
+                {
+                    MessageBox.Show("Данные заданны некоректно или неправильном формате, обновление не внесен!");
                 }
             }
+            //возврат
+            if (label3.Text == "Код возврата")
+            {
+                if (pradazhaOplCkb.Checked == true && prodazhaNaklCmb.Text != "" && KassaCmb.Text != "")
+                {
+                    kasaVozvratObj.updateVozvrat(prodazhaNaklCmb.Text, Convert.ToInt32(KassaCmb.Text));
+                    showAllcombo();
+                    MessageBox.Show("Обновление успешно внесено!");
+                }
+
+            }
+            //отмена
+            if (label3.Text == "Код отмены")
+            {
+                if (pradazhaOplCkb.Checked == true && prodazhaNaklCmb.Text != "" && KassaCmb.Text != "")
+                {
+                    kasaOtmenaObj.updateOtmena(prodazhaNaklCmb.Text, Convert.ToInt32(KassaCmb.Text));
+                    showAllcombo();
+                    MessageBox.Show("Обновление успешно внесено!");
+                }
+
+            }
+
         }
+
 
         public void showAllcombo()
         {
             prodazhaDGV.Rows.Clear();
             prodazhaNaklCmb.DataSource = null;
-            prodazhaPlatezhCmb.DataSource = null;
+            KassaCmb.DataSource = null;
             prodazhaNaklCmb.DisplayMember = "Накладной_текст";
 
-            if (label3.Text == "")
+            if (label3.Text == "№ Платежной")
             {
                 //продажа
                 KasaProdazha kasaObj = new KasaProdazha();
                 prodazhaNaklCmb.DataSource = kasaObj.SelectNakNomer();
 
-                prodazhaPlatezhCmb.DisplayMember = "№_платежа";
-                prodazhaPlatezhCmb.DataSource = kasaObj.SelectPlatezh();
+                KassaCmb.DisplayMember = "№_платежа";
+                KassaCmb.DataSource = kasaObj.SelectPlatezh();
                 //--------------------------------------------------------
 
             }
-            else if (label3.Text == "код_возврата")
+            else if (label3.Text == "Код возврата")
             {
                 //возврат
                 KasaVozvrat vozvratObj = new KasaVozvrat();
                 prodazhaNaklCmb.DataSource = vozvratObj.SelectNakNomer();
-
-                prodazhaPlatezhCmb.DisplayMember = "код_возврата";
-                prodazhaPlatezhCmb.DataSource = vozvratObj.SelectPlatezh();
-                //--------------------------------------------------------
+                 //--------------------------------------------------------
 
             }
-            else if (label3.Text == "код_отмена")
+            else if (label3.Text == "Код отмены")
             {
                 //отмена
                 KasaOtmena otmenaObj = new KasaOtmena();
                 prodazhaNaklCmb.DataSource = otmenaObj.SelectNakNomer();
-
-                prodazhaPlatezhCmb.DisplayMember = "код_отмена";
-                prodazhaPlatezhCmb.DataSource = otmenaObj.SelectPlatezh();
-                //--------------------------------------------------------
+                   //--------------------------------------------------------
 
             }
-
-
-
-
-
 
             pradazhaChek.Checked = false;
             pradazhaOplCkb.Checked = false;
@@ -184,7 +134,7 @@ namespace AutoMir2022
 
             prodazhaData.Text = "";
             prodazhaNaklCmb.Text = "";
-            prodazhaPlatezhCmb.Text = "";
+            KassaCmb.Text = "";
             
 
         }
@@ -196,6 +146,7 @@ namespace AutoMir2022
             label3.Text = "№ Платежной";
             prodazhaChekBtn.Visible = true;
             pradazhaChek.Visible = true;
+            showAllcombo();
         }
 
         
@@ -206,6 +157,7 @@ namespace AutoMir2022
             label3.Text = "Код возврата";
             prodazhaChekBtn.Visible = false;
             pradazhaChek.Visible = false;
+            showAllcombo();
         }
 
         private void otmena_Click(object sender, EventArgs e)
@@ -215,11 +167,178 @@ namespace AutoMir2022
             label3.Text = "Код отмены";
             prodazhaChekBtn.Visible = false;
             pradazhaChek.Visible = false;
+            showAllcombo();
         }
         private void Close_Click(object sender, EventArgs e)
         {
             this.Close();
 
         }
+
+        private void prodazhaNaklCmb_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            KasaProdazha kasaObj = new KasaProdazha();
+            KasaVozvrat kasaVozvratObj = new KasaVozvrat();
+            KasaOtmena kasaOtmenaObj = new KasaOtmena();
+            
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
+            string comboValue =prodazhaNaklCmb.GetItemText(prodazhaNaklCmb.SelectedItem);
+            DataTable dt=null;
+            prodazhaDGV.Rows.Clear();
+            if (comboValue != "")
+            {
+                //продажа
+                if (label3.Text == "№ Платежной")
+                {
+                    dt = kasaObj.SelectDataProdazhaKassa(comboValue);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            int index = prodazhaDGV.Rows.Add();
+                            prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
+                            prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
+                            prodazhaDGV.Columns[1].HeaderText = "Артикул";
+                            prodazhaDGV.Rows[index].Cells[2].Value = dr[2];
+                            prodazhaDGV.Rows[index].Cells[3].Value = dr[3];
+                            prodazhaDGV.Rows[index].Cells[4].Value = dr[4];
+                            prodazhaDGV.Columns[2].Visible = true;
+                            prodazhaDGV.Columns[3].Visible = true;
+                            pradazhaChek.Checked = Convert.ToBoolean(dr[5]);
+                        }
+
+                        if (prodazhaDGV.Rows.Count > 0)
+                        {
+                            prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
+
+                            roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
+                            updateProdazhaBtn.Enabled = true;
+                            prodazhaChekBtn.Enabled = true;
+                        }
+                    }
+
+
+                }
+                //возврат
+                if (label3.Text == "Код возврата")
+                {
+                    KassaCmb.DisplayMember = "код_возврата";
+                    KassaCmb.DataSource = kasaVozvratObj.SelectKodVazvrata(comboValue);
+                    KassaCmb.Text = "";
+                }
+                //отмена
+                if (label3.Text == "Код отмены")
+                {
+                    KassaCmb.DisplayMember = "код_отмена";
+                    KassaCmb.DataSource = kasaOtmenaObj.SelectKodOtmena(comboValue);
+                    KassaCmb.Text = "";
+                }
+
+
+            }
+
+        }
+
+        private void KassaCmb_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            KasaProdazha kasaObj = new KasaProdazha();
+            KasaVozvrat kasaVozvratObj = new KasaVozvrat();
+            KasaOtmena kasaOtmenaObj = new KasaOtmena();
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
+            string comboValue = KassaCmb.GetItemText(KassaCmb.SelectedItem);
+            
+            prodazhaDGV.Rows.Clear();
+
+            if (comboValue != "")
+            {
+                //продажа
+                if (label3.Text == "№ Платежной")
+                {
+                    prodazhaNaklCmb.Text = "";
+
+                    DataTable dt = kasaObj.SelectDataPlatezhKassa(comboValue);
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            int index = prodazhaDGV.Rows.Add();
+                            prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
+                            prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
+                            prodazhaDGV.Columns[1].HeaderText = "Код клиента";
+                            prodazhaDGV.Rows[index].Cells[4].Value = dr[2];
+                            prodazhaDGV.Columns[2].Visible = false;
+                            prodazhaDGV.Columns[3].Visible = false;
+
+                        }
+
+                    }
+                }
+
+
+                //возврат
+                if (label3.Text == "Код возврата")
+                {
+                        DataTable dt = kasaVozvratObj.SelectDataVozvratKassa(prodazhaNaklCmb.Text, comboValue);
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                int index = prodazhaDGV.Rows.Add();
+                                prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
+                                prodazhaDGV.Columns[0].Visible = false;
+                                prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
+                                prodazhaDGV.Columns[1].HeaderText = "Артикул";
+                                prodazhaDGV.Columns[2].Visible = true;
+                                prodazhaDGV.Rows[index].Cells[2].Value = dr[2];
+                                prodazhaDGV.Rows[index].Cells[4].Value = dr[3];
+                                prodazhaDGV.Columns[3].Visible = false;
+
+                            }
+
+                        }
+                    
+                }
+
+                //отмена
+
+                if (label3.Text == "Код отмены")
+                {
+                    DataTable dt = kasaOtmenaObj.SelectDataOtmena(prodazhaNaklCmb.Text,Convert.ToInt32( comboValue));
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            int index = prodazhaDGV.Rows.Add();
+                            prodazhaDGV.Rows[index].Cells[0].Value = dr[0];
+                            prodazhaDGV.Columns[0].Visible = false;
+                            prodazhaDGV.Rows[index].Cells[1].Value = dr[1];
+                            prodazhaDGV.Columns[1].HeaderText = "Артикул";
+                            prodazhaDGV.Columns[2].Visible = true;
+                            prodazhaDGV.Rows[index].Cells[2].Value = dr[2];
+                            prodazhaDGV.Rows[index].Cells[4].Value = dr[3];
+                            prodazhaDGV.Columns[3].Visible = false;
+
+                        }
+
+                    }
+                }
+
+
+                //skladDGV.DataSource = skladObj.SelectDataSklad(NomerNakladnoyCmb.Text);
+                if (prodazhaDGV.Rows.Count > 0)
+                {
+                    prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
+
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
+                    updateProdazhaBtn.Enabled = true;
+                }
+
+            }
+        }
+
+        
     }
 }

@@ -33,7 +33,6 @@ namespace AutoMir2022
             this.label1 = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.show = new System.Windows.Forms.Button();
             this.oplachenoChk = new System.Windows.Forms.CheckBox();
             this.SkladChek = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@ namespace AutoMir2022
             this.NomerNakladnoyCmb.Name = "NomerNakladnoyCmb";
             this.NomerNakladnoyCmb.Size = new System.Drawing.Size(150, 28);
             this.NomerNakladnoyCmb.TabIndex = 0;
+            this.NomerNakladnoyCmb.SelectionChangeCommitted += new System.EventHandler(this.NomerNakladnoyCmb_SelectionChangeCommitted);
             // 
             // label1
             // 
@@ -75,7 +75,6 @@ namespace AutoMir2022
             // 
             this.TopPanel.BackColor = System.Drawing.Color.LightSlateGray;
             this.TopPanel.Controls.Add(this.button1);
-            this.TopPanel.Controls.Add(this.show);
             this.TopPanel.Controls.Add(this.oplachenoChk);
             this.TopPanel.Controls.Add(this.SkladChek);
             this.TopPanel.Controls.Add(this.label2);
@@ -97,16 +96,6 @@ namespace AutoMir2022
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // show
-            // 
-            this.show.Location = new System.Drawing.Point(170, 62);
-            this.show.Name = "show";
-            this.show.Size = new System.Drawing.Size(92, 30);
-            this.show.TabIndex = 6;
-            this.show.Text = "Показать";
-            this.show.UseVisualStyleBackColor = true;
-            this.show.Click += new System.EventHandler(this.ViborNakl_Click);
             // 
             // oplachenoChk
             // 
@@ -249,7 +238,6 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridView skladDGV;
         private System.Windows.Forms.CheckBox oplachenoChk;
         private System.Windows.Forms.CheckBox SkladChek;
-        private System.Windows.Forms.Button show;
         private System.Windows.Forms.DataGridViewTextBoxColumn data;
         private System.Windows.Forms.DataGridViewCheckBoxColumn oplacheno;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul;

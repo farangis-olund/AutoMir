@@ -36,12 +36,12 @@ namespace AutoMir2022
             this.sumBtn = new System.Windows.Forms.Button();
             this.reportBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.proveritBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.nakNomerTxb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.proveritBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@ namespace AutoMir2022
             this.dateBigin.Name = "dateBigin";
             this.dateBigin.Size = new System.Drawing.Size(133, 26);
             this.dateBigin.TabIndex = 4;
-            this.dateBigin.Value = new System.DateTime(2022, 10, 19, 11, 53, 41, 0);
+            this.dateBigin.Value = new System.DateTime(2022, 10, 23, 0, 0, 0, 0);
             // 
             // dateEnd
             // 
@@ -112,6 +112,16 @@ namespace AutoMir2022
             this.groupBox1.Size = new System.Drawing.Size(627, 76);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
+            // 
+            // proveritBtn
+            // 
+            this.proveritBtn.Location = new System.Drawing.Point(290, 25);
+            this.proveritBtn.Name = "proveritBtn";
+            this.proveritBtn.Size = new System.Drawing.Size(102, 28);
+            this.proveritBtn.TabIndex = 4;
+            this.proveritBtn.Text = "Проверить";
+            this.proveritBtn.UseVisualStyleBackColor = true;
+            this.proveritBtn.Click += new System.EventHandler(this.proveritBtn_Click);
             // 
             // updateBtn
             // 
@@ -160,21 +170,11 @@ namespace AutoMir2022
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.Visible = false;
             // 
-            // proveritBtn
-            // 
-            this.proveritBtn.Location = new System.Drawing.Point(290, 25);
-            this.proveritBtn.Name = "proveritBtn";
-            this.proveritBtn.Size = new System.Drawing.Size(102, 28);
-            this.proveritBtn.TabIndex = 4;
-            this.proveritBtn.Text = "Проверить";
-            this.proveritBtn.UseVisualStyleBackColor = true;
-            this.proveritBtn.Click += new System.EventHandler(this.proveritBtn_Click);
-            // 
             // ChekFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 633);
+            this.ClientSize = new System.Drawing.Size(833, 633);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.reportBtn);
