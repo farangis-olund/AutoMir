@@ -733,22 +733,7 @@ namespace AutoMir2022
 
         private void showOtmenaBtn_Click(object sender, EventArgs e)
         {
-            otmenaProdazhiDGV.Rows.Clear();
-            OtmenaProdazhi otmenaProdazhiObt = new OtmenaProdazhi();
-            DataTable dt = otmenaProdazhiObt.SelectDataDGV(nakNomerOtmenaCmb.Text);
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int index = otmenaProdazhiDGV.Rows.Add();
-
-                    otmenaProdazhiDGV.Rows[index].Cells[1].Value = dr[0];
-                    otmenaProdazhiDGV.Rows[index].Cells[2].Value = dr[1];
-                    otmenaProdazhiDGV.Rows[index].Cells[3].Value = dr[2];
-
-                }
-                otmenaProdazhiDGV.Rows.Add();
-            }
+            
 
         }
 
@@ -924,5 +909,57 @@ namespace AutoMir2022
             naimenovanie.Text = comboValue;
             search.PerformClick();
         }
+
+        private void nakNomerOtmenaCmb_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            nakNomerOtmenaCmb.Text = nakNomerOtmenaCmb.GetItemText(nakNomerOtmenaCmb.SelectedItem);
+            otmenaProdazhiDGV.Rows.Clear();
+            OtmenaProdazhi otmenaProdazhiObt = new OtmenaProdazhi();
+            DataTable dt = otmenaProdazhiObt.SelectDataDGV(nakNomerOtmenaCmb.Text);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    int index = otmenaProdazhiDGV.Rows.Add();
+
+                    otmenaProdazhiDGV.Rows[index].Cells[1].Value = dr[0];
+                    otmenaProdazhiDGV.Rows[index].Cells[2].Value = dr[1];
+                    otmenaProdazhiDGV.Rows[index].Cells[3].Value = dr[2];
+
+                }
+                otmenaProdazhiDGV.Rows.Add();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+            int kod = Convert.ToInt32(kodVozvrataTxb.Text);
+            DataTable dt = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
+            string kodKlienta = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                kodKlienta = dr["kodKlienta"].ToString();
+                break;
+            }
+            if (kodKlienta == "")
+            {
+                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
+                nameOfReport = "ChekReportOtmenaRozn";
+
+            }
+            else
+            {
+                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
+                nameOfReport = "ChekReportOtmenaOpt";
+            }
+
+            otmenaProdazhiDGV.Rows.Clear();
+            ChekReportPrint reportPrintObj = new ChekReportPrint();
+            reportPrintObj.Show();
+
+        }
+
+        
     }
 }

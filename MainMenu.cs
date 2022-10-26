@@ -47,7 +47,7 @@ namespace AutoMir2022
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;
-            this.PanelData.Controls.Add(myForm);
+            this.panelData.Controls.Add(myForm);
             myForm.Show();
 
             ////var SkladFrm = new SkladFrm();
@@ -61,10 +61,21 @@ namespace AutoMir2022
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;
-            this.PanelData.Controls.Add(myForm);
+            this.panelData.Controls.Add(myForm);
             myForm.Show();
 
 
+        }
+
+        private void возвратToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            info.Visible = false;
+            Vozvrat myForm = new Vozvrat();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.panelData.Controls.Add(myForm);
+            myForm.Show();
         }
     }
 }

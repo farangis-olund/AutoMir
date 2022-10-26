@@ -131,8 +131,8 @@ namespace Core.DB
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
             conn.Open();
 
-            NpgsqlCommand command = new NpgsqlCommand("update public.отмена_продажи set код_возврата = :kod, количество_возврата = :kol, " +
-                "сумма = :suma where накладной_текст = :nakl AND код_возврата IS NULL AND артикул = :artikul;", conn);
+            NpgsqlCommand command = new NpgsqlCommand("update public.отмена_продажи set код_отмена = :kod, количество_возврата = :kol, " +
+                "сумма = :suma where накладной_текст = :nakl AND код_отмена IS NULL AND артикул = :artikul;", conn);
             
                 command.Parameters.Add(new NpgsqlParameter("kol", NpgsqlTypes.NpgsqlDbType.Integer));
                 command.Parameters.Add(new NpgsqlParameter("suma", NpgsqlTypes.NpgsqlDbType.Double));

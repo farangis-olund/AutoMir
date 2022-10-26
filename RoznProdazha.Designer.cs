@@ -154,7 +154,6 @@ namespace AutoMir2022
             this.panel1 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.kodVozvrataTxb = new System.Windows.Forms.TextBox();
-            this.showOtmenaBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.otmenaProdazhiBtn = new System.Windows.Forms.Button();
             this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
@@ -1212,7 +1211,6 @@ namespace AutoMir2022
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.kodVozvrataTxb);
-            this.panel1.Controls.Add(this.showOtmenaBtn);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.otmenaProdazhiBtn);
             this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
@@ -1226,7 +1224,7 @@ namespace AutoMir2022
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(435, 24);
+            this.label14.Location = new System.Drawing.Point(276, 23);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(45, 23);
             this.label14.TabIndex = 7;
@@ -1234,35 +1232,26 @@ namespace AutoMir2022
             // 
             // kodVozvrataTxb
             // 
-            this.kodVozvrataTxb.Location = new System.Drawing.Point(480, 20);
+            this.kodVozvrataTxb.Location = new System.Drawing.Point(321, 19);
             this.kodVozvrataTxb.Name = "kodVozvrataTxb";
             this.kodVozvrataTxb.Size = new System.Drawing.Size(83, 30);
             this.kodVozvrataTxb.TabIndex = 6;
             // 
-            // showOtmenaBtn
-            // 
-            this.showOtmenaBtn.Location = new System.Drawing.Point(305, 18);
-            this.showOtmenaBtn.Name = "showOtmenaBtn";
-            this.showOtmenaBtn.Size = new System.Drawing.Size(105, 42);
-            this.showOtmenaBtn.TabIndex = 5;
-            this.showOtmenaBtn.Text = "Показать";
-            this.showOtmenaBtn.UseVisualStyleBackColor = true;
-            this.showOtmenaBtn.Click += new System.EventHandler(this.showOtmenaBtn_Click);
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(861, 13);
+            this.button2.Location = new System.Drawing.Point(591, 17);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 42);
+            this.button2.Size = new System.Drawing.Size(95, 34);
             this.button2.TabIndex = 4;
             this.button2.Text = "Печать накладной";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // otmenaProdazhiBtn
             // 
-            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(707, 13);
+            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(480, 17);
             this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
-            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(142, 43);
+            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(94, 34);
             this.otmenaProdazhiBtn.TabIndex = 3;
             this.otmenaProdazhiBtn.Text = "Отмена продажи";
             this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
@@ -1273,8 +1262,9 @@ namespace AutoMir2022
             this.nakNomerOtmenaCmb.FormattingEnabled = true;
             this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 20);
             this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
-            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(166, 31);
+            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(126, 31);
             this.nakNomerOtmenaCmb.TabIndex = 2;
+            this.nakNomerOtmenaCmb.SelectionChangeCommitted += new System.EventHandler(this.nakNomerOtmenaCmb_SelectionChangeCommitted);
             // 
             // label13
             // 
@@ -1449,7 +1439,6 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridView otmenaProdazhiDGV;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button otmenaProdazhiBtn;
-        private System.Windows.Forms.Button showOtmenaBtn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn viborIzSpiska;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikulOtmena;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolOtmena;

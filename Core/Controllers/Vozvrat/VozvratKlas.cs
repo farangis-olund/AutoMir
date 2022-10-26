@@ -2,15 +2,15 @@
 using Core.DB;
 
 
-namespace Core.Controllers.OtmenaProdazhi
+namespace Core.Controllers.VozvratKlas
 {
-    class OtmenaProdazhi
+    class VozvratKlas
     {
         private DBNpgsql db = new DBNpgsql();
 
         public DataTable SelectDataDGV(string naklTxt)
         {
-            return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена " +
+            return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена, d.количество*d.цена as suma, e.дата " +
                                     "FROM public.продажа e , public.продажа_товара d " +
                                     "WHERE d.кодпродажи=e.кодпродажи " +
                                     "AND e.накладной_текст= '" + naklTxt + "'");
@@ -18,7 +18,19 @@ namespace Core.Controllers.OtmenaProdazhi
 
         public DataTable SelectNomerNakladnoy()
         {
-            return db.GetByParametrDate("Select накладной_текст FROM public.продажа WHERE дата>= @data", "data");
+            return db.GetByQuery("Select накладной_текст FROM public.продажа");
+        }
+
+        public DataTable SelectKodKlienta()
+        {
+            return db.GetByQuery("Select e.код_клиента, d.фио FROM public.продажа e , public.customers d " +
+                "WHERE d.код_клиента=e.код_клиента");
+        }
+
+        public DataTable SelectArtikul()
+        {
+            return db.GetByQuery("Select артикул FROM public.продажа_товара " +
+                "Group by артикул");
         }
 
         public int SelectNomerVozvrata()

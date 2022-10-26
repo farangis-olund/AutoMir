@@ -284,7 +284,7 @@ namespace AutoMir2022
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(591, 2);
+            this.Close.Location = new System.Drawing.Point(591, 19);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(119, 37);
             this.Close.TabIndex = 14;
