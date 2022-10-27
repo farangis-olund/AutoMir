@@ -36,7 +36,7 @@ namespace Core.Controllers.KasaOtmena
 
         public void updateOtmena(string naklTxt, int kod)
         {
-            db.updateDB("UPDATE public.отмена_продажи SET оплачено =true " +
+            db.insertUpdateToDB("UPDATE public.отмена_продажи SET оплачено =true " +
                 "WHERE накладной_текст ='" + naklTxt + "' AND код_отмена ='" + kod + "'");
         }
 

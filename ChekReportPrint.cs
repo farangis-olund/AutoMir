@@ -44,7 +44,11 @@ namespace AutoMir2022
                 fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
 
             }
+            else if (checkType == "ChekReportVozvrat")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvrat.rdlc";
 
+            }
 
             reportViewer1.LocalReport.ReportPath = fullPath;
 

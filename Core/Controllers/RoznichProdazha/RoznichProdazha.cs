@@ -216,7 +216,7 @@ namespace Core.Controllers.RoznichProdazha
             string propis, string primech, string naklText, bool chek)
                 {
             //skidka скидка__%_,     + skidka + "', '"
-            db.insertToDB("INSERT INTO public.продажа ( курс_валюты,  продавец, прописью, примечание, накладной_текст, chek) VALUES " +
+            db.insertUpdateToDB("INSERT INTO public.продажа ( курс_валюты,  продавец, прописью, примечание, накладной_текст, chek) VALUES " +
                 "('" + kurs + "', '" + prodovets + "'," +
                 " '" + propis + "', '" + primech + "', '" + naklText + "', '" + chek + "')");            
             
@@ -225,7 +225,7 @@ namespace Core.Controllers.RoznichProdazha
         public void insertKursValyuti(double kurs)
         {
             
-            db.insertToDB("INSERT INTO public.курс_валюты ( курс_валюты) VALUES " +
+            db.insertUpdateToDB("INSERT INTO public.курс_валюты ( курс_валюты) VALUES " +
                 "('" + kurs + "')");
 
         }
@@ -276,7 +276,7 @@ namespace Core.Controllers.RoznichProdazha
             if (plyusMinus == "-") kolTovara = getKolTovara(artikul) - kolichestvo;
 
 
-            db.updateDB("UPDATE public.товар SET количество = '" + kolTovara + "' WHERE артикул='" + artikul + "'");
+            db.insertUpdateToDB("UPDATE public.товар SET количество = '" + kolTovara + "' WHERE артикул='" + artikul + "'");
         }
 
 
@@ -313,7 +313,7 @@ namespace Core.Controllers.RoznichProdazha
 
         public void RestartKodProdazhi(double summa)
         {
-            db.updateDB("ALTER SEQUENCE public.продажа_кодпродажи_seq RESTART WITH 1");
+            db.insertUpdateToDB("ALTER SEQUENCE public.продажа_кодпродажи_seq RESTART WITH 1");
         }
         
 

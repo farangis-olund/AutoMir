@@ -27,7 +27,7 @@ namespace Core.Controllers.MestoNaSkalde
 
         public void updateMesto(string artikul, string mesto)
         {
-            db.updateDB("UPDATE public.товар SET место_на_складе ='" + mesto + "' WHERE артикул ='" + artikul + "'");
+            db.insertUpdateToDB("UPDATE public.товар SET место_на_складе ='" + mesto + "' WHERE артикул ='" + artikul + "'");
         }
 
 

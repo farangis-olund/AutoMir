@@ -69,7 +69,7 @@ namespace Core.DB
 
 
 
-        public void insertToDB(string query)
+        public void insertUpdateToDB(string query)
         {
             // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
@@ -81,8 +81,7 @@ namespace Core.DB
             comm.ExecuteNonQuery();
         }
 
-
-        public void updateDB(string query)
+        public void insertWithParametrDouble(string query, string parametr, double suma)
         {
             // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
@@ -91,9 +90,9 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
+            comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
             comm.ExecuteNonQuery();
         }
-
 
         //ALTER SEQUENCE продажа_№_накладной_seq RESTART WITH 1;
 
@@ -199,30 +198,6 @@ namespace Core.DB
             }
 
         }
-
-
-
-        //public void updateTovarKolich(string artikul, int kolich)
-        //{
-        //    // Connect to a PostgreSQL database
-        //    NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-        //    conn.Open();
-
-        //    using (var cmd = new NpgsqlCommand(" INSERT INTO public.продажа_товара (артикул, количество, цена, кодпродажи) VALUES" +
-        //        " ( @артикул, @количество, " +
-        //        "@цена, @кодпродажи)", conn))
-        //    {
-
-        //        cmd.Parameters.AddWithValue("@артикул", artikul);
-        //        cmd.Parameters.AddWithValue("@количество", kolich);
-        //        cmd.Parameters.AddWithValue("@цена", tsena);
-        //        cmd.Parameters.AddWithValue("@кодпродажи", kodprodazhi);
-
-        //        cmd.ExecuteNonQuery();
-
-        //    }
-
-        //}
 
 
 

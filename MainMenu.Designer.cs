@@ -61,6 +61,7 @@ namespace AutoMir2022
             this.возвратДняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.конфигурацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очисткаБазыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
@@ -344,9 +345,19 @@ namespace AutoMir2022
             // 
             // базаДанныхToolStripMenuItem
             // 
+            this.базаДанныхToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.очисткаБазыToolStripMenuItem});
             this.базаДанныхToolStripMenuItem.Name = "базаДанныхToolStripMenuItem";
             this.базаДанныхToolStripMenuItem.Size = new System.Drawing.Size(221, 34);
             this.базаДанныхToolStripMenuItem.Text = "База данных";
+            // 
+            // очисткаБазыToolStripMenuItem
+            // 
+            this.очисткаБазыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.очисткаБазыToolStripMenuItem.Name = "очисткаБазыToolStripMenuItem";
+            this.очисткаБазыToolStripMenuItem.Size = new System.Drawing.Size(204, 30);
+            this.очисткаБазыToolStripMenuItem.Text = "Очистка базы";
+            this.очисткаБазыToolStripMenuItem.Click += new System.EventHandler(this.очисткаБазыToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
@@ -442,6 +453,7 @@ namespace AutoMir2022
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.RichTextBox info;
         private System.Windows.Forms.Panel panelData;
+        private System.Windows.Forms.ToolStripMenuItem очисткаБазыToolStripMenuItem;
     }
 
 }

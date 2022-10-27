@@ -54,10 +54,13 @@ namespace Core.Controllers.VozvratKlas
             return db.GetByQuery("Select артикул FROM public.продажа_товара");
         }
 
-        public int SelectNomerVozvrata()
+        public int SelectNomerVozvrata(string naklText)
         {
             int kod = 0;
-            DataTable dt= db.GetByQuery("Select код_возврата FROM public.возврат ORDER BY код_возврата DESC LIMIT 1");
+            DataTable dt= db.GetByQuery("Select код_возврата FROM public.возврат " +
+                "WHERE накладной_текст='" + naklText + "'" +
+                "ORDER BY код_возврата DESC LIMIT 1");
+            
             if (dt.Rows.Count != 0)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -67,40 +70,60 @@ namespace Core.Controllers.VozvratKlas
                 }
 
             }
-            kod = kod + 1;
+            
             return kod;
 
         }
 
+        
 
-
-        public void InsertVozvrat(int kod, string naklText, string kod_klienta)
+        public void InsertVozvrat(string naklText, string kod_klienta)
         {
-            db.insertToDB("INSERT INTO public.возврат (код_возврата, накладной_текст, " +
+          if(kod_klienta!="")
+            db.insertUpdateToDB("INSERT INTO public.возврат (накладной_текст, " +
                 "код_клиента)" +
-                " VALUES('" + kod + "', '" + naklText + "', '" + kod_klienta + "'");
+                " VALUES('" + naklText + "', '" + kod_klienta + "')");
+           else
+                db.insertUpdateToDB("INSERT INTO public.возврат (накладной_текст)" +
+                      " VALUES('" + naklText + "')");
+
         }
 
 
         public void InsertVozvratPerechen(int kod, string artikul, int kol, double suma)
         {
 
-            db.insertToDB("INSERT INTO public.перечень_возврат (" +
+            db.insertWithParametrDouble("INSERT INTO public.перечень_возврата(" +
                 "код_возврата, артикул, количество, сумма) " +
-                " VALUES ('" + kod + "','" + artikul + "', '" + kol + "', '" + suma + "'");
-
+                " VALUES ('" + kod + "','" + artikul + "', '" + kol + "', @suma)", "suma", suma);
 
         }
 
 
-        public string SelectSummaVozvrata(string naklText, int kod)
-        {
+        public string SelectSummaVozvrata(int kod)
+       {
                         
-            DataTable dt= db.GetByQuery("Select SUM(сумма) as сумма" +
-                    " FROM public.возврат " +
-                    "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'" +
-                    " GROUP BY сумма");
+            DataTable dt= db.GetByQuery("Select Sum(сумма)" +
+                    " FROM public.перечень_возврата " +
+                    "WHERE код_возврата ='" + kod + "'");
             string suma="";
+            Double sumVoz = 0;
+            if (dt.Rows.Count != 0)
+            {
+                suma = dt.Rows[0]["sum"].ToString();
+
+            }
+            return suma;
+
+        }
+
+        public string ProverkaNaNalichieVozvrata(string naklTxt)
+        {
+
+            DataTable dt = db.GetByQuery("Select SUM(сумма_возврата) as сумма" +
+                    " FROM public.возврат " +
+                    "WHERE накладной_текст ='" + naklTxt + "'");
+            string suma = "";
 
             if (dt.Rows.Count != 0)
             {
@@ -114,14 +137,14 @@ namespace Core.Controllers.VozvratKlas
 
         public void UpdateVozvrat(string naklText, int kod, string propis, double suma)
         {
-            db.updateDB("UPDATE public.возврат " +
-                        "SET прописью ='" + propis + "', сумма ='" + suma + "'" +
-                        "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'");
+            db.insertWithParametrDouble("UPDATE public.возврат " +
+            "SET прописью ='" + propis + "', сумма_возврата =@suma " +
+            "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'","suma", suma);
         }
 
         public void DeleteVozvrat(string naklText, int kod)
         {
-            db.updateDB("DELETE public.возврат " +
+            db.insertUpdateToDB("DELETE FROM public.возврат " +
                         "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'");
         }
 
@@ -129,10 +152,10 @@ namespace Core.Controllers.VozvratKlas
         public DataTable printCkekQuery(string naklTxt, int kod)
         {
 
-            return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.прописью as propis, c.место_на_складе as mesto, " +
-                                 "d.артикул as artikul, d.количество*d.цена as suma , d.количество as kolichestvo, d.цена as tsena, c.наименование as naimenovanie, c.бренд as brand, " +
-                                 "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.возврат e, public.перечень_возврата d, " +
-                                 "public.товар c, public.сведения_об_организации g WHERE e.код_возврата=d.код_возврата AND d.артикул=c.артикул " +
+            return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.прописью as propis, " +
+                                 "d.артикул as artikul, d.сумма as suma , d.количество as kolichestvo, k.наименование as naimenovanie, k.бренд as brand, " +
+                                 "k.марка as marka, k.модель as model, g.названиекомпании as komp FROM public.возврат e, public.перечень_возврата d, " +
+                                 "public.товар k, public.сведения_об_организации g WHERE e.код_возврата=d.код_возврата AND d.артикул=k.артикул " +
                                  "AND e.накладной_текст= '" + naklTxt + "' AND e.код_возврата= '" + kod + "'");
             
         }

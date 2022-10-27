@@ -66,7 +66,7 @@ namespace AutoMir2022
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.show_all_dataDGV = new System.Windows.Forms.DataGridView();
-            this.isChecked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isChecked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.artikulVozvrat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolich = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsenaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -472,6 +472,8 @@ namespace AutoMir2022
             // 
             this.isChecked.HeaderText = "";
             this.isChecked.Name = "isChecked";
+            this.isChecked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.isChecked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.isChecked.Width = 40;
             // 
             // artikulVozvrat
@@ -566,7 +568,7 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn data;
         private System.Windows.Forms.Button showAll;
         private System.Windows.Forms.DataGridView show_all_dataDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isChecked;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isChecked;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikulVozvrat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kolich;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsenaVozv;

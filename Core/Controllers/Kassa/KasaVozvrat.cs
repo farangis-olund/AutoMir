@@ -39,7 +39,7 @@ namespace Core.Controllers.KasaVozvrat
 
         public void updateVozvrat(string naklTxt, int kod)
         {
-            db.updateDB("UPDATE public.возврат SET оплачено =true WHERE накладной_текст ='" + naklTxt + "' AND код_возврата ='" + kod + "'");
+            db.insertUpdateToDB("UPDATE public.возврат SET оплачено =true WHERE накладной_текст ='" + naklTxt + "' AND код_возврата ='" + kod + "'");
         }
 
     }

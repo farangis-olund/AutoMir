@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using System.Windows.Forms;
 
+
 namespace AutoMir2022
 {
     public partial class MainMenu : Form
@@ -71,6 +72,17 @@ namespace AutoMir2022
         {
             info.Visible = false;
             Vozvrat myForm = new Vozvrat();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.panelData.Controls.Add(myForm);
+            myForm.Show();
+        }
+
+        private void очисткаБазыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            info.Visible = false;
+            Konfiguratsiya.Baza.OchistkaBD myForm = new Konfiguratsiya.Baza.OchistkaBD();
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;

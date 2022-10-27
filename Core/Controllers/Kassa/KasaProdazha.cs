@@ -37,12 +37,12 @@ namespace Core.Controllers.KasaProdazha
 
         public void updateProdazha(string naklTxt)
         {
-            db.updateDB("UPDATE public.продажа SET оплачено =true WHERE накладной_текст ='" + naklTxt + "'");
+            db.insertUpdateToDB("UPDATE public.продажа SET оплачено =true WHERE накладной_текст ='" + naklTxt + "'");
         }
 
         public void updatePlatezh(string naklTxt)
         {
-            db.updateDB("UPDATE public.платежи SET касса =true WHERE №_платежа ='" + naklTxt + "'");
+            db.insertUpdateToDB("UPDATE public.платежи SET касса =true WHERE №_платежа ='" + naklTxt + "'");
         }
 
         public DataTable SelectPlatezh()

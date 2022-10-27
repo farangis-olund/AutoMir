@@ -348,6 +348,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnNaimenovanie;
             
+            private global::System.Data.DataColumn columnKodKlienta;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtReportChekDataTable() {
@@ -519,6 +521,14 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn KodKlientaColumn {
+                get {
+                    return this.columnKodKlienta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -571,7 +581,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         string SkidkaSuma, 
                         string SummaOplata, 
                         string Komp, 
-                        string Naimenovanie) {
+                        string Naimenovanie, 
+                        string KodKlienta) {
                 DtReportChekRow rowDtReportChekRow = ((DtReportChekRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Naktext,
@@ -590,7 +601,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         SkidkaSuma,
                         SummaOplata,
                         Komp,
-                        Naimenovanie};
+                        Naimenovanie,
+                        KodKlienta};
                 rowDtReportChekRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtReportChekRow);
                 return rowDtReportChekRow;
@@ -630,6 +642,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnSummaOplata = base.Columns["SummaOplata"];
                 this.columnKomp = base.Columns["Komp"];
                 this.columnNaimenovanie = base.Columns["Naimenovanie"];
+                this.columnKodKlienta = base.Columns["KodKlienta"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -669,6 +682,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnKomp);
                 this.columnNaimenovanie = new global::System.Data.DataColumn("Naimenovanie", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNaimenovanie);
+                this.columnKodKlienta = new global::System.Data.DataColumn("KodKlienta", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKodKlienta);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1443,6 +1458,22 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string KodKlienta {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportChek.KodKlientaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'KodKlienta\' in table \'DtReportChek\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportChek.KodKlientaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNaktextNull() {
                 return this.IsNull(this.tableDtReportChek.NaktextColumn);
             }
@@ -1643,6 +1674,18 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNaimenovanieNull() {
                 this[this.tableDtReportChek.NaimenovanieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsKodKlientaNull() {
+                return this.IsNull(this.tableDtReportChek.KodKlientaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetKodKlientaNull() {
+                this[this.tableDtReportChek.KodKlientaColumn] = global::System.Convert.DBNull;
             }
         }
         

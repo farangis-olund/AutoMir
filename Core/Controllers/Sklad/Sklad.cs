@@ -27,7 +27,7 @@ namespace Core.Controllers.Sklad
 
         public void updateProdazha(string naklTxt, bool sklad)
         {
-           db.updateDB("UPDATE public.продажа SET склад =true WHERE накладной_текст ='" + naklTxt + "'");
+           db.insertUpdateToDB("UPDATE public.продажа SET склад =true WHERE накладной_текст ='" + naklTxt + "'");
         }
     }
 }

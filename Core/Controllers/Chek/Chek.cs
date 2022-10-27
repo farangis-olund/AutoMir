@@ -82,7 +82,7 @@ namespace Core.Controllers.Chek
 
         public void updateProdazha(string naklTxt, string artikul, int kol)
         {
-            db.updateDB("UPDATE public.продажа_товара pt " +
+            db.insertUpdateToDB("UPDATE public.продажа_товара pt " +
                         "SET количество ='" + kol + "' " +
                         "FROM  public.продажа p " +
                         "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст ='" + naklTxt + "' and pt.артикул ='" + artikul + "'");
@@ -91,7 +91,7 @@ namespace Core.Controllers.Chek
 
         public void DeleteProdazhaTovara(string naklTxt, string artikul)
         {
-            db.updateDB("DELETE FROM public.продажа_товара pt " +
+            db.insertUpdateToDB("DELETE FROM public.продажа_товара pt " +
                        "USING public.продажа p " +
                        "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст ='" + naklTxt + "' and pt.артикул ='" + artikul + "'");
 
@@ -100,7 +100,7 @@ namespace Core.Controllers.Chek
 
         public void DeleteProdazha(string naklTxt)
         {
-            db.updateDB("DELETE FROM public.продажа " +
+            db.insertUpdateToDB("DELETE FROM public.продажа " +
                        "WHERE накладной_текст ='" + naklTxt + "'");
 
         }
@@ -108,7 +108,7 @@ namespace Core.Controllers.Chek
         public void InsertOtmenaProdazh(string naklText, string artikul)
         {
             
-            db.insertToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, " +
+            db.insertUpdateToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, " +
                 "код_клиента, накладной_текст, чек) " +
                 "SELECT pt.артикул, pt.количество, pt.цена, p.код_клиента, p.накладной_текст, p.chek " +
                  "FROM public.продажа p , public.продажа_товара pt " +
@@ -139,7 +139,7 @@ namespace Core.Controllers.Chek
         public void UpdatePropisOtmenaProdazh(string naklText, string propis)
         {
 
-            db.updateDB("UPDATE public.отмена_продажи " +
+            db.insertUpdateToDB("UPDATE public.отмена_продажи " +
                         "SET прописью ='" + propis + "'" +
                         "WHERE накладной_текст ='" + naklText + "'");
 
@@ -162,7 +162,7 @@ namespace Core.Controllers.Chek
 
         public void updateChekProdazha(string nakTxt)
         {
-            db.updateDB("UPDATE public.продажа " +
+            db.insertUpdateToDB("UPDATE public.продажа " +
                        "SET chek =True" +
                        " WHERE накладной_текст ='" + nakTxt + "'");
         }
