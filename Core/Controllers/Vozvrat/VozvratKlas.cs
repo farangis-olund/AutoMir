@@ -10,7 +10,15 @@ namespace Core.Controllers.VozvratKlas
     {
         private DBNpgsql db = new DBNpgsql();
 
-        public DataTable SelectDataDGV(string naklTxt)
+        public DataTable SelectDataDGV(string naklTxt, string artikul)
+        {
+            return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена, d.количество*d.цена as suma, e.дата " +
+                                    "FROM public.продажа e , public.продажа_товара d " +
+                                    "WHERE d.кодпродажи=e.кодпродажи " +
+                                    "AND e.накладной_текст= '" + naklTxt + "' AND d.артикул= '" + artikul + "'");
+        }
+
+        public DataTable SelectDataDGVNaiti(string naklTxt)
         {
             return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена, d.количество*d.цена as suma, e.дата " +
                                     "FROM public.продажа e , public.продажа_товара d " +
@@ -37,6 +45,13 @@ namespace Core.Controllers.VozvratKlas
                 "e.код_клиента='" + kodKlienta + "'");
         }
 
+        public DataTable SelectArtikulByNakladnoy(string naklTxt)
+        {
+            return db.GetByQuery("Select d.артикул " +
+                "FROM public.продажа e , public.продажа_товара d " +
+                "WHERE d.кодпродажи=e.кодпродажи AND " +
+                "e.накладной_текст='" + naklTxt + "'");
+        }
 
         public DataTable SelectKodKlienta()
         {
@@ -53,6 +68,12 @@ namespace Core.Controllers.VozvratKlas
         {
             return db.GetByQuery("Select артикул FROM public.продажа_товара");
         }
+
+        public DataTable SelectAllArtikul()
+        {
+            return db.GetByQuery("Select артикул FROM public.товар WHERE розн_цена__euro_ IS NOT NULL AND количество>0");
+        }
+
 
         public int SelectNomerVozvrata(string naklText)
         {
@@ -107,7 +128,7 @@ namespace Core.Controllers.VozvratKlas
                     " FROM public.перечень_возврата " +
                     "WHERE код_возврата ='" + kod + "'");
             string suma="";
-            Double sumVoz = 0;
+            
             if (dt.Rows.Count != 0)
             {
                 suma = dt.Rows[0]["sum"].ToString();

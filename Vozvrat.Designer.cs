@@ -57,6 +57,7 @@ namespace AutoMir2022
             this.label2 = new System.Windows.Forms.Label();
             this.nakladnoyNaitiCmb = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.artikulVibor = new System.Windows.Forms.ComboBox();
             this.vozvratDGV = new System.Windows.Forms.DataGridView();
             this.naitiDGV = new System.Windows.Forms.DataGridView();
             this.artikul = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +67,6 @@ namespace AutoMir2022
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.show_all_dataDGV = new System.Windows.Forms.DataGridView();
-            this.isChecked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.artikulVozvrat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolich = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsenaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -238,8 +238,10 @@ namespace AutoMir2022
             // 
             // kodKlientaProzhCmb
             // 
+            this.kodKlientaProzhCmb.DropDownHeight = 50;
             this.kodKlientaProzhCmb.Enabled = false;
             this.kodKlientaProzhCmb.FormattingEnabled = true;
+            this.kodKlientaProzhCmb.IntegralHeight = false;
             this.kodKlientaProzhCmb.Location = new System.Drawing.Point(144, 45);
             this.kodKlientaProzhCmb.Name = "kodKlientaProzhCmb";
             this.kodKlientaProzhCmb.Size = new System.Drawing.Size(104, 28);
@@ -257,7 +259,9 @@ namespace AutoMir2022
             // 
             // nakladnoyVozvratCmb
             // 
+            this.nakladnoyVozvratCmb.DropDownHeight = 50;
             this.nakladnoyVozvratCmb.FormattingEnabled = true;
+            this.nakladnoyVozvratCmb.IntegralHeight = false;
             this.nakladnoyVozvratCmb.Location = new System.Drawing.Point(608, 76);
             this.nakladnoyVozvratCmb.Name = "nakladnoyVozvratCmb";
             this.nakladnoyVozvratCmb.Size = new System.Drawing.Size(111, 28);
@@ -322,7 +326,9 @@ namespace AutoMir2022
             // 
             // artikulCmb
             // 
+            this.artikulCmb.DropDownHeight = 50;
             this.artikulCmb.FormattingEnabled = true;
+            this.artikulCmb.IntegralHeight = false;
             this.artikulCmb.Location = new System.Drawing.Point(250, 76);
             this.artikulCmb.Name = "artikulCmb";
             this.artikulCmb.Size = new System.Drawing.Size(146, 28);
@@ -340,7 +346,9 @@ namespace AutoMir2022
             // 
             // kodKlientaNaitiCmb
             // 
+            this.kodKlientaNaitiCmb.DropDownHeight = 50;
             this.kodKlientaNaitiCmb.FormattingEnabled = true;
+            this.kodKlientaNaitiCmb.IntegralHeight = false;
             this.kodKlientaNaitiCmb.Location = new System.Drawing.Point(134, 76);
             this.kodKlientaNaitiCmb.Name = "kodKlientaNaitiCmb";
             this.kodKlientaNaitiCmb.Size = new System.Drawing.Size(104, 28);
@@ -359,7 +367,9 @@ namespace AutoMir2022
             // 
             // nakladnoyNaitiCmb
             // 
+            this.nakladnoyNaitiCmb.DropDownHeight = 50;
             this.nakladnoyNaitiCmb.FormattingEnabled = true;
+            this.nakladnoyNaitiCmb.IntegralHeight = false;
             this.nakladnoyNaitiCmb.Location = new System.Drawing.Point(11, 76);
             this.nakladnoyNaitiCmb.Name = "nakladnoyNaitiCmb";
             this.nakladnoyNaitiCmb.Size = new System.Drawing.Size(111, 28);
@@ -369,6 +379,7 @@ namespace AutoMir2022
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.artikulVibor);
             this.panel2.Controls.Add(this.vozvratDGV);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(595, 173);
@@ -376,21 +387,31 @@ namespace AutoMir2022
             this.panel2.Size = new System.Drawing.Size(644, 426);
             this.panel2.TabIndex = 3;
             // 
+            // artikulVibor
+            // 
+            this.artikulVibor.DropDownHeight = 50;
+            this.artikulVibor.FormattingEnabled = true;
+            this.artikulVibor.IntegralHeight = false;
+            this.artikulVibor.Location = new System.Drawing.Point(6, 9);
+            this.artikulVibor.Name = "artikulVibor";
+            this.artikulVibor.Size = new System.Drawing.Size(236, 28);
+            this.artikulVibor.TabIndex = 1;
+            this.artikulVibor.SelectionChangeCommitted += new System.EventHandler(this.artikulVibor_SelectionChangeCommitted);
+            // 
             // vozvratDGV
             // 
             this.vozvratDGV.AllowUserToAddRows = false;
             this.vozvratDGV.AllowUserToDeleteRows = false;
             this.vozvratDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vozvratDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.isChecked,
             this.artikulVozvrat,
             this.Kolich,
             this.tsenaVozv,
             this.kolVozvrata,
             this.sumaVozv});
-            this.vozvratDGV.Location = new System.Drawing.Point(3, 5);
+            this.vozvratDGV.Location = new System.Drawing.Point(3, 39);
             this.vozvratDGV.Name = "vozvratDGV";
-            this.vozvratDGV.Size = new System.Drawing.Size(636, 419);
+            this.vozvratDGV.Size = new System.Drawing.Size(636, 385);
             this.vozvratDGV.TabIndex = 0;
             this.vozvratDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.vozvratDGV_CellEndEdit);
             // 
@@ -468,29 +489,25 @@ namespace AutoMir2022
             this.show_all_dataDGV.TabIndex = 1;
             this.show_all_dataDGV.Visible = false;
             // 
-            // isChecked
-            // 
-            this.isChecked.HeaderText = "";
-            this.isChecked.Name = "isChecked";
-            this.isChecked.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.isChecked.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.isChecked.Width = 40;
-            // 
             // artikulVozvrat
             // 
             this.artikulVozvrat.HeaderText = "Артикул";
             this.artikulVozvrat.Name = "artikulVozvrat";
-            this.artikulVozvrat.Width = 150;
+            this.artikulVozvrat.ReadOnly = true;
+            this.artikulVozvrat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.artikulVozvrat.Width = 200;
             // 
             // Kolich
             // 
             this.Kolich.HeaderText = "Кол-во";
             this.Kolich.Name = "Kolich";
+            this.Kolich.ReadOnly = true;
             // 
             // tsenaVozv
             // 
             this.tsenaVozv.HeaderText = "Цена";
             this.tsenaVozv.Name = "tsenaVozv";
+            this.tsenaVozv.ReadOnly = true;
             // 
             // kolVozvrata
             // 
@@ -501,6 +518,7 @@ namespace AutoMir2022
             // 
             this.sumaVozv.HeaderText = "Сумма";
             this.sumaVozv.Name = "sumaVozv";
+            this.sumaVozv.ReadOnly = true;
             // 
             // Vozvrat
             // 
@@ -568,7 +586,7 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn data;
         private System.Windows.Forms.Button showAll;
         private System.Windows.Forms.DataGridView show_all_dataDGV;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isChecked;
+        private System.Windows.Forms.ComboBox artikulVibor;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikulVozvrat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kolich;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsenaVozv;
