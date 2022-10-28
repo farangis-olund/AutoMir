@@ -18,6 +18,22 @@ namespace Core.Controllers.VozvratKlas
                                     "AND e.накладной_текст= '" + naklTxt + "' AND d.артикул= '" + artikul + "'");
         }
 
+        public DataTable SelectProshlogodRoznDataDGV(string artikul)
+        {
+            return db.GetByQuery("SELECT артикул, количество, розн_цена__euro_ " +
+                                    "FROM public.товар " +
+                                    "WHERE количество>0 AND розн_цена__euro_ IS NOT NULL AND розн_цена__euro_>0 " +
+                                    "AND артикул= '" + artikul + "'");
+        }
+
+        public DataTable SelectProshlogodOptDataDGV(string artikul)
+        {
+            return db.GetByQuery("SELECT артикул, количество, опт_цена__euro_ " +
+                                    "FROM public.товар " +
+                                    "WHERE количество>0 AND опт_цена__euro_ IS NOT NULL AND опт_цена__euro_>0 " +
+                                    "AND артикул= '" + artikul + "'");
+        }
+
         public DataTable SelectDataDGVNaiti(string naklTxt)
         {
             return db.GetByQuery("SELECT d.артикул as артикул, d.количество, d.цена, d.количество*d.цена as suma, e.дата " +
@@ -96,7 +112,29 @@ namespace Core.Controllers.VozvratKlas
 
         }
 
-        
+
+        public int SelectNomerVozvrataProsh()
+        {
+            int kod = 0;
+            DataTable dt = db.GetByQuery("Select код_возврата FROM public.возврат " +
+                "WHERE накладной_текст=0 " +
+                "ORDER BY код_возврата DESC LIMIT 1");
+
+            if (dt.Rows.Count != 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+
+                    kod = int.Parse(dr[0].ToString());
+                }
+
+            }
+
+            return kod;
+
+        }
+
+
 
         public void InsertVozvrat(string naklText, string kod_klienta)
         {
@@ -119,6 +157,12 @@ namespace Core.Controllers.VozvratKlas
                 " VALUES ('" + kod + "','" + artikul + "', '" + kol + "', @suma)", "suma", suma);
 
         }
+        public void InsertVozvratProshlogod(string kodKlienta)
+        {
+            db.insertUpdateToDB("INSERT INTO public.возврат_прошлогодный (код_клиента)" +
+                     " VALUES('" + kodKlienta + "')");
+
+        }
 
 
         public string SelectSummaVozvrata(int kod)
@@ -137,6 +181,27 @@ namespace Core.Controllers.VozvratKlas
             return suma;
 
         }
+
+
+        public string SelectProshlogodVozvrata()
+        {
+
+            DataTable dt = db.GetByParametrDate("Select дата" +
+                    " FROM public.возврат_прошлогодный " +
+                    "WHERE дата =@data", "data");
+            string suma = "";
+
+            if (dt.Rows.Count != 0)
+            {
+                suma = dt.Rows[0]["дата"].ToString();
+
+            }
+            return suma;
+
+        }
+
+
+
 
         public string ProverkaNaNalichieVozvrata(string naklTxt)
         {
@@ -170,14 +235,14 @@ namespace Core.Controllers.VozvratKlas
         }
 
 
-        public DataTable printCkekQuery(string naklTxt, int kod)
+        public DataTable printCkekQuery(int kod)
         {
 
             return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.прописью as propis, " +
                                  "d.артикул as artikul, d.сумма as suma , d.количество as kolichestvo, k.наименование as naimenovanie, k.бренд as brand, " +
                                  "k.марка as marka, k.модель as model, g.названиекомпании as komp FROM public.возврат e, public.перечень_возврата d, " +
                                  "public.товар k, public.сведения_об_организации g WHERE e.код_возврата=d.код_возврата AND d.артикул=k.артикул " +
-                                 "AND e.накладной_текст= '" + naklTxt + "' AND e.код_возврата= '" + kod + "'");
+                                 "AND e.код_возврата= '" + kod + "'");
             
         }
 

@@ -59,6 +59,11 @@ namespace AutoMir2022
             this.panel2 = new System.Windows.Forms.Panel();
             this.artikulVibor = new System.Windows.Forms.ComboBox();
             this.vozvratDGV = new System.Windows.Forms.DataGridView();
+            this.artikulVozvrat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kolich = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsenaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naitiDGV = new System.Windows.Forms.DataGridView();
             this.artikul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,11 +72,7 @@ namespace AutoMir2022
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.show_all_dataDGV = new System.Windows.Forms.DataGridView();
-            this.artikulVozvrat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kolich = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsenaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ochistkaVozvratBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -238,7 +239,7 @@ namespace AutoMir2022
             // 
             // kodKlientaProzhCmb
             // 
-            this.kodKlientaProzhCmb.DropDownHeight = 50;
+            this.kodKlientaProzhCmb.DropDownHeight = 85;
             this.kodKlientaProzhCmb.Enabled = false;
             this.kodKlientaProzhCmb.FormattingEnabled = true;
             this.kodKlientaProzhCmb.IntegralHeight = false;
@@ -259,7 +260,7 @@ namespace AutoMir2022
             // 
             // nakladnoyVozvratCmb
             // 
-            this.nakladnoyVozvratCmb.DropDownHeight = 50;
+            this.nakladnoyVozvratCmb.DropDownHeight = 85;
             this.nakladnoyVozvratCmb.FormattingEnabled = true;
             this.nakladnoyVozvratCmb.IntegralHeight = false;
             this.nakladnoyVozvratCmb.Location = new System.Drawing.Point(608, 76);
@@ -326,7 +327,7 @@ namespace AutoMir2022
             // 
             // artikulCmb
             // 
-            this.artikulCmb.DropDownHeight = 50;
+            this.artikulCmb.DropDownHeight = 85;
             this.artikulCmb.FormattingEnabled = true;
             this.artikulCmb.IntegralHeight = false;
             this.artikulCmb.Location = new System.Drawing.Point(250, 76);
@@ -346,7 +347,7 @@ namespace AutoMir2022
             // 
             // kodKlientaNaitiCmb
             // 
-            this.kodKlientaNaitiCmb.DropDownHeight = 50;
+            this.kodKlientaNaitiCmb.DropDownHeight = 85;
             this.kodKlientaNaitiCmb.FormattingEnabled = true;
             this.kodKlientaNaitiCmb.IntegralHeight = false;
             this.kodKlientaNaitiCmb.Location = new System.Drawing.Point(134, 76);
@@ -367,7 +368,7 @@ namespace AutoMir2022
             // 
             // nakladnoyNaitiCmb
             // 
-            this.nakladnoyNaitiCmb.DropDownHeight = 50;
+            this.nakladnoyNaitiCmb.DropDownHeight = 85;
             this.nakladnoyNaitiCmb.FormattingEnabled = true;
             this.nakladnoyNaitiCmb.IntegralHeight = false;
             this.nakladnoyNaitiCmb.Location = new System.Drawing.Point(11, 76);
@@ -379,6 +380,7 @@ namespace AutoMir2022
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.ochistkaVozvratBtn);
             this.panel2.Controls.Add(this.artikulVibor);
             this.panel2.Controls.Add(this.vozvratDGV);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -389,19 +391,19 @@ namespace AutoMir2022
             // 
             // artikulVibor
             // 
-            this.artikulVibor.DropDownHeight = 50;
+            this.artikulVibor.DropDownHeight = 85;
             this.artikulVibor.FormattingEnabled = true;
             this.artikulVibor.IntegralHeight = false;
             this.artikulVibor.Location = new System.Drawing.Point(6, 9);
             this.artikulVibor.Name = "artikulVibor";
             this.artikulVibor.Size = new System.Drawing.Size(236, 28);
+            this.artikulVibor.Sorted = true;
             this.artikulVibor.TabIndex = 1;
             this.artikulVibor.SelectionChangeCommitted += new System.EventHandler(this.artikulVibor_SelectionChangeCommitted);
             // 
             // vozvratDGV
             // 
             this.vozvratDGV.AllowUserToAddRows = false;
-            this.vozvratDGV.AllowUserToDeleteRows = false;
             this.vozvratDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vozvratDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.artikulVozvrat,
@@ -409,11 +411,42 @@ namespace AutoMir2022
             this.tsenaVozv,
             this.kolVozvrata,
             this.sumaVozv});
-            this.vozvratDGV.Location = new System.Drawing.Point(3, 39);
+            this.vozvratDGV.Location = new System.Drawing.Point(3, 43);
             this.vozvratDGV.Name = "vozvratDGV";
-            this.vozvratDGV.Size = new System.Drawing.Size(636, 385);
+            this.vozvratDGV.Size = new System.Drawing.Size(636, 381);
             this.vozvratDGV.TabIndex = 0;
             this.vozvratDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.vozvratDGV_CellEndEdit);
+            // 
+            // artikulVozvrat
+            // 
+            this.artikulVozvrat.HeaderText = "Артикул";
+            this.artikulVozvrat.Name = "artikulVozvrat";
+            this.artikulVozvrat.ReadOnly = true;
+            this.artikulVozvrat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.artikulVozvrat.Width = 200;
+            // 
+            // Kolich
+            // 
+            this.Kolich.HeaderText = "Кол-во";
+            this.Kolich.Name = "Kolich";
+            this.Kolich.ReadOnly = true;
+            // 
+            // tsenaVozv
+            // 
+            this.tsenaVozv.HeaderText = "Цена";
+            this.tsenaVozv.Name = "tsenaVozv";
+            this.tsenaVozv.ReadOnly = true;
+            // 
+            // kolVozvrata
+            // 
+            this.kolVozvrata.HeaderText = "КолВозврата";
+            this.kolVozvrata.Name = "kolVozvrata";
+            // 
+            // sumaVozv
+            // 
+            this.sumaVozv.HeaderText = "Сумма";
+            this.sumaVozv.Name = "sumaVozv";
+            this.sumaVozv.ReadOnly = true;
             // 
             // naitiDGV
             // 
@@ -489,36 +522,15 @@ namespace AutoMir2022
             this.show_all_dataDGV.TabIndex = 1;
             this.show_all_dataDGV.Visible = false;
             // 
-            // artikulVozvrat
+            // ochistkaVozvratBtn
             // 
-            this.artikulVozvrat.HeaderText = "Артикул";
-            this.artikulVozvrat.Name = "artikulVozvrat";
-            this.artikulVozvrat.ReadOnly = true;
-            this.artikulVozvrat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.artikulVozvrat.Width = 200;
-            // 
-            // Kolich
-            // 
-            this.Kolich.HeaderText = "Кол-во";
-            this.Kolich.Name = "Kolich";
-            this.Kolich.ReadOnly = true;
-            // 
-            // tsenaVozv
-            // 
-            this.tsenaVozv.HeaderText = "Цена";
-            this.tsenaVozv.Name = "tsenaVozv";
-            this.tsenaVozv.ReadOnly = true;
-            // 
-            // kolVozvrata
-            // 
-            this.kolVozvrata.HeaderText = "КолВозврата";
-            this.kolVozvrata.Name = "kolVozvrata";
-            // 
-            // sumaVozv
-            // 
-            this.sumaVozv.HeaderText = "Сумма";
-            this.sumaVozv.Name = "sumaVozv";
-            this.sumaVozv.ReadOnly = true;
+            this.ochistkaVozvratBtn.Location = new System.Drawing.Point(288, 8);
+            this.ochistkaVozvratBtn.Name = "ochistkaVozvratBtn";
+            this.ochistkaVozvratBtn.Size = new System.Drawing.Size(105, 28);
+            this.ochistkaVozvratBtn.TabIndex = 2;
+            this.ochistkaVozvratBtn.Text = "Очистить";
+            this.ochistkaVozvratBtn.UseVisualStyleBackColor = true;
+            this.ochistkaVozvratBtn.Click += new System.EventHandler(this.ochistkaVozvratBtn_Click);
             // 
             // Vozvrat
             // 
@@ -592,5 +604,6 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn tsenaVozv;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolVozvrata;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumaVozv;
+        private System.Windows.Forms.Button ochistkaVozvratBtn;
     }
 }

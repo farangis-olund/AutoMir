@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.Controllers.VozvratKlas;
 using Core.Controllers.RoznichProdazha;
+using Core.Controllers.Dolg;
 using Core.DB;
 using Microsoft.Reporting.WinForms;
 
@@ -16,6 +17,7 @@ namespace AutoMir2022
 {
     public partial class Vozvrat : Form
     {
+        public static double dolg;
         public Vozvrat()
         {
             InitializeComponent();
@@ -225,7 +227,21 @@ namespace AutoMir2022
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             VozvratKlas vozvratObj = new VozvratKlas();
             DBNpgsql dBNpgsqlObj = new DBNpgsql();
+            Dolg dolgObj = new Dolg();
             
+            if (prozhVozvratChek.Checked==true && optRb.Checked==true && kodKlientaProzhCmb.Text == "")
+            {
+                MessageBox.Show("Перед оформлением прошлогодного опт возврата укажите код клиента!");
+                goto EndProcess;
+            }
+
+            if (prozhVozvratChek.Checked == true && optRb.Checked == true && kodKlientaProzhCmb.Text != "" && 
+                vozvratObj.SelectProshlogodVozvrata()!="")
+            {
+                MessageBox.Show("На текущий день на данного клиента уже оформлен возврат!");
+                goto EndProcess;
+            }
+
             if (vozvratDGV.Rows.Count == 0)
             {
                 MessageBox.Show("Вы не выбрали товар для возврата!");
@@ -240,10 +256,25 @@ namespace AutoMir2022
                     goto EndProcess;
                 }
             }
+
+
+            int kod = 0;
+            if (prozhVozvratChek.Checked == true)
+            {
+                vozvratObj.InsertVozvrat("0", kodKlientaProzhCmb.Text);
+                kod = vozvratObj.SelectNomerVozvrataProsh();
+                if (optRb.Checked == true) 
+                {
+                    dolg=dolgObj.GetObshDolg(kodKlientaProzhCmb.Text);
+                    vozvratObj.InsertVozvratProshlogod(kodKlientaProzhCmb.Text);
+                }
+            }
+            else
+            {
                 vozvratObj.InsertVozvrat(nakladnoyVozvratCmb.Text, kodKlientaProzhCmb.Text);
-            
-            int kod = vozvratObj.SelectNomerVozvrata(nakladnoyVozvratCmb.Text);
-            
+                kod = vozvratObj.SelectNomerVozvrata(nakladnoyVozvratCmb.Text);
+            }
+
             for (int i = 0; i < vozvratDGV.Rows.Count - 1; i++)
             {
                     //добавляем в таблицу возврат  
@@ -265,27 +296,23 @@ namespace AutoMir2022
             }
 
             kodVozvrataTxb.Text = kod.ToString();
-            DataTable dt = vozvratObj.printCkekQuery(nakladnoyVozvratCmb.Text, kod);
-            string kodKlienta = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                kodKlienta = dr["kodKlienta"].ToString();
-                break;
-            }
+            
             retail retail = new retail();
+            retail.dtForCHekReport = vozvratObj.printCkekQuery(kod);
 
-            if (kodKlienta == "")
+            if (prozhVozvratChek.Checked==false)
             {
-               retail.dtForCHekReport = vozvratObj.printCkekQuery(nakladnoyVozvratCmb.Text, kod);
                retail.nameOfReport = "ChekReportVozvrat";
-
             }
-            else
+            else if (prozhVozvratChek.Checked == true && roznRb.Checked==true)
             {
-                retail.dtForCHekReport = vozvratObj.printCkekQuery(nakladnoyVozvratCmb.Text, kod);
-               retail.nameOfReport = "ChekReportOtmenaOpt";
-
+               retail.nameOfReport = "ChekReportVozvratProshRozn";
             }
+            else if (prozhVozvratChek.Checked == true && optRb.Checked == true)
+            {
+                retail.nameOfReport = "ChekReportVozvratProshOpt";
+            }
+
             vozvratDGV.Rows.Clear();
             MessageBox.Show("Возврат успешно оформлен!");
             ChekReportPrint reportPrintObj = new ChekReportPrint();
@@ -299,24 +326,39 @@ namespace AutoMir2022
         {
             artikulVibor.Text = artikulVibor.GetItemText(artikulVibor.SelectedItem);
             VozvratKlas vozvratObj = new VozvratKlas();
-            
-            if (nakladnoyVozvratCmb.Text != "")
+            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
+            double kursValyuti = Convert.ToDouble(roznichProdazhaObj.GetCursValyuti());
+
+            if (nakladnoyVozvratCmb.Text != "" || prozhVozvratChek.Checked==true)
             {
                 int rowNum = vozvratDGV.Rows.Count;
 
                 if (rowNum > 0)
                 {
-
                     if (vozvratDGV.Rows[rowNum - 1].Cells[0].Value == null)
                     {
                         this.vozvratDGV.Rows.Remove(this.vozvratDGV.Rows[rowNum - 1]);
-
                     }
                 }
-
-
-
-                DataTable dt = vozvratObj.SelectDataDGV(nakladnoyVozvratCmb.Text, artikulVibor.Text);
+                DataTable dt =null;
+                
+                if (nakladnoyVozvratCmb.Text=="" && prozhVozvratChek.Checked == true)
+                {
+                    if (roznRb.Checked == true)
+                        dt = vozvratObj.SelectProshlogodRoznDataDGV(artikulVibor.Text);
+                    else if (optRb.Checked == true)
+                        dt = vozvratObj.SelectProshlogodOptDataDGV(artikulVibor.Text);
+                    else
+                    {
+                        MessageBox.Show("Укажите опцию оптовый или розничный!");
+                        goto endProcess;
+                    }
+                }
+                else
+                {
+                    dt = vozvratObj.SelectDataDGV(nakladnoyVozvratCmb.Text, artikulVibor.Text);
+                }
 
                 if (dt.Rows.Count > 0)
                 {
@@ -326,17 +368,25 @@ namespace AutoMir2022
 
                         vozvratDGV.Rows[index].Cells[0].Value = dr[0];
                         vozvratDGV.Rows[index].Cells[1].Value = dr[1];
-                        vozvratDGV.Rows[index].Cells[2].Value = dr[2];
-
+                        if (prozhVozvratChek.Checked==true)
+                            vozvratDGV.Rows[index].Cells[2].Value =
+                                roznichProdazhaObj.getRoundDecimal( Convert.ToDouble(dr[2])
+                                *kursValyuti);
+                        else
+                            vozvratDGV.Rows[index].Cells[2].Value = dr[2];
                     }
-                    
-                    RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                    
-                        roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", 0);
-                    
+
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", 0);
                 }
+                else MessageBox.Show("Количество или цена данного артикула ровняется 0");
 
             }
+        endProcess: { }
+        }
+
+        private void ochistkaVozvratBtn_Click(object sender, EventArgs e)
+        {
+            vozvratDGV.Rows.Clear();
         }
     }
 }

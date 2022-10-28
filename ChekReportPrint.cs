@@ -26,6 +26,7 @@ namespace AutoMir2022
             this.reportViewer1.Reset();
             this.reportViewer1.LocalReport.DataSources.Clear();
             string checkType = retail.nameOfReport;
+            double dolg = Vozvrat.dolg;
             string path = Path.GetDirectoryName(Application.StartupPath);
             string fullPath = "";
 
@@ -50,9 +51,30 @@ namespace AutoMir2022
 
             }
 
+            else if (checkType == "ChekReportVozvratProshOpt")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshOpt.rdlc";
+
+            }
+
+            else if (checkType == "ChekReportVozvratProshRozn")
+            {
+                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshRozn.rdlc";
+
+            }
+
+
             reportViewer1.LocalReport.ReportPath = fullPath;
 
-           reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportChek", retail.dtForCHekReport));
+            if (checkType == "ChekReportVozvratProshOpt")
+            {
+                ReportParameter param = new ReportParameter();
+                param = new ReportParameter("dolg", dolg.ToString("0.00"));
+                
+                reportViewer1.LocalReport.SetParameters(param);
+            }
+                
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportChek", retail.dtForCHekReport));
 
            
             this.reportViewer1.RefreshReport();
