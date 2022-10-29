@@ -19,6 +19,9 @@ namespace AutoMir2022
     public partial class Vozvrat : Form
     {
         public static double dolg;
+        private VozvratKlas vozvratObj = new VozvratKlas();
+        private RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
+
         public Vozvrat()
         {
             InitializeComponent();
@@ -46,7 +49,6 @@ namespace AutoMir2022
 
             if (nakladnoyNaitiCmb.Text != "")
             {
-                VozvratKlas vozvratObj = new VozvratKlas();
                 DataTable dt = vozvratObj.SelectDataDGVNaiti(nakladnoyNaitiCmb.Text);
                 if (dt.Rows.Count > 0)
                 {
@@ -61,8 +63,7 @@ namespace AutoMir2022
                         dataTxb.Text = Convert.ToDateTime(dr[4]).ToString("dd.MM.yyyy");
                     }
 
-                    RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref naitiDGV, "suma", "", "", "", 0);
+                roznichProdazhaObj.SumOfColumnDataGridVeiw(ref naitiDGV, "suma", "", "", "", 0);
 
                 }
                 show_all_dataDGV.Visible = false;
@@ -76,7 +77,6 @@ namespace AutoMir2022
 
         public void show_all()
         {
-            VozvratKlas vozvratObj = new VozvratKlas();
             nakladnoyNaitiCmb.DisplayMember = "накладной_текст";
             nakladnoyNaitiCmb.DataSource = vozvratObj.SelectNomerNakladnoy();
             nakladnoyNaitiCmb.Text = "";
@@ -121,7 +121,6 @@ namespace AutoMir2022
             kodKlientaNaitiCmb.Text = kodKlientaNaitiCmb.GetItemText(kodKlientaNaitiCmb.SelectedItem);
             if (kodKlientaNaitiCmb.Text != "")
             {
-                VozvratKlas vozvratObj = new VozvratKlas();
                 nakladnoyNaitiCmb.DisplayMember = "накладной_текст";
                 nakladnoyNaitiCmb.DataSource = vozvratObj.SelectNomerNakladnoyByKodKlienta(kodKlientaNaitiCmb.Text);
                 nakladnoyNaitiCmb.Text = "";
@@ -142,12 +141,11 @@ namespace AutoMir2022
 
         private void naitiBtn_Click(object sender, EventArgs e)
         {
-            VozvratKlas vozvratKlasObj = new VozvratKlas();
             show_all_dataDGV.Visible = true;
             naitiDGV.Visible = false;
             if (artikulCmb.Text != "")
             {
-                show_all_dataDGV.DataSource = vozvratKlasObj.GetByParametrDate(dateStart.Value, dateEnd.Value, artikulCmb.Text);
+                show_all_dataDGV.DataSource = vozvratObj.GetByParametrDate(dateStart.Value, dateEnd.Value, artikulCmb.Text);
                 if (show_all_dataDGV.Rows.Count != 0)
                 {
                     show_all_dataDGV.Columns[0].Width = 70;
@@ -160,7 +158,6 @@ namespace AutoMir2022
 
         private void prozhVozvratChek_CheckedChanged(object sender, EventArgs e)
         {
-            VozvratKlas vozvratObj = new VozvratKlas();
             if (prozhVozvratChek.Checked == true)
             {
                 roznRb.Enabled = true;
@@ -180,7 +177,6 @@ namespace AutoMir2022
            
             
             nakladnoyVozvratCmb.Text = nakladnoyVozvratCmb.GetItemText(nakladnoyVozvratCmb.SelectedItem);
-            VozvratKlas vozvratObj = new VozvratKlas();
             string sumaVozvratinTable = vozvratObj.ProverkaNaNalichieVozvrata(nakladnoyVozvratCmb.Text);
             
             if ( sumaVozvratinTable!= "")
@@ -205,8 +201,7 @@ namespace AutoMir2022
 
         private void vozvratDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-
+            
             if (vozvratDGV.Columns[e.ColumnIndex].Name == "kolVozvrata")
             {
                 int b = 0;
@@ -214,11 +209,7 @@ namespace AutoMir2022
                 ProverkaNaOshibku proverkaNaOshibkuObj = new ProverkaNaOshibku();
                 if (proverkaNaOshibkuObj.GetEmptyCellDVG(ref vozvratDGV, e.RowIndex, "kolVozvrata")==true)
                     goto endProcess;
-                //if (vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value == null
-                //    || vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value == DBNull.Value
-                //    || String.IsNullOrWhiteSpace(vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value.ToString()))
-                //    goto endProcess;
-
+                
                 if (int.TryParse(vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value.ToString(), out b))
                 {
                     if (b > Convert.ToInt32(vozvratDGV.Rows[e.RowIndex].Cells["kolich"].Value))
@@ -248,8 +239,6 @@ namespace AutoMir2022
 
         private void oformitBtn_Click(object sender, EventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            VozvratKlas vozvratObj = new VozvratKlas();
             DBNpgsql dBNpgsqlObj = new DBNpgsql();
             Dolg dolgObj = new Dolg();
             
@@ -359,9 +348,6 @@ namespace AutoMir2022
                 goto endProcess;
             }
             
-            VozvratKlas vozvratObj = new VozvratKlas();
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-
             double kursValyuti = Convert.ToDouble(roznichProdazhaObj.GetCursValyuti());
 
             if (nakladnoyVozvratCmb.Text != "" || prozhVozvratChek.Checked==true)

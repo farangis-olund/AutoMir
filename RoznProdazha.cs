@@ -24,6 +24,8 @@ namespace AutoMir2022
 
 
     {
+        private RoznichProdazha roznProdazhaObj = new RoznichProdazha();
+        private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
 
         public static DataTable dtForCHekReport;
         public static string nameOfReport;
@@ -34,8 +36,7 @@ namespace AutoMir2022
             InitializeComponent();
             
             showAllTovar();
-            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-
+            
             // add course valuty
 
             kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
@@ -85,7 +86,6 @@ namespace AutoMir2022
 
             //add nakladnoy tab OtmenaProdazhi
 
-            OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
             nakNomerOtmenaCmb.DisplayMember = "накладной_текст";
             nakNomerOtmenaCmb.DataSource = otmenaProdazhiObj.SelectNomerNakladnoy();
             nakNomerOtmenaCmb.Text = null;
@@ -96,8 +96,6 @@ namespace AutoMir2022
         //add data from karizna 1 to karzina2 when user klicking to row of daagridview1
         private void selectedRowsButton_Click(object sender, System.EventArgs e)
         {
-            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-
             //удалаем строку с итогом суммой
             //
 
@@ -287,10 +285,6 @@ namespace AutoMir2022
 
             }
 
-            
-
-
-            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             dataGridView1.AutoGenerateColumns = true;
             DataTable mydataTable = new DataTable();
             mydataTable = roznProdazhaObj.ByFilterTovar(filterQueryColumn);
@@ -306,7 +300,6 @@ namespace AutoMir2022
 
         public void showAllTovar()
         {
-            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             dataGridView1.AutoGenerateColumns = true;
             DataTable mydataTable = new DataTable();
             mydataTable = roznProdazhaObj.Index();
@@ -351,7 +344,6 @@ namespace AutoMir2022
         //datagrid2 karzina2       
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
@@ -365,17 +357,17 @@ namespace AutoMir2022
                 if (int.TryParse(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value.ToString(), out b))
                 {
                     double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[7].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
+                    dataGridView2.Rows[e.RowIndex].Cells[7].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[9].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
+                    dataGridView2.Rows[e.RowIndex].Cells[9].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[11].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
+                    dataGridView2.Rows[e.RowIndex].Cells[11].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
+                    dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
+                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
                 }
                 else
                 {
@@ -419,8 +411,6 @@ namespace AutoMir2022
 
             //adding data from datagrizd2 (Karzina2) to datagrid3 (karzina3)
 
-
-            RoznichProdazha roznProdazhaObj = new RoznichProdazha();
             DataTable listArtikulKarzina3 = new DataTable();
 
             for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
@@ -464,8 +454,7 @@ namespace AutoMir2022
                     if (dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString() == "")
                     {
                         MessageBox.Show("Количество заказа не указан!");
-                        RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                        roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+                        roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
                         ochiskta();
                     }
@@ -504,16 +493,14 @@ namespace AutoMir2022
 
         private void ochistkaKorzini3_Click(object sender, EventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
             ochiskta();
         }
 
         private void ochistkaKarzina2_Click(object sender, EventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
 
             ochiskta();
 
@@ -545,11 +532,10 @@ namespace AutoMir2022
         {
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
-                RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-
+                
                 //проверка остатка на складе достаточен ли для оформление заказа количество товара
 
-                DataTable kolTovara = roznichProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                DataTable kolTovara = roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[0].Value.ToString());
                 double kolTovaraDouble = 0;
                 foreach (DataRow dr in kolTovara.Rows)
                 {
@@ -576,8 +562,7 @@ namespace AutoMir2022
 
         private void oformitZakaz_Click(object sender, EventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-
+           
             if (viborProdovets.Text == "")
             {
                 MessageBox.Show("Перед оформлением, укажите продавца!");
@@ -616,7 +601,7 @@ namespace AutoMir2022
 
                 //проверка остатка на складе достаточен ли для оформление заказа количество товара
 
-                DataTable kolTovara = roznichProdazhaObj.getviborVariant(dataGridView3.Rows[i].Cells[0].Value.ToString());
+                DataTable kolTovara = roznProdazhaObj.getviborVariant(dataGridView3.Rows[i].Cells[0].Value.ToString());
                 double kolTovaraDouble = 0;
                 foreach (DataRow dr in kolTovara.Rows)
                 {
@@ -635,7 +620,7 @@ namespace AutoMir2022
                 }
                 //////////////
 
-                summaKontrakta = summaKontrakta +Convert.ToDouble( roznichProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value)));
+                summaKontrakta = summaKontrakta +Convert.ToDouble( roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView3.Rows[i].Cells[7].Value)));
 
 
             }
@@ -649,21 +634,21 @@ namespace AutoMir2022
 
             DBNpgsql db = new DBNpgsql();
 
-            int nakKod = roznichProdazhaObj.getLastNakladnoyText();
-            string nakText = roznichProdazhaObj.GetColumnName(nakKod+1);  /*roznichProdazhaObj.nakTextEncrement(nakText);*/
+            int nakKod = roznProdazhaObj.getLastNakladnoyText();
+            string nakText = roznProdazhaObj.GetColumnName(nakKod+1);  /*roznichProdazhaObj.nakTextEncrement(nakText);*/
 
-            db.insertProdazha(kurs, skidkaSql, viborProdovets.Text, roznichProdazhaObj.SummaPropis(summaKontrakta),
+            db.insertProdazha(kurs, skidkaSql, viborProdovets.Text, roznProdazhaObj.SummaPropis(summaKontrakta),
                     spetsPredlozhenieValue.Text, nakText, check);
 
             /// получаем код номер накладной
 
-            int nakNomer = roznichProdazhaObj.getNakladnoyNomer(nakText);
+            int nakNomer = roznProdazhaObj.getNakladnoyNomer(nakText);
 
             /////////// insert data to table prodazhaTovar
 
             for (int i = 0; i < dataGridView3.Rows.Count - 1; i++)
             {
-                double tsenaSql =Convert.ToDouble( roznichProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView3.Rows[i].Cells[6].Value.ToString())));
+                double tsenaSql =Convert.ToDouble( roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView3.Rows[i].Cells[6].Value.ToString())));
                 int kolSql = Convert.ToInt32(dataGridView3.Rows[i].Cells[5].Value);
                 db.insertProdazhaTovar(
                     dataGridView3.Rows[i].Cells[0].Value.ToString(),
@@ -671,7 +656,7 @@ namespace AutoMir2022
 
                 /////////// update data to table Tovar
 
-                roznichProdazhaObj.updateTovarKol(dataGridView3.Rows[i].Cells[0].Value.ToString(), kolSql, "-");
+                roznProdazhaObj.updateTovarKol(dataGridView3.Rows[i].Cells[0].Value.ToString(), kolSql, "-");
             }
 
 
@@ -680,8 +665,8 @@ namespace AutoMir2022
 
             printCkekDetails(nakText);
 
-            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
-            roznichProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
             ochiskta();
         endProsess: { }
@@ -706,9 +691,8 @@ namespace AutoMir2022
 
         public void printCkekDetails(string nakTxt)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-
-            dtForCHekReport = roznichProdazhaObj.chekProdazhaQuery(nakTxt);
+            
+            dtForCHekReport = roznProdazhaObj.chekProdazhaQuery(nakTxt);
 
             bool ischecked = prodazhaSoSkidkoy.Checked;
             if (ischecked == true)
@@ -739,16 +723,10 @@ namespace AutoMir2022
             }
         }
 
-        private void showOtmenaBtn_Click(object sender, EventArgs e)
-        {
-            
-
-        }
 
         private void otmenaProdazhiDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             double b = 0;
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
             if (otmenaProdazhiDGV.Columns[e.ColumnIndex].Name == "kolVozvrata")
             {
 
@@ -764,7 +742,7 @@ namespace AutoMir2022
                     {
                         double a = Convert.ToDouble(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["tsenaOtmena"].Value);
                         otmenaProdazhiDGV.Rows[e.RowIndex].Cells["sumaVozvrata"].Value = (a * b).ToString("0.00");
-                        roznichProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", 1);
+                        roznProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", 1);
                     }
 
                 }
@@ -782,8 +760,7 @@ namespace AutoMir2022
 
         private void otmenaProdazhiBtn_Click(object sender, EventArgs e)
         {
-            RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-            OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+          
             DBNpgsql dBNpgsqlObj = new DBNpgsql();
             if (otmenaProdazhiDGV.Rows.Count == 0) {
                 MessageBox.Show("Вы не выбрали товар для отмени продаж!");
@@ -822,7 +799,7 @@ namespace AutoMir2022
                     if (kolVozvrata < kolProdazha) otmenaProdazhiObj.updateProdazha(nakNomerOtmenaCmb.Text, 
                         otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(),kolProdazha-kolVozvrata);
 
-                    roznichProdazhaObj.updateTovarKol(otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(), kolVozvrata, "+");
+                    roznProdazhaObj.updateTovarKol(otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(), kolVozvrata, "+");
                     
                 }
             
@@ -834,7 +811,7 @@ namespace AutoMir2022
             if (propis != null)
             {
             
-                string summaPropis = roznichProdazhaObj.SummaPropis(double.Parse(propis));
+                string summaPropis = roznProdazhaObj.SummaPropis(double.Parse(propis));
                 otmenaProdazhiObj.UpdatePropisOtmenaProdazh(nakNomerOtmenaCmb.Text, summaPropis);
             }
 
@@ -922,8 +899,8 @@ namespace AutoMir2022
         {
             nakNomerOtmenaCmb.Text = nakNomerOtmenaCmb.GetItemText(nakNomerOtmenaCmb.SelectedItem);
             otmenaProdazhiDGV.Rows.Clear();
-            OtmenaProdazhi otmenaProdazhiObt = new OtmenaProdazhi();
-            DataTable dt = otmenaProdazhiObt.SelectDataDGV(nakNomerOtmenaCmb.Text);
+          
+            DataTable dt = otmenaProdazhiObj.SelectDataDGV(nakNomerOtmenaCmb.Text);
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -941,8 +918,7 @@ namespace AutoMir2022
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
-            int kod = Convert.ToInt32(kodVozvrataTxb.Text);
+           int kod = Convert.ToInt32(kodVozvrataTxb.Text);
             DataTable dt = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
             string kodKlienta = "";
             foreach (DataRow dr in dt.Rows)

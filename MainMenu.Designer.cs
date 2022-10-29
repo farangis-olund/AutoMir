@@ -65,6 +65,7 @@ namespace AutoMir2022
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
+            this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -200,7 +201,8 @@ namespace AutoMir2022
             // 
             this.продажаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.розничнаяToolStripMenuItem,
-            this.оптоваяToolStripMenuItem});
+            this.оптоваяToolStripMenuItem,
+            this.клиентToolStripMenuItem});
             this.продажаToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.продажаToolStripMenuItem.Name = "продажаToolStripMenuItem";
             this.продажаToolStripMenuItem.Size = new System.Drawing.Size(113, 34);
@@ -389,6 +391,13 @@ namespace AutoMir2022
             this.panelData.Size = new System.Drawing.Size(1069, 698);
             this.panelData.TabIndex = 3;
             // 
+            // клиентToolStripMenuItem
+            // 
+            this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
+            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
+            this.клиентToolStripMenuItem.Text = "Клиент";
+            this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,6 +463,7 @@ namespace AutoMir2022
         private System.Windows.Forms.RichTextBox info;
         private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.ToolStripMenuItem очисткаБазыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem клиентToolStripMenuItem;
     }
 
 }

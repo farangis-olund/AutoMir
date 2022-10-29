@@ -90,5 +90,22 @@ namespace AutoMir2022
             this.panelData.Controls.Add(myForm);
             myForm.Show();
         }
+
+        private void клиентToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            KlientFrm myForm = new KlientFrm();
+            info.Visible = false;
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.panelData.Controls.Add(myForm);
+            myForm.Show();
+
+        }
+    public void openFrm(ref Form myForm)
+        {
+            
+        }
     }
 }
