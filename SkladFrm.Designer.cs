@@ -219,6 +219,7 @@ namespace AutoMir2022
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SkladFrm";
             this.Text = "Склад";
+            this.Load += new System.EventHandler(this.SkladFrm_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.Datapanel.ResumeLayout(false);

@@ -14,11 +14,11 @@ namespace AutoMir2022
 {
     public partial class SkladFrm : Form
     {
+        public bool closeButton;
         public SkladFrm()
         {
             InitializeComponent();
             RefreshFrm();
-            
             
         }
 
@@ -98,6 +98,12 @@ namespace AutoMir2022
                     roznichProdazhaObj.SumOfColumnDataGridVeiw(ref skladDGV, "suma", "", "", "", 0);
                 }
             }
+        }
+
+        private void SkladFrm_Load(object sender, EventArgs e)
+        {
+            if (closeButton == true) button1.Visible = false;
+            else button1.Visible = true;
         }
     }
 }

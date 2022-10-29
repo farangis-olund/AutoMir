@@ -49,6 +49,7 @@ namespace AutoMir2022
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;
             this.panelData.Controls.Add(myForm);
+            
             myForm.Show();
 
             ////var SkladFrm = new SkladFrm();

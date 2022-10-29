@@ -117,7 +117,7 @@ namespace Core.Controllers.VozvratKlas
         {
             int kod = 0;
             DataTable dt = db.GetByQuery("Select код_возврата FROM public.возврат " +
-                "WHERE накладной_текст=0 " +
+                "WHERE накладной_текст='0' " +
                 "ORDER BY код_возврата DESC LIMIT 1");
 
             if (dt.Rows.Count != 0)
@@ -221,11 +221,11 @@ namespace Core.Controllers.VozvratKlas
         }
 
 
-        public void UpdateVozvrat(string naklText, int kod, string propis, double suma)
+        public void UpdateVozvrat(int kod, string propis, double suma)
         {
             db.insertWithParametrDouble("UPDATE public.возврат " +
             "SET прописью ='" + propis + "', сумма_возврата =@suma " +
-            "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'","suma", suma);
+            "WHERE код_возврата ='" + kod + "'","suma", suma);
         }
 
         public void DeleteVozvrat(string naklText, int kod)

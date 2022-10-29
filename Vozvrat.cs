@@ -11,6 +11,7 @@ using Core.Controllers.VozvratKlas;
 using Core.Controllers.RoznichProdazha;
 using Core.Controllers.Dolg;
 using Core.DB;
+using Core.Controllers.ProverkaNaOshibku;
 using Microsoft.Reporting.WinForms;
 
 namespace AutoMir2022
@@ -40,7 +41,9 @@ namespace AutoMir2022
         {
             nakladnoyNaitiCmb.Text = nakladnoyNaitiCmb.GetItemText(nakladnoyNaitiCmb.SelectedItem);
             naitiDGV.Rows.Clear();
-            
+            kodKlientaNaitiCmb.Text = "";
+            artikulCmb.Text = "";
+
             if (nakladnoyNaitiCmb.Text != "")
             {
                 VozvratKlas vozvratObj = new VozvratKlas();
@@ -145,8 +148,12 @@ namespace AutoMir2022
             if (artikulCmb.Text != "")
             {
                 show_all_dataDGV.DataSource = vozvratKlasObj.GetByParametrDate(dateStart.Value, dateEnd.Value, artikulCmb.Text);
-                show_all_dataDGV.Columns[0].Width = 70;
-                show_all_dataDGV.Columns[1].Width = 150;
+                if (show_all_dataDGV.Rows.Count != 0)
+                {
+                    show_all_dataDGV.Columns[0].Width = 70;
+                    show_all_dataDGV.Columns[1].Width = 150;
+                }
+                
             }
             else MessageBox.Show("Для поиска укажите артикул!");
         }
@@ -160,19 +167,25 @@ namespace AutoMir2022
                 optRb.Enabled = true;
                 kodKlientaProzhCmb.Enabled = true;
                 vozvratDGV.Rows.Clear();
-                artikulVibor.DisplayMember = "артикул";
+                nakladnoyVozvratCmb.Text = "";
+                kodVozvrataTxb.Text = "";
+                
                 artikulVibor.DataSource = vozvratObj.SelectAllArtikul();
+                artikulVibor.DisplayMember = "артикул";
             }
         }
 
         private void nakladnoyVozvratCmb_SelectionChangeCommitted(object sender, EventArgs e)
         {
+           
+            
             nakladnoyVozvratCmb.Text = nakladnoyVozvratCmb.GetItemText(nakladnoyVozvratCmb.SelectedItem);
             VozvratKlas vozvratObj = new VozvratKlas();
             string sumaVozvratinTable = vozvratObj.ProverkaNaNalichieVozvrata(nakladnoyVozvratCmb.Text);
             
             if ( sumaVozvratinTable!= "")
             {
+                
                 MessageBox.Show("На данный заказ уже оформлен возврат на сумму " +
                     sumaVozvratinTable);
             }
@@ -180,8 +193,10 @@ namespace AutoMir2022
 
             if (nakladnoyVozvratCmb.Text != "")
             {
-                artikulVibor.DisplayMember = "артикул";
+                restart();
                 artikulVibor.DataSource= vozvratObj.SelectArtikulByNakladnoy(nakladnoyVozvratCmb.Text);
+                artikulVibor.DisplayMember = "артикул";
+
                 show_all_dataDGV.Visible = false;
                 naitiDGV.Visible = true;
 
@@ -195,6 +210,15 @@ namespace AutoMir2022
             if (vozvratDGV.Columns[e.ColumnIndex].Name == "kolVozvrata")
             {
                 int b = 0;
+
+                ProverkaNaOshibku proverkaNaOshibkuObj = new ProverkaNaOshibku();
+                if (proverkaNaOshibkuObj.GetEmptyCellDVG(ref vozvratDGV, e.RowIndex, "kolVozvrata")==true)
+                    goto endProcess;
+                //if (vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value == null
+                //    || vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value == DBNull.Value
+                //    || String.IsNullOrWhiteSpace(vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value.ToString()))
+                //    goto endProcess;
+
                 if (int.TryParse(vozvratDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value.ToString(), out b))
                 {
                     if (b > Convert.ToInt32(vozvratDGV.Rows[e.RowIndex].Cells["kolich"].Value))
@@ -219,7 +243,7 @@ namespace AutoMir2022
                 }
 
             }
-        
+        endProcess: { }
         }
 
         private void oformitBtn_Click(object sender, EventArgs e)
@@ -292,7 +316,7 @@ namespace AutoMir2022
             if (propis != "")
             {
                 string summaPropis = roznichProdazhaObj.SummaPropis(double.Parse(propis));
-                vozvratObj.UpdateVozvrat(nakladnoyVozvratCmb.Text, kod, summaPropis, double.Parse(propis));
+                vozvratObj.UpdateVozvrat(kod, summaPropis, double.Parse(propis));
             }
 
             kodVozvrataTxb.Text = kod.ToString();
@@ -314,10 +338,12 @@ namespace AutoMir2022
             }
 
             vozvratDGV.Rows.Clear();
+            artikulVibor.Text = "";
+
             MessageBox.Show("Возврат успешно оформлен!");
             ChekReportPrint reportPrintObj = new ChekReportPrint();
             reportPrintObj.Show();
-
+            restart();
 
         EndProcess: { }
         }
@@ -325,6 +351,14 @@ namespace AutoMir2022
         private void artikulVibor_SelectionChangeCommitted(object sender, EventArgs e)
         {
             artikulVibor.Text = artikulVibor.GetItemText(artikulVibor.SelectedItem);
+
+            ProverkaNaOshibku proverkaNaOshibkuObj = new ProverkaNaOshibku();
+            if (proverkaNaOshibkuObj.CheckReapetedValueInDVG(ref vozvratDGV, "artikulVozvrat", artikulVibor.Text) == true)
+            {
+                MessageBox.Show("Данный артикул уже добавлен!");
+                goto endProcess;
+            }
+            
             VozvratKlas vozvratObj = new VozvratKlas();
             RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
 
@@ -378,15 +412,28 @@ namespace AutoMir2022
 
                     roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", 0);
                 }
-                else MessageBox.Show("Количество или цена данного артикула ровняется 0");
-
             }
+            
         endProcess: { }
+        }
+
+        public void restart()
+        {
+            optRb.Checked = false;
+            roznRb.Checked = false;
+            optRb.Enabled = false;
+            roznRb.Enabled = false;
+            kodKlientaProzhCmb.Text = "";
+            kodKlientaProzhCmb.Enabled = false;
+            artikulVibor.Text = "";
+            prozhVozvratChek.Checked = false;
         }
 
         private void ochistkaVozvratBtn_Click(object sender, EventArgs e)
         {
             vozvratDGV.Rows.Clear();
         }
+
+        
     }
 }

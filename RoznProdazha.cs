@@ -16,6 +16,7 @@ using Core.DB;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Drawing.Printing;
+using Core.Controllers.ProverkaNaOshibku;
 
 namespace AutoMir2022
 {
@@ -31,7 +32,7 @@ namespace AutoMir2022
         
             
             InitializeComponent();
-
+            
             showAllTovar();
             RoznichProdazha roznProdazhaObj = new RoznichProdazha();
 
@@ -59,6 +60,7 @@ namespace AutoMir2022
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;
+            myForm.closeButton = true;
             this.dataPanel.Controls.Add(myForm);
             myForm.Show();
 
@@ -354,6 +356,12 @@ namespace AutoMir2022
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
                 int b = 0;
+
+                ProverkaNaOshibku proverkaNaOshibkuObj = new ProverkaNaOshibku();
+                if (proverkaNaOshibkuObj.GetEmptyCellDVG(ref dataGridView2, e.RowIndex, "kolZakaza") == true)
+                    goto endProcess;
+
+
                 if (int.TryParse(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value.ToString(), out b))
                 {
                     double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
@@ -376,7 +384,7 @@ namespace AutoMir2022
                 }
               
             }
-
+        endProcess: { }
         }
 
 
