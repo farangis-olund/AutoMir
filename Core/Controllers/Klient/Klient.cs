@@ -18,7 +18,7 @@ namespace Core.Controllers.Klient
 
         public DataTable GetUrovenKlienta()
         {
-            return db.GetByQuery("Select уровень FROM public.customers WHERE уровень IS NOT NULL GROUP BY уровень ");
+            return db.GetByQuery("Select уровень FROM public.уровень_цен");
         }
 
         public DataTable GetKlientInfo(string kodKlienta)
@@ -27,13 +27,19 @@ namespace Core.Controllers.Klient
                                                "WHERE код_клиента='" + kodKlienta + "'");
         }
 
+        public DataTable GetKlientInfoByName(string fioKlienta)
+        {
+            return db.GetByQuery("Select * FROM public.customers " +
+                                                "WHERE фио='" + fioKlienta + "'");
+        }
+
         public void InsertNewKlient(string kodKlienta, string fio, string tel, string addres,
             double zadolzhnost, string uroven)
         {
             db.insertWithParametrDouble ("INSERT INTO public.customers (код_клиента, фио, рабочий_телефон, " +
                 "адрес, задолжность, уровень) " +
-                "VALUE('" + kodKlienta + "', '" + fio + "','" + tel + "'," +
-                "'" + addres + "', @zadolg, '" + uroven + "',", "zadolg", zadolzhnost);
+                "VALUES ('" + kodKlienta + "', '" + fio + "','" + tel + "'," +
+                "'" + addres + "', @zadolg, '" + uroven + "')", "zadolg", zadolzhnost);
         }
 
 

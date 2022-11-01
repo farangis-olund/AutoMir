@@ -44,6 +44,7 @@ namespace AutoMir2022
             this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розничнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оптоваяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поступлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьИзБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.приходРасходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,7 +66,6 @@ namespace AutoMir2022
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
-            this.клиентToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -222,6 +222,14 @@ namespace AutoMir2022
             this.оптоваяToolStripMenuItem.Name = "оптоваяToolStripMenuItem";
             this.оптоваяToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
             this.оптоваяToolStripMenuItem.Text = "Оптовая";
+            this.оптоваяToolStripMenuItem.Click += new System.EventHandler(this.оптоваяToolStripMenuItem_Click);
+            // 
+            // клиентToolStripMenuItem
+            // 
+            this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
+            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
+            this.клиентToolStripMenuItem.Text = "Клиент";
+            this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
             // поступлениеToolStripMenuItem
             // 
@@ -390,13 +398,6 @@ namespace AutoMir2022
             this.panelData.Name = "panelData";
             this.panelData.Size = new System.Drawing.Size(1069, 698);
             this.panelData.TabIndex = 3;
-            // 
-            // клиентToolStripMenuItem
-            // 
-            this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
-            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(189, 34);
-            this.клиентToolStripMenuItem.Text = "Клиент";
-            this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
             // MainMenu
             // 

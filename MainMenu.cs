@@ -31,39 +31,38 @@ namespace AutoMir2022
         {
             var retail = new retail();
             retail.Show();
-            //this.Close();
+            
         }
 
         private void розничнаяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var retail = new retail();
             retail.Show();
-            //this.Close();
+            
         }
 
         private void складToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            info.Visible = false;
-            SkladFrm myForm = new SkladFrm();
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.panelData.Controls.Add(myForm);
-            
-            myForm.Show();
+            //SkladFrm myForm = new SkladFrm();
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
 
-            ////var SkladFrm = new SkladFrm();
-            ////SkladFrm.Show();
+            //myForm.Show();
+
+            var SkladFrm = new SkladFrm();
+            SkladFrm.Show();
         }
 
         private void кассаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            info.Visible = false;
+            //info.Visible = false;
             Kassa myForm = new Kassa();
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.panelData.Controls.Add(myForm);
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
             myForm.Show();
 
 
@@ -71,23 +70,25 @@ namespace AutoMir2022
 
         private void возвратToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            info.Visible = false;
+            //info.Visible = false;
+            
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
             Vozvrat myForm = new Vozvrat();
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.panelData.Controls.Add(myForm);
             myForm.Show();
         }
 
         private void очисткаБазыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            info.Visible = false;
+            //info.Visible = false;
             Konfiguratsiya.Baza.OchistkaBD myForm = new Konfiguratsiya.Baza.OchistkaBD();
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.panelData.Controls.Add(myForm);
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
+            
             myForm.Show();
         }
 
@@ -95,17 +96,29 @@ namespace AutoMir2022
         {
             
             KlientFrm myForm = new KlientFrm();
-            info.Visible = false;
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.panelData.Controls.Add(myForm);
+            //info.Visible = false;
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
             myForm.Show();
 
         }
     public void openFrm(ref Form myForm)
         {
             
+        }
+
+        private void оптоваяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OptProdazha myForm = new OptProdazha();
+            //info.Visible = false;
+            //myForm.TopLevel = false;
+            //myForm.AutoScroll = true;
+            //myForm.FormBorderStyle = FormBorderStyle.None;
+            //this.panelData.Controls.Add(myForm);
+            myForm.Show();
+
         }
     }
 }

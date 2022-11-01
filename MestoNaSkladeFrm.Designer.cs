@@ -41,7 +41,6 @@ namespace AutoMir2022
             this.label1 = new System.Windows.Forms.Label();
             this.artikulCmb = new System.Windows.Forms.ComboBox();
             this.mestoNaSkladeDGV = new System.Windows.Forms.DataGridView();
-            this.panelMestoData = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +48,7 @@ namespace AutoMir2022
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelMestoData = new System.Windows.Forms.Panel();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mestoNaSkladeDGV)).BeginInit();
             this.panelMestoData.SuspendLayout();
@@ -67,7 +67,7 @@ namespace AutoMir2022
             this.panelTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(714, 58);
+            this.panelTop.Size = new System.Drawing.Size(742, 58);
             this.panelTop.TabIndex = 2;
             // 
             // changeBtn
@@ -153,17 +153,8 @@ namespace AutoMir2022
             this.mestoNaSkladeDGV.Name = "mestoNaSkladeDGV";
             this.mestoNaSkladeDGV.ReadOnly = true;
             this.mestoNaSkladeDGV.RowTemplate.Height = 25;
-            this.mestoNaSkladeDGV.Size = new System.Drawing.Size(714, 201);
+            this.mestoNaSkladeDGV.Size = new System.Drawing.Size(742, 201);
             this.mestoNaSkladeDGV.TabIndex = 7;
-            // 
-            // panelMestoData
-            // 
-            this.panelMestoData.Controls.Add(this.mestoNaSkladeDGV);
-            this.panelMestoData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMestoData.Location = new System.Drawing.Point(0, 58);
-            this.panelMestoData.Name = "panelMestoData";
-            this.panelMestoData.Size = new System.Drawing.Size(714, 201);
-            this.panelMestoData.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -217,14 +208,24 @@ namespace AutoMir2022
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
+            // panelMestoData
+            // 
+            this.panelMestoData.Controls.Add(this.mestoNaSkladeDGV);
+            this.panelMestoData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMestoData.Location = new System.Drawing.Point(0, 58);
+            this.panelMestoData.Name = "panelMestoData";
+            this.panelMestoData.Size = new System.Drawing.Size(742, 201);
+            this.panelMestoData.TabIndex = 8;
+            // 
             // MestoNaSkladeFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 259);
+            this.ClientSize = new System.Drawing.Size(742, 259);
             this.Controls.Add(this.panelMestoData);
             this.Controls.Add(this.panelTop);
             this.Name = "MestoNaSkladeFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Место на складе";
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
