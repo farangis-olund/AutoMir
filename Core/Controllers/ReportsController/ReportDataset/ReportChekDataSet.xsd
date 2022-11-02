@@ -54,6 +54,19 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ItogiProdazhi" msprop:Generator_TableClassName="ItogiProdazhiDataTable" msprop:Generator_TableVarName="tableItogiProdazhi" msprop:Generator_RowChangedName="ItogiProdazhiRowChanged" msprop:Generator_TablePropName="ItogiProdazhi" msprop:Generator_RowDeletingName="ItogiProdazhiRowDeleting" msprop:Generator_RowChangingName="ItogiProdazhiRowChanging" msprop:Generator_RowEvHandlerName="ItogiProdazhiRowChangeEventHandler" msprop:Generator_RowDeletedName="ItogiProdazhiRowDeleted" msprop:Generator_RowClassName="ItogiProdazhiRow" msprop:Generator_UserTableName="ItogiProdazhi" msprop:Generator_RowEvArgName="ItogiProdazhiRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KodKlienta" msprop:Generator_ColumnVarNameInTable="columnKodKlienta" msprop:Generator_ColumnPropNameInRow="KodKlienta" msprop:Generator_ColumnPropNameInTable="KodKlientaColumn" msprop:Generator_UserColumnName="KodKlienta" type="xs:string" minOccurs="0" />
+              <xs:element name="Fio" msprop:Generator_ColumnVarNameInTable="columnFio" msprop:Generator_ColumnPropNameInRow="Fio" msprop:Generator_ColumnPropNameInTable="FioColumn" msprop:Generator_UserColumnName="Fio" type="xs:string" minOccurs="0" />
+              <xs:element name="Adres" msprop:Generator_ColumnVarNameInTable="columnAdres" msprop:Generator_ColumnPropNameInRow="Adres" msprop:Generator_ColumnPropNameInTable="AdresColumn" msprop:Generator_UserColumnName="Adres" type="xs:string" minOccurs="0" />
+              <xs:element name="Tel" msprop:Generator_ColumnVarNameInTable="columnTel" msprop:Generator_ColumnPropNameInRow="Tel" msprop:Generator_ColumnPropNameInTable="TelColumn" msprop:Generator_UserColumnName="Tel" type="xs:string" minOccurs="0" />
+              <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:string" minOccurs="0" />
+              <xs:element name="Ostatok" msprop:Generator_ColumnVarNameInTable="columnOstatok" msprop:Generator_ColumnPropNameInRow="Ostatok" msprop:Generator_ColumnPropNameInTable="OstatokColumn" msprop:Generator_UserColumnName="Ostatok" type="xs:string" minOccurs="0" />
+              <xs:element name="Komp" msprop:Generator_ColumnVarNameInTable="columnKomp" msprop:Generator_ColumnPropNameInRow="Komp" msprop:Generator_ColumnPropNameInTable="KompColumn" msprop:Generator_UserColumnName="Komp" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

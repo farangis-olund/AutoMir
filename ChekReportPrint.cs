@@ -29,52 +29,12 @@ namespace AutoMir2022
             double vozvratDolg = Vozvrat.dolg;
             double optProdazhaDolg = OptProdazha.dolgKlienta;
             double optPlatezhi = OptProdazha.platezhiKlienta;
-            string path = Path.GetDirectoryName(Application.StartupPath);
-            string fullPath = "";
-
-            fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\" + checkType + ".rdlc";
-
-            //if (checkType == "ChekReportSkidka")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
-
-            //}
-            //else if (checkType == "ChekReport")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\"+checkType + ".rdlc";
-
-            //}
-            //else if (checkType == "ChekReportOpt")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOpt.rdlc";
-
-            //}
-
-            //else if (checkType == "ChekReportOtmenaRozn" || checkType == "ChekReportOtmenaOpt")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
-
-            //}
-            //else if (checkType == "ChekReportVozvrat")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvrat.rdlc";
-
-            //}
-
-            //else if (checkType == "ChekReportVozvratProshOpt")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshOpt.rdlc";
-
-            //}
-
-            //else if (checkType == "ChekReportVozvratProshRozn")
-            //{
-            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshRozn.rdlc";
-
-            //}
-
-
-            reportViewer1.LocalReport.ReportPath = fullPath;
+           
+            string exeFolder = Application.StartupPath;
+            string reportPath = Path.Combine(exeFolder, @"Reports\" + checkType + ".rdlc");
+            
+            
+            reportViewer1.LocalReport.ReportPath = reportPath;
 
             if (checkType == "ChekReportVozvratProshOpt")
             {
@@ -95,8 +55,7 @@ namespace AutoMir2022
             }
 
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportChek", retail.dtForCHekReport));
-
-           
+         
             this.reportViewer1.RefreshReport();
         }
     }

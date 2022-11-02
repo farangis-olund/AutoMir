@@ -59,6 +59,8 @@ namespace Core.Controllers.Dolg
             return value;
         }
 
+
+
         public double GetPlatezhExceptTheLast(string kodKlienta, int nomerPlatezh)
         {
             DataTable dt = db.GetByQuery("Select Sum(сумма_платежа) FROM public.платежи " +
@@ -105,6 +107,14 @@ namespace Core.Controllers.Dolg
             return value;
         }
 
+        public double GetOstatok(string kodKlienta)
+        {
+            double prodazha = GetPradazha(kodKlienta);
+            double zadolzhnost = GetZadolzhnost(kodKlienta);
+            double platezh = GetPlatezh(kodKlienta);
+            return prodazha + zadolzhnost - platezh;
+        }
+
         public double GetObshDolg(string kodKlienta)
         { 
             return  GetPradazha(kodKlienta) - GetVozvrat(kodKlienta) 
@@ -113,8 +123,10 @@ namespace Core.Controllers.Dolg
 
         public double GetStariyDolg(string kodKlienta, string nakText)
         {
-            return (GetPradazha(kodKlienta)-GetPradazhaTekushiy(kodKlienta, nakText)) -
-                - (GetPlatezh(kodKlienta)-GetPlatezhTekushiy(kodKlienta,nakText)) + GetZadolzhnost(kodKlienta);
+            double prod = GetPradazha(kodKlienta) - GetPradazhaTekushiy(kodKlienta, nakText);
+            double plat = GetPlatezh(kodKlienta);
+            double dolgIt=prod-plat + GetZadolzhnost(kodKlienta);
+            return dolgIt;
         }
 
         public DataTable GetProdazhaDgv(string kodKlienta)

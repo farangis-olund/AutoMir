@@ -13,11 +13,47 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Reports\ChekReport.rdlc" />
+    <None Remove="Reports\ChekReportOpt.rdlc" />
+    <None Remove="Reports\ChekReportOptPlatezh.rdlc" />
+    <None Remove="Reports\ChekReportOtmena.rdlc" />
     <None Remove="Reports\ChekReportPeriod.rdlc" />
+    <None Remove="Reports\ChekReportSkidka.rdlc" />
+    <None Remove="Reports\ChekReportVozvrat.rdlc" />
+    <None Remove="Reports\ChekReportVozvratProshOpt.rdlc" />
+    <None Remove="Reports\ChekReportVozvratProshRozn.rdlc" />
+    <None Remove="Reports\ItogiProdazhi.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\ChekReport.rdlc" />
-    <EmbeddedResource Include="Reports\ChekReportPeriod.rdlc" />
+    <Content Include="Reports\ChekReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportOpt.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportOptPlatezh.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportOtmena.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiProdazhi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportPeriod.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportSkidka.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportVozvrat.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportVozvratProshOpt.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ChekReportVozvratProshRozn.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework" Version="17.3.1" />
@@ -33,11 +69,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ReportChekDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="KassaForm\Kassa - Copy %282%29.resx">
@@ -52,6 +83,7 @@
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

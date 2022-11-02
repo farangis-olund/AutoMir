@@ -49,7 +49,6 @@ namespace AutoMir2022
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptProdazha));
             this.topPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -144,20 +143,7 @@ namespace AutoMir2022
             this.chekZakaz = new System.Windows.Forms.Button();
             this.zakazDGV = new System.Windows.Forms.DataGridView();
             this.itogi = new System.Windows.Forms.TabPage();
-            this.otmenaProdazhiDGV = new System.Windows.Forms.DataGridView();
-            this.viborIzSpiska = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.artikulOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsenaOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumaVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.kodVozvrataTxb = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.otmenaProdazhiBtn = new System.Windows.Forms.Button();
-            this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.itogiPanel = new System.Windows.Forms.Panel();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.topPanel.SuspendLayout();
@@ -177,8 +163,6 @@ namespace AutoMir2022
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zakazDGV)).BeginInit();
             this.itogi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.otmenaProdazhiDGV)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
@@ -1147,8 +1131,7 @@ namespace AutoMir2022
             // 
             // itogi
             // 
-            this.itogi.Controls.Add(this.otmenaProdazhiDGV);
-            this.itogi.Controls.Add(this.panel1);
+            this.itogi.Controls.Add(this.itogiPanel);
             this.itogi.Location = new System.Drawing.Point(4, 32);
             this.itogi.Name = "itogi";
             this.itogi.Padding = new System.Windows.Forms.Padding(3);
@@ -1157,133 +1140,14 @@ namespace AutoMir2022
             this.itogi.Text = "Итоги";
             this.itogi.UseVisualStyleBackColor = true;
             // 
-            // otmenaProdazhiDGV
+            // itogiPanel
             // 
-            this.otmenaProdazhiDGV.AllowUserToAddRows = false;
-            this.otmenaProdazhiDGV.AllowUserToDeleteRows = false;
-            this.otmenaProdazhiDGV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.otmenaProdazhiDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.otmenaProdazhiDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.viborIzSpiska,
-            this.artikulOtmena,
-            this.kolOtmena,
-            this.tsenaOtmena,
-            this.kolVozvrata,
-            this.sumaVozvrata});
-            this.otmenaProdazhiDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.otmenaProdazhiDGV.Location = new System.Drawing.Point(3, 81);
-            this.otmenaProdazhiDGV.Name = "otmenaProdazhiDGV";
-            this.otmenaProdazhiDGV.Size = new System.Drawing.Size(1325, 421);
-            this.otmenaProdazhiDGV.TabIndex = 1;
-            this.otmenaProdazhiDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.otmenaProdazhiDGV_CellEndEdit);
-            // 
-            // viborIzSpiska
-            // 
-            this.viborIzSpiska.HeaderText = "";
-            this.viborIzSpiska.Name = "viborIzSpiska";
-            this.viborIzSpiska.Width = 50;
-            // 
-            // artikulOtmena
-            // 
-            this.artikulOtmena.HeaderText = "артикул";
-            this.artikulOtmena.Name = "artikulOtmena";
-            this.artikulOtmena.ReadOnly = true;
-            this.artikulOtmena.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.artikulOtmena.Width = 200;
-            // 
-            // kolOtmena
-            // 
-            this.kolOtmena.HeaderText = "количество";
-            this.kolOtmena.Name = "kolOtmena";
-            this.kolOtmena.ReadOnly = true;
-            // 
-            // tsenaOtmena
-            // 
-            this.tsenaOtmena.HeaderText = "цена";
-            this.tsenaOtmena.Name = "tsenaOtmena";
-            this.tsenaOtmena.ReadOnly = true;
-            this.tsenaOtmena.Width = 120;
-            // 
-            // kolVozvrata
-            // 
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.kolVozvrata.DefaultCellStyle = dataGridViewCellStyle21;
-            this.kolVozvrata.HeaderText = "кол.возв";
-            this.kolVozvrata.Name = "kolVozvrata";
-            // 
-            // sumaVozvrata
-            // 
-            this.sumaVozvrata.HeaderText = "сумма";
-            this.sumaVozvrata.Name = "sumaVozvrata";
-            this.sumaVozvrata.ReadOnly = true;
-            this.sumaVozvrata.Width = 150;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.kodVozvrataTxb);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.otmenaProdazhiBtn);
-            this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1325, 78);
-            this.panel1.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(276, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 23);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "КОД";
-            // 
-            // kodVozvrataTxb
-            // 
-            this.kodVozvrataTxb.Location = new System.Drawing.Point(321, 19);
-            this.kodVozvrataTxb.Name = "kodVozvrataTxb";
-            this.kodVozvrataTxb.Size = new System.Drawing.Size(83, 30);
-            this.kodVozvrataTxb.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(632, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 34);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Печать накладной";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // otmenaProdazhiBtn
-            // 
-            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(438, 17);
-            this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
-            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(181, 34);
-            this.otmenaProdazhiBtn.TabIndex = 3;
-            this.otmenaProdazhiBtn.Text = "Отмена продажи";
-            this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
-            // 
-            // nakNomerOtmenaCmb
-            // 
-            this.nakNomerOtmenaCmb.FormattingEnabled = true;
-            this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 20);
-            this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
-            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(126, 31);
-            this.nakNomerOtmenaCmb.TabIndex = 2;
-            this.nakNomerOtmenaCmb.SelectionChangeCommitted += new System.EventHandler(this.nakNomerOtmenaCmb_SelectionChangeCommitted);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(120, 23);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Накладной №";
+            this.itogiPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.itogiPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.itogiPanel.Location = new System.Drawing.Point(3, 3);
+            this.itogiPanel.Name = "itogiPanel";
+            this.itogiPanel.Size = new System.Drawing.Size(1325, 499);
+            this.itogiPanel.TabIndex = 0;
             // 
             // printDocument1
             // 
@@ -1296,7 +1160,7 @@ namespace AutoMir2022
             this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
             this.printPreviewDialog1.Document = this.printDocument1;
             this.printPreviewDialog1.Enabled = true;
-            //this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
@@ -1338,9 +1202,6 @@ namespace AutoMir2022
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zakazDGV)).EndInit();
             this.itogi.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.otmenaProdazhiDGV)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1387,20 +1248,7 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabPage platezhi;
         private System.Windows.Forms.TabPage itogi;
-        private System.Windows.Forms.DataGridView otmenaProdazhiDGV;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn viborIzSpiska;
-        private System.Windows.Forms.DataGridViewTextBoxColumn artikulOtmena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kolOtmena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tsenaOtmena;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kolVozvrata;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sumaVozvrata;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox kodVozvrataTxb;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button otmenaProdazhiBtn;
-        private System.Windows.Forms.ComboBox nakNomerOtmenaCmb;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel itogiPanel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox artikulKarz2;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikulKarz1;

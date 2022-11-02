@@ -48,18 +48,16 @@ namespace AutoMir2022
             viborProdovets.DisplayMember = "продавец";
             viborProdovets.DataSource = roznProdazhaObj.getNameSeller();
             viborProdovets.Text = null;
-               
-          
-            //add nakladnoy tab OtmenaProdazhi
 
-            nakNomerOtmenaCmb.DisplayMember = "накладной_текст";
-            nakNomerOtmenaCmb.DataSource = otmenaProdazhiObj.SelectNomerNakladnoy();
-            nakNomerOtmenaCmb.Text = null;
-
+            ItogiOptProdazhi myForm = new ItogiOptProdazhi();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            this.itogiPanel.Controls.Add(myForm);
 
         }
 
-      
+
         public void showAllTovar()
         {
             //dataGridView1.AutoGenerateColumns = true;
@@ -382,6 +380,7 @@ namespace AutoMir2022
             roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
 
             ochiskta();
+            itogiPlatezhProdazha();
         endProsess: { }
         }
 
@@ -402,42 +401,7 @@ namespace AutoMir2022
             }
         }
 
-        
-
-        private void otmenaProdazhiDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            double b = 0;
-            if (otmenaProdazhiDGV.Columns[e.ColumnIndex].Name == "kolVozvrata")
-            {
-
-                if (Double.TryParse(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value.ToString(), out b))
-                {
-                    int kol = int.Parse(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["kolOtmena"].Value.ToString());
-                    if (b > kol)
-                    {
-                        MessageBox.Show("Количество отмены превышает количество заказа!");
-                        otmenaProdazhiDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value = null;
-                    }
-                    else
-                    {
-                        double a = Convert.ToDouble(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["tsenaOtmena"].Value);
-                        otmenaProdazhiDGV.Rows[e.RowIndex].Cells["sumaVozvrata"].Value = (a * b).ToString("0.00");
-                        roznProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", 1);
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Количество задан неправельно!");
-                    otmenaProdazhiDGV.Rows[e.RowIndex].Cells["kolVozvrata"].Value = null;
-                }
-                
-                
-
-            }
-
-        }
-
+       
         private void ochistitKarzina1Btn_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource=null;
@@ -504,29 +468,6 @@ namespace AutoMir2022
         endProsess: { }
 
 
-        }
-
-
-
-        private void nakNomerOtmenaCmb_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            nakNomerOtmenaCmb.Text = nakNomerOtmenaCmb.GetItemText(nakNomerOtmenaCmb.SelectedItem);
-            otmenaProdazhiDGV.Rows.Clear();
-          
-            DataTable dt = otmenaProdazhiObj.SelectDataDGV(nakNomerOtmenaCmb.Text);
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int index = otmenaProdazhiDGV.Rows.Add();
-
-                    otmenaProdazhiDGV.Rows[index].Cells[1].Value = dr[0];
-                    otmenaProdazhiDGV.Rows[index].Cells[2].Value = dr[1];
-                    otmenaProdazhiDGV.Rows[index].Cells[3].Value = dr[2];
-
-                }
-                otmenaProdazhiDGV.Rows.Add();
-            }
         }
 
 
@@ -821,8 +762,10 @@ namespace AutoMir2022
         {
             int index = zakazDGV.CurrentCell.RowIndex;
             string nakText = zakazDGV.Rows[index].Cells[1].Value.ToString();
+
             dolgKlienta =dolgObj.GetStariyDolg(kodKlienta.Text, nakText);
-            platezhiKlienta = dolgObj.GetPlatezh(kodKlienta.Text);
+
+            platezhiKlienta = dolgObj.GetPlatezhTekushiy(kodKlienta.Text,nakText);
             retail.dtForCHekReport = optoviyObj.printCkekQuery(nakText);
             retail.nameOfReport = "ChekReportOpt";
              
@@ -864,7 +807,9 @@ namespace AutoMir2022
         {
             int index = platezhDGV.CurrentCell.RowIndex;
             int nomerPlat =Convert.ToInt32(platezhDGV.Rows[index].Cells[1].Value);
-            dolgKlienta = dolgObj.GetPradazha(kodKlienta.Text)-dolgObj.GetPlatezhExceptTheLast(kodKlienta.Text,nomerPlat);
+            dolgKlienta = dolgObj.GetPradazha(kodKlienta.Text)-dolgObj.GetPlatezhExceptTheLast(kodKlienta.Text,nomerPlat)
+                +dolgObj.GetZadolzhnost(kodKlienta.Text);
+            
             platezhiKlienta = dolgObj.GetPlatezhByNomerPlatezh(kodKlienta.Text, nomerPlat);
             retail.dtForCHekReport = optoviyObj.printCkekQueryPlatezh(nomerPlat);
             retail.nameOfReport = "ChekReportOptPlatezh";
