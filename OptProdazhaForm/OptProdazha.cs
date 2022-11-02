@@ -811,7 +811,7 @@ namespace AutoMir2022
 
         private void zakazDGV_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            int index = zakazDGV.CurrentCell.RowIndex;
+          
             chekZakaz.Enabled = true;
 
 
@@ -823,7 +823,6 @@ namespace AutoMir2022
             string nakText = zakazDGV.Rows[index].Cells[1].Value.ToString();
             dolgKlienta =dolgObj.GetStariyDolg(kodKlienta.Text, nakText);
             platezhiKlienta = dolgObj.GetPlatezh(kodKlienta.Text);
-            retail retail = new retail();
             retail.dtForCHekReport = optoviyObj.printCkekQuery(nakText);
             retail.nameOfReport = "ChekReportOpt";
              
@@ -859,6 +858,44 @@ namespace AutoMir2022
             }
 
             endProcess: { }
+        }
+
+        private void chekPlatezh_Click(object sender, EventArgs e)
+        {
+            int index = platezhDGV.CurrentCell.RowIndex;
+            int nomerPlat =Convert.ToInt32(platezhDGV.Rows[index].Cells[1].Value);
+            dolgKlienta = dolgObj.GetPradazha(kodKlienta.Text)-dolgObj.GetPlatezhExceptTheLast(kodKlienta.Text,nomerPlat);
+            platezhiKlienta = dolgObj.GetPlatezhByNomerPlatezh(kodKlienta.Text, nomerPlat);
+            retail.dtForCHekReport = optoviyObj.printCkekQueryPlatezh(nomerPlat);
+            retail.nameOfReport = "ChekReportOptPlatezh";
+
+            ChekReportPrint reportPrintObj = new ChekReportPrint();
+            reportPrintObj.Show();
+
+        }
+
+        private void platezhDGV_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            chekPlatezh.Enabled = true;
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+        Bitmap bmp;
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            bmp = new Bitmap(this.Size.Width, this.Size.Height, g);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            printPreviewDialog1.ShowDialog();
         }
     }
 }

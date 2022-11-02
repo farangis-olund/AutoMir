@@ -47,6 +47,30 @@ namespace Core.Controllers.Dolg
             return value;
         }
 
+        public double GetPlatezhByNomerPlatezh(string kodKlienta, int nomerPlatezh)
+        {
+            DataTable dt = db.GetByQuery("Select Sum(сумма_платежа) FROM public.платежи " +
+                            "WHERE код_клиента='" + kodKlienta + "' AND №_платежа='" + nomerPlatezh + "'");
+            double value = 0;
+            var b = dt.Rows[0][0].ToString();
+            if (b != "")
+                value = Convert.ToDouble(dt.Rows[0][0]);
+
+            return value;
+        }
+
+        public double GetPlatezhExceptTheLast(string kodKlienta, int nomerPlatezh)
+        {
+            DataTable dt = db.GetByQuery("Select Sum(сумма_платежа) FROM public.платежи " +
+                            "WHERE код_клиента='" + kodKlienta + "' AND №_платежа<>'" + nomerPlatezh + "'");
+            double value = 0;
+            var b = dt.Rows[0][0].ToString();
+            if (b != "")
+                value = Convert.ToDouble(dt.Rows[0][0]);
+
+            return value;
+        }
+
         public double GetPradazha(string kodKlienta)
         {
             DataTable dt = db.GetByQuery("Select Sum(pt.количество*pt.цена) FROM public.продажа p, public.продажа_товара pt " +

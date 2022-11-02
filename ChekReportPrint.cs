@@ -84,13 +84,14 @@ namespace AutoMir2022
                 reportViewer1.LocalReport.SetParameters(param);
             }
 
-            if (checkType == "ChekReportOpt")
+            if (checkType == "ChekReportOpt" || checkType == "ChekReportOptPlatezh")
             {
                 ReportParameter[] parms = new ReportParameter[2];
 
                 parms[0] = new ReportParameter("dolg", optProdazhaDolg.ToString("0.00"));
                 parms[1] = new ReportParameter("platezhi", optPlatezhi.ToString("0.00"));
                 reportViewer1.LocalReport.SetParameters(parms);
+               
             }
 
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportChek", retail.dtForCHekReport));

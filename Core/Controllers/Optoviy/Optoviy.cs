@@ -122,6 +122,16 @@ namespace Core.Controllers.Optoviy
 
         }
 
+        public DataTable printCkekQueryPlatezh(int nomerPlatezha)
+        {
+
+            return db.GetByQuery("SELECT e.№_платежа as nakText, e.прописью as propis, e.код_клиента as kodKlienta, " +
+                                        "d.фио as fio, d.адрес as adres, d.рабочий_телефон as tel, " +
+                                        "g.названиекомпании as komp FROM public.платежи e , public.customers d, " +
+                                        "public.сведения_об_организации g WHERE d.код_клиента=e.код_клиента " +
+                                        "AND e.№_платежа='" + nomerPlatezha + "'");
+
+        }
 
     }
 }

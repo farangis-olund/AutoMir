@@ -350,6 +350,12 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnKodKlienta;
             
+            private global::System.Data.DataColumn columnfio;
+            
+            private global::System.Data.DataColumn columnadres;
+            
+            private global::System.Data.DataColumn columntel;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DtReportChekDataTable() {
@@ -529,6 +535,30 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn fioColumn {
+                get {
+                    return this.columnfio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn adresColumn {
+                get {
+                    return this.columnadres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn telColumn {
+                get {
+                    return this.columntel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -582,7 +612,10 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         string SummaOplata, 
                         string Komp, 
                         string Naimenovanie, 
-                        string KodKlienta) {
+                        string KodKlienta, 
+                        string fio, 
+                        string adres, 
+                        string tel) {
                 DtReportChekRow rowDtReportChekRow = ((DtReportChekRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Naktext,
@@ -602,7 +635,10 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         SummaOplata,
                         Komp,
                         Naimenovanie,
-                        KodKlienta};
+                        KodKlienta,
+                        fio,
+                        adres,
+                        tel};
                 rowDtReportChekRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtReportChekRow);
                 return rowDtReportChekRow;
@@ -643,6 +679,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnKomp = base.Columns["Komp"];
                 this.columnNaimenovanie = base.Columns["Naimenovanie"];
                 this.columnKodKlienta = base.Columns["KodKlienta"];
+                this.columnfio = base.Columns["fio"];
+                this.columnadres = base.Columns["adres"];
+                this.columntel = base.Columns["tel"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -684,6 +723,12 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnNaimenovanie);
                 this.columnKodKlienta = new global::System.Data.DataColumn("KodKlienta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKodKlienta);
+                this.columnfio = new global::System.Data.DataColumn("fio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfio);
+                this.columnadres = new global::System.Data.DataColumn("adres", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadres);
+                this.columntel = new global::System.Data.DataColumn("tel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntel);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1474,6 +1519,54 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string fio {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportChek.fioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fio\' in table \'DtReportChek\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportChek.fioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string adres {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportChek.adresColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'adres\' in table \'DtReportChek\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportChek.adresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string tel {
+                get {
+                    try {
+                        return ((string)(this[this.tableDtReportChek.telColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tel\' in table \'DtReportChek\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtReportChek.telColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNaktextNull() {
                 return this.IsNull(this.tableDtReportChek.NaktextColumn);
             }
@@ -1686,6 +1779,42 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetKodKlientaNull() {
                 this[this.tableDtReportChek.KodKlientaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsfioNull() {
+                return this.IsNull(this.tableDtReportChek.fioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetfioNull() {
+                this[this.tableDtReportChek.fioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsadresNull() {
+                return this.IsNull(this.tableDtReportChek.adresColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetadresNull() {
+                this[this.tableDtReportChek.adresColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstelNull() {
+                return this.IsNull(this.tableDtReportChek.telColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettelNull() {
+                this[this.tableDtReportChek.telColumn] = global::System.Convert.DBNull;
             }
         }
         
