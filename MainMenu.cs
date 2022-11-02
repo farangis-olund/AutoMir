@@ -14,7 +14,7 @@ namespace AutoMir2022
 {
     public partial class MainMenu : Form
     {
-        
+        public string userGroup;
         public MainMenu()
         {
        

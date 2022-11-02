@@ -14,6 +14,7 @@ using Core.Controllers.Klient;
 using Core.DB;
 using Core.Controllers.ProverkaNaOshibku;
 using Core.Controllers.Optoviy;
+using Core.Controllers.Dolg;
 
 namespace AutoMir2022
 {
@@ -25,10 +26,12 @@ namespace AutoMir2022
         private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
         private Klient klientObj = new Klient();
         private Optoviy optoviyObj = new Optoviy();
+        private Dolg dolgObj = new Dolg();
         private double kurs;
-
-        public static DataTable dtForCHekReport;
-        public static string nameOfReport;
+        public static double dolgKlienta;
+        public static double platezhiKlienta;
+        //public static DataTable dtForCHekReport;
+        //public static string nameOfReport;
         public OptProdazha()
         {
         
@@ -399,30 +402,7 @@ namespace AutoMir2022
             }
         }
 
-        public void printCkekDetails(string nakTxt)
-        {
-            
-            dtForCHekReport = roznProdazhaObj.chekProdazhaQuery(nakTxt);
-
-            bool ischecked = rozntsena.Checked;
-            if (ischecked == true)
-            {
-                nameOfReport = "ChekReportSkidka";
-                //roznichProdazhaObj.printCkek(roznichProdazhaObj.chekProdazhaQuery(nakTxt), "ChekReportSkidka");
-
-            }
-            else
-            {
-                nameOfReport = "ChekReport";
-                //roznichProdazhaObj.printCkek(roznichProdazhaObj.chekProdazhaQuery(nakTxt), "ChekReport");
-
-            }
-
-            ChekReportPrint reportPrintObj = new ChekReportPrint();
-            reportPrintObj.Show();
-        }
-
-
+        
 
         private void otmenaProdazhiDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -455,102 +435,6 @@ namespace AutoMir2022
                 
 
             }
-
-        }
-
-        private void otmenaProdazhiBtn_Click(object sender, EventArgs e)
-        {
-          
-            DBNpgsql dBNpgsqlObj = new DBNpgsql();
-            if (otmenaProdazhiDGV.Rows.Count == 0) {
-                MessageBox.Show("Вы не выбрали товар для отмени продаж!");
-                goto EndProcess; 
-            }
-
-            int kod = otmenaProdazhiObj.SelectNomerVozvrata();
-            for (int i = 0; i < otmenaProdazhiDGV.Rows.Count - 1; i++)
-            {
-                bool isChecked =Convert.ToBoolean(otmenaProdazhiDGV.Rows[i].Cells[0].Value);
-                if(isChecked==true && otmenaProdazhiDGV.Rows[i].Cells["kolVozvrata"].Value==null)
-                {
-                    MessageBox.Show("Для выбронного артикула не указан количество возврата!");
-                    goto EndProcess;
-                }
-                else if (isChecked == true && otmenaProdazhiDGV.Rows[i].Cells["kolVozvrata"].Value != null)
-                {
-                    //добавляем в таблицу отмена продажа с таблицы продажа и продажа товара 
-
-                    otmenaProdazhiObj.InsertOtmenaProdazh(nakNomerOtmenaCmb.Text, otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString());
-                    
-                    int kolVozvrata = int.Parse(otmenaProdazhiDGV.Rows[i].Cells["kolVozvrata"].Value.ToString());
-                    int kolProdazha = int.Parse(otmenaProdazhiDGV.Rows[i].Cells["kolOtmena"].Value.ToString());
-                    double tsena = double.Parse(otmenaProdazhiDGV.Rows[i].Cells["tsenaOtmena"].Value.ToString());
-                    
-                    
-                   double suma = kolVozvrata * tsena;
-                   
-                    //обновляет таблицу отмена продажа с количеством возврата и суммой 
-                    dBNpgsqlObj.UpdateOtmenaProdazh(nakNomerOtmenaCmb.Text, otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(),
-                        kolVozvrata, suma, kod);
-
-                    if (kolVozvrata == kolProdazha) otmenaProdazhiObj.DeleteProdazhaTovara(nakNomerOtmenaCmb.Text,
-                       otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString());
-
-                    if (kolVozvrata < kolProdazha) otmenaProdazhiObj.updateProdazha(nakNomerOtmenaCmb.Text, 
-                        otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(),kolProdazha-kolVozvrata);
-
-                    roznProdazhaObj.updateTovarKol(otmenaProdazhiDGV.Rows[i].Cells[1].Value.ToString(), kolVozvrata, "+");
-                    
-                }
-            
-            
-            }
-
-            //сумма прописю 
-            string propis = otmenaProdazhiObj.SelectSummaOtmenaProdazh(nakNomerOtmenaCmb.Text, kod);
-            if (propis != null)
-            {
-            
-                string summaPropis = roznProdazhaObj.SummaPropis(double.Parse(propis));
-                otmenaProdazhiObj.UpdatePropisOtmenaProdazh(nakNomerOtmenaCmb.Text, summaPropis);
-            }
-
-            //при отмени всех товаров удаляем вес заказ из таблицы продажа 
-
-            if (otmenaProdazhiObj.SelectDataDGV(nakNomerOtmenaCmb.Text).Rows.Count == 0)
-            {
-                otmenaProdazhiObj.DeleteProdazha(nakNomerOtmenaCmb.Text);
-            }
-            kodVozvrataTxb.Text = kod.ToString();
-            DataTable dt = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-            string kodKlienta = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                kodKlienta = dr["kodKlienta"].ToString();
-                break;
-            }
-            if (kodKlienta == "")
-            {
-                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-                nameOfReport = "ChekReportOtmenaRozn";
-                
-            }
-            else
-            {
-                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-                nameOfReport = "ChekReportOtmenaOpt";
-
-            }
-
-            otmenaProdazhiDGV.Rows.Clear();
-            MessageBox.Show("Заказ успешно отменен!");
-            ChekReportPrint reportPrintObj = new ChekReportPrint();
-            reportPrintObj.Show();
-
-            
-
-
-        EndProcess: { }
 
         }
 
@@ -645,34 +529,6 @@ namespace AutoMir2022
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-           int kod = Convert.ToInt32(kodVozvrataTxb.Text);
-            DataTable dt = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-            string kodKlienta = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                kodKlienta = dr["kodKlienta"].ToString();
-                break;
-            }
-            if (kodKlienta == "")
-            {
-                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-                nameOfReport = "ChekReportOtmenaRozn";
-
-            }
-            else
-            {
-                dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-                nameOfReport = "ChekReportOtmenaOpt";
-            }
-
-            otmenaProdazhiDGV.Rows.Clear();
-            ChekReportPrint reportPrintObj = new ChekReportPrint();
-            reportPrintObj.Show();
-
-        }
-
 
         private void kodKlienta_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -691,8 +547,9 @@ namespace AutoMir2022
                         adres.Text = dr[3].ToString();
                         urovenKlienta.Text = dr[5].ToString();
                     }
-
+                    itogiPlatezhProdazha();
                 }
+                
             }
            
         }
@@ -721,8 +578,10 @@ namespace AutoMir2022
                         adres.Text = dr[3].ToString();
                         urovenKlienta.Text = dr[5].ToString();
                     }
-
+                    itogiPlatezhProdazha();
                 }
+
+               
             }
 
         }
@@ -916,6 +775,90 @@ namespace AutoMir2022
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rozntsena_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rozntsena.Checked == true && dataGridView1.Rows.Count>0)
+            {
+                MessageBox.Show("Опцию розн.цена укажите перед добавлением товара в карзину!");
+                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
+                ochiskta();
+            }
+        }
+
+        private void itogiPlatezhProdazha()
+        {
+            
+            double prodazha = dolgObj.GetPradazha(kodKlienta.Text);
+            double platezh = dolgObj.GetPlatezh(kodKlienta.Text);
+            double zadolzhnost = dolgObj.GetZadolzhnost(kodKlienta.Text);
+
+            itogoZakaz.Text = prodazha.ToString("0.00");
+            itogoPlatezh.Text = platezh.ToString("0.00");
+            ostatok.Text = (prodazha + zadolzhnost - platezh).ToString("0.00");
+
+            platezhDGV.DataSource = dolgObj.GetPlatezhDgv(kodKlienta.Text);
+            zakazDGV.DataSource = dolgObj.GetProdazhaDgv(kodKlienta.Text);
+
+        }
+
+        private void zakazDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void zakazDGV_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = zakazDGV.CurrentCell.RowIndex;
+            chekZakaz.Enabled = true;
+
+
+        }
+
+        private void chekZakaz_Click(object sender, EventArgs e)
+        {
+            int index = zakazDGV.CurrentCell.RowIndex;
+            string nakText = zakazDGV.Rows[index].Cells[1].Value.ToString();
+            dolgKlienta =dolgObj.GetStariyDolg(kodKlienta.Text, nakText);
+            platezhiKlienta = dolgObj.GetPlatezh(kodKlienta.Text);
+            retail retail = new retail();
+            retail.dtForCHekReport = optoviyObj.printCkekQuery(nakText);
+            retail.nameOfReport = "ChekReportOpt";
+             
+            ChekReportPrint reportPrintObj = new ChekReportPrint();
+            reportPrintObj.Show();
+
+        }
+
+        private void oformitPlatezh_Click(object sender, EventArgs e)
+        {
+            string nakText=optoviyObj.getLastNakladnoyText();
+            double b = 0;
+            if (nakText == "")
+            {
+                MessageBox.Show("Выбранному клиенту заказ еще не оформлен!");
+                goto endProcess;
+            }
+
+            else if (double.TryParse(sumaPlatezh.Text, out b))
+            {
+                optoviyObj.InsertPlatezh(Convert.ToDouble(sumaPlatezh.Text), roznProdazhaObj.SummaPropis(Convert.ToDouble(sumaPlatezh.Text)),
+                nakText, kodKlienta.Text);
+                MessageBox.Show("Платеж успешно оформлен!");
+                sumaPlatezh.Text = "";
+                itogiPlatezhProdazha();
+                chekPlatezh.Enabled = true;
+
+
+
+            }
+            else { MessageBox.Show("Платеж указан не правильно!");
+                sumaPlatezh.Text = "";
+            }
+
+            endProcess: { }
         }
     }
 }

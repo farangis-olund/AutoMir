@@ -51,7 +51,11 @@ namespace AutoMir2022
             // 
             // NomerNakladnoyCmb
             // 
+            this.NomerNakladnoyCmb.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NomerNakladnoyCmb.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            this.NomerNakladnoyCmb.DropDownHeight = 85;
             this.NomerNakladnoyCmb.FormattingEnabled = true;
+            this.NomerNakladnoyCmb.IntegralHeight = false;
             this.NomerNakladnoyCmb.Location = new System.Drawing.Point(13, 64);
             this.NomerNakladnoyCmb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NomerNakladnoyCmb.Name = "NomerNakladnoyCmb";

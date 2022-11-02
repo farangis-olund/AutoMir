@@ -333,7 +333,7 @@ namespace AutoMir2022
             dataGridView1.Columns[4].Width = 320;
             dataGridView1.Columns[5].Width = 120;
             dataGridView1.Columns[6].Width = 60;
-            dataGridView1.Columns[7].Width = 80;
+            dataGridView1.Columns[7].Width = 100;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -715,11 +715,17 @@ namespace AutoMir2022
         private void prodazhaSoSkidkoy_CheckedChanged(object sender, EventArgs e)
         {
             bool isChecked = prodazhaSoSkidkoy.Checked;
-            if (isChecked && skidkaValue.Text != "" && dataGridView3.Rows.Count > 0)
+            if (isChecked && skidkaValue.Text == "" && dataGridView3.Rows.Count > 0)
             {
                 MessageBox.Show("Вы выбрали опцию продажа со скидкой после того как добавили артикули в карзину 3," +
                                 " для того чтобы продажа оформилась со скидкой, сперва выберети скидку а затем добавьте товары в карзину 3!");
 
+                dataGridView3.Rows.Clear();
+
+                variant1.Checked = false;
+                variant2.Checked = false;
+                variant3.Checked = false;
+                variant4.Checked = false;
             }
         }
 
@@ -832,7 +838,7 @@ namespace AutoMir2022
             if (kodKlienta == "")
             {
                 dtForCHekReport = otmenaProdazhiObj.printCkekQuery(nakNomerOtmenaCmb.Text, kod);
-                nameOfReport = "ChekReportOtmenaRozn";
+                nameOfReport = "ChekReportOtmena";
                 
             }
             else

@@ -94,102 +94,32 @@ namespace Core.Controllers.Optoviy
 
         }
 
-
-        public void InsertVozvratPerechen(int kod, string artikul, int kol, double suma)
+        public void InsertPlatezh(double suma, string propis, string naklText, string kod_klienta)
         {
-
-            db.insertWithParametrDouble("INSERT INTO public.перечень_возврата(" +
-                "код_возврата, артикул, количество, сумма) " +
-                " VALUES ('" + kod + "','" + artikul + "', '" + kol + "', @suma)", "suma", suma);
-
-        }
-        public void InsertVozvratProshlogod(string kodKlienta)
-        {
-            db.insertUpdateToDB("INSERT INTO public.возврат_прошлогодный (код_клиента)" +
-                     " VALUES('" + kodKlienta + "')");
+            db.insertWithParametrDouble("INSERT INTO public.платежи (" +
+                  "прописью, код_клиента, накладной_текст, сумма_платежа) VALUES ('" + propis + "', " +
+                   "'" + kod_klienta + "', '" + naklText + "', @suma)", "suma", suma);
 
         }
 
+        public string getLastNakladnoyText()
+        {
+            DataTable dt = db.GetByQuery("SELECT накладной_текст FROM public.продажа ORDER BY накладной_текст DESC LIMIT 1;");
 
-        public string SelectSummaVozvrata(int kod)
-       {
-                        
-            DataTable dt= db.GetByQuery("Select Sum(сумма)" +
-                    " FROM public.перечень_возврата " +
-                    "WHERE код_возврата ='" + kod + "'");
-            string suma="";
+            return dt.Rows[0][0].ToString();
             
-            if (dt.Rows.Count != 0)
-            {
-                suma = dt.Rows[0]["sum"].ToString();
-
-            }
-            return suma;
-
         }
 
 
-        public string SelectProshlogodVozvrata()
+        public DataTable printCkekQuery(string naklTxt)
         {
 
-            DataTable dt = db.GetByParametrDate("Select дата" +
-                    " FROM public.возврат_прошлогодный " +
-                    "WHERE дата =@data", "data");
-            string suma = "";
+            return db.GetByQuery("SELECT e.дата as date, e.накладной_текст as nakText, e.прописью as propis, c.место_на_складе as mesto, e.код_клиента as kodKlienta, " +
+                                        "d.артикул as artikul, d.количество as kolichestvo, d.цена as tsena, c.бренд as brand, " +
+                                        "c.марка as marka, c.модель as model,c.наименование as naimenovanie, g.названиекомпании as komp FROM public.продажа e , public.продажа_товара d, " +
+                                        "public.товар c, public.сведения_об_организации g WHERE d.кодпродажи=e.кодпродажи and d.артикул=c.артикул " +
+                                        "AND e.накладной_текст='" + naklTxt + "'");
 
-            if (dt.Rows.Count != 0)
-            {
-                suma = dt.Rows[0]["дата"].ToString();
-
-            }
-            return suma;
-
-        }
-
-
-
-
-        public string ProverkaNaNalichieVozvrata(string naklTxt)
-        {
-
-            DataTable dt = db.GetByQuery("Select SUM(сумма_возврата) as сумма" +
-                    " FROM public.возврат " +
-                    "WHERE накладной_текст ='" + naklTxt + "'");
-            string suma = "";
-
-            if (dt.Rows.Count != 0)
-            {
-                suma = dt.Rows[0]["сумма"].ToString();
-
-            }
-            return suma;
-
-        }
-
-
-        public void UpdateVozvrat(int kod, string propis, double suma)
-        {
-            db.insertWithParametrDouble("UPDATE public.возврат " +
-            "SET прописью ='" + propis + "', сумма_возврата =@suma " +
-            "WHERE код_возврата ='" + kod + "'","suma", suma);
-        }
-
-        public void DeleteVozvrat(string naklText, int kod)
-        {
-            db.insertUpdateToDB("DELETE FROM public.возврат " +
-                        "WHERE накладной_текст ='" + naklText + "' AND код_возврата ='" + kod + "'");
-        }
-
-
-        public DataTable printCkekQuery(int kod)
-        {
-
-            return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.прописью as propis, " +
-                                 "d.артикул as artikul, d.сумма as suma , d.количество as kolichestvo, k.наименование as naimenovanie, k.бренд as brand, " +
-                                 "k.марка as marka, k.модель as model, g.названиекомпании as komp FROM public.возврат e, public.перечень_возврата d, " +
-                                 "public.товар k, public.сведения_об_организации g WHERE e.код_возврата=d.код_возврата AND d.артикул=k.артикул " +
-                                 "AND e.код_возврата= '" + kod + "'");
-            
         }
 
 

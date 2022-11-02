@@ -51,8 +51,8 @@ namespace AutoMir2022
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.rozntsena = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rozntsena = new System.Windows.Forms.CheckBox();
             this.newKlient = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -156,7 +156,6 @@ namespace AutoMir2022
             this.otmenaProdazhiBtn = new System.Windows.Forms.Button();
             this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.topPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -181,8 +180,6 @@ namespace AutoMir2022
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.topPanel.Controls.Add(this.button1);
-            this.topPanel.Controls.Add(this.rozntsena);
             this.topPanel.Controls.Add(this.groupBox3);
             this.topPanel.Controls.Add(this.groupBox1);
             this.topPanel.Controls.Add(this.label2);
@@ -196,19 +193,9 @@ namespace AutoMir2022
             this.topPanel.Size = new System.Drawing.Size(1339, 170);
             this.topPanel.TabIndex = 0;
             // 
-            // rozntsena
-            // 
-            this.rozntsena.AutoSize = true;
-            this.rozntsena.ForeColor = System.Drawing.Color.LightCyan;
-            this.rozntsena.Location = new System.Drawing.Point(707, 11);
-            this.rozntsena.Name = "rozntsena";
-            this.rozntsena.Size = new System.Drawing.Size(109, 27);
-            this.rozntsena.TabIndex = 1;
-            this.rozntsena.Text = "Розн.цена";
-            this.rozntsena.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.rozntsena);
             this.groupBox3.Controls.Add(this.newKlient);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
@@ -220,17 +207,29 @@ namespace AutoMir2022
             this.groupBox3.Controls.Add(this.adres);
             this.groupBox3.Controls.Add(this.urovenKlienta);
             this.groupBox3.Controls.Add(this.kodKlienta);
-            this.groupBox3.Location = new System.Drawing.Point(14, 46);
+            this.groupBox3.Location = new System.Drawing.Point(13, 59);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(823, 90);
+            this.groupBox3.Size = new System.Drawing.Size(914, 90);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Клиент";
             // 
+            // rozntsena
+            // 
+            this.rozntsena.AutoSize = true;
+            this.rozntsena.ForeColor = System.Drawing.Color.LightCyan;
+            this.rozntsena.Location = new System.Drawing.Point(381, 43);
+            this.rozntsena.Name = "rozntsena";
+            this.rozntsena.Size = new System.Drawing.Size(109, 27);
+            this.rozntsena.TabIndex = 1;
+            this.rozntsena.Text = "Розн.цена";
+            this.rozntsena.UseVisualStyleBackColor = true;
+            this.rozntsena.CheckedChanged += new System.EventHandler(this.rozntsena_CheckedChanged);
+            // 
             // newKlient
             // 
             this.newKlient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.newKlient.Location = new System.Drawing.Point(694, 31);
+            this.newKlient.Location = new System.Drawing.Point(800, 31);
             this.newKlient.Name = "newKlient";
             this.newKlient.Size = new System.Drawing.Size(108, 48);
             this.newKlient.TabIndex = 10;
@@ -241,7 +240,7 @@ namespace AutoMir2022
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(519, 25);
+            this.label9.Location = new System.Drawing.Point(633, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 23);
             this.label9.TabIndex = 9;
@@ -250,7 +249,7 @@ namespace AutoMir2022
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(376, 25);
+            this.label8.Location = new System.Drawing.Point(490, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 23);
             this.label8.TabIndex = 8;
@@ -300,7 +299,7 @@ namespace AutoMir2022
             // 
             // kontakt
             // 
-            this.kontakt.Location = new System.Drawing.Point(523, 48);
+            this.kontakt.Location = new System.Drawing.Point(637, 48);
             this.kontakt.Name = "kontakt";
             this.kontakt.ReadOnly = true;
             this.kontakt.Size = new System.Drawing.Size(137, 30);
@@ -308,7 +307,7 @@ namespace AutoMir2022
             // 
             // adres
             // 
-            this.adres.Location = new System.Drawing.Point(380, 48);
+            this.adres.Location = new System.Drawing.Point(494, 48);
             this.adres.Name = "adres";
             this.adres.ReadOnly = true;
             this.adres.Size = new System.Drawing.Size(137, 30);
@@ -326,7 +325,9 @@ namespace AutoMir2022
             // 
             this.kodKlienta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.kodKlienta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.kodKlienta.DropDownHeight = 85;
             this.kodKlienta.FormattingEnabled = true;
+            this.kodKlienta.IntegralHeight = false;
             this.kodKlienta.Location = new System.Drawing.Point(6, 48);
             this.kodKlienta.Name = "kodKlienta";
             this.kodKlienta.Size = new System.Drawing.Size(100, 31);
@@ -339,18 +340,18 @@ namespace AutoMir2022
             this.groupBox1.Controls.Add(this.btnAddKurs);
             this.groupBox1.Controls.Add(this.kursValyuti);
             this.groupBox1.Controls.Add(this.kursValyutiText);
-            this.groupBox1.Location = new System.Drawing.Point(862, 46);
+            this.groupBox1.Location = new System.Drawing.Point(277, -2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(195, 90);
+            this.groupBox1.Size = new System.Drawing.Size(304, 61);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
             // btnAddKurs
             // 
             this.btnAddKurs.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAddKurs.Location = new System.Drawing.Point(8, 52);
+            this.btnAddKurs.Location = new System.Drawing.Point(189, 19);
             this.btnAddKurs.Name = "btnAddKurs";
-            this.btnAddKurs.Size = new System.Drawing.Size(175, 33);
+            this.btnAddKurs.Size = new System.Drawing.Size(102, 33);
             this.btnAddKurs.TabIndex = 3;
             this.btnAddKurs.Text = "Добавить";
             this.btnAddKurs.UseVisualStyleBackColor = true;
@@ -386,7 +387,9 @@ namespace AutoMir2022
             // 
             // viborProdovets
             // 
+            this.viborProdovets.DropDownHeight = 85;
             this.viborProdovets.FormattingEnabled = true;
+            this.viborProdovets.IntegralHeight = false;
             this.viborProdovets.Location = new System.Drawing.Point(105, 9);
             this.viborProdovets.Name = "viborProdovets";
             this.viborProdovets.Size = new System.Drawing.Size(142, 31);
@@ -397,7 +400,7 @@ namespace AutoMir2022
             this.oformitZakaz.BackColor = System.Drawing.Color.Transparent;
             this.oformitZakaz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.oformitZakaz.ForeColor = System.Drawing.Color.ForestGreen;
-            this.oformitZakaz.Location = new System.Drawing.Point(909, 1);
+            this.oformitZakaz.Location = new System.Drawing.Point(779, 6);
             this.oformitZakaz.Name = "oformitZakaz";
             this.oformitZakaz.Size = new System.Drawing.Size(148, 44);
             this.oformitZakaz.TabIndex = 8;
@@ -596,11 +599,12 @@ namespace AutoMir2022
             this.artikulKarz2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.artikulKarz2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
             this.artikulKarz2.DropDownHeight = 85;
+            this.artikulKarz2.DropDownWidth = 200;
             this.artikulKarz2.FormattingEnabled = true;
             this.artikulKarz2.IntegralHeight = false;
             this.artikulKarz2.Location = new System.Drawing.Point(3, 67);
             this.artikulKarz2.Name = "artikulKarz2";
-            this.artikulKarz2.Size = new System.Drawing.Size(245, 31);
+            this.artikulKarz2.Size = new System.Drawing.Size(159, 31);
             this.artikulKarz2.TabIndex = 12;
             this.artikulKarz2.SelectionChangeCommitted += new System.EventHandler(this.artikulKarz2_SelectionChangeCommitted);
             // 
@@ -1049,14 +1053,19 @@ namespace AutoMir2022
             // 
             // platezhDGV
             // 
+            this.platezhDGV.AllowUserToAddRows = false;
+            this.platezhDGV.AllowUserToDeleteRows = false;
             this.platezhDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.platezhDGV.Location = new System.Drawing.Point(12, 85);
             this.platezhDGV.Name = "platezhDGV";
+            this.platezhDGV.ReadOnly = true;
+            this.platezhDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.platezhDGV.Size = new System.Drawing.Size(390, 272);
             this.platezhDGV.TabIndex = 3;
             // 
             // chekPlatezh
             // 
+            this.chekPlatezh.Enabled = false;
             this.chekPlatezh.Location = new System.Drawing.Point(311, 29);
             this.chekPlatezh.Name = "chekPlatezh";
             this.chekPlatezh.Size = new System.Drawing.Size(92, 35);
@@ -1080,6 +1089,7 @@ namespace AutoMir2022
             this.oformitPlatezh.TabIndex = 0;
             this.oformitPlatezh.Text = "Оформить платеж";
             this.oformitPlatezh.UseVisualStyleBackColor = true;
+            this.oformitPlatezh.Click += new System.EventHandler(this.oformitPlatezh_Click);
             // 
             // groupBox2
             // 
@@ -1094,20 +1104,28 @@ namespace AutoMir2022
             // 
             // chekZakaz
             // 
+            this.chekZakaz.Enabled = false;
             this.chekZakaz.Location = new System.Drawing.Point(303, 31);
             this.chekZakaz.Name = "chekZakaz";
             this.chekZakaz.Size = new System.Drawing.Size(92, 35);
             this.chekZakaz.TabIndex = 4;
             this.chekZakaz.Text = "Чек";
             this.chekZakaz.UseVisualStyleBackColor = true;
+            this.chekZakaz.Click += new System.EventHandler(this.chekZakaz_Click);
             // 
             // zakazDGV
             // 
+            this.zakazDGV.AllowUserToAddRows = false;
+            this.zakazDGV.AllowUserToDeleteRows = false;
             this.zakazDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.zakazDGV.Location = new System.Drawing.Point(15, 85);
             this.zakazDGV.Name = "zakazDGV";
+            this.zakazDGV.ReadOnly = true;
+            this.zakazDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.zakazDGV.Size = new System.Drawing.Size(380, 272);
             this.zakazDGV.TabIndex = 4;
+            this.zakazDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.zakazDGV_CellEndEdit);
+            this.zakazDGV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.zakazDGV_MouseDoubleClick);
             // 
             // itogi
             // 
@@ -1221,7 +1239,6 @@ namespace AutoMir2022
             this.button2.TabIndex = 4;
             this.button2.Text = "Печать накладной";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // otmenaProdazhiBtn
             // 
@@ -1231,7 +1248,6 @@ namespace AutoMir2022
             this.otmenaProdazhiBtn.TabIndex = 3;
             this.otmenaProdazhiBtn.Text = "Отмена продажи";
             this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
-            this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
             // 
             // nakNomerOtmenaCmb
             // 
@@ -1250,17 +1266,6 @@ namespace AutoMir2022
             this.label13.Size = new System.Drawing.Size(120, 23);
             this.label13.TabIndex = 1;
             this.label13.Text = "Накладной №";
-            // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(1160, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 41);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Закрыть";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // OptProdazha
             // 
@@ -1415,6 +1420,5 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridView platezhDGV;
         private System.Windows.Forms.DataGridView zakazDGV;
         private System.Windows.Forms.Button chekZakaz;
-        private System.Windows.Forms.Button button1;
     }
 }

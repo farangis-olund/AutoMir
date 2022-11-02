@@ -26,42 +26,52 @@ namespace AutoMir2022
             this.reportViewer1.Reset();
             this.reportViewer1.LocalReport.DataSources.Clear();
             string checkType = retail.nameOfReport;
-            double dolg = Vozvrat.dolg;
+            double vozvratDolg = Vozvrat.dolg;
+            double optProdazhaDolg = OptProdazha.dolgKlienta;
+            double optPlatezhi = OptProdazha.platezhiKlienta;
             string path = Path.GetDirectoryName(Application.StartupPath);
             string fullPath = "";
 
-            if (checkType == "ChekReportSkidka")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
+            fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\" + checkType + ".rdlc";
 
-            }
-            else if (checkType == "ChekReport")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReport.rdlc";
+            //if (checkType == "ChekReportSkidka")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportSkidka.rdlc";
 
-            }
-            else if (checkType == "ChekReportOtmenaRozn" || checkType == "ChekReportOtmenaOpt")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
+            //}
+            //else if (checkType == "ChekReport")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\"+checkType + ".rdlc";
 
-            }
-            else if (checkType == "ChekReportVozvrat")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvrat.rdlc";
+            //}
+            //else if (checkType == "ChekReportOpt")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOpt.rdlc";
 
-            }
+            //}
 
-            else if (checkType == "ChekReportVozvratProshOpt")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshOpt.rdlc";
+            //else if (checkType == "ChekReportOtmenaRozn" || checkType == "ChekReportOtmenaOpt")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportOtmena.rdlc";
 
-            }
+            //}
+            //else if (checkType == "ChekReportVozvrat")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvrat.rdlc";
 
-            else if (checkType == "ChekReportVozvratProshRozn")
-            {
-                fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshRozn.rdlc";
+            //}
 
-            }
+            //else if (checkType == "ChekReportVozvratProshOpt")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshOpt.rdlc";
+
+            //}
+
+            //else if (checkType == "ChekReportVozvratProshRozn")
+            //{
+            //    fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportVozvratProshRozn.rdlc";
+
+            //}
 
 
             reportViewer1.LocalReport.ReportPath = fullPath;
@@ -69,11 +79,20 @@ namespace AutoMir2022
             if (checkType == "ChekReportVozvratProshOpt")
             {
                 ReportParameter param = new ReportParameter();
-                param = new ReportParameter("dolg", dolg.ToString("0.00"));
+                param = new ReportParameter("dolg", vozvratDolg.ToString("0.00"));
                 
                 reportViewer1.LocalReport.SetParameters(param);
             }
-                
+
+            if (checkType == "ChekReportOpt")
+            {
+                ReportParameter[] parms = new ReportParameter[2];
+
+                parms[0] = new ReportParameter("dolg", optProdazhaDolg.ToString("0.00"));
+                parms[1] = new ReportParameter("platezhi", optPlatezhi.ToString("0.00"));
+                reportViewer1.LocalReport.SetParameters(parms);
+            }
+
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportChek", retail.dtForCHekReport));
 
            
