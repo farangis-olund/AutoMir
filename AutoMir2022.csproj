@@ -69,6 +69,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ReportChekDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="KassaForm\Kassa - Copy %282%29.resx">

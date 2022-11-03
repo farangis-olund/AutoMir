@@ -49,11 +49,7 @@ namespace AutoMir2022
             viborProdovets.DataSource = roznProdazhaObj.getNameSeller();
             viborProdovets.Text = null;
 
-            ItogiOptProdazhi myForm = new ItogiOptProdazhi();
-            myForm.TopLevel = false;
-            myForm.AutoScroll = true;
-            myForm.FormBorderStyle = FormBorderStyle.None;
-            this.itogiPanel.Controls.Add(myForm);
+           
 
         }
 
@@ -841,6 +837,18 @@ namespace AutoMir2022
             Graphics mg = Graphics.FromImage(bmp);
             mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
             printPreviewDialog1.ShowDialog();
+        }
+
+        private void OptProdazha_Load(object sender, EventArgs e)
+        {
+            ItogiOptProdazhi myForm = new ItogiOptProdazhi();
+            myForm.TopLevel = false;
+            myForm.AutoScroll = true;
+            myForm.FormBorderStyle = FormBorderStyle.None;
+            
+            this.itogiPanel.Controls.Add(myForm);
+            myForm.Show(); 
+           
         }
     }
 }

@@ -1269,8 +1269,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnOstatok;
             
-            private global::System.Data.DataColumn columnKomp;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ItogiProdazhiDataTable() {
@@ -1354,14 +1352,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn KompColumn {
-                get {
-                    return this.columnKomp;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1397,7 +1387,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ItogiProdazhiRow AddItogiProdazhiRow(string KodKlienta, string Fio, string Adres, string Tel, string Data, string Ostatok, string Komp) {
+            public ItogiProdazhiRow AddItogiProdazhiRow(string KodKlienta, string Fio, string Adres, string Tel, string Data, string Ostatok) {
                 ItogiProdazhiRow rowItogiProdazhiRow = ((ItogiProdazhiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         KodKlienta,
@@ -1405,8 +1395,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         Adres,
                         Tel,
                         Data,
-                        Ostatok,
-                        Komp};
+                        Ostatok};
                 rowItogiProdazhiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowItogiProdazhiRow);
                 return rowItogiProdazhiRow;
@@ -1435,7 +1424,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnTel = base.Columns["Tel"];
                 this.columnData = base.Columns["Data"];
                 this.columnOstatok = base.Columns["Ostatok"];
-                this.columnKomp = base.Columns["Komp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1453,8 +1441,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnData);
                 this.columnOstatok = new global::System.Data.DataColumn("Ostatok", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOstatok);
-                this.columnKomp = new global::System.Data.DataColumn("Komp", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnKomp);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2563,22 +2549,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Komp {
-                get {
-                    try {
-                        return ((string)(this[this.tableItogiProdazhi.KompColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Komp\' in table \'ItogiProdazhi\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableItogiProdazhi.KompColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsKodKlientaNull() {
                 return this.IsNull(this.tableItogiProdazhi.KodKlientaColumn);
             }
@@ -2647,18 +2617,6 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetOstatokNull() {
                 this[this.tableItogiProdazhi.OstatokColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsKompNull() {
-                return this.IsNull(this.tableItogiProdazhi.KompColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetKompNull() {
-                this[this.tableItogiProdazhi.KompColumn] = global::System.Convert.DBNull;
             }
         }
         

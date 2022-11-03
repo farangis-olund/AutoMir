@@ -53,7 +53,7 @@ namespace AutoMir2022
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Пероид с";
+            this.label1.Text = "Период с";
             // 
             // label2
             // 

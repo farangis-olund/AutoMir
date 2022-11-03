@@ -84,6 +84,22 @@ namespace Core.Controllers.Dolg
             return value;
         }
 
+        public string GetPradazhaLastDate(string kodKlienta)
+        {
+            DataTable dt = db.GetByQuery("Select дата FROM public.продажа  " +
+                       "WHERE код_клиента='" + kodKlienta + "' ORDER BY дата DESC LIMIT 1;");
+            string value = "";
+            if (dt.Rows.Count != 0)
+            {
+                var b = dt.Rows[0][0].ToString();
+                if (b != "")
+                    value = Convert.ToDateTime(dt.Rows[0][0]).ToString("dd.MM.yyyy");
+            }
+            
+            return value;
+        }
+
+
         public double GetPradazhaTekushiy(string kodKlienta, string naklText)
         {
             DataTable dt = db.GetByQuery("Select Sum(pt.количество*pt.цена) FROM public.продажа p, public.продажа_товара pt " +

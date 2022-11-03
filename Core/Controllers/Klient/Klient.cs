@@ -27,6 +27,11 @@ namespace Core.Controllers.Klient
                                                "WHERE код_клиента='" + kodKlienta + "'");
         }
 
+        public DataTable GetAllKlientInfo()
+        {
+            return db.GetByQuery("Select * FROM public.customers ");
+        }
+
         public DataTable GetKlientInfoByName(string fioKlienta)
         {
             return db.GetByQuery("Select * FROM public.customers " +

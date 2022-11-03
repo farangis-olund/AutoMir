@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:DtReportChek" ZOrder="3" X="335" Y="90" Height="315" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="311" />
     <Shape ID="DesignTable:DtReportPeriod" ZOrder="2" X="558" Y="88" Height="239" Width="143" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="235" />
-    <Shape ID="DesignTable:ItogiProdazhi" ZOrder="1" X="752" Y="111" Height="201" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:ItogiProdazhi" ZOrder="1" X="744" Y="82" Height="143" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

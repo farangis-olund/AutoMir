@@ -1160,8 +1160,8 @@ namespace AutoMir2022
             this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
             this.printPreviewDialog1.Document = this.printDocument1;
             this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.ShowIcon = false;
             this.printPreviewDialog1.Visible = false;
             // 
             // OptProdazha
@@ -1180,6 +1180,7 @@ namespace AutoMir2022
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оптовая продажа товаров";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.OptProdazha_Load);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             this.groupBox3.ResumeLayout(false);
