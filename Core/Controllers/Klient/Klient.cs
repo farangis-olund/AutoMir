@@ -29,13 +29,13 @@ namespace Core.Controllers.Klient
 
         public DataTable GetAllKlientInfo()
         {
-            return db.GetByQuery("Select * FROM public.customers ");
+            return db.GetByQuery("Select * FROM public.customers ORDER BY код_клиента ASC");
         }
 
         public DataTable GetKlientInfoByName(string fioKlienta)
         {
             return db.GetByQuery("Select * FROM public.customers " +
-                                                "WHERE фио='" + fioKlienta + "'");
+                                 "WHERE фио='" + fioKlienta + "' ");
         }
 
         public void InsertNewKlient(string kodKlienta, string fio, string tel, string addres,

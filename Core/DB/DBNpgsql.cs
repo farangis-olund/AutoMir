@@ -153,9 +153,6 @@ namespace Core.DB
 
 
 
-
-
-
         public void insertKurs(double kurs)
         {
             // Connect to a PostgreSQL database
@@ -199,6 +196,31 @@ namespace Core.DB
 
         }
 
+
+
+        public DataTable GetByParametrPeriod(string query, DateTime dataStart, DateTime dataEnd)
+        {
+            DataTable dataTable = new DataTable();
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            conn.Open();
+
+            NpgsqlCommand sql = conn.CreateCommand();
+            sql.CommandType = CommandType.Text;
+            sql.CommandText = query;
+            sql.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
+            sql.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
+
+            NpgsqlDataReader dr = sql.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dataTable.Load(dr);
+            }
+
+            sql.Dispose();
+            conn.Close();
+
+            return dataTable;
+        }
 
 
     }

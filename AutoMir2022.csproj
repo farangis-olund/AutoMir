@@ -22,6 +22,7 @@
     <None Remove="Reports\ChekReportVozvratProshOpt.rdlc" />
     <None Remove="Reports\ChekReportVozvratProshRozn.rdlc" />
     <None Remove="Reports\ItogiProdazhi.rdlc" />
+    <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reports\ChekReport.rdlc">
@@ -34,6 +35,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ChekReportOtmena.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiProdazhiPeriod.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ItogiProdazhi.rdlc">

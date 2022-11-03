@@ -107,6 +107,7 @@ namespace AutoMir2022
             this.kodKlienta.Location = new System.Drawing.Point(59, 19);
             this.kodKlienta.Name = "kodKlienta";
             this.kodKlienta.Size = new System.Drawing.Size(106, 28);
+            this.kodKlienta.Sorted = true;
             this.kodKlienta.TabIndex = 5;
             this.kodKlienta.SelectionChangeCommitted += new System.EventHandler(this.kodKlienta_SelectionChangeCommitted);
             // 

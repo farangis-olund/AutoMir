@@ -35,6 +35,40 @@ namespace Core.Controllers.Dolg
             return value;
         }
 
+
+        public DataTable GetAllItogByPeriod(DateTime dataStart, DateTime dataEnd)
+        {
+
+            return db.GetByParametrPeriod("" +
+
+            "Select p.фио as Fio, p.адрес as Adres, p.рабочий_телефон as Tel, p.код_клиента as KodKlienta, " +
+                "p.itogiprodazhi, Sum(f.сумма_платежа) as ItogiPlatezha From (" +
+                "Select " +
+                "c.фио, c.адрес, c.рабочий_телефон, e.код_клиента, " +
+                "SUM(d.количество*d.цена) as itogiprodazhi " +
+             "FROM" +
+                " public.customers c " +
+
+             "INNER JOIN " +
+               "public.продажа e ON " +
+               "c.код_клиента=e.код_клиента " +
+
+               "INNER JOIN public.продажа_товара d ON " +
+             "e.кодпродажи=d.кодпродажи " +
+
+             "WHERE " +
+              "e.дата>=@dataStart AND e.дата<=@dataEnd GROUP BY c.фио, c.адрес, c.рабочий_телефон, e.код_клиента) as p, " +
+              "public.платежи f" +
+             " WHERE p.код_клиента=f.код_клиента AND f.дата>=@dataStart AND f.дата<=@dataEnd " +
+             "GROUP BY p.фио, p.адрес, p.рабочий_телефон, p.код_клиента, p.itogiprodazhi ORDER BY p.фио ASC", dataStart, dataEnd);
+
+
+        }
+
+
+
+
+
         public double GetPlatezhTekushiy(string kodKlienta, string naklText)
         {
             DataTable dt = db.GetByQuery("Select Sum(сумма_платежа) FROM public.платежи " +
