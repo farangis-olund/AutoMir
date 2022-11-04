@@ -120,5 +120,16 @@ namespace AutoMir2022
             myForm.Show();
 
         }
+
+        private void приходТоваровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrikhodRaskhodTovara myform = new PrikhodRaskhodTovara();
+            myform.Show();
+        }
+
+        private void администраторToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
