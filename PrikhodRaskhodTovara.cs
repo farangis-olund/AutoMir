@@ -37,13 +37,44 @@ namespace AutoMir2022
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 string sFileName = ofd.FileName;
-                tovarDGV.DataSource = LoadData(sFileName, "Sheet1");     
+                PrikhodRAskhodTovara(LoadData(sFileName, "Sheet1"));     
             }
 
         }
 
-        
 
+        private void PrikhodRAskhodTovara(DataTable dt)
+        {
+            int countTovar = 0;
+            tovarObj.DeletePrikhodOshibkaTovara();
+            spisokIzmeneniyDGV.Rows.Clear();
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                if (tovarObj.IsTovarExist(dr[0].ToString()) == true)
+                {
+                    
+                    countTovar = countTovar + 1;
+                    int index = spisokIzmeneniyDGV.Rows.Add();
+                    spisokIzmeneniyDGV.Rows[index].Cells[0].Value = dr[0].ToString();
+                    spisokIzmeneniyDGV.Rows[index].Cells[1].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                    spisokIzmeneniyDGV.Rows[index].Cells[2].Value = dr[1].ToString();
+                    tovarObj.UpdateTovarKolichestvo(Convert.ToInt32(dr[1]), dr[0].ToString(), "+");
+                    spisokIzmeneniyDGV.Rows[index].Cells[3].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                }
+                else
+                {
+                    tovarObj.InsertPrikhodOshibkaTovara(Convert.ToInt32(dr[1]), dr[0].ToString());
+                }
+                
+            }
+
+            if (countTovar != 0)
+            {
+                tovarObj.InsertPrikhodTovara(countTovar);
+                MessageBox.Show("Приход товара завершен!");
+            }
+        }
 
         public string ConnectionString(string FileName, string Header)
         {
@@ -127,9 +158,9 @@ namespace AutoMir2022
                     spisokIzmeneniyDGV.Rows[index].Cells[0].Value = artikul.Text;
                     spisokIzmeneniyDGV.Rows[index].Cells[1].Value = kolTovara.Text;
                     spisokIzmeneniyDGV.Rows[index].Cells[2].Value = kolIzmeneniy.Text;
-                    
-                    kolTovara.Text = tovarObj.GetKolTovara(artikul.Text).ToString();
+
                     tovarDGV.DataSource = tovarObj.GetTovarByArtikul(artikul.Text);
+                    kolTovara.Text = tovarObj.GetKolTovara(artikul.Text).ToString();
                     spisokIzmeneniyDGV.Rows[index].Cells[3].Value = kolTovara.Text;
 
                 }

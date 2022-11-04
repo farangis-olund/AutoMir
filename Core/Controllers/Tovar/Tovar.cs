@@ -36,12 +36,37 @@ namespace Core.Controllers.Tovar
             return db.GetByQuery("Select * FROM public.товар ORDER BY артикул ASC");
         }
 
+        public bool IsTovarExist(string artikul)
+        {
+            DataTable dt= db.GetByQuery("SELECT exists (SELECT 1 FROM public.товар WHERE артикул = '" + artikul + "' LIMIT 1)");
+            return Convert.ToBoolean(dt.Rows[0][0].ToString()); 
+        }
+
+
+
         public void UpdateTovarKolichestvo(int kol, string artikul, string minusPlus)
         {
             db.insertUpdateToDB ("UPDATE public.товар SET количество=количество" + minusPlus + "" +
              "'" + kol + "' WHERE артикул='" + artikul + "'");
         }
 
+        public void DeletePrikhodOshibkaTovara()
+        {
+            db.insertUpdateToDB("DELETE FROM public.приход_ошибки");
+        }
 
+
+        public void InsertPrikhodOshibkaTovara(int kol, string artikul)
+        {
+            db.insertUpdateToDB("INSERT INTO public.приход_ошибки (артикул, количество) " +
+                "VALUES ('" + artikul + "', '" + kol + "')");
+        }
+
+       
+        public void InsertPrikhodTovara(int kol)
+        {
+            db.insertUpdateToDB("INSERT INTO public.приход (приход_товара) " +
+                "VALUES ('" + kol + "')");
+        }
     }
 }
