@@ -32,15 +32,17 @@ namespace AutoMir2022
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "Excel Worksheets|*.xlsx";
+            ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
            
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 string sFileName = ofd.FileName;
-                MessageBox.Show(sFileName);           
+                tovarDGV.DataSource = LoadData(sFileName, "Sheet1");     
             }
 
         }
+
+        
 
 
         public string ConnectionString(string FileName, string Header)
@@ -64,20 +66,22 @@ namespace AutoMir2022
         }
 
 
-        public DataTable LoadData(string FileName, string SheetName, DateTime TheDate)
+        public DataTable LoadData(string FileName, string SheetName)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             DataTable dt = new DataTable();
 
             using (OleDbConnection cn = new OleDbConnection
-            { ConnectionString = ConnectionString(FileName, "Yes") })
+            { ConnectionString = ConnectionString(FileName, "YES") })
             {
 
                 cn.Open();
 
                 using (OleDbCommand cmd = new OleDbCommand
                 {
-                    CommandText = "SELECT [Dates], [Office Plan] FROM [Sheet2$] WHERE [Dates] = " + TheDate.ToString(),
+                    CommandText = "SELECT * FROM [" + SheetName + "$] WHERE [артикул]<>null",
+                    //CommandText = "SELECT [артикул], [количество] FROM ["Лист1"] WHERE [Dates] = " + TheDate.ToString(),
+
                     Connection = cn
                 }
                  )
@@ -109,27 +113,31 @@ namespace AutoMir2022
                     if (prikhodRb.Checked == true)
                     {
                         tovarObj.UpdateTovarKolichestvo(b, artikul.Text, "+");
-                        kolIzmeneniy.Text = null;
                     }
                     else if (raskhodRb.Checked == true)
                     {
                         tovarObj.UpdateTovarKolichestvo(b, artikul.Text, "-");
-                        kolIzmeneniy.Text = null;
                     }
                     else
                     {
-                        MessageBox.Show("Выберети приход или расход опцию!");
-                        kolIzmeneniy.Text = null;
+                        MessageBox.Show("Выберети приход или расход опцию!");    
                     }
 
+                    int index=spisokIzmeneniyDGV.Rows.Add();
+                    spisokIzmeneniyDGV.Rows[index].Cells[0].Value = artikul.Text;
+                    spisokIzmeneniyDGV.Rows[index].Cells[1].Value = kolTovara.Text;
+                    spisokIzmeneniyDGV.Rows[index].Cells[2].Value = kolIzmeneniy.Text;
+                    
                     kolTovara.Text = tovarObj.GetKolTovara(artikul.Text).ToString();
                     tovarDGV.DataSource = tovarObj.GetTovarByArtikul(artikul.Text);
+                    spisokIzmeneniyDGV.Rows[index].Cells[3].Value = kolTovara.Text;
 
                 }
                 else
                 {
-                    MessageBox.Show("Количество указан неправильном формате!");
+                    MessageBox.Show("Количество указан неправильном формате!"); 
                 }
+                kolIzmeneniy.Text = null;
             }
 
         }
