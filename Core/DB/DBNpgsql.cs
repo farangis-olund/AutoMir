@@ -222,6 +222,29 @@ namespace Core.DB
             return dataTable;
         }
 
+        public DataTable GetByParametrDateByUser(string query, DateTime data)
+        {
+            DataTable dataTable = new DataTable();
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            conn.Open();
+
+            NpgsqlCommand sql = conn.CreateCommand();
+            sql.CommandType = CommandType.Text;
+            sql.CommandText = query;
+            sql.Parameters.Add("data", NpgsqlDbType.Date).Value = data;
+            
+            NpgsqlDataReader dr = sql.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dataTable.Load(dr);
+            }
+
+            sql.Dispose();
+            conn.Close();
+
+            return dataTable;
+        }
+
 
     }
 }

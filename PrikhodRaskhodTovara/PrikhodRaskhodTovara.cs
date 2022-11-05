@@ -16,9 +16,15 @@ namespace AutoMir2022
     {
         private OpenFileDialog ofd = new OpenFileDialog();
         private Tovar tovarObj = new Tovar();
+        public string typeReport;
+
         public PrikhodRaskhodTovara()
         {
             InitializeComponent();
+            DateTime datatoday = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yy"));
+            dateVibor.Format = DateTimePickerFormat.Custom;
+            dateVibor.Value = datatoday;
+            
             showTovar();
         }
 
@@ -30,49 +36,64 @@ namespace AutoMir2022
             tovarDGV.DataSource= tovarObj.GetAllTovar();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void prikhod_Click(object sender, EventArgs e)
         {
-            ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
-           
-            if (ofd.ShowDialog() == DialogResult.OK)
+            if (tovarObj.IsPrikhodExist(dateVibor.Value) == false)
             {
-                string sFileName = ofd.FileName;
-                PrikhodRAskhodTovara(LoadData(sFileName, "Sheet1"));     
+                PrikhodRaskhodUpdate("prikhod");
             }
-
+            else MessageBox.Show("На эту дату приход товара оформлен!");
         }
 
 
-        private void PrikhodRAskhodTovara(DataTable dt)
+        private void PrikhodRaskhodUpdate(string prikhodRaskhod)
         {
+            DataTable dt=null;
             int countTovar = 0;
-            tovarObj.DeletePrikhodOshibkaTovara();
-            spisokIzmeneniyDGV.Rows.Clear();
-            foreach (DataRow dr in dt.Rows)
+            ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
+                string sFileName = ofd.FileName;
+                dt=LoadData(sFileName, "Sheet1");
+            
+                tovarObj.DeletePrikhodOshibkaTovara();
+                spisokIzmeneniyDGV.Rows.Clear();
+                foreach (DataRow dr in dt.Rows)
+                {
 
-                if (tovarObj.IsTovarExist(dr[0].ToString()) == true)
-                {
-                    
-                    countTovar = countTovar + 1;
-                    int index = spisokIzmeneniyDGV.Rows.Add();
-                    spisokIzmeneniyDGV.Rows[index].Cells[0].Value = dr[0].ToString();
-                    spisokIzmeneniyDGV.Rows[index].Cells[1].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
-                    spisokIzmeneniyDGV.Rows[index].Cells[2].Value = dr[1].ToString();
-                    tovarObj.UpdateTovarKolichestvo(Convert.ToInt32(dr[1]), dr[0].ToString(), "+");
-                    spisokIzmeneniyDGV.Rows[index].Cells[3].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                    if (tovarObj.IsTovarExist(dr[0].ToString()) == true)
+                    {
+
+                        countTovar = countTovar + 1;
+                        int index = spisokIzmeneniyDGV.Rows.Add();
+                        spisokIzmeneniyDGV.Rows[index].Cells[0].Value = dr[0].ToString();
+                        spisokIzmeneniyDGV.Rows[index].Cells[1].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                        spisokIzmeneniyDGV.Rows[index].Cells[2].Value = dr[1].ToString();
+                        if (prikhodRaskhod == "prikhod")
+                            tovarObj.UpdateTovarKolichestvo(Convert.ToInt32(dr[1]), dr[0].ToString(), "+");
+                        else
+                            tovarObj.UpdateTovarKolichestvo(Convert.ToInt32(dr[1]), dr[0].ToString(), "-");
+                        spisokIzmeneniyDGV.Rows[index].Cells[3].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                    }
+                    else
+                    {
+                        tovarObj.InsertPrikhodOshibkaTovara(Convert.ToInt32(dr[1]), dr[0].ToString());
+                        neoprikhodBtn.Enabled = true;
+                    }
+
                 }
-                else
-                {
-                    tovarObj.InsertPrikhodOshibkaTovara(Convert.ToInt32(dr[1]), dr[0].ToString());
-                }
-                
+
             }
 
-            if (countTovar != 0)
+            if (countTovar != 0 && prikhodRaskhod=="prikhod")
             {
                 tovarObj.InsertPrikhodTovara(countTovar);
                 MessageBox.Show("Приход товара завершен!");
+            }
+            else
+            {
+                tovarObj.InsertPrikhodTovara(countTovar);
+                MessageBox.Show("Погащение долга завершен!");
             }
         }
 
@@ -111,11 +132,8 @@ namespace AutoMir2022
                 using (OleDbCommand cmd = new OleDbCommand
                 {
                     CommandText = "SELECT * FROM [" + SheetName + "$] WHERE [артикул]<>null",
-                    //CommandText = "SELECT [артикул], [количество] FROM ["Лист1"] WHERE [Dates] = " + TheDate.ToString(),
-
                     Connection = cn
-                }
-                 )
+                })
 
                 {
                     OleDbDataReader dr = cmd.ExecuteReader();
@@ -171,6 +189,27 @@ namespace AutoMir2022
                 kolIzmeneniy.Text = null;
             }
 
+        }
+
+        private void spisokIzmeneniyDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void zadolzhnostBtn_Click(object sender, EventArgs e)
+        {
+            if (tovarObj.IsRaskhodExist(dateVibor.Value) == false)
+            {
+                PrikhodRaskhodUpdate("raskhod");
+            }
+            else MessageBox.Show("На эту дату погащение долга оформлен!");
+        }
+
+       
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

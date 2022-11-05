@@ -30,7 +30,6 @@ namespace Core.Controllers.Tovar
                                                "WHERE артикул='" + artikul + "'");
         }
 
-
         public DataTable GetAllTovar()
         {
             return db.GetByQuery("Select * FROM public.товар ORDER BY артикул ASC");
@@ -42,7 +41,17 @@ namespace Core.Controllers.Tovar
             return Convert.ToBoolean(dt.Rows[0][0].ToString()); 
         }
 
+        public bool IsPrikhodExist(DateTime data)
+        {
+            DataTable dt = db.GetByParametrDateByUser("SELECT exists (SELECT 1 FROM public.приход WHERE дата =@data LIMIT 1)", data);
+            return Convert.ToBoolean(dt.Rows[0][0].ToString());
+        }
 
+        public bool IsRaskhodExist(DateTime data)
+        {
+            DataTable dt = db.GetByParametrDateByUser("SELECT exists (SELECT 1 FROM public.расход WHERE дата =@data LIMIT 1)", data);
+            return Convert.ToBoolean(dt.Rows[0][0].ToString());
+        }
 
         public void UpdateTovarKolichestvo(int kol, string artikul, string minusPlus)
         {
@@ -55,18 +64,22 @@ namespace Core.Controllers.Tovar
             db.insertUpdateToDB("DELETE FROM public.приход_ошибки");
         }
 
-
         public void InsertPrikhodOshibkaTovara(int kol, string artikul)
         {
             db.insertUpdateToDB("INSERT INTO public.приход_ошибки (артикул, количество) " +
                 "VALUES ('" + artikul + "', '" + kol + "')");
         }
-
-       
+   
         public void InsertPrikhodTovara(int kol)
         {
             db.insertUpdateToDB("INSERT INTO public.приход (приход_товара) " +
                 "VALUES ('" + kol + "')");
         }
+        public void InsertRaskhodTovara(int kol)
+        {
+            db.insertUpdateToDB("INSERT INTO public.расход (расход_товара) " +
+                "VALUES ('" + kol + "')");
+        }
+
     }
 }
