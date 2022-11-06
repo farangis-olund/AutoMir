@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.Controllers.Tovar;
+using Core.Controllers.OrgInfo;
+using Core.Reports.ReportPrint;
+
 
 namespace AutoMir2022
 {
@@ -16,14 +19,17 @@ namespace AutoMir2022
     {
         private OpenFileDialog ofd = new OpenFileDialog();
         private Tovar tovarObj = new Tovar();
+        private ReportPrint report = new ReportPrint();
+        private OrgInfo org = new OrgInfo();
+        
         public string typeReport;
 
         public PrikhodRaskhodTovara()
         {
             InitializeComponent();
-            DateTime datatoday = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yy"));
+            
             dateVibor.Format = DateTimePickerFormat.Custom;
-            dateVibor.Value = datatoday;
+            dateVibor.Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yy"));
             
             showTovar();
         }
@@ -36,26 +42,14 @@ namespace AutoMir2022
             tovarDGV.DataSource= tovarObj.GetAllTovar();
         }
 
-        private void prikhod_Click(object sender, EventArgs e)
-        {
-            if (tovarObj.IsPrikhodExist(dateVibor.Value) == false)
-            {
-                PrikhodRaskhodUpdate("prikhod");
-            }
-            else MessageBox.Show("На эту дату приход товара оформлен!");
-        }
-
+       
 
         private void PrikhodRaskhodUpdate(string prikhodRaskhod)
         {
-            DataTable dt=null;
+            DataTable dt= report.OpenFile(ref ofd);
             int countTovar = 0;
-            ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
-            if (ofd.ShowDialog() == DialogResult.OK)
+            if (dt.Rows.Count!=0)
             {
-                string sFileName = ofd.FileName;
-                dt=LoadData(sFileName, "Sheet1");
-            
                 tovarObj.DeletePrikhodOshibkaTovara();
                 spisokIzmeneniyDGV.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
@@ -74,6 +68,12 @@ namespace AutoMir2022
                         else
                             tovarObj.UpdateTovarKolichestvo(Convert.ToInt32(dr[1]), dr[0].ToString(), "-");
                         spisokIzmeneniyDGV.Rows[index].Cells[3].Value = tovarObj.GetKolTovara(dr[0].ToString()).ToString();
+                        DataTable datatable = tovarObj.GetTovarByArtikul(dr[0].ToString());
+                        spisokIzmeneniyDGV.Rows[index].Cells[4].Value = datatable.Rows[0][2];
+                        spisokIzmeneniyDGV.Rows[index].Cells[5].Value = datatable.Rows[0][4];
+                        spisokIzmeneniyDGV.Rows[index].Cells[6].Value = datatable.Rows[0][12];
+
+
                     }
                     else
                     {
@@ -94,53 +94,6 @@ namespace AutoMir2022
             {
                 tovarObj.InsertPrikhodTovara(countTovar);
                 MessageBox.Show("Погащение долга завершен!");
-            }
-        }
-
-        public string ConnectionString(string FileName, string Header)
-        {
-            OleDbConnectionStringBuilder Builder = new OleDbConnectionStringBuilder();
-            if (System.IO.Path.GetExtension(FileName).ToUpper() == ".XLS")
-            {
-                Builder.Provider = "Microsoft.Jet.OLEDB.4.0";
-                Builder.Add("Extended Properties", string.Format("Excel 8.0;IMEX=1;HDR={0};", Header));
-            }
-            else
-            {
-                Builder.Provider = "Microsoft.ACE.OLEDB.12.0";
-                Builder.Add("Extended Properties", string.Format("Excel 12.0;IMEX=1;HDR={0};", Header));
-            }
-
-            Builder.DataSource = FileName;
-
-            return Builder.ConnectionString;
-
-        }
-
-
-        public DataTable LoadData(string FileName, string SheetName)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            DataTable dt = new DataTable();
-
-            using (OleDbConnection cn = new OleDbConnection
-            { ConnectionString = ConnectionString(FileName, "YES") })
-            {
-
-                cn.Open();
-
-                using (OleDbCommand cmd = new OleDbCommand
-                {
-                    CommandText = "SELECT * FROM [" + SheetName + "$] WHERE [артикул]<>null",
-                    Connection = cn
-                })
-
-                {
-                    OleDbDataReader dr = cmd.ExecuteReader();
-                    dt.Load(dr);
-                }
-
-                return dt;
             }
         }
 
@@ -169,9 +122,11 @@ namespace AutoMir2022
                     }
                     else
                     {
-                        MessageBox.Show("Выберети приход или расход опцию!");    
+                        MessageBox.Show("Выберети приход или расход опцию!");
+                        goto endProcess;
                     }
 
+                    DataTable datatable = tovarObj.GetTovarByArtikul(artikul.Text);
                     int index=spisokIzmeneniyDGV.Rows.Add();
                     spisokIzmeneniyDGV.Rows[index].Cells[0].Value = artikul.Text;
                     spisokIzmeneniyDGV.Rows[index].Cells[1].Value = kolTovara.Text;
@@ -180,20 +135,29 @@ namespace AutoMir2022
                     tovarDGV.DataSource = tovarObj.GetTovarByArtikul(artikul.Text);
                     kolTovara.Text = tovarObj.GetKolTovara(artikul.Text).ToString();
                     spisokIzmeneniyDGV.Rows[index].Cells[3].Value = kolTovara.Text;
+                    
+                    spisokIzmeneniyDGV.Rows[index].Cells[4].Value = datatable.Rows[0][2];
+                    spisokIzmeneniyDGV.Rows[index].Cells[5].Value = datatable.Rows[0][4];
+                    spisokIzmeneniyDGV.Rows[index].Cells[6].Value = datatable.Rows[0][12];
 
                 }
                 else
                 {
                     MessageBox.Show("Количество указан неправильном формате!"); 
                 }
-                kolIzmeneniy.Text = null;
+            
             }
-
+        endProcess: { }
+            kolIzmeneniy.Text = null;
         }
 
-        private void spisokIzmeneniyDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void prikhod_Click(object sender, EventArgs e)
         {
-
+            if (tovarObj.IsPrikhodExist(dateVibor.Value) == false)
+            {
+                PrikhodRaskhodUpdate("prikhod");
+            }
+            else MessageBox.Show("На эту дату приход товара оформлен!");
         }
 
         private void zadolzhnostBtn_Click(object sender, EventArgs e)
@@ -206,10 +170,31 @@ namespace AutoMir2022
         }
 
        
-
         private void print_Click(object sender, EventArgs e)
         {
-            
+            ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
+            DataTable dt = report.ConvertDataGridToDataTable(ref spisokIzmeneniyDGV);
+            dt.Columns["ArtikulIzmen"].ColumnName = "artikul";
+
+            string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name }, 
+                { "date", Convert.ToDateTime(dateVibor.Value).ToString("dd.MM.yyyy") }};
+            reportPrikhodRaskhod.StartReport("PrikhodRaskhod", "PrikhodRaskhod",parametr, dt);
+            reportPrikhodRaskhod.Show();
+        }
+
+        private void cleanBtn_Click(object sender, EventArgs e)
+        {
+            spisokIzmeneniyDGV.Rows.Clear();
+        }
+
+        private void neoprikhodBtn_Click(object sender, EventArgs e)
+        {
+            ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
+            string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
+                { "date", Convert.ToDateTime(dateVibor.Value).ToString("dd.MM.yyyy") }};
+            reportPrikhodRaskhod.StartReport("PrikhodRaskhodOshibka", "PrikhodRaskhod", parametr, report.PrikhodaRaskhodReportOshibka());
+            reportPrikhodRaskhod.Show();
+
         }
     }
 }

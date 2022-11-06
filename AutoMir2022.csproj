@@ -24,8 +24,12 @@
     <None Remove="Reports\ItogiProdazhi.rdlc" />
     <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
     <None Remove="Reports\PrikhodRaskhod.rdlc" />
+    <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\PrikhodRaskhodOshibka.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\PrikhodRaskhod.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -107,6 +111,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Core\Reports\" />
   </ItemGroup>
 </Project>

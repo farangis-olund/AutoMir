@@ -1647,7 +1647,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnprikhod_raskhod;
             
-            private global::System.Data.DataColumn columnitogo;
+            private global::System.Data.DataColumn columnitog;
             
             private global::System.Data.DataColumn columnmesto;
             
@@ -1732,9 +1732,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn itogoColumn {
+            public global::System.Data.DataColumn itogColumn {
                 get {
-                    return this.columnitogo;
+                    return this.columnitog;
                 }
             }
             
@@ -1807,7 +1807,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PrikhodRaskhodRow AddPrikhodRaskhodRow(string artikul, string naimenovanie, string brand, string kolichestvo, string prikhod_raskhod, string itogo, string mesto, string kod_org, string name_org, string date) {
+            public PrikhodRaskhodRow AddPrikhodRaskhodRow(string artikul, string naimenovanie, string brand, string kolichestvo, string prikhod_raskhod, string itog, string mesto, string kod_org, string name_org, string date) {
                 PrikhodRaskhodRow rowPrikhodRaskhodRow = ((PrikhodRaskhodRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         artikul,
@@ -1815,7 +1815,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         brand,
                         kolichestvo,
                         prikhod_raskhod,
-                        itogo,
+                        itog,
                         mesto,
                         kod_org,
                         name_org,
@@ -1847,7 +1847,7 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnbrand = base.Columns["brand"];
                 this.columnkolichestvo = base.Columns["kolichestvo"];
                 this.columnprikhod_raskhod = base.Columns["prikhod_raskhod"];
-                this.columnitogo = base.Columns["itogo"];
+                this.columnitog = base.Columns["itog"];
                 this.columnmesto = base.Columns["mesto"];
                 this.columnkod_org = base.Columns["kod_org"];
                 this.columnname_org = base.Columns["name_org"];
@@ -1867,8 +1867,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnkolichestvo);
                 this.columnprikhod_raskhod = new global::System.Data.DataColumn("prikhod_raskhod", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprikhod_raskhod);
-                this.columnitogo = new global::System.Data.DataColumn("itogo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnitogo);
+                this.columnitog = new global::System.Data.DataColumn("itog", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitog);
                 this.columnmesto = new global::System.Data.DataColumn("mesto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmesto);
                 this.columnkod_org = new global::System.Data.DataColumn("kod_org", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3208,17 +3208,17 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string itogo {
+            public string itog {
                 get {
                     try {
-                        return ((string)(this[this.tablePrikhodRaskhod.itogoColumn]));
+                        return ((string)(this[this.tablePrikhodRaskhod.itogColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'itogo\' in table \'PrikhodRaskhod\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'itog\' in table \'PrikhodRaskhod\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePrikhodRaskhod.itogoColumn] = value;
+                    this[this.tablePrikhodRaskhod.itogColumn] = value;
                 }
             }
             
@@ -3348,14 +3348,14 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsitogoNull() {
-                return this.IsNull(this.tablePrikhodRaskhod.itogoColumn);
+            public bool IsitogNull() {
+                return this.IsNull(this.tablePrikhodRaskhod.itogColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetitogoNull() {
-                this[this.tablePrikhodRaskhod.itogoColumn] = global::System.Convert.DBNull;
+            public void SetitogNull() {
+                this[this.tablePrikhodRaskhod.itogColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

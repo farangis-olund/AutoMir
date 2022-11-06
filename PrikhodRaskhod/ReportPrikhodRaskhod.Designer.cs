@@ -1,5 +1,5 @@
 ﻿
-namespace AutoMir2022.Core.Controllers.PrikhodRaskhodTovara
+namespace AutoMir2022
 {
     partial class ReportPrikhodRaskhod
     {
@@ -48,6 +48,7 @@ namespace AutoMir2022.Core.Controllers.PrikhodRaskhodTovara
             this.ClientSize = new System.Drawing.Size(835, 609);
             this.Controls.Add(this.reportViewer1);
             this.Name = "ReportPrikhodRaskhod";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";
             this.Load += new System.EventHandler(this.ReportPrikhodRaskhod_Load);
             this.ResumeLayout(false);

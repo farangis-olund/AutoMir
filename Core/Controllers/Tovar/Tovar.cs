@@ -11,6 +11,7 @@ namespace Core.Controllers.Tovar
         private DBNpgsql db = new DBNpgsql();
 
         
+        
         public DataTable GetArtikul()
         {
             return db.GetByQuery("Select артикул FROM public.товар ");            
@@ -66,7 +67,7 @@ namespace Core.Controllers.Tovar
 
         public void InsertPrikhodOshibkaTovara(int kol, string artikul)
         {
-            db.insertUpdateToDB("INSERT INTO public.приход_ошибки (артикул, количество) " +
+            db.insertUpdateToDB("INSERT INTO public.приход_ошибки (артикул, приход_расход) " +
                 "VALUES ('" + artikul + "', '" + kol + "')");
         }
    
