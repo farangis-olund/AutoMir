@@ -19,7 +19,7 @@ namespace Core.Controllers.RoznichProdazha
 
         public DataTable Index()
         {
-           
+
             return db.GetByQuery("Select артикул, наименование, бренд, марка, " +
                 "модель, альтернатива, количество, розн_цена__euro_, группа,место_на_складе  FROM public.товар");
         }

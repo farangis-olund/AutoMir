@@ -21,7 +21,8 @@ namespace AutoMir2022
         private Tovar tovarObj = new Tovar();
         private ReportPrint report = new ReportPrint();
         private OrgInfo org = new OrgInfo();
-        
+        private ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
+
         public string typeReport;
 
         public PrikhodRaskhodTovara()
@@ -172,7 +173,6 @@ namespace AutoMir2022
        
         private void print_Click(object sender, EventArgs e)
         {
-            ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
             DataTable dt = report.ConvertDataGridToDataTable(ref spisokIzmeneniyDGV);
             dt.Columns["ArtikulIzmen"].ColumnName = "artikul";
 
@@ -182,6 +182,7 @@ namespace AutoMir2022
             reportPrikhodRaskhod.Show();
         }
 
+        
         private void cleanBtn_Click(object sender, EventArgs e)
         {
             spisokIzmeneniyDGV.Rows.Clear();
@@ -189,7 +190,6 @@ namespace AutoMir2022
 
         private void neoprikhodBtn_Click(object sender, EventArgs e)
         {
-            ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
             string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
                 { "date", Convert.ToDateTime(dateVibor.Value).ToString("dd.MM.yyyy") }};
             reportPrikhodRaskhod.StartReport("PrikhodRaskhodOshibka", "PrikhodRaskhod", parametr, report.PrikhodaRaskhodReportOshibka());

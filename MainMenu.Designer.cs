@@ -272,8 +272,8 @@ namespace AutoMir2022
             // приходТоваровToolStripMenuItem
             // 
             this.приходТоваровToolStripMenuItem.Name = "приходТоваровToolStripMenuItem";
-            this.приходТоваровToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
-            this.приходТоваровToolStripMenuItem.Text = "Приход товаров";
+            this.приходТоваровToolStripMenuItem.Size = new System.Drawing.Size(294, 30);
+            this.приходТоваровToolStripMenuItem.Text = "Приход-расход товаров";
             this.приходТоваровToolStripMenuItem.Click += new System.EventHandler(this.приходТоваровToolStripMenuItem_Click);
             // 
             // обменТоварамиToolStripMenuItem
