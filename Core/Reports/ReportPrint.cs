@@ -20,10 +20,7 @@ namespace Core.Reports.ReportPrint
         
         public void reportVeiwerPrint(ref ReportViewer reportViewer, string reportName, string [,] parametrs, string dataset, DataTable dt)
         {
-            
-            reportViewer.Reset();
-            reportViewer.LocalReport.DataSources.Clear();
-
+               
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\" + reportName + ".rdlc");
 

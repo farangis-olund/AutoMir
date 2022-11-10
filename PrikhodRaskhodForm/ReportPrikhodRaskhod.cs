@@ -18,22 +18,32 @@ namespace AutoMir2022
         public ReportPrikhodRaskhod()
         {
             InitializeComponent();
-           
-
-            
+             
         }
 
         private void ReportPrikhodRaskhod_Load(object sender, EventArgs e)
         {
-            reportViewer1.RefreshReport();
+           
+            this.reportViewer1.RefreshReport();
+            
+        }
+
+        public void StartReport(string reportName, string dataset, string [,] parametrs, DataTable dt)
+        {
+            
+            ReportPrint rp = new ReportPrint();
+            this.reportViewer1.Reset();
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            rp.reportVeiwerPrint(ref this.reportViewer1, reportName, parametrs, dataset, dt);
+           
 
         }
 
-        public void StartReport(string reportName, string dataSet, string [,] parametrs, DataTable dt)
+        private void ReportPrikhodRaskhod_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ReportPrint rp = new ReportPrint();
-            rp.reportVeiwerPrint(ref reportViewer1, reportName, parametrs, dataSet, dt);
-
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
     }
 }

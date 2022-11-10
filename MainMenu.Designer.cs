@@ -260,6 +260,7 @@ namespace AutoMir2022
             this.добавитьИзБДToolStripMenuItem.Name = "добавитьИзБДToolStripMenuItem";
             this.добавитьИзБДToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.добавитьИзБДToolStripMenuItem.Text = "Добавить из БД";
+            this.добавитьИзБДToolStripMenuItem.Click += new System.EventHandler(this.добавитьИзБДToolStripMenuItem_Click);
             // 
             // приходРасходToolStripMenuItem
             // 

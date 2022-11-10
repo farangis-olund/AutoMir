@@ -22,7 +22,7 @@ namespace Core.Controllers.KasaVozvrat
         public DataTable SelectDataVozvratKassa(string naklTxt, string kodVozvrata)
         {
             return db.GetByQuery("SELECT e.дата, " +
-                                    "d.артикул as артикул, d.количество, d.количество*d.цена as сумма " +
+                                    "d.артикул as артикул, d.количество, d.сумма " +
                                     "FROM public.возврат e , public.перечень_возврата d" +
                                     " WHERE d.код_возврата=e.код_возврата " +
                                     "AND e.накладной_текст= '" + naklTxt + "' AND e.код_возврата= '" + kodVozvrata + "'");

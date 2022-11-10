@@ -131,5 +131,12 @@ namespace AutoMir2022
         {
 
         }
+
+        private void добавитьИзБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            DobavitTovarIsBDForm.DobavitIsBD myform = new DobavitTovarIsBDForm.DobavitIsBD();
+            myform.Show();
+        }
     }
 }

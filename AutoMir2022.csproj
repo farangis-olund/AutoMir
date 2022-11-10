@@ -23,10 +23,22 @@
     <None Remove="Reports\ChekReportVozvratProshRozn.rdlc" />
     <None Remove="Reports\ItogiProdazhi.rdlc" />
     <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
+    <None Remove="Reports\ObnovlenieTovara.rdlc" />
+    <None Remove="Reports\ObnovlenieTovaraExport.rdlc" />
     <None Remove="Reports\PrikhodRaskhod.rdlc" />
     <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
+    <None Remove="Reports\TotalReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\ObnovlenieTovara.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ObnovlenieTovaraExport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\TotalReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\PrikhodRaskhodOshibka.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

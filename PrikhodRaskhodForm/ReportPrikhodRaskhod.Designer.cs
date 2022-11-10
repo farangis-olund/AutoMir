@@ -50,6 +50,7 @@ namespace AutoMir2022
             this.Name = "ReportPrikhodRaskhod";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчет";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportPrikhodRaskhod_FormClosing);
             this.Load += new System.EventHandler(this.ReportPrikhodRaskhod_Load);
             this.ResumeLayout(false);
 

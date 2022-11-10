@@ -182,14 +182,14 @@ namespace Core.Controllers.Dolg
         public DataTable GetProdazhaDgv(string kodKlienta)
         {
             return db.GetByQuery("Select p.дата, p.накладной_текст, Sum(pt.количество*pt.цена) as сумма FROM public.продажа p, public.продажа_товара pt " +
-                                       "WHERE pt.кодпродажи=p.кодпродажи AND p.код_клиента='" + kodKlienta + "' GROUP BY p.дата, p.накладной_текст");
+                                       "WHERE pt.кодпродажи=p.кодпродажи AND p.код_клиента='" + kodKlienta + "' GROUP BY p.дата, p.накладной_текст ORDER BY p.дата DESC");
         }
 
     
         public DataTable GetPlatezhDgv(string kodKlienta)
         {
             return db.GetByQuery("Select дата, №_платежа, сумма_платежа FROM public.платежи " +
-                                         "WHERE код_клиента='" + kodKlienta + "'");
+                                         "WHERE код_клиента='" + kodKlienta + "' ORDER BY дата DESC");
         }
 
     }
