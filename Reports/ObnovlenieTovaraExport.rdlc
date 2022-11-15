@@ -304,7 +304,7 @@
         <Height>0.82292in</Height>
         <Style />
       </Body>
-      <Width>5.35822in</Width>
+      <Width>5.82182in</Width>
       <Page>
         <PageHeader>
           <Height>2.61938cm</Height>
@@ -364,7 +364,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
               <Top>0.21167cm</Top>
-              <Left>10.4383cm</Left>
+              <Left>11.7083cm</Left>
               <Height>0.84667cm</Height>
               <Width>3.07913cm</Width>
               <ZIndex>1</ZIndex>
@@ -526,7 +526,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
               <Top>0.21167cm</Top>
-              <Left>5.96511cm</Left>
+              <Left>7.23511cm</Left>
               <Height>1.22591cm</Height>
               <Width>4.2968cm</Width>
               <ZIndex>6</ZIndex>
@@ -686,7 +686,7 @@
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>0.30577cm</Top>
-              <Left>0.1397cm</Left>
+              <Left>0.7747cm</Left>
               <Height>1.20799cm</Height>
               <Width>12.85383cm</Width>
               <Style>
@@ -702,8 +702,8 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>14.8cm</PageWidth>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
         <LeftMargin>0cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
         <TopMargin>0cm</TopMargin>

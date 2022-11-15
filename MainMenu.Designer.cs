@@ -282,6 +282,7 @@ namespace AutoMir2022
             this.обменТоварамиToolStripMenuItem.Name = "обменТоварамиToolStripMenuItem";
             this.обменТоварамиToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.обменТоварамиToolStripMenuItem.Text = "Обмен товарами";
+            this.обменТоварамиToolStripMenuItem.Click += new System.EventHandler(this.обменТоварамиToolStripMenuItem_Click);
             // 
             // операцииToolStripMenuItem
             // 
@@ -431,6 +432,7 @@ namespace AutoMir2022
             this.доступКТаблицамToolStripMenuItem.Name = "доступКТаблицамToolStripMenuItem";
             this.доступКТаблицамToolStripMenuItem.Size = new System.Drawing.Size(248, 30);
             this.доступКТаблицамToolStripMenuItem.Text = "Доступ к таблицам";
+            this.доступКТаблицамToolStripMenuItem.Click += new System.EventHandler(this.доступКТаблицамToolStripMenuItem_Click);
             // 
             // очисткаБазыToolStripMenuItem
             // 

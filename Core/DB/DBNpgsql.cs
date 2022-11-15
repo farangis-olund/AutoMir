@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Windows.Forms;
 using Npgsql;
 using NpgsqlTypes;
 
@@ -15,19 +16,19 @@ namespace Core.DB
                                                     "password=1234;" +
                                                     "database=AutoMir2022;";
 
+           
+
         // return query to datatable
         public DataTable GetByQuery(string query)
         {
-            DataTable dataTable = new DataTable();
-
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-            conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
+        DataTable dataTable = new DataTable();
+            // Connect to a PostgreSQL database
+            conn.Open();
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-
             NpgsqlDataReader dr = comm.ExecuteReader();
             if (dr.HasRows)
             {
@@ -44,23 +45,24 @@ namespace Core.DB
         public DataTable GetByParametrDate(string query, string parametr)
         {
             DataTable dataTable = new DataTable();
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            
 
             // Connect to a PostgreSQL database
-            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
             conn.Open();
-
-            NpgsqlCommand sql = conn.CreateCommand();
-            sql.CommandType = CommandType.Text;
-            sql.CommandText = query;
-            sql.Parameters.Add(parametr, NpgsqlDbType.Date).Value =Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+            NpgsqlCommand comm = new NpgsqlCommand();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value =Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
             
-            NpgsqlDataReader dr = sql.ExecuteReader();
+            NpgsqlDataReader dr = comm.ExecuteReader();
             if (dr.HasRows)
             {
                 dataTable.Load(dr);
             }
 
-            sql.Dispose();
+            comm.Dispose();
             conn.Close();
 
             return dataTable;
@@ -71,27 +73,50 @@ namespace Core.DB
 
         public void insertUpdateToDB(string query)
         {
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-            conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
             comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
         }
 
         public void insertWithParametrDouble(string query, string parametr, double suma)
         {
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-            conn.Open();
             NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
             comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
             comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
+        }
+
+
+        public void InsertWithParametrDate(string query, string parametr, DateTime date)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = date;
+            comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
         }
 
         //ALTER SEQUENCE продажа_№_накладной_seq RESTART WITH 1;
@@ -99,8 +124,9 @@ namespace Core.DB
         public void insertProdazha(double kurs, int skidka, string prodovets,
             string propis, string primech, string naklText, bool chek)
         {
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+
+            // Connect to a PostgreSQL database
             conn.Open();
 
             using (var cmd = new NpgsqlCommand("INSERT INTO public.продажа (курс_валюты, скидка,  продавец, " +
@@ -120,14 +146,15 @@ namespace Core.DB
 
             }
 
-
+                        
+            conn.Close();
         }
 
 
         public void UpdateOtmenaProdazh(string naklText, string artikul, int kol, double suma, int kod)
         {
-
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+
             conn.Open();
 
             NpgsqlCommand command = new NpgsqlCommand("update public.отмена_продажи set код_отмена = :kod, количество_возврата = :kol, " +
@@ -148,15 +175,17 @@ namespace Core.DB
 
                 command.ExecuteNonQuery();
 
-
+            
+            conn.Close();
         }
 
 
 
         public void insertKurs(double kurs)
         {
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+
+            // Connect to a PostgreSQL database
             conn.Open();
 
             using (var cmd = new NpgsqlCommand("INSERT INTO public.курс_валюты (курс_валюты) VALUES ( @курс_валюты)", conn))
@@ -168,16 +197,16 @@ namespace Core.DB
 
             }
 
-
+            
+            conn.Close();
         }
-
-
 
         public void insertProdazhaTovar(string artikul, int kolich, double tsena,
                            int kodprodazhi)
         {
-            // Connect to a PostgreSQL database
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+
+            // Connect to a PostgreSQL database
             conn.Open();
 
             using (var cmd = new NpgsqlCommand(" INSERT INTO public.продажа_товара (артикул, количество, цена, кодпродажи) VALUES" +
@@ -194,6 +223,8 @@ namespace Core.DB
 
             }
 
+         
+            conn.Close();
         }
 
 
@@ -202,21 +233,22 @@ namespace Core.DB
         {
             DataTable dataTable = new DataTable();
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
             conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
+            comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
 
-            NpgsqlCommand sql = conn.CreateCommand();
-            sql.CommandType = CommandType.Text;
-            sql.CommandText = query;
-            sql.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
-            sql.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
-
-            NpgsqlDataReader dr = sql.ExecuteReader();
+            NpgsqlDataReader dr = comm.ExecuteReader();
             if (dr.HasRows)
             {
                 dataTable.Load(dr);
             }
 
-            sql.Dispose();
+            comm.Dispose();
             conn.Close();
 
             return dataTable;
@@ -226,24 +258,26 @@ namespace Core.DB
         {
             DataTable dataTable = new DataTable();
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-            conn.Open();
+            NpgsqlCommand comm = new NpgsqlCommand();
 
-            NpgsqlCommand sql = conn.CreateCommand();
-            sql.CommandType = CommandType.Text;
-            sql.CommandText = query;
-            sql.Parameters.Add("data", NpgsqlDbType.Date).Value = data;
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add("data", NpgsqlDbType.Date).Value = data;
             
-            NpgsqlDataReader dr = sql.ExecuteReader();
+            NpgsqlDataReader dr = comm.ExecuteReader();
             if (dr.HasRows)
             {
                 dataTable.Load(dr);
             }
 
-            sql.Dispose();
+            comm.Dispose();
             conn.Close();
 
             return dataTable;
         }
+
 
 
     }

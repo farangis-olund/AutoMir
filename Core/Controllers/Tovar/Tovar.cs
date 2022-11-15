@@ -31,6 +31,12 @@ namespace Core.Controllers.Tovar
                                                "WHERE артикул='" + artikul + "'");
         }
 
+        public DataTable GetTovarByArtikulMoreThenNull(string artikul)
+        {
+            return db.GetByQuery("Select * FROM public.товар " +
+                                "WHERE артикул='" + artikul + "' AND количество>0");
+        }
+
         public DataTable GetAllTovar()
         {
             return db.GetByQuery("Select * FROM public.товар ORDER BY артикул ASC");

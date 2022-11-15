@@ -235,9 +235,18 @@ namespace AutoMir2022
 
         private void ochistkaKarzina2_Click(object sender, EventArgs e)
         {
-            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите очистить карзину?", "Очистка карзины", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+                ochiskta();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
 
-            ochiskta();
+           
 
         }
 
@@ -400,9 +409,18 @@ namespace AutoMir2022
        
         private void ochistitKarzina1Btn_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource=null;
-            dataGridView1.Rows.Clear();
-           
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите очистить карзину?", "Очистка карзины", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+
+            
         }
 
 

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using Core.Reports.ReportPrint;
+using System.Drawing.Printing;
 
 namespace AutoMir2022
 {
@@ -36,8 +37,9 @@ namespace AutoMir2022
             this.reportViewer1.LocalReport.DataSources.Clear();
             rp.reportVeiwerPrint(ref this.reportViewer1, reportName, parametrs, dataset, dt);
            
-
+           
         }
+       
 
         private void ReportPrikhodRaskhod_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -45,5 +47,9 @@ namespace AutoMir2022
             this.Parent = null;
             e.Cancel = true;
         }
+
+
+
+
     }
 }

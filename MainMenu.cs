@@ -138,5 +138,17 @@ namespace AutoMir2022
             DobavitTovarIsBDForm.DobavitIsBD myform = new DobavitTovarIsBDForm.DobavitIsBD();
             myform.Show();
         }
+
+        private void обменТоварамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PriyomSdachaTovaraFrm myform = new PriyomSdachaTovaraFrm();
+            myform.Show();
+        }
+
+        private void доступКТаблицамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BazaDanikhForm myform = new BazaDanikhForm();
+            myform.Show();
+        }
     }
 }

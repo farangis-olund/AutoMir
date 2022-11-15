@@ -29,11 +29,6 @@ namespace AutoMir2022
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -51,6 +46,11 @@ namespace AutoMir2022
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -101,30 +101,6 @@ namespace AutoMir2022
             this.variant1 = new System.Windows.Forms.RadioButton();
             this.ochistkaKarzina2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.karzina3 = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.ochistkaKorzini3 = new System.Windows.Forms.Button();
-            this.proverkaKasi = new System.Windows.Forms.TabPage();
-            this.dataPanel = new System.Windows.Forms.Panel();
-            this.mestoSklad = new System.Windows.Forms.TabPage();
-            this.mestoNaSkladePanel = new System.Windows.Forms.Panel();
-            this.otmenaProdazhiRozn = new System.Windows.Forms.TabPage();
-            this.otmenaProdazhiDGV = new System.Windows.Forms.DataGridView();
-            this.viborIzSpiska = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.artikulOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsenaOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumaVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.kodVozvrataTxb = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.otmenaProdazhiBtn = new System.Windows.Forms.Button();
-            this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.kontCheka = new System.Windows.Forms.TabPage();
-            this.chekPanel = new System.Windows.Forms.Panel();
             this.alternativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,6 +127,8 @@ namespace AutoMir2022
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.karzina3 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.artikulKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanieKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brandKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -160,6 +138,28 @@ namespace AutoMir2022
             this.tsenaKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumaKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mestoKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ochistkaKorzini3 = new System.Windows.Forms.Button();
+            this.proverkaKasi = new System.Windows.Forms.TabPage();
+            this.dataPanel = new System.Windows.Forms.Panel();
+            this.mestoSklad = new System.Windows.Forms.TabPage();
+            this.mestoNaSkladePanel = new System.Windows.Forms.Panel();
+            this.otmenaProdazhiRozn = new System.Windows.Forms.TabPage();
+            this.otmenaProdazhiDGV = new System.Windows.Forms.DataGridView();
+            this.viborIzSpiska = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.artikulOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsenaOtmena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumaVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.kodVozvrataTxb = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.otmenaProdazhiBtn = new System.Windows.Forms.Button();
+            this.nakNomerOtmenaCmb = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.kontCheka = new System.Windows.Forms.TabPage();
+            this.chekPanel = new System.Windows.Forms.Panel();
             this.topPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -409,18 +409,18 @@ namespace AutoMir2022
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.PowderBlue;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Info;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -639,7 +639,7 @@ namespace AutoMir2022
             this.karzina2.Margin = new System.Windows.Forms.Padding(4);
             this.karzina2.Name = "karzina2";
             this.karzina2.Padding = new System.Windows.Forms.Padding(4);
-            this.karzina2.Size = new System.Drawing.Size(1376, 689);
+            this.karzina2.Size = new System.Drawing.Size(1376, 545);
             this.karzina2.TabIndex = 1;
             this.karzina2.Text = "Карзина2";
             this.karzina2.UseVisualStyleBackColor = true;
@@ -647,7 +647,7 @@ namespace AutoMir2022
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label12.Location = new System.Drawing.Point(40, 93);
+            this.label12.Location = new System.Drawing.Point(40, 56);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(138, 26);
             this.label12.TabIndex = 11;
@@ -657,7 +657,7 @@ namespace AutoMir2022
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label4.Location = new System.Drawing.Point(174, 93);
+            this.label4.Location = new System.Drawing.Point(174, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 26);
             this.label4.TabIndex = 10;
@@ -667,7 +667,7 @@ namespace AutoMir2022
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label3.Location = new System.Drawing.Point(578, 91);
+            this.label3.Location = new System.Drawing.Point(578, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 26);
             this.label3.TabIndex = 9;
@@ -677,7 +677,7 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.label1.Location = new System.Drawing.Point(362, 91);
+            this.label1.Location = new System.Drawing.Point(362, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(210, 26);
             this.label1.TabIndex = 0;
@@ -689,7 +689,7 @@ namespace AutoMir2022
             this.variant4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.variant4.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant4.Location = new System.Drawing.Point(1191, 71);
+            this.variant4.Location = new System.Drawing.Point(1191, 34);
             this.variant4.Name = "variant4";
             this.variant4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.variant4.Size = new System.Drawing.Size(168, 46);
@@ -705,7 +705,7 @@ namespace AutoMir2022
             this.variant3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.variant3.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant3.Location = new System.Drawing.Point(1020, 71);
+            this.variant3.Location = new System.Drawing.Point(1020, 34);
             this.variant3.Name = "variant3";
             this.variant3.Size = new System.Drawing.Size(175, 46);
             this.variant3.TabIndex = 7;
@@ -720,7 +720,7 @@ namespace AutoMir2022
             this.variant2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.variant2.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant2.Location = new System.Drawing.Point(853, 71);
+            this.variant2.Location = new System.Drawing.Point(853, 34);
             this.variant2.Name = "variant2";
             this.variant2.Size = new System.Drawing.Size(171, 46);
             this.variant2.TabIndex = 6;
@@ -735,7 +735,7 @@ namespace AutoMir2022
             this.variant1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.variant1.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant1.Location = new System.Drawing.Point(686, 71);
+            this.variant1.Location = new System.Drawing.Point(686, 34);
             this.variant1.Name = "variant1";
             this.variant1.Size = new System.Drawing.Size(171, 46);
             this.variant1.TabIndex = 5;
@@ -747,9 +747,9 @@ namespace AutoMir2022
             // 
             // ochistkaKarzina2
             // 
-            this.ochistkaKarzina2.Location = new System.Drawing.Point(1191, 7);
+            this.ochistkaKarzina2.Location = new System.Drawing.Point(8, 15);
             this.ochistkaKarzina2.Name = "ochistkaKarzina2";
-            this.ochistkaKarzina2.Size = new System.Drawing.Size(168, 38);
+            this.ochistkaKarzina2.Size = new System.Drawing.Size(95, 38);
             this.ochistkaKarzina2.TabIndex = 2;
             this.ochistkaKarzina2.Text = "Очистить ";
             this.ochistkaKarzina2.UseVisualStyleBackColor = true;
@@ -787,260 +787,17 @@ namespace AutoMir2022
             this.dataGridViewTextBoxColumn1,
             this.model,
             this.mesto});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 123);
+            this.dataGridView2.Location = new System.Drawing.Point(3, 86);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 25;
             this.dataGridView2.Size = new System.Drawing.Size(1367, 419);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
             // 
-            // karzina3
-            // 
-            this.karzina3.Controls.Add(this.dataGridView3);
-            this.karzina3.Controls.Add(this.ochistkaKorzini3);
-            this.karzina3.Location = new System.Drawing.Point(4, 32);
-            this.karzina3.Name = "karzina3";
-            this.karzina3.Padding = new System.Windows.Forms.Padding(3);
-            this.karzina3.Size = new System.Drawing.Size(1376, 689);
-            this.karzina3.TabIndex = 2;
-            this.karzina3.Text = "Карзина3";
-            this.karzina3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.ColumnHeadersHeight = 35;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.artikulKarzina3,
-            this.naimenovanieKarzina3,
-            this.brandKarzina3,
-            this.markaKarzina3,
-            this.modelKarzina3,
-            this.kolZakazaKarzina3,
-            this.tsenaKarzina3,
-            this.sumaKarzina3,
-            this.mestoKarzina3});
-            this.dataGridView3.Location = new System.Drawing.Point(6, 92);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 25;
-            this.dataGridView3.Size = new System.Drawing.Size(1338, 273);
-            this.dataGridView3.TabIndex = 4;
-            // 
-            // ochistkaKorzini3
-            // 
-            this.ochistkaKorzini3.Location = new System.Drawing.Point(1191, 19);
-            this.ochistkaKorzini3.Name = "ochistkaKorzini3";
-            this.ochistkaKorzini3.Size = new System.Drawing.Size(153, 44);
-            this.ochistkaKorzini3.TabIndex = 3;
-            this.ochistkaKorzini3.Text = "Очистить ";
-            this.ochistkaKorzini3.UseVisualStyleBackColor = true;
-            this.ochistkaKorzini3.Click += new System.EventHandler(this.ochistkaKorzini3_Click);
-            // 
-            // proverkaKasi
-            // 
-            this.proverkaKasi.Controls.Add(this.dataPanel);
-            this.proverkaKasi.Location = new System.Drawing.Point(4, 32);
-            this.proverkaKasi.Name = "proverkaKasi";
-            this.proverkaKasi.Padding = new System.Windows.Forms.Padding(3);
-            this.proverkaKasi.Size = new System.Drawing.Size(1366, 689);
-            this.proverkaKasi.TabIndex = 3;
-            this.proverkaKasi.Text = "Проверка кассы";
-            this.proverkaKasi.UseVisualStyleBackColor = true;
-            // 
-            // dataPanel
-            // 
-            this.dataPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataPanel.Location = new System.Drawing.Point(3, 3);
-            this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(1360, 683);
-            this.dataPanel.TabIndex = 0;
-            // 
-            // mestoSklad
-            // 
-            this.mestoSklad.Controls.Add(this.mestoNaSkladePanel);
-            this.mestoSklad.Location = new System.Drawing.Point(4, 32);
-            this.mestoSklad.Name = "mestoSklad";
-            this.mestoSklad.Padding = new System.Windows.Forms.Padding(3);
-            this.mestoSklad.Size = new System.Drawing.Size(1366, 689);
-            this.mestoSklad.TabIndex = 4;
-            this.mestoSklad.Text = "Место на складе";
-            this.mestoSklad.UseVisualStyleBackColor = true;
-            // 
-            // mestoNaSkladePanel
-            // 
-            this.mestoNaSkladePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.mestoNaSkladePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mestoNaSkladePanel.Location = new System.Drawing.Point(3, 3);
-            this.mestoNaSkladePanel.Name = "mestoNaSkladePanel";
-            this.mestoNaSkladePanel.Size = new System.Drawing.Size(1360, 683);
-            this.mestoNaSkladePanel.TabIndex = 0;
-            // 
-            // otmenaProdazhiRozn
-            // 
-            this.otmenaProdazhiRozn.Controls.Add(this.otmenaProdazhiDGV);
-            this.otmenaProdazhiRozn.Controls.Add(this.panel1);
-            this.otmenaProdazhiRozn.Location = new System.Drawing.Point(4, 32);
-            this.otmenaProdazhiRozn.Name = "otmenaProdazhiRozn";
-            this.otmenaProdazhiRozn.Padding = new System.Windows.Forms.Padding(3);
-            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1366, 689);
-            this.otmenaProdazhiRozn.TabIndex = 5;
-            this.otmenaProdazhiRozn.Text = "Отмена продажи";
-            this.otmenaProdazhiRozn.UseVisualStyleBackColor = true;
-            // 
-            // otmenaProdazhiDGV
-            // 
-            this.otmenaProdazhiDGV.AllowUserToAddRows = false;
-            this.otmenaProdazhiDGV.AllowUserToDeleteRows = false;
-            this.otmenaProdazhiDGV.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.otmenaProdazhiDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.otmenaProdazhiDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.viborIzSpiska,
-            this.artikulOtmena,
-            this.kolOtmena,
-            this.tsenaOtmena,
-            this.kolVozvrata,
-            this.sumaVozvrata});
-            this.otmenaProdazhiDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.otmenaProdazhiDGV.Location = new System.Drawing.Point(3, 81);
-            this.otmenaProdazhiDGV.Name = "otmenaProdazhiDGV";
-            this.otmenaProdazhiDGV.Size = new System.Drawing.Size(1360, 605);
-            this.otmenaProdazhiDGV.TabIndex = 1;
-            this.otmenaProdazhiDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.otmenaProdazhiDGV_CellEndEdit);
-            // 
-            // viborIzSpiska
-            // 
-            this.viborIzSpiska.HeaderText = "";
-            this.viborIzSpiska.Name = "viborIzSpiska";
-            this.viborIzSpiska.Width = 50;
-            // 
-            // artikulOtmena
-            // 
-            this.artikulOtmena.HeaderText = "артикул";
-            this.artikulOtmena.Name = "artikulOtmena";
-            this.artikulOtmena.ReadOnly = true;
-            this.artikulOtmena.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.artikulOtmena.Width = 200;
-            // 
-            // kolOtmena
-            // 
-            this.kolOtmena.HeaderText = "количество";
-            this.kolOtmena.Name = "kolOtmena";
-            this.kolOtmena.ReadOnly = true;
-            // 
-            // tsenaOtmena
-            // 
-            this.tsenaOtmena.HeaderText = "цена";
-            this.tsenaOtmena.Name = "tsenaOtmena";
-            this.tsenaOtmena.ReadOnly = true;
-            this.tsenaOtmena.Width = 120;
-            // 
-            // kolVozvrata
-            // 
-            dataGridViewCellStyle49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.kolVozvrata.DefaultCellStyle = dataGridViewCellStyle49;
-            this.kolVozvrata.HeaderText = "кол.возв";
-            this.kolVozvrata.Name = "kolVozvrata";
-            // 
-            // sumaVozvrata
-            // 
-            this.sumaVozvrata.HeaderText = "сумма";
-            this.sumaVozvrata.Name = "sumaVozvrata";
-            this.sumaVozvrata.ReadOnly = true;
-            this.sumaVozvrata.Width = 150;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.kodVozvrataTxb);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.otmenaProdazhiBtn);
-            this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1360, 78);
-            this.panel1.TabIndex = 0;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(276, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 23);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Код";
-            // 
-            // kodVozvrataTxb
-            // 
-            this.kodVozvrataTxb.Location = new System.Drawing.Point(321, 19);
-            this.kodVozvrataTxb.Name = "kodVozvrataTxb";
-            this.kodVozvrataTxb.Size = new System.Drawing.Size(83, 30);
-            this.kodVozvrataTxb.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(632, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 34);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Печать накладной";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // otmenaProdazhiBtn
-            // 
-            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(438, 17);
-            this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
-            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(181, 34);
-            this.otmenaProdazhiBtn.TabIndex = 3;
-            this.otmenaProdazhiBtn.Text = "Отмена продажи";
-            this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
-            this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
-            // 
-            // nakNomerOtmenaCmb
-            // 
-            this.nakNomerOtmenaCmb.FormattingEnabled = true;
-            this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 20);
-            this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
-            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(126, 31);
-            this.nakNomerOtmenaCmb.TabIndex = 2;
-            this.nakNomerOtmenaCmb.SelectionChangeCommitted += new System.EventHandler(this.nakNomerOtmenaCmb_SelectionChangeCommitted);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(120, 23);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Накладной №";
-            // 
-            // kontCheka
-            // 
-            this.kontCheka.Controls.Add(this.chekPanel);
-            this.kontCheka.Location = new System.Drawing.Point(4, 32);
-            this.kontCheka.Name = "kontCheka";
-            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
-            this.kontCheka.Size = new System.Drawing.Size(1366, 689);
-            this.kontCheka.TabIndex = 6;
-            this.kontCheka.Text = "Контроль чека";
-            this.kontCheka.UseVisualStyleBackColor = true;
-            // 
-            // chekPanel
-            // 
-            this.chekPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chekPanel.Location = new System.Drawing.Point(3, 3);
-            this.chekPanel.Name = "chekPanel";
-            this.chekPanel.Size = new System.Drawing.Size(1397, 683);
-            this.chekPanel.TabIndex = 0;
-            // 
             // alternativa
             // 
-            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.alternativa.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.alternativa.DefaultCellStyle = dataGridViewCellStyle54;
             this.alternativa.HeaderText = "альтернатива";
             this.alternativa.Name = "alternativa";
             this.alternativa.ReadOnly = true;
@@ -1048,8 +805,8 @@ namespace AutoMir2022
             // 
             // naimenov
             // 
-            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.naimenov.DefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.naimenov.DefaultCellStyle = dataGridViewCellStyle55;
             this.naimenov.HeaderText = "наименование";
             this.naimenov.Name = "naimenov";
             this.naimenov.ReadOnly = true;
@@ -1057,10 +814,10 @@ namespace AutoMir2022
             // 
             // kol1
             // 
-            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle52.Format = "N0";
-            dataGridViewCellStyle52.NullValue = null;
-            this.kol1.DefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle56.Format = "N0";
+            dataGridViewCellStyle56.NullValue = null;
+            this.kol1.DefaultCellStyle = dataGridViewCellStyle56;
             this.kol1.HeaderText = "кол1";
             this.kol1.Name = "kol1";
             this.kol1.ReadOnly = true;
@@ -1068,51 +825,51 @@ namespace AutoMir2022
             // 
             // kol2
             // 
-            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.kol2.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.kol2.DefaultCellStyle = dataGridViewCellStyle57;
             this.kol2.HeaderText = "кол2";
             this.kol2.Name = "kol2";
             this.kol2.Width = 55;
             // 
             // kol3
             // 
-            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.kol3.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.kol3.DefaultCellStyle = dataGridViewCellStyle58;
             this.kol3.HeaderText = "кол3";
             this.kol3.Name = "kol3";
             this.kol3.Width = 55;
             // 
             // kol4
             // 
-            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.kol4.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.kol4.DefaultCellStyle = dataGridViewCellStyle59;
             this.kol4.HeaderText = "кол4";
             this.kol4.Name = "kol4";
             this.kol4.Width = 55;
             // 
             // kolZakaza
             // 
-            dataGridViewCellStyle56.BackColor = System.Drawing.Color.MintCream;
-            dataGridViewCellStyle56.Format = "N0";
-            dataGridViewCellStyle56.NullValue = null;
-            this.kolZakaza.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle60.BackColor = System.Drawing.Color.MintCream;
+            dataGridViewCellStyle60.Format = "N0";
+            dataGridViewCellStyle60.NullValue = null;
+            this.kolZakaza.DefaultCellStyle = dataGridViewCellStyle60;
             this.kolZakaza.HeaderText = "колЗаказа";
             this.kolZakaza.Name = "kolZakaza";
             // 
             // suma1
             // 
-            dataGridViewCellStyle57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle57.Format = "N2";
-            dataGridViewCellStyle57.NullValue = null;
-            this.suma1.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle61.Format = "N2";
+            dataGridViewCellStyle61.NullValue = null;
+            this.suma1.DefaultCellStyle = dataGridViewCellStyle61;
             this.suma1.HeaderText = "сума1";
             this.suma1.Name = "suma1";
             this.suma1.ReadOnly = true;
             // 
             // brand1
             // 
-            dataGridViewCellStyle58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.brand1.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.brand1.DefaultCellStyle = dataGridViewCellStyle62;
             this.brand1.HeaderText = "бренд1";
             this.brand1.Name = "brand1";
             this.brand1.ReadOnly = true;
@@ -1120,45 +877,45 @@ namespace AutoMir2022
             // 
             // suma2
             // 
-            dataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.suma2.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.suma2.DefaultCellStyle = dataGridViewCellStyle63;
             this.suma2.HeaderText = "сума2";
             this.suma2.Name = "suma2";
             // 
             // brand2
             // 
-            dataGridViewCellStyle60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.brand2.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle64.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.brand2.DefaultCellStyle = dataGridViewCellStyle64;
             this.brand2.HeaderText = "бренд2";
             this.brand2.Name = "brand2";
             this.brand2.Width = 70;
             // 
             // suma3
             // 
-            dataGridViewCellStyle61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.suma3.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.suma3.DefaultCellStyle = dataGridViewCellStyle65;
             this.suma3.HeaderText = "сума3";
             this.suma3.Name = "suma3";
             // 
             // brand3
             // 
-            dataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.brand3.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.brand3.DefaultCellStyle = dataGridViewCellStyle66;
             this.brand3.HeaderText = "бренд3";
             this.brand3.Name = "brand3";
             this.brand3.Width = 70;
             // 
             // suma4
             // 
-            dataGridViewCellStyle63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.suma4.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.suma4.DefaultCellStyle = dataGridViewCellStyle67;
             this.suma4.HeaderText = "сума4";
             this.suma4.Name = "suma4";
             // 
             // brand4
             // 
-            dataGridViewCellStyle64.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.brand4.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.brand4.DefaultCellStyle = dataGridViewCellStyle68;
             this.brand4.HeaderText = "бренд4";
             this.brand4.Name = "brand4";
             this.brand4.Width = 70;
@@ -1229,10 +986,42 @@ namespace AutoMir2022
             this.mesto.Name = "mesto";
             this.mesto.Visible = false;
             // 
+            // karzina3
+            // 
+            this.karzina3.Controls.Add(this.dataGridView3);
+            this.karzina3.Controls.Add(this.ochistkaKorzini3);
+            this.karzina3.Location = new System.Drawing.Point(4, 32);
+            this.karzina3.Name = "karzina3";
+            this.karzina3.Padding = new System.Windows.Forms.Padding(3);
+            this.karzina3.Size = new System.Drawing.Size(1376, 545);
+            this.karzina3.TabIndex = 2;
+            this.karzina3.Text = "Карзина3";
+            this.karzina3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.ColumnHeadersHeight = 35;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artikulKarzina3,
+            this.naimenovanieKarzina3,
+            this.brandKarzina3,
+            this.markaKarzina3,
+            this.modelKarzina3,
+            this.kolZakazaKarzina3,
+            this.tsenaKarzina3,
+            this.sumaKarzina3,
+            this.mestoKarzina3});
+            this.dataGridView3.Location = new System.Drawing.Point(6, 50);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 25;
+            this.dataGridView3.Size = new System.Drawing.Size(1339, 478);
+            this.dataGridView3.TabIndex = 4;
+            // 
             // artikulKarzina3
             // 
-            dataGridViewCellStyle65.BackColor = System.Drawing.Color.White;
-            this.artikulKarzina3.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.White;
+            this.artikulKarzina3.DefaultCellStyle = dataGridViewCellStyle47;
             this.artikulKarzina3.HeaderText = "артикул";
             this.artikulKarzina3.Name = "artikulKarzina3";
             this.artikulKarzina3.ReadOnly = true;
@@ -1240,8 +1029,8 @@ namespace AutoMir2022
             // 
             // naimenovanieKarzina3
             // 
-            dataGridViewCellStyle66.BackColor = System.Drawing.Color.White;
-            this.naimenovanieKarzina3.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.White;
+            this.naimenovanieKarzina3.DefaultCellStyle = dataGridViewCellStyle48;
             this.naimenovanieKarzina3.HeaderText = "наименование";
             this.naimenovanieKarzina3.Name = "naimenovanieKarzina3";
             this.naimenovanieKarzina3.ReadOnly = true;
@@ -1249,8 +1038,8 @@ namespace AutoMir2022
             // 
             // brandKarzina3
             // 
-            dataGridViewCellStyle67.BackColor = System.Drawing.Color.White;
-            this.brandKarzina3.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.White;
+            this.brandKarzina3.DefaultCellStyle = dataGridViewCellStyle49;
             this.brandKarzina3.HeaderText = "бренд";
             this.brandKarzina3.Name = "brandKarzina3";
             this.brandKarzina3.ReadOnly = true;
@@ -1269,10 +1058,10 @@ namespace AutoMir2022
             // 
             // kolZakazaKarzina3
             // 
-            dataGridViewCellStyle68.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle68.Format = "N0";
-            dataGridViewCellStyle68.NullValue = null;
-            this.kolZakazaKarzina3.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.Format = "N0";
+            dataGridViewCellStyle50.NullValue = null;
+            this.kolZakazaKarzina3.DefaultCellStyle = dataGridViewCellStyle50;
             this.kolZakazaKarzina3.HeaderText = "колЗаказа";
             this.kolZakazaKarzina3.Name = "kolZakazaKarzina3";
             // 
@@ -1283,10 +1072,10 @@ namespace AutoMir2022
             // 
             // sumaKarzina3
             // 
-            dataGridViewCellStyle69.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle69.Format = "N2";
-            dataGridViewCellStyle69.NullValue = null;
-            this.sumaKarzina3.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle51.Format = "N2";
+            dataGridViewCellStyle51.NullValue = null;
+            this.sumaKarzina3.DefaultCellStyle = dataGridViewCellStyle51;
             this.sumaKarzina3.HeaderText = "сумма";
             this.sumaKarzina3.Name = "sumaKarzina3";
             this.sumaKarzina3.ReadOnly = true;
@@ -1296,6 +1085,217 @@ namespace AutoMir2022
             // 
             this.mestoKarzina3.HeaderText = "место";
             this.mestoKarzina3.Name = "mestoKarzina3";
+            // 
+            // ochistkaKorzini3
+            // 
+            this.ochistkaKorzini3.Location = new System.Drawing.Point(1233, 6);
+            this.ochistkaKorzini3.Name = "ochistkaKorzini3";
+            this.ochistkaKorzini3.Size = new System.Drawing.Size(111, 35);
+            this.ochistkaKorzini3.TabIndex = 3;
+            this.ochistkaKorzini3.Text = "Очистить ";
+            this.ochistkaKorzini3.UseVisualStyleBackColor = true;
+            this.ochistkaKorzini3.Click += new System.EventHandler(this.ochistkaKorzini3_Click);
+            // 
+            // proverkaKasi
+            // 
+            this.proverkaKasi.Controls.Add(this.dataPanel);
+            this.proverkaKasi.Location = new System.Drawing.Point(4, 32);
+            this.proverkaKasi.Name = "proverkaKasi";
+            this.proverkaKasi.Padding = new System.Windows.Forms.Padding(3);
+            this.proverkaKasi.Size = new System.Drawing.Size(1376, 545);
+            this.proverkaKasi.TabIndex = 3;
+            this.proverkaKasi.Text = "Проверка кассы";
+            this.proverkaKasi.UseVisualStyleBackColor = true;
+            // 
+            // dataPanel
+            // 
+            this.dataPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataPanel.Location = new System.Drawing.Point(3, 3);
+            this.dataPanel.Name = "dataPanel";
+            this.dataPanel.Size = new System.Drawing.Size(1370, 539);
+            this.dataPanel.TabIndex = 0;
+            // 
+            // mestoSklad
+            // 
+            this.mestoSklad.Controls.Add(this.mestoNaSkladePanel);
+            this.mestoSklad.Location = new System.Drawing.Point(4, 32);
+            this.mestoSklad.Name = "mestoSklad";
+            this.mestoSklad.Padding = new System.Windows.Forms.Padding(3);
+            this.mestoSklad.Size = new System.Drawing.Size(1376, 545);
+            this.mestoSklad.TabIndex = 4;
+            this.mestoSklad.Text = "Место на складе";
+            this.mestoSklad.UseVisualStyleBackColor = true;
+            // 
+            // mestoNaSkladePanel
+            // 
+            this.mestoNaSkladePanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mestoNaSkladePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mestoNaSkladePanel.Location = new System.Drawing.Point(3, 3);
+            this.mestoNaSkladePanel.Name = "mestoNaSkladePanel";
+            this.mestoNaSkladePanel.Size = new System.Drawing.Size(1370, 539);
+            this.mestoNaSkladePanel.TabIndex = 0;
+            // 
+            // otmenaProdazhiRozn
+            // 
+            this.otmenaProdazhiRozn.Controls.Add(this.otmenaProdazhiDGV);
+            this.otmenaProdazhiRozn.Controls.Add(this.panel1);
+            this.otmenaProdazhiRozn.Location = new System.Drawing.Point(4, 32);
+            this.otmenaProdazhiRozn.Name = "otmenaProdazhiRozn";
+            this.otmenaProdazhiRozn.Padding = new System.Windows.Forms.Padding(3);
+            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1376, 545);
+            this.otmenaProdazhiRozn.TabIndex = 5;
+            this.otmenaProdazhiRozn.Text = "Отмена продажи";
+            this.otmenaProdazhiRozn.UseVisualStyleBackColor = true;
+            // 
+            // otmenaProdazhiDGV
+            // 
+            this.otmenaProdazhiDGV.AllowUserToAddRows = false;
+            this.otmenaProdazhiDGV.AllowUserToDeleteRows = false;
+            this.otmenaProdazhiDGV.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.otmenaProdazhiDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.otmenaProdazhiDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.viborIzSpiska,
+            this.artikulOtmena,
+            this.kolOtmena,
+            this.tsenaOtmena,
+            this.kolVozvrata,
+            this.sumaVozvrata});
+            this.otmenaProdazhiDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.otmenaProdazhiDGV.Location = new System.Drawing.Point(3, 81);
+            this.otmenaProdazhiDGV.Name = "otmenaProdazhiDGV";
+            this.otmenaProdazhiDGV.Size = new System.Drawing.Size(1370, 461);
+            this.otmenaProdazhiDGV.TabIndex = 1;
+            this.otmenaProdazhiDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.otmenaProdazhiDGV_CellEndEdit);
+            // 
+            // viborIzSpiska
+            // 
+            this.viborIzSpiska.HeaderText = "";
+            this.viborIzSpiska.Name = "viborIzSpiska";
+            this.viborIzSpiska.Width = 50;
+            // 
+            // artikulOtmena
+            // 
+            this.artikulOtmena.HeaderText = "артикул";
+            this.artikulOtmena.Name = "artikulOtmena";
+            this.artikulOtmena.ReadOnly = true;
+            this.artikulOtmena.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.artikulOtmena.Width = 200;
+            // 
+            // kolOtmena
+            // 
+            this.kolOtmena.HeaderText = "количество";
+            this.kolOtmena.Name = "kolOtmena";
+            this.kolOtmena.ReadOnly = true;
+            // 
+            // tsenaOtmena
+            // 
+            this.tsenaOtmena.HeaderText = "цена";
+            this.tsenaOtmena.Name = "tsenaOtmena";
+            this.tsenaOtmena.ReadOnly = true;
+            this.tsenaOtmena.Width = 120;
+            // 
+            // kolVozvrata
+            // 
+            dataGridViewCellStyle69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.kolVozvrata.DefaultCellStyle = dataGridViewCellStyle69;
+            this.kolVozvrata.HeaderText = "кол.возв";
+            this.kolVozvrata.Name = "kolVozvrata";
+            // 
+            // sumaVozvrata
+            // 
+            this.sumaVozvrata.HeaderText = "сумма";
+            this.sumaVozvrata.Name = "sumaVozvrata";
+            this.sumaVozvrata.ReadOnly = true;
+            this.sumaVozvrata.Width = 150;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.kodVozvrataTxb);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.otmenaProdazhiBtn);
+            this.panel1.Controls.Add(this.nakNomerOtmenaCmb);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1370, 78);
+            this.panel1.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(276, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 23);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Код";
+            // 
+            // kodVozvrataTxb
+            // 
+            this.kodVozvrataTxb.Location = new System.Drawing.Point(321, 19);
+            this.kodVozvrataTxb.Name = "kodVozvrataTxb";
+            this.kodVozvrataTxb.Size = new System.Drawing.Size(83, 30);
+            this.kodVozvrataTxb.TabIndex = 6;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(632, 16);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(95, 34);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Печать накладной";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // otmenaProdazhiBtn
+            // 
+            this.otmenaProdazhiBtn.Location = new System.Drawing.Point(438, 17);
+            this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
+            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(181, 34);
+            this.otmenaProdazhiBtn.TabIndex = 3;
+            this.otmenaProdazhiBtn.Text = "Отмена продажи";
+            this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
+            this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
+            // 
+            // nakNomerOtmenaCmb
+            // 
+            this.nakNomerOtmenaCmb.FormattingEnabled = true;
+            this.nakNomerOtmenaCmb.Location = new System.Drawing.Point(130, 20);
+            this.nakNomerOtmenaCmb.Name = "nakNomerOtmenaCmb";
+            this.nakNomerOtmenaCmb.Size = new System.Drawing.Size(126, 31);
+            this.nakNomerOtmenaCmb.TabIndex = 2;
+            this.nakNomerOtmenaCmb.SelectionChangeCommitted += new System.EventHandler(this.nakNomerOtmenaCmb_SelectionChangeCommitted);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(4, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(120, 23);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Накладной №";
+            // 
+            // kontCheka
+            // 
+            this.kontCheka.Controls.Add(this.chekPanel);
+            this.kontCheka.Location = new System.Drawing.Point(4, 32);
+            this.kontCheka.Name = "kontCheka";
+            this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
+            this.kontCheka.Size = new System.Drawing.Size(1376, 545);
+            this.kontCheka.TabIndex = 6;
+            this.kontCheka.Text = "Контроль чека";
+            this.kontCheka.UseVisualStyleBackColor = true;
+            // 
+            // chekPanel
+            // 
+            this.chekPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chekPanel.Location = new System.Drawing.Point(3, 3);
+            this.chekPanel.Name = "chekPanel";
+            this.chekPanel.Size = new System.Drawing.Size(1397, 539);
+            this.chekPanel.TabIndex = 0;
             // 
             // retail
             // 

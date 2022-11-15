@@ -327,7 +327,7 @@ namespace AutoMir2022
             naimenovanie.SelectedItem = null;
 
             dataGridView1.Columns[0].Width = 120;
-            dataGridView1.Columns[1].Width = 320;
+            dataGridView1.Columns[1].Width = 220;
             dataGridView1.Columns[2].Width = 80;
             dataGridView1.Columns[3].Width = 80;
             dataGridView1.Columns[4].Width = 320;
@@ -493,16 +493,34 @@ namespace AutoMir2022
 
         private void ochistkaKorzini3_Click(object sender, EventArgs e)
         {
-            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите очистить карзину?", "Очистка карзины", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+                ochiskta();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
 
-            ochiskta();
+            
         }
 
         private void ochistkaKarzina2_Click(object sender, EventArgs e)
         {
-            roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
-
-            ochiskta();
+            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите очистить карзину?", "Очистка карзины", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
+                roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+                ochiskta();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+            
 
         }
 

@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.Controllers.Zakazi;
 using Core.Controllers.Tovar;
-using Core.Reports.ReportPrint;
 using Core.Controllers.OrgInfo;
 using Core.Reports.ReportPoItogom;
+using Core.Controllers.PriyomSdacha;
+using Core.Controllers;
 
+using ClosedXML.Excel;
+using System.IO;
 
 namespace AutoMir2022.DobavitTovarIsBDForm
 {
     public partial class DobavitIsBD : Form
     {
+
         private Zakazi zakaziObj = new Zakazi();
-        private Tovar tovarObj = new Tovar();
-        private ReportPrint report = new ReportPrint();
-        private ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
-        private ReportPoItogom ReportPoItogomObj = new ReportPoItogom();
-        private OrgInfo org = new OrgInfo();
+
+        
         public DobavitIsBD()
         {
             InitializeComponent();
@@ -31,7 +26,8 @@ namespace AutoMir2022.DobavitTovarIsBDForm
 
         private void DobavitIsBD_Load(object sender, EventArgs e)
         {
-            dateZakaz.DataSource = zakaziObj.GetDateObnovlenieTovara();
+             
+        dateZakaz.DataSource = zakaziObj.GetDateObnovlenieTovara();
             dateZakaz.DisplayMember = "Дата";
             dateZakaz.Text = null;
             this.reportViewer1.RefreshReport();
@@ -39,21 +35,32 @@ namespace AutoMir2022.DobavitTovarIsBDForm
 
         private void dateZakaz_SelectionChangeCommitted(object sender, EventArgs e)
         {
+
             dataGridView1.DataSource = zakaziObj.GetZakazByDate(Convert.ToDateTime(dateZakaz.Text));
             dataGridView1.Columns[1].Width = 160;
             dataGridView1.Columns[2].Width = 70;
             dataGridView1.Columns[5].Width = 200;
+            
+            //if (user_group!="administrator") { }
+            //PriyomSdacha priyomSdachaObj = new PriyomSdacha();
+            //if (priyomSdachaObj.IsObnovlenieExportExist(Convert.ToDateTime(dateZakaz.Text)) == true)
+            //    export.Enabled = false;
+            //if (priyomSdachaObj.IsObnovleniePrintExist(Convert.ToDateTime(dateZakaz.Text)) == true)
+            ////    print.Enabled = false;
+            //obnovlenieReport.Enabled = false;
+            //totalReport.Enabled = false;
 
         }
 
         private void update_Click(object sender, EventArgs e)
         {
-                    
             int countTovar = 0;
             if (zakaziObj.IsExist(Convert.ToDateTime(dateZakaz.Text)) == false)
             {
                 if (dataGridView1.Rows.Count != 0)
                 {
+                    Tovar tovarObj = new Tovar();
+
                     for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                     {
                         countTovar = countTovar + 1;
@@ -69,59 +76,134 @@ namespace AutoMir2022.DobavitTovarIsBDForm
 
         private void export_Click(object sender, EventArgs e)
         {
-            
+
             DataTable dt = zakaziObj.ExportObnovlenieTovara(Convert.ToDateTime(dateZakaz.Text));
-           
-            string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
-                { "date", Convert.ToDateTime(dateZakaz.Text).ToString("dd.MM.yyyy") }};
-            reportPrikhodRaskhod.StartReport("ObnovlenieTovaraExport", "PrikhodRaskhod", parametr, dt);
-            reportPrikhodRaskhod.Show();
+
+            ExcelUtility excelUtilityObj = new ExcelUtility();
+            
+            if (dateZakaz.Text != "" || dateZakaz.Text is null)
+            {
+                //THIS CODE FOR SHOWING REPORT IN REPORTVIEW
+                //ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
+                //OrgInfo org = new OrgInfo();
+
+                //string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
+                //{ "date", Convert.ToDateTime(dateZakaz.Text).ToString("dd.MM.yyyy") }};
+                //reportPrikhodRaskhod.StartReport("ObnovlenieTovaraExport", "PrikhodRaskhod", parametr, dt);
+
+
+                //if user is admin then can export the report otherwise not. the other user can export one time 
+                //if (user_group!="administrator")
+                //{
+                //
+                //} else
+                //{
+                //}
+
+                PriyomSdacha priyomSdachaObj = new PriyomSdacha();
+                if (priyomSdachaObj.IsObnovlenieExportExist(Convert.ToDateTime(dateZakaz.Text)) == true)
+                {
+                    MessageBox.Show("Отчет по выбранной дате уже экспортирован!");
+                    goto endProcess;
+                }
+
+                //if export heppened then save in database the status  
+                if (excelUtilityObj.ExportExcel(dt, dateZakaz.Text) == true)
+                {
+                    if (priyomSdachaObj.IsObnovlenieExportPrintExist(Convert.ToDateTime(dateZakaz.Text))==true) 
+                        priyomSdachaObj.UpdateObnovlenieExport(Convert.ToDateTime(dateZakaz.Text));
+                    else
+                        priyomSdachaObj.InsertObnovlenieExport(Convert.ToDateTime(dateZakaz.Text));
+
+                }
+
+            }
+            else MessageBox.Show("Укажите дату!");
+
+            endProcess: { }
         }
 
         private void print_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
+            if (dateZakaz.Text != "" || dateZakaz.Text is null)
+            {
+                PriyomSdacha priyomSdachaObj = new PriyomSdacha();
+                if (priyomSdachaObj.IsObnovleniePrintExist(Convert.ToDateTime(dateZakaz.Text)) == true)
+                {
+                    MessageBox.Show("Отчет по выбранной дате уже распечатан!");
+                    goto endProcess;
+                }
+                OrgInfo org = new OrgInfo();
+
+                string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
                 { "date", Convert.ToDateTime(dateZakaz.Text).ToString("dd.MM.yyyy") }};
+                ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
 
-            if (totalReport.Checked == true)
-            {
-                dt.Columns.Add("prodazhaRozn");
-                dt.Columns.Add("prodazhaOpt");
-                dt.Columns.Add("platezhRozn");
-                dt.Columns.Add("platezhOpt");
-                dt.Columns.Add("vozvratRozn");
-                dt.Columns.Add("vozvratOpt");
-                dt.Columns.Add("protsentiRozn");
-                dt.Columns.Add("protsentiOpt");
-                dt.Columns.Add("kassaRozn");
-                dt.Columns.Add("kassaOpt");
-                dt.Columns.Add("raskhodi");
-                dt.Columns.Add("ostatok");
+                //administrator has a privilage to print the report how much he wants the other user only one time,
+                //the status will be saved if report is printed once 
+                //if (user_group!="administrator")
+                //{
+                //
+                //} else
+                //{
+                //}
+                
+                 if (priyomSdachaObj.IsObnovlenieExportPrintExist(Convert.ToDateTime(dateZakaz.Text))==true)
+                        priyomSdachaObj.UpdateObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
+                    else
+                        priyomSdachaObj.InsertObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
+                
 
-                dt.Rows.Add();
-                dt.Rows[0][0] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.prodazhaRozn);
-                dt.Rows[0][1] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.prodazhaOpt);
-                dt.Rows[0][2] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.platezhRozn);
-                dt.Rows[0][3] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.platezhOpt);
-                dt.Rows[0][4] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.vozvratRozn);
-                dt.Rows[0][5] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.vozvratOpt);
-                dt.Rows[0][6] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.protsentiRozn);
-                dt.Rows[0][7] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.protsentiOpt);
-                dt.Rows[0][8] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.kassaRozn);
-                dt.Rows[0][9] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.kassaOpt);
-                dt.Rows[0][10] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.raskhodi);
-                dt.Rows[0][11] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.ostatok);
-                reportPrikhodRaskhod.StartReport("TotalReport", "ItogoviyOtchet", parametr, dt);
+
+
+                if (totalReport.Checked == true)
+                {
+                    ReportPoItogom ReportPoItogomObj = new ReportPoItogom(); 
+                    dt.Columns.Add("prodazhaRozn");
+                    dt.Columns.Add("prodazhaOpt");
+                    dt.Columns.Add("platezhRozn");
+                    dt.Columns.Add("platezhOpt");
+                    dt.Columns.Add("vozvratRozn");
+                    dt.Columns.Add("vozvratOpt");
+                    dt.Columns.Add("protsentiRozn");
+                    dt.Columns.Add("protsentiOpt");
+                    dt.Columns.Add("kassaRozn");
+                    dt.Columns.Add("kassaOpt");
+                    dt.Columns.Add("raskhodi");
+                    dt.Columns.Add("ostatok");
+
+                    dt.Rows.Add();
+                    dt.Rows[0][0] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.prodazhaRozn);
+                    dt.Rows[0][1] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.prodazhaOpt);
+                    dt.Rows[0][2] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.platezhRozn);
+                    dt.Rows[0][3] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.platezhOpt);
+                    dt.Rows[0][4] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.vozvratRozn);
+                    dt.Rows[0][5] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.vozvratOpt);
+                    dt.Rows[0][6] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.protsentiRozn);
+                    dt.Rows[0][7] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.protsentiOpt);
+                    dt.Rows[0][8] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.kassaRozn);
+                    dt.Rows[0][9] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.kassaOpt);
+                    dt.Rows[0][10] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.raskhodi);
+                    dt.Rows[0][11] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.ostatok);
+                
+                    reportPrikhodRaskhod.StartReport("TotalReport", "ItogoviyOtchet", parametr, dt);
+
+                }
+                if (obnovlenieReport.Checked == true)
+                {
+                    dt = zakaziObj.GetZakazReportByDate(Convert.ToDateTime(dateZakaz.Text));
+                    reportPrikhodRaskhod.StartReport("ObnovlenieTovara", "PrikhodRaskhod", parametr, dt);
+
+                }
+                
+                reportPrikhodRaskhod.Show();
 
             }
-            if (obnovlenieReport.Checked == true)
-            {
-                dt = zakaziObj.GetZakazReportByDate(Convert.ToDateTime(dateZakaz.Text));
-                reportPrikhodRaskhod.StartReport("ObnovlenieTovara", "PrikhodRaskhod", parametr, dt);
-
-            }
-            reportPrikhodRaskhod.Show();
+        endProcess: { }
         }
+
+
+
     }
 }

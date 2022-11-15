@@ -98,10 +98,10 @@
                   <Width>3.02938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.1683cm</Width>
+                  <Width>3.7722cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.48861cm</Width>
+                  <Width>1.96534cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.57937cm</Width>
@@ -805,8 +805,9 @@
             </TablixRowHierarchy>
             <DataSetName>PrikhodRaskhod</DataSetName>
             <Top>0.52919cm</Top>
+            <Left>0.3175cm</Left>
             <Height>1.29965cm</Height>
-            <Width>20.88832cm</Width>
+            <Width>19.96895cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -819,7 +820,7 @@
         <Height>0.85417in</Height>
         <Style />
       </Body>
-      <Width>8.27583in</Width>
+      <Width>8.05708in</Width>
       <Page>
         <PageHeader>
           <Height>2.61938cm</Height>
@@ -845,7 +846,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.21167cm</Top>
+              <Top>0.30692cm</Top>
               <Left>0.76584cm</Left>
               <Height>0.84667cm</Height>
               <Width>5.53861cm</Width>
@@ -878,7 +879,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
-              <Top>0.21167cm</Top>
+              <Top>0.30692cm</Top>
               <Left>10.82314cm</Left>
               <Height>0.84667cm</Height>
               <Width>3.07913cm</Width>
@@ -1040,7 +1041,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
-              <Top>0.21167cm</Top>
+              <Top>0.30692cm</Top>
               <Left>6.34995cm</Left>
               <Height>1.22591cm</Height>
               <Width>4.2968cm</Width>

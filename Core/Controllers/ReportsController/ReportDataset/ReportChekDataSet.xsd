@@ -104,6 +104,16 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="org" msprop:Generator_TableClassName="orgDataTable" msprop:Generator_TableVarName="tableorg" msprop:Generator_RowChangedName="orgRowChanged" msprop:Generator_TablePropName="org" msprop:Generator_RowDeletingName="orgRowDeleting" msprop:Generator_RowChangingName="orgRowChanging" msprop:Generator_RowEvHandlerName="orgRowChangeEventHandler" msprop:Generator_RowDeletedName="orgRowDeleted" msprop:Generator_RowClassName="orgRow" msprop:Generator_UserTableName="org" msprop:Generator_RowEvArgName="orgRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="кодорганизации" msprop:Generator_ColumnVarNameInTable="columnкодорганизации" msprop:Generator_ColumnPropNameInRow="кодорганизации" msprop:Generator_ColumnPropNameInTable="кодорганизацииColumn" msprop:Generator_UserColumnName="кодорганизации" type="xs:string" minOccurs="0" />
+              <xs:element name="названиекомпании" msprop:Generator_ColumnVarNameInTable="columnназваниекомпании" msprop:Generator_ColumnPropNameInRow="названиекомпании" msprop:Generator_ColumnPropNameInTable="названиекомпанииColumn" msprop:Generator_UserColumnName="названиекомпании" type="xs:string" minOccurs="0" />
+              <xs:element name="путь_для_экcпорта_данных" msprop:Generator_ColumnVarNameInTable="columnпуть_для_экcпорта_данных" msprop:Generator_ColumnPropNameInRow="путь_для_экcпорта_данных" msprop:Generator_ColumnPropNameInTable="путь_для_экcпорта_данныхColumn" msprop:Generator_UserColumnName="путь_для_экcпорта_данных" type="xs:string" minOccurs="0" />
+              <xs:element name="путь_для_импорта_товаров" msprop:Generator_ColumnVarNameInTable="columnпуть_для_импорта_товаров" msprop:Generator_ColumnPropNameInRow="путь_для_импорта_товаров" msprop:Generator_ColumnPropNameInTable="путь_для_импорта_товаровColumn" msprop:Generator_UserColumnName="путь_для_импорта_товаров" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

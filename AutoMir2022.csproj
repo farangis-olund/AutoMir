@@ -80,11 +80,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
     <PackageReference Include="Microsoft.Build.Framework" Version="17.3.1" />
     <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1537.0" />
     <PackageReference Include="Npgsql" Version="6.0.7" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel">
+      <HintPath>..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
@@ -123,5 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
+    <Folder Include="Core\Controllers\NewFolder\" />
   </ItemGroup>
 </Project>

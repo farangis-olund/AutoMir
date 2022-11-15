@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using Core.DB;
 using Microsoft.Reporting.WinForms;
@@ -16,11 +20,10 @@ namespace Core.Reports.ReportPrint
     class ReportPrint
     {
         private DBNpgsql db = new DBNpgsql();
-
-        
+      
         public void reportVeiwerPrint(ref ReportViewer reportViewer, string reportName, string [,] parametrs, string dataset, DataTable dt)
         {
-               
+              
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\" + reportName + ".rdlc");
 
@@ -30,14 +33,19 @@ namespace Core.Reports.ReportPrint
             {
                 parms[i] = new ReportParameter(parametrs[i, 0], parametrs[i, 1]);
             }
-            
             reportViewer.LocalReport.SetParameters(parms);
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource(dataset, dt));
-
+            
             reportViewer.RefreshReport();
+            reportViewer.LocalReport.PrintToPrinter();
+            
+
         }
 
-          public DataTable ConvertDataGridToDataTable(ref DataGridView dgv)
+
+        
+
+        public DataTable ConvertDataGridToDataTable(ref DataGridView dgv)
         {
             DataTable dt = new DataTable();
 
