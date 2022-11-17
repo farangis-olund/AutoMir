@@ -25,7 +25,7 @@ namespace Core.Controllers.ProverkaNaOshibku
         {
             bool value = false;
 
-            for (int i = 0; i < dgv.Rows.Count - 1; i++)
+            for (int i = 0; i < dgv.Rows.Count; i++)
             {
                 if (dgv.Rows[i].Cells[columnName].Value.ToString() == chekingValue)
                     value = true;

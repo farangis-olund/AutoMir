@@ -29,7 +29,7 @@ namespace AutoMir2022
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.kodMagazina = new System.Windows.Forms.ComboBox();
@@ -41,11 +41,13 @@ namespace AutoMir2022
             this.chek = new System.Windows.Forms.Button();
             this.oformit = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.vibor = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.artikul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naimenovanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.postuplenieTovara = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zadavaemoeKolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artikulVibor = new System.Windows.Forms.ComboBox();
@@ -97,7 +99,6 @@ namespace AutoMir2022
             this.sdacha.TabStop = true;
             this.sdacha.Text = "СДАЧА";
             this.sdacha.UseVisualStyleBackColor = true;
-           
             this.sdacha.Click += new System.EventHandler(this.sdacha_Click);
             // 
             // priyom
@@ -136,7 +137,7 @@ namespace AutoMir2022
             this.pogashenie.TabStop = true;
             this.pogashenie.Text = "Погащение";
             this.pogashenie.UseVisualStyleBackColor = true;
-            this.pogashenie.CheckedChanged += new System.EventHandler(this.pogashenie_CheckedChanged);
+            this.pogashenie.Click += new System.EventHandler(this.pogashenie_Click);
             // 
             // postuplenie
             // 
@@ -149,7 +150,7 @@ namespace AutoMir2022
             this.postuplenie.TabStop = true;
             this.postuplenie.Text = "Поступление";
             this.postuplenie.UseVisualStyleBackColor = true;
-            this.postuplenie.CheckedChanged += new System.EventHandler(this.postuplenie_CheckedChanged);
+            this.postuplenie.Click += new System.EventHandler(this.postuplenie_Click);
             // 
             // chek
             // 
@@ -159,6 +160,7 @@ namespace AutoMir2022
             this.chek.TabIndex = 3;
             this.chek.Text = "Чек";
             this.chek.UseVisualStyleBackColor = true;
+            this.chek.Click += new System.EventHandler(this.chek_Click);
             // 
             // oformit
             // 
@@ -176,18 +178,26 @@ namespace AutoMir2022
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.vibor,
             this.artikul,
             this.naimenovanie,
             this.brand,
             this.marka,
             this.kolichestvo,
+            this.postuplenieTovara,
             this.zadavaemoeKolichestvo,
             this.mesto});
             this.dataGridView1.Location = new System.Drawing.Point(20, 166);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(811, 365);
+            this.dataGridView1.Size = new System.Drawing.Size(963, 481);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            // 
+            // vibor
+            // 
+            this.vibor.HeaderText = "";
+            this.vibor.Name = "vibor";
+            this.vibor.Width = 30;
             // 
             // artikul
             // 
@@ -220,10 +230,15 @@ namespace AutoMir2022
             this.kolichestvo.Name = "kolichestvo";
             this.kolichestvo.ReadOnly = true;
             // 
+            // postuplenieTovara
+            // 
+            this.postuplenieTovara.HeaderText = "Долг";
+            this.postuplenieTovara.Name = "postuplenieTovara";
+            // 
             // zadavaemoeKolichestvo
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.zadavaemoeKolichestvo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.zadavaemoeKolichestvo.DefaultCellStyle = dataGridViewCellStyle1;
             this.zadavaemoeKolichestvo.HeaderText = "Кол-во";
             this.zadavaemoeKolichestvo.Name = "zadavaemoeKolichestvo";
             // 
@@ -258,7 +273,7 @@ namespace AutoMir2022
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 552);
+            this.ClientSize = new System.Drawing.Size(994, 659);
             this.Controls.Add(this.chek);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.oformit);
@@ -297,11 +312,13 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox artikulVibor;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn vibor;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul;
         private System.Windows.Forms.DataGridViewTextBoxColumn naimenovanie;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn marka;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolichestvo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn postuplenieTovara;
         private System.Windows.Forms.DataGridViewTextBoxColumn zadavaemoeKolichestvo;
         private System.Windows.Forms.DataGridViewTextBoxColumn mesto;
     }

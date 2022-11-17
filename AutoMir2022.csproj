@@ -27,9 +27,13 @@
     <None Remove="Reports\ObnovlenieTovaraExport.rdlc" />
     <None Remove="Reports\PrikhodRaskhod.rdlc" />
     <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
+    <None Remove="Reports\PriyomSdachaTovara.rdlc" />
     <None Remove="Reports\TotalReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\PriyomSdachaTovara.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\ObnovlenieTovara.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -127,6 +131,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Core\Controllers\NewFolder\" />
   </ItemGroup>
 </Project>

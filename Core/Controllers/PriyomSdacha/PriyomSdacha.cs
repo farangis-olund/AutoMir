@@ -24,7 +24,8 @@ namespace Core.Controllers.PriyomSdacha
 
         public DataTable SelectObmenTovarami(string kod, string type)
         {
-            return db.GetByQuery("Select * FROM public.обмен_магазинами WHERE код_магазина='" + kod + "' AND тип='" + type + "' ");
+            return db.GetByQuery("Select om.артикул, t.наименование, t.бренд, t.марка, t.количество, " +
+                "om.поступление, om.пагащение, t.место_на_складе FROM public.обмен_магазинами om, public.товар t  WHERE om.артикул=t.артикул AND om.код_магазина='" + kod + "' AND om.тип='" + type + "' ");
         }
 
         public bool IsTovarExist(string kodMagazina, string artikul, string type)
@@ -78,56 +79,59 @@ namespace Core.Controllers.PriyomSdacha
             db.InsertWithParametrDate("UPDATE public.обновление_товара_статус SET экспорт=true WHERE дата=@data", "data", date);
         }
 
-        public void updateProdazha(string naklTxt, string artikul, int kol)
+
+        public void UpdatePriyomPostuplenie(string artikul, string kodMagazina, int kol, string type)
         {
-            db.insertUpdateToDB("UPDATE public.продажа_товара pt " +
-                        "SET количество ='" + kol + "' " +
-                        "FROM  public.продажа p " +
-                        "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст ='" + naklTxt + "' and pt.артикул ='" + artikul + "'");
+            db.insertUpdateToDB("UPDATE public.обмен_магазинами SET поступление=поступление+'" + kol + "' WHERE артикул = '" + artikul + "' " +
+                "AND тип='" + type + "' AND код_магазина='" + kodMagazina + "'");
         }
 
-
-        public void DeleteProdazhaTovara(string naklTxt, string artikul)
+        public void DeletePriyomPostuplenie(string artikul, string kodMagazina, string type)
         {
-            db.insertUpdateToDB("DELETE FROM public.продажа_товара pt " +
-                       "USING public.продажа p " +
-                       "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст ='" + naklTxt + "' and pt.артикул ='" + artikul + "'");
-
+            db.insertUpdateToDB("DELETE FROM public.обмен_магазинами WHERE артикул = '" + artikul + "' " +
+                "AND тип='" + type + "' AND код_магазина='" + kodMagazina + "'");
         }
 
-
-        public void DeleteProdazha(string naklTxt)
+        public void InsertPriyomPostuplenie(string artikul, string kodMagazina, int kol, string type)
         {
-            db.insertUpdateToDB("DELETE FROM public.продажа " +
-                       "WHERE накладной_текст ='" + naklTxt + "'");
-
+            db.insertUpdateToDB("INSERT INTO public.обмен_магазинами (код_магазина, артикул, поступление, тип) " +
+                "VALUES ('" + kodMagazina + "', '" + artikul + "', '" + kol + "', '" + type + "')");
         }
 
-        public void InsertOtmenaProdazh(string naklText, string artikul)
+        public DataTable SelectPriyomSdachaTemp(string kodMagazina, string type)
         {
-            
-            db.insertUpdateToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, " +
-                "код_клиента, накладной_текст, чек) " +
-                "SELECT pt.артикул, pt.количество, pt.цена, p.код_клиента, p.накладной_текст, p.chek " +
-                 "FROM public.продажа p , public.продажа_товара pt " +
-                 "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст= '" + naklText + "' AND pt.артикул ='" + artikul + "'");
-
+            return db.GetByQuery("SELECT артикул as artikul, наименование as naimenovanie, бренд as brand, марка as marka," +
+                " количество as kolichestvo, место_на_складе as mesto FROM public.temp_обмен_магазинами WHERE код_магазина='" + kodMagazina + "' AND тип='" + type + "'");
         }
 
-
-
-        public DataTable printCkekQuery(string naklTxt, int kod)
+        public void InsertPriyomSdachaTemp(string artikul, string naim, string brand, string marka, string mesto, string kodMagazina, int kol, string type)
         {
-
-            return db.GetByQuery("SELECT e.дата as data, e.накладной_текст as nakText, e.код_клиента as kodKlienta, e.чек as chek, e.прописью as propis, c.место_на_складе as mesto, " +
-                                 "e.артикул as artikul, e.количество*e.цена as suma , e.количество_возврата as kolichestvo, e.цена as tsena, c.наименование as naimenovanie, c.бренд as brand, " +
-                                 "c.марка as marka, c.модель as model, g.названиекомпании as komp FROM public.отмена_продажи e, " +
-                                 "public.товар c, public.сведения_об_организации g WHERE e.артикул=c.артикул " +
-                                 "AND e.накладной_текст= '" + naklTxt + "' AND e.код_отмена= '" + kod + "'");
-            
+            db.insertUpdateToDB("INSERT INTO public.temp_обмен_магазинами (артикул, наименование, бренд, марка, место_на_складе, количество, код_магазина, тип) " +
+                "VALUES ('" + artikul + "', '" + naim + "', '" + brand + "','" + marka + "','" + mesto + "', '" + kol + "', '" + kodMagazina + "', '" + type + "')");
         }
 
+        public void DeletePriyomSdachaTemp( string kodMagazina, string type)
+        {
+            db.insertUpdateToDB("DELETE FROM public.temp_обмен_магазинами WHERE код_магазина='" + kodMagazina + "' AND тип='" + type + "'");
+        }
 
+        public void DeletePriyomSdachaTempAll()
+        {
+            db.insertUpdateToDB("DELETE FROM public.temp_обмен_магазинами");
+        }
+
+        public void UpdatePriyomPogashenie(string artikul, string kodMagazina, int kol, string type)
+        {   db.insertUpdateToDB("UPDATE public.обмен_магазинами SET поступление=поступление-'" + kol + "' WHERE артикул = '" + artikul + "' " +
+                    "AND тип='" + type + "' AND код_магазина='" + kodMagazina + "'");
+        }
+
+        public int OstatokDolga(string artikul, string kodMagazina, int kol, string type)
+        {
+            DataTable dt= db.GetByQuery("Select * FROM public.обмен_магазинами WHERE артикул='" + artikul + "' AND код_магазина='" + kodMagazina + "' AND тип='" + type + "' ");
+            return Convert.ToInt32(dt.Rows[0][2]) - kol;
+        }
+
+        
 
     }
 }
