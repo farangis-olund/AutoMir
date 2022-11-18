@@ -7,6 +7,7 @@ using Core.Controllers.Dolg;
 using Core.DB;
 using Core.Controllers.ProverkaNaOshibku;
 using Microsoft.Reporting.WinForms;
+using Core.Controllers;
 
 namespace AutoMir2022
 {
@@ -340,8 +341,8 @@ namespace AutoMir2022
                 MessageBox.Show("Данный артикул уже добавлен!");
                 goto endProcess;
             }
-            
-            double kursValyuti = Convert.ToDouble(roznichProdazhaObj.GetCursValyuti());
+            KursValyuti kursValyutiObj = new KursValyuti();
+            double kursValyuti = Convert.ToDouble(kursValyutiObj.GetKursValyuti());
 
             if (nakladnoyVozvratCmb.Text != "" || prozhVozvratChek.Checked==true)
             {

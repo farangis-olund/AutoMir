@@ -41,19 +41,7 @@ namespace Core.Controllers.RoznichProdazha
             return db.GetByQuery(sqlQuery); ;
          }
 
-        public string GetCursValyuti()
-        {
-            string cursValyuti="";
-            DataTable dt = new DataTable();
-            dt = db.GetByQuery("SELECT курс_валюты FROM public.курс_валюты ORDER BY idkurs DESC LIMIT 1;");
-            if (dt.Rows.Count != 0)
-            {
-                cursValyuti= dt.Rows[0]["курс_валюты"].ToString();
-
-            }
-           
-            return cursValyuti;
-        }
+       
                
         public DataTable selectColumnDistinct(DataTable mydataTable, string columnName)
         {
@@ -156,7 +144,13 @@ namespace Core.Controllers.RoznichProdazha
                         summa3 = summa3 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName3].Value);
                         summa4 = summa4 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName4].Value);
                     }
+                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                    {
 
+                        summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
+                        summa2 = summa2 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName2].Value);
+                        
+                    }
                     else
                     {
                         summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
@@ -178,6 +172,13 @@ namespace Core.Controllers.RoznichProdazha
                         summa4 = summa4 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName4].Value);
 
                     }
+
+                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                    {
+                        summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
+                        summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
+                        
+                    }
                     else
                     {
                         summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
@@ -194,19 +195,21 @@ namespace Core.Controllers.RoznichProdazha
                     dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString("0.00");
                     dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString("0.00");
                     
-                    dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+                    
+                }
 
+                else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                {
+                    dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
+                    dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.00");
+                    
                 }
                 else
                 {
                     dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
-                    dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
                 }
+                dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
             }
-
-
-            
-
 
             return dataGridView;
         }

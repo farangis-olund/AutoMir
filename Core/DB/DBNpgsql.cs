@@ -102,6 +102,23 @@ namespace Core.DB
             conn.Close();
         }
 
+        public void insertWithParametrTwoDouble(string query, string parametr1, double suma1, string parametr2, double suma2)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
+            comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
+            comm.ExecuteNonQuery();
+            comm.Dispose();
+            conn.Close();
+        }
+
 
         public void InsertWithParametrDate(string query, string parametr, DateTime date)
         {

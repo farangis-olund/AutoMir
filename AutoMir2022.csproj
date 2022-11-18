@@ -12,6 +12,7 @@
     <None Remove="NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Reports\ChekRaskhodi.rdlc" />
     <None Remove="Reports\ChekReport.rdlc" />
     <None Remove="Reports\ChekReportOpt.rdlc" />
     <None Remove="Reports\ChekReportOptPlatezh.rdlc" />
@@ -31,6 +32,9 @@
     <None Remove="Reports\TotalReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Reports\ChekRaskhodi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Reports\PriyomSdachaTovara.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

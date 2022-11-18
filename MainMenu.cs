@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Windows.Forms;
+using Core.Controllers;
+using Core.DB;
+
 
 
 namespace AutoMir2022
@@ -149,6 +152,19 @@ namespace AutoMir2022
         {
             BazaDanikhForm myform = new BazaDanikhForm();
             myform.Show();
+        }
+
+        private void курсВалютыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KursValyuti kursValyutiObj = new KursValyuti();
+            kursValyutiObj.UpdateKursValyuti();
+        }
+
+        private void расходыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RaskhodiFrm myform = new RaskhodiFrm();
+            myform.Show();
+
         }
     }
 }

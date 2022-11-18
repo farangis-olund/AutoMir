@@ -17,6 +17,7 @@ using Microsoft.Reporting.WinForms;
 using System.IO;
 using System.Drawing.Printing;
 using Core.Controllers.ProverkaNaOshibku;
+using Core.Controllers;
 
 namespace AutoMir2022
 {
@@ -36,10 +37,10 @@ namespace AutoMir2022
             InitializeComponent();
             
             showAllTovar();
-            
-            // add course valuty
 
-            kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
+            // add course valuty
+            KursValyuti kursValyutiObj = new KursValyuti();
+            kursValyuti.Text = kursValyutiObj.GetKursValyuti().ToString();
 
             //довавить продавцы в компбо
             viborProdovets.DisplayMember = "продавец";
@@ -692,19 +693,8 @@ namespace AutoMir2022
 
         private void btnAddKurs_Click(object sender, EventArgs e)
         {
-            double kurs = 0;
-            DBNpgsql dBNpgsqlObj = new DBNpgsql();
-            double.TryParse(kursValyuti.Text, out kurs);
-            if (kurs == 0)
-            {
-                MessageBox.Show("Курс валюты указан не правильном формате, укажите число с использованием запятой ");
-            }
-            else
-            {
-                dBNpgsqlObj.insertKurs(kurs);
-                MessageBox.Show("Курс валюты успешно добавлен!");
-
-            }
+            KursValyuti kursValyutiObj = new KursValyuti();
+            kursValyuti.Text= kursValyutiObj.UpdateKursValyuti();
         }
 
         public void printCkekDetails(string nakTxt)

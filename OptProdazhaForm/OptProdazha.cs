@@ -15,6 +15,7 @@ using Core.DB;
 using Core.Controllers.ProverkaNaOshibku;
 using Core.Controllers.Optoviy;
 using Core.Controllers.Dolg;
+using Core.Controllers;
 
 namespace AutoMir2022
 {
@@ -39,10 +40,10 @@ namespace AutoMir2022
             InitializeComponent();
             
             showAllTovar();
-            
-            // add course valuty
 
-            kursValyuti.Text = roznProdazhaObj.GetCursValyuti().ToString();
+            // add course valuty
+            KursValyuti kursValyutiObj = new KursValyuti();
+            kursValyuti.Text = kursValyutiObj.GetKursValyuti().ToString();
             kurs = Convert.ToDouble(kursValyuti.Text);
             //довавить продавцы в компбо
             viborProdovets.DisplayMember = "продавец";

@@ -38,7 +38,6 @@ namespace AutoMir2022
             this.userPassword = new System.Windows.Forms.TextBox();
             this.userName = new System.Windows.Forms.TextBox();
             this.TitleFormMenu = new System.Windows.Forms.Label();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.panelSwich = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,12 +77,13 @@ namespace AutoMir2022
             this.доступПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.panelSwich.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBar
@@ -170,16 +170,6 @@ namespace AutoMir2022
             this.TitleFormMenu.Size = new System.Drawing.Size(162, 22);
             this.TitleFormMenu.TabIndex = 0;
             this.TitleFormMenu.Text = "Добро пожаловать!";
-            // 
-            // logo
-            // 
-            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(30, 9);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(170, 59);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
             // 
             // panelSwich
             // 
@@ -315,12 +305,14 @@ namespace AutoMir2022
             this.расходыToolStripMenuItem.Name = "расходыToolStripMenuItem";
             this.расходыToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
             this.расходыToolStripMenuItem.Text = "Расходы";
+            this.расходыToolStripMenuItem.Click += new System.EventHandler(this.расходыToolStripMenuItem_Click);
             // 
             // курсВалютыToolStripMenuItem
             // 
             this.курсВалютыToolStripMenuItem.Name = "курсВалютыToolStripMenuItem";
             this.курсВалютыToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
             this.курсВалютыToolStripMenuItem.Text = "Курс валюты";
+            this.курсВалютыToolStripMenuItem.Click += new System.EventHandler(this.курсВалютыToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
             // 
@@ -477,7 +469,7 @@ namespace AutoMir2022
             // 
             this.доступПользователейToolStripMenuItem.Name = "доступПользователейToolStripMenuItem";
             this.доступПользователейToolStripMenuItem.Size = new System.Drawing.Size(401, 30);
-            this.доступПользователейToolStripMenuItem.Text = "Доступ пользователей";
+            this.доступПользователейToolStripMenuItem.Text = "Ограничение и Доступ";
             // 
             // info
             // 
@@ -503,6 +495,16 @@ namespace AutoMir2022
             this.panelData.Size = new System.Drawing.Size(1069, 698);
             this.panelData.TabIndex = 3;
             // 
+            // logo
+            // 
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.Location = new System.Drawing.Point(30, 9);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(170, 59);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,12 +523,12 @@ namespace AutoMir2022
             this.SideBar.PerformLayout();
             this.loginBox.ResumeLayout(false);
             this.loginBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.panelSwich.ResumeLayout(false);
             this.panelSwich.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
