@@ -26,9 +26,11 @@
     <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
     <None Remove="Reports\ObnovlenieTovara.rdlc" />
     <None Remove="Reports\ObnovlenieTovaraExport.rdlc" />
+    <None Remove="Reports\PoMestoNaSklade.rdlc" />
     <None Remove="Reports\PrikhodRaskhod.rdlc" />
     <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
     <None Remove="Reports\PriyomSdachaTovara.rdlc" />
+    <None Remove="Reports\ReportOstatokTovara.rdlc" />
     <None Remove="Reports\TotalReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +44,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ObnovlenieTovaraExport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\PoMestoNaSklade.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ReportOstatokTovara.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\TotalReport.rdlc">

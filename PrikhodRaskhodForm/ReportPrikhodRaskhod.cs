@@ -29,13 +29,11 @@ namespace AutoMir2022
             
         }
 
-        public void StartReport(string reportName, string dataset, string [,] parametrs, DataTable dt)
+        public void StartReport(string reportName, string dataset, string [,] parametrs, DataTable dt, string printYesNo)
         {
             
             ReportPrint rp = new ReportPrint();
-            this.reportViewer1.Reset();
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            rp.reportVeiwerPrint(ref this.reportViewer1, reportName, parametrs, dataset, dt);
+             rp.reportVeiwerPrint(ref this.reportViewer1, reportName, parametrs, dataset, dt, printYesNo);
            
            
         }

@@ -780,8 +780,8 @@ namespace AutoMir2022
                 MessageBox.Show("Вы не выбрали товар для отмени продаж!");
                 goto EndProcess; 
             }
-
             int kod = otmenaProdazhiObj.SelectNomerVozvrata();
+            
             for (int i = 0; i < otmenaProdazhiDGV.Rows.Count - 1; i++)
             {
                 bool isChecked =Convert.ToBoolean(otmenaProdazhiDGV.Rows[i].Cells[0].Value);

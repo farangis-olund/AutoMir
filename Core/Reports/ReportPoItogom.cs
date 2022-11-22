@@ -147,9 +147,9 @@ namespace Core.Reports.ReportPoItogom
             vozvratProshOpt = 0;
             var b = dt.Rows[0][0].ToString();
             if (b != "")
-                vozvratProshRozn = Convert.ToDouble(dt.Rows[0][0]);
+                vozvratProshOpt = Convert.ToDouble(dt.Rows[0][0]);
 
-            return Math.Round( vozvratProshRozn,2 );
+            return Math.Round(vozvratProshOpt, 2 );
 
         }
 

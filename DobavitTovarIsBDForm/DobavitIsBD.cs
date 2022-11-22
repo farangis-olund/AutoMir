@@ -187,13 +187,13 @@ namespace AutoMir2022.DobavitTovarIsBDForm
                     dt.Rows[0][10] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.raskhodi);
                     dt.Rows[0][11] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.ostatok);
                 
-                    reportPrikhodRaskhod.StartReport("TotalReport", "ItogoviyOtchet", parametr, dt);
+                    reportPrikhodRaskhod.StartReport("TotalReport", "ItogoviyOtchet", parametr, dt, "yes");
 
                 }
                 if (obnovlenieReport.Checked == true)
                 {
                     dt = zakaziObj.GetZakazReportByDate(Convert.ToDateTime(dateZakaz.Text));
-                    reportPrikhodRaskhod.StartReport("ObnovlenieTovara", "PrikhodRaskhod", parametr, dt);
+                    reportPrikhodRaskhod.StartReport("ObnovlenieTovara", "PrikhodRaskhod", parametr, dt, "yes");
 
                 }
                 

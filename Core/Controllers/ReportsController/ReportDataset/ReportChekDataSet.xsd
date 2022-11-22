@@ -114,6 +114,22 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="OtchetOstatokTovara" msprop:Generator_TableClassName="OtchetOstatokTovaraDataTable" msprop:Generator_TableVarName="tableOtchetOstatokTovara" msprop:Generator_RowChangedName="OtchetOstatokTovaraRowChanged" msprop:Generator_TablePropName="OtchetOstatokTovara" msprop:Generator_RowDeletingName="OtchetOstatokTovaraRowDeleting" msprop:Generator_RowChangingName="OtchetOstatokTovaraRowChanging" msprop:Generator_RowEvHandlerName="OtchetOstatokTovaraRowChangeEventHandler" msprop:Generator_RowDeletedName="OtchetOstatokTovaraRowDeleted" msprop:Generator_RowClassName="OtchetOstatokTovaraRow" msprop:Generator_UserTableName="OtchetOstatokTovara" msprop:Generator_RowEvArgName="OtchetOstatokTovaraRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="артикул" msprop:Generator_ColumnVarNameInTable="columnартикул" msprop:Generator_ColumnPropNameInRow="артикул" msprop:Generator_ColumnPropNameInTable="артикулColumn" msprop:Generator_UserColumnName="артикул" type="xs:string" minOccurs="0" />
+              <xs:element name="наименование" msprop:Generator_ColumnVarNameInTable="columnнаименование" msprop:Generator_ColumnPropNameInRow="наименование" msprop:Generator_ColumnPropNameInTable="наименованиеColumn" msprop:Generator_UserColumnName="наименование" type="xs:string" minOccurs="0" />
+              <xs:element name="бренд" msprop:Generator_ColumnVarNameInTable="columnбренд" msprop:Generator_ColumnPropNameInRow="бренд" msprop:Generator_ColumnPropNameInTable="брендColumn" msprop:Generator_UserColumnName="бренд" type="xs:string" minOccurs="0" />
+              <xs:element name="место" msprop:Generator_ColumnVarNameInTable="columnместо" msprop:Generator_ColumnPropNameInRow="место" msprop:Generator_ColumnPropNameInTable="местоColumn" msprop:Generator_UserColumnName="место" type="xs:string" minOccurs="0" />
+              <xs:element name="склад" msprop:Generator_ColumnVarNameInTable="columnсклад" msprop:Generator_ColumnPropNameInRow="склад" msprop:Generator_ColumnPropNameInTable="складColumn" msprop:Generator_UserColumnName="склад" type="xs:string" minOccurs="0" />
+              <xs:element name="возврат" msprop:Generator_ColumnVarNameInTable="columnвозврат" msprop:Generator_ColumnPropNameInRow="возврат" msprop:Generator_ColumnPropNameInTable="возвратColumn" msprop:Generator_UserColumnName="возврат" type="xs:string" minOccurs="0" />
+              <xs:element name="марка" msprop:Generator_ColumnVarNameInTable="columnмарка" msprop:Generator_ColumnPropNameInRow="марка" msprop:Generator_ColumnPropNameInTable="маркаColumn" msprop:Generator_UserColumnName="марка" type="xs:string" minOccurs="0" />
+              <xs:element name="модель" msprop:Generator_ColumnVarNameInTable="columnмодель" msprop:Generator_ColumnPropNameInRow="модель" msprop:Generator_ColumnPropNameInTable="модельColumn" msprop:Generator_UserColumnName="модель" type="xs:string" minOccurs="0" />
+              <xs:element name="количество" msprop:Generator_ColumnVarNameInTable="columnколичество" msprop:Generator_ColumnPropNameInRow="количество" msprop:Generator_ColumnPropNameInTable="количествоColumn" msprop:Generator_UserColumnName="количество" type="xs:string" minOccurs="0" />
+              <xs:element name="исправлен" msprop:Generator_ColumnVarNameInTable="columnисправлен" msprop:Generator_ColumnPropNameInRow="исправлен" msprop:Generator_ColumnPropNameInTable="исправленColumn" msprop:Generator_UserColumnName="исправлен" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

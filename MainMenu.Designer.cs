@@ -333,7 +333,8 @@ namespace AutoMir2022
             // 
             this.отчетПоМестуНаСкладеToolStripMenuItem.Name = "отчетПоМестуНаСкладеToolStripMenuItem";
             this.отчетПоМестуНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.отчетПоМестуНаСкладеToolStripMenuItem.Text = "Отчет по месту на складе";
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Text = "Об остатках товара";
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Click += new System.EventHandler(this.отчетПоМестуНаСкладеToolStripMenuItem_Click);
             // 
             // списокЗадолжниковToolStripMenuItem
             // 

@@ -54,6 +54,7 @@ namespace AutoMir2022
                     , Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value), Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value));
             }
             MessageBox.Show("Расход оформлен!");
+            dataGridView1.Rows.Clear();
 
         }
 
@@ -113,7 +114,7 @@ namespace AutoMir2022
            
             string[,] parametr = {{ "kod_org", org.org_kod }};
             ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
-            reportPrikhodRaskhod.StartReport("ChekRaskhodi", "DtReportChek", parametr, dt);
+            reportPrikhodRaskhod.StartReport("ChekRaskhodi", "DtReportChek", parametr, dt,"yes");
             reportPrikhodRaskhod.Show();
 
         }

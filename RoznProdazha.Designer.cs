@@ -1242,7 +1242,7 @@ namespace AutoMir2022
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(632, 16);
+            this.button2.Location = new System.Drawing.Point(703, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 34);
             this.button2.TabIndex = 4;
@@ -1254,9 +1254,9 @@ namespace AutoMir2022
             // 
             this.otmenaProdazhiBtn.Location = new System.Drawing.Point(438, 17);
             this.otmenaProdazhiBtn.Name = "otmenaProdazhiBtn";
-            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(181, 34);
+            this.otmenaProdazhiBtn.Size = new System.Drawing.Size(241, 34);
             this.otmenaProdazhiBtn.TabIndex = 3;
-            this.otmenaProdazhiBtn.Text = "Отмена продажи";
+            this.otmenaProdazhiBtn.Text = "Оформить отмену продаж";
             this.otmenaProdazhiBtn.UseVisualStyleBackColor = true;
             this.otmenaProdazhiBtn.Click += new System.EventHandler(this.otmenaProdazhiBtn_Click);
             // 

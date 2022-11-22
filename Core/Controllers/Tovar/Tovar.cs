@@ -94,5 +94,30 @@ namespace Core.Controllers.Tovar
                 "VALUES ('" + kol + "')");
         }
 
+        public DataTable GetAllSectorTovar()
+        {
+            return db.GetByQuery("Select DISTINCT LEFT(место_на_складе,1) as сектор FROM public.товар WHERE место_на_складе IS NOT NULL");
+        }
+
+        public DataTable GetAllSectorRjadTovar(string sector)
+        {
+            return db.GetByQuery("Select DISTINCT SUBSTRING(место_на_складе,2,2) as ряд FROM public.товар WHERE LEFT(место_на_складе,1)='" +  sector + "' AND место_на_складе IS NOT NULL");
+        }
+
+        public DataTable GetAllTovarBySectorRjad(string sector, string rjad)
+        {
+            return db.GetByQuery("Select место_на_складе as место, артикул, наименование, бренд, марка, модель, количество FROM public.товар WHERE SUBSTRING(место_на_складе,2,2)='" + rjad + "' AND LEFT(место_на_складе,1)='" + sector + "' AND место_на_складе IS NOT NULL");
+        }
+
+        public DataTable GetMinDopuskKolTovara()
+        {
+            return db.GetByQuery("Select *, мин_допустимое_кол-количество as необ_кол FROM public.товар WHERE количество< мин_допустимое_кол ");
+        }
+
+        public DataTable GetBrand()
+        {
+            return db.GetByQuery("Select DISTINCT бренд FROM public.товар WHERE бренд IS NOT NULL");
+        }
+
     }
 }

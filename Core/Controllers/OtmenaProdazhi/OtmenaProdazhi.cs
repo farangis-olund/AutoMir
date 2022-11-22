@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Core.DB;
 
 
@@ -70,8 +71,8 @@ namespace Core.Controllers.OtmenaProdazhi
         {
             
             db.insertUpdateToDB("INSERT INTO public.отмена_продажи (артикул, количество, цена, " +
-                "код_клиента, накладной_текст, чек) " +
-                "SELECT pt.артикул, pt.количество, pt.цена, p.код_клиента, p.накладной_текст, p.chek " +
+                "код_клиента, накладной_текст, чек, оптовый) " +
+                "SELECT pt.артикул, pt.количество, pt.цена, p.код_клиента, p.накладной_текст, p.chek, p.оптовая_продажа " +
                  "FROM public.продажа p , public.продажа_товара pt " +
                  "WHERE pt.кодпродажи=p.кодпродажи AND p.накладной_текст= '" + naklText + "' AND pt.артикул ='" + artikul + "'");
 

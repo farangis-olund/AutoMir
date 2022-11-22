@@ -178,7 +178,7 @@ namespace AutoMir2022
 
             string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name }, 
                 { "date", Convert.ToDateTime(dateVibor.Value).ToString("dd.MM.yyyy") }};
-            reportPrikhodRaskhod.StartReport("PrikhodRaskhod", "PrikhodRaskhod",parametr, dt);
+            reportPrikhodRaskhod.StartReport("PrikhodRaskhod", "PrikhodRaskhod",parametr, dt, "no");
             reportPrikhodRaskhod.Show();
         }
 
@@ -192,7 +192,7 @@ namespace AutoMir2022
         {
             string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
                 { "date", Convert.ToDateTime(dateVibor.Value).ToString("dd.MM.yyyy") }};
-            reportPrikhodRaskhod.StartReport("PrikhodRaskhodOshibka", "PrikhodRaskhod", parametr, report.PrikhodaRaskhodReportOshibka());
+            reportPrikhodRaskhod.StartReport("PrikhodRaskhodOshibka", "PrikhodRaskhod", parametr, report.PrikhodaRaskhodReportOshibka(), "no");
             reportPrikhodRaskhod.Show();
 
         }

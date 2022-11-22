@@ -384,7 +384,7 @@ namespace AutoMir2022
                 { "sKakogoMagazina",kodMagazina.Text},
                 { "priyomSdacha", tipOctcheta } };
             ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
-            reportPrikhodRaskhod.StartReport("PriyomSdachaTovara", "PrikhodRaskhod", parametr, dt);
+            reportPrikhodRaskhod.StartReport("PriyomSdachaTovara", "PrikhodRaskhod", parametr, dt, "yes");
             reportPrikhodRaskhod.Show();
             priyomSdachaObj.DeletePriyomSdachaTemp(kodMagazina.Text, type);
         }

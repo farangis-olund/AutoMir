@@ -23,22 +23,32 @@ namespace Core.DB
         {
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
             NpgsqlCommand comm = new NpgsqlCommand();
-        DataTable dataTable = new DataTable();
+            DataTable dataTable = new DataTable();
             // Connect to a PostgreSQL database
             conn.Open();
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
+            try
             {
-                dataTable.Load(dr);
+                NpgsqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dataTable.Load(dr);
+                }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            
+            }
+            
 
             comm.Dispose();
             conn.Close();
 
             return dataTable;
+
         }
 
 
@@ -54,13 +64,22 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value =Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
-            
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
+            try
             {
-                dataTable.Load(dr);
+                comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
+
+                NpgsqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dataTable.Load(dr);
+                }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            }
+            
+            
 
             comm.Dispose();
             conn.Close();
@@ -81,7 +100,15 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.ExecuteNonQuery();
+            try
+            {
+                comm.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            }
+            
             comm.Dispose();
             conn.Close();
         }
@@ -96,8 +123,18 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
-            comm.ExecuteNonQuery();
+            try
+            {
+                comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
+                comm.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            }
+
+
             comm.Dispose();
             conn.Close();
         }
@@ -112,9 +149,18 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
-            comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
-            comm.ExecuteNonQuery();
+            try
+            {
+                comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
+                comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
+                comm.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
+            }
             comm.Dispose();
             conn.Close();
         }
@@ -130,8 +176,17 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = date;
-            comm.ExecuteNonQuery();
+            try
+            {
+                comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = date;
+                comm.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
+            }
             comm.Dispose();
             conn.Close();
         }
@@ -158,12 +213,19 @@ namespace Core.DB
                 cmd.Parameters.AddWithValue("@примечание", primech);
                 cmd.Parameters.AddWithValue("@накладной_текст", naklText);
                 cmd.Parameters.AddWithValue("@chek", chek);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка в запросе!");
 
-                cmd.ExecuteNonQuery();
-
+                }
+                
             }
 
-                        
+                                    
             conn.Close();
         }
 
@@ -189,8 +251,16 @@ namespace Core.DB
                 command.Parameters[3].Value = artikul;
                 command.Parameters[4].Value = kod;
 
-
+            try
+            {
                 command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
+            }
+
 
             
             conn.Close();
@@ -209,8 +279,18 @@ namespace Core.DB
             {
 
                 cmd.Parameters.AddWithValue("@курс_валюты", kurs);
-                
-                cmd.ExecuteNonQuery();
+
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка в запросе!");
+
+                }
+
 
             }
 
@@ -236,7 +316,16 @@ namespace Core.DB
                 cmd.Parameters.AddWithValue("@цена", tsena);
                 cmd.Parameters.AddWithValue("@кодпродажи", kodprodazhi);
 
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка в запросе!");
+
+                }
+
 
             }
 
@@ -259,11 +348,22 @@ namespace Core.DB
             comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
             comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
 
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
+            try
             {
-                dataTable.Load(dr);
+                NpgsqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dataTable.Load(dr);
+                }
+
             }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
+            }
+
+
 
             comm.Dispose();
             conn.Close();
@@ -282,11 +382,20 @@ namespace Core.DB
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
             comm.Parameters.Add("data", NpgsqlDbType.Date).Value = data;
-            
-            NpgsqlDataReader dr = comm.ExecuteReader();
-            if (dr.HasRows)
+
+            try
             {
-                dataTable.Load(dr);
+                NpgsqlDataReader dr = comm.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dataTable.Load(dr);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
             }
 
             comm.Dispose();

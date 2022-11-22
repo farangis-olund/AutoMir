@@ -166,5 +166,11 @@ namespace AutoMir2022
             myform.Show();
 
         }
+
+        private void отчетПоМестуНаСкладеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OtchetOstatokTovarov myform = new OtchetOstatokTovarov();
+            myform.Show();
+        }
     }
 }

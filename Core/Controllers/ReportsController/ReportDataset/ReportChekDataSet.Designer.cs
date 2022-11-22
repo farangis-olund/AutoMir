@@ -36,6 +36,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         
         private orgDataTable tableorg;
         
+        private OtchetOstatokTovaraDataTable tableOtchetOstatokTovara;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,6 +83,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 }
                 if ((ds.Tables["org"] != null)) {
                     base.Tables.Add(new orgDataTable(ds.Tables["org"]));
+                }
+                if ((ds.Tables["OtchetOstatokTovara"] != null)) {
+                    base.Tables.Add(new OtchetOstatokTovaraDataTable(ds.Tables["OtchetOstatokTovara"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -157,6 +162,16 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         public orgDataTable org {
             get {
                 return this.tableorg;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public OtchetOstatokTovaraDataTable OtchetOstatokTovara {
+            get {
+                return this.tableOtchetOstatokTovara;
             }
         }
         
@@ -245,6 +260,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 if ((ds.Tables["org"] != null)) {
                     base.Tables.Add(new orgDataTable(ds.Tables["org"]));
                 }
+                if ((ds.Tables["OtchetOstatokTovara"] != null)) {
+                    base.Tables.Add(new OtchetOstatokTovaraDataTable(ds.Tables["OtchetOstatokTovara"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -314,6 +332,12 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                     this.tableorg.InitVars();
                 }
             }
+            this.tableOtchetOstatokTovara = ((OtchetOstatokTovaraDataTable)(base.Tables["OtchetOstatokTovara"]));
+            if ((initTable == true)) {
+                if ((this.tableOtchetOstatokTovara != null)) {
+                    this.tableOtchetOstatokTovara.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +360,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             base.Tables.Add(this.tableItogoviyOtchet);
             this.tableorg = new orgDataTable();
             base.Tables.Add(this.tableorg);
+            this.tableOtchetOstatokTovara = new OtchetOstatokTovaraDataTable();
+            base.Tables.Add(this.tableOtchetOstatokTovara);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -371,6 +397,12 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeorg() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeOtchetOstatokTovara() {
             return false;
         }
         
@@ -446,6 +478,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void orgRowChangeEventHandler(object sender, orgRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void OtchetOstatokTovaraRowChangeEventHandler(object sender, OtchetOstatokTovaraRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2792,6 +2827,379 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class OtchetOstatokTovaraDataTable : global::System.Data.TypedTableBase<OtchetOstatokTovaraRow> {
+            
+            private global::System.Data.DataColumn columnартикул;
+            
+            private global::System.Data.DataColumn columnнаименование;
+            
+            private global::System.Data.DataColumn columnбренд;
+            
+            private global::System.Data.DataColumn columnместо;
+            
+            private global::System.Data.DataColumn columnсклад;
+            
+            private global::System.Data.DataColumn columnвозврат;
+            
+            private global::System.Data.DataColumn columnмарка;
+            
+            private global::System.Data.DataColumn columnмодель;
+            
+            private global::System.Data.DataColumn columnколичество;
+            
+            private global::System.Data.DataColumn columnисправлен;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraDataTable() {
+                this.TableName = "OtchetOstatokTovara";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal OtchetOstatokTovaraDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected OtchetOstatokTovaraDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn артикулColumn {
+                get {
+                    return this.columnартикул;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn наименованиеColumn {
+                get {
+                    return this.columnнаименование;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn брендColumn {
+                get {
+                    return this.columnбренд;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn местоColumn {
+                get {
+                    return this.columnместо;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn складColumn {
+                get {
+                    return this.columnсклад;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn возвратColumn {
+                get {
+                    return this.columnвозврат;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn маркаColumn {
+                get {
+                    return this.columnмарка;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn модельColumn {
+                get {
+                    return this.columnмодель;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn количествоColumn {
+                get {
+                    return this.columnколичество;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn исправленColumn {
+                get {
+                    return this.columnисправлен;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraRow this[int index] {
+                get {
+                    return ((OtchetOstatokTovaraRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OtchetOstatokTovaraRowChangeEventHandler OtchetOstatokTovaraRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OtchetOstatokTovaraRowChangeEventHandler OtchetOstatokTovaraRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OtchetOstatokTovaraRowChangeEventHandler OtchetOstatokTovaraRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event OtchetOstatokTovaraRowChangeEventHandler OtchetOstatokTovaraRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddOtchetOstatokTovaraRow(OtchetOstatokTovaraRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraRow AddOtchetOstatokTovaraRow(string артикул, string наименование, string бренд, string место, string склад, string возврат, string марка, string модель, string количество, string исправлен) {
+                OtchetOstatokTovaraRow rowOtchetOstatokTovaraRow = ((OtchetOstatokTovaraRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        артикул,
+                        наименование,
+                        бренд,
+                        место,
+                        склад,
+                        возврат,
+                        марка,
+                        модель,
+                        количество,
+                        исправлен};
+                rowOtchetOstatokTovaraRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOtchetOstatokTovaraRow);
+                return rowOtchetOstatokTovaraRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                OtchetOstatokTovaraDataTable cln = ((OtchetOstatokTovaraDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new OtchetOstatokTovaraDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnартикул = base.Columns["артикул"];
+                this.columnнаименование = base.Columns["наименование"];
+                this.columnбренд = base.Columns["бренд"];
+                this.columnместо = base.Columns["место"];
+                this.columnсклад = base.Columns["склад"];
+                this.columnвозврат = base.Columns["возврат"];
+                this.columnмарка = base.Columns["марка"];
+                this.columnмодель = base.Columns["модель"];
+                this.columnколичество = base.Columns["количество"];
+                this.columnисправлен = base.Columns["исправлен"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnартикул = new global::System.Data.DataColumn("артикул", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnартикул);
+                this.columnнаименование = new global::System.Data.DataColumn("наименование", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnнаименование);
+                this.columnбренд = new global::System.Data.DataColumn("бренд", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnбренд);
+                this.columnместо = new global::System.Data.DataColumn("место", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnместо);
+                this.columnсклад = new global::System.Data.DataColumn("склад", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnсклад);
+                this.columnвозврат = new global::System.Data.DataColumn("возврат", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnвозврат);
+                this.columnмарка = new global::System.Data.DataColumn("марка", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnмарка);
+                this.columnмодель = new global::System.Data.DataColumn("модель", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnмодель);
+                this.columnколичество = new global::System.Data.DataColumn("количество", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnколичество);
+                this.columnисправлен = new global::System.Data.DataColumn("исправлен", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnисправлен);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraRow NewOtchetOstatokTovaraRow() {
+                return ((OtchetOstatokTovaraRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new OtchetOstatokTovaraRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(OtchetOstatokTovaraRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.OtchetOstatokTovaraRowChanged != null)) {
+                    this.OtchetOstatokTovaraRowChanged(this, new OtchetOstatokTovaraRowChangeEvent(((OtchetOstatokTovaraRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.OtchetOstatokTovaraRowChanging != null)) {
+                    this.OtchetOstatokTovaraRowChanging(this, new OtchetOstatokTovaraRowChangeEvent(((OtchetOstatokTovaraRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.OtchetOstatokTovaraRowDeleted != null)) {
+                    this.OtchetOstatokTovaraRowDeleted(this, new OtchetOstatokTovaraRowChangeEvent(((OtchetOstatokTovaraRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.OtchetOstatokTovaraRowDeleting != null)) {
+                    this.OtchetOstatokTovaraRowDeleting(this, new OtchetOstatokTovaraRowChangeEvent(((OtchetOstatokTovaraRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveOtchetOstatokTovaraRow(OtchetOstatokTovaraRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "OtchetOstatokTovaraDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class DtReportChekRow : global::System.Data.DataRow {
@@ -4730,6 +5138,301 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class OtchetOstatokTovaraRow : global::System.Data.DataRow {
+            
+            private OtchetOstatokTovaraDataTable tableOtchetOstatokTovara;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal OtchetOstatokTovaraRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableOtchetOstatokTovara = ((OtchetOstatokTovaraDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string артикул {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.артикулColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'артикул\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.артикулColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string наименование {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.наименованиеColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'наименование\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.наименованиеColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string бренд {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.брендColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'бренд\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.брендColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string место {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.местоColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'место\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.местоColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string склад {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.складColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'склад\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.складColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string возврат {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.возвратColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'возврат\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.возвратColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string марка {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.маркаColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'марка\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.маркаColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string модель {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.модельColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'модель\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.модельColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string количество {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.количествоColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'количество\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.количествоColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string исправлен {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.исправленColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'исправлен\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.исправленColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsартикулNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.артикулColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetартикулNull() {
+                this[this.tableOtchetOstatokTovara.артикулColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsнаименованиеNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.наименованиеColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetнаименованиеNull() {
+                this[this.tableOtchetOstatokTovara.наименованиеColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsбрендNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.брендColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetбрендNull() {
+                this[this.tableOtchetOstatokTovara.брендColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsместоNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.местоColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetместоNull() {
+                this[this.tableOtchetOstatokTovara.местоColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsскладNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.складColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetскладNull() {
+                this[this.tableOtchetOstatokTovara.складColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsвозвратNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.возвратColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetвозвратNull() {
+                this[this.tableOtchetOstatokTovara.возвратColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsмаркаNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.маркаColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetмаркаNull() {
+                this[this.tableOtchetOstatokTovara.маркаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsмодельNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.модельColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetмодельNull() {
+                this[this.tableOtchetOstatokTovara.модельColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsколичествоNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.количествоColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetколичествоNull() {
+                this[this.tableOtchetOstatokTovara.количествоColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsисправленNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.исправленColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetисправленNull() {
+                this[this.tableOtchetOstatokTovara.исправленColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -4919,6 +5622,40 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public orgRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class OtchetOstatokTovaraRowChangeEvent : global::System.EventArgs {
+            
+            private OtchetOstatokTovaraRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraRowChangeEvent(OtchetOstatokTovaraRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OtchetOstatokTovaraRow Row {
                 get {
                     return this.eventRow;
                 }
