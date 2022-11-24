@@ -155,7 +155,7 @@ namespace Core.Reports.ReportPoItogom
 
         public double GetRaskhodi()
         {
-            DataTable dt= db.GetByParametrDate("Select Sum(сумма_расхода) FROM public.расходы WHERE дата=@data", "data");
+            DataTable dt= db.GetByParametrDate("Select Sum(сумма_расхода_смн) FROM public.расходы WHERE дата=@data", "data");
             raskhodi = 0;
             var b = dt.Rows[0][0].ToString();
             if (b != "")

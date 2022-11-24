@@ -47,7 +47,6 @@ namespace AutoMir2022
             this.поступлениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьИзБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.приходРасходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.приходТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обменТоварамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.операцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,16 +55,8 @@ namespace AutoMir2022
             this.курсВалютыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетПоМестуНаСкладеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокЗадолжниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокТоваровПоМиндопускколичествеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокТоваровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.продажиПоТоварамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.продажиПоСотрудникамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.дополнительныйАльтернативToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.возвратДняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отменаДняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.конфигурацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.доступКТаблицамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +68,8 @@ namespace AutoMir2022
             this.доступПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
+            this.оПродажеТовараToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокДолговКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logo = new System.Windows.Forms.PictureBox();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
@@ -215,23 +208,24 @@ namespace AutoMir2022
             // 
             this.розничнаяToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.розничнаяToolStripMenuItem.Name = "розничнаяToolStripMenuItem";
-            this.розничнаяToolStripMenuItem.Size = new System.Drawing.Size(188, 34);
-            this.розничнаяToolStripMenuItem.Text = "Розничная";
+            this.розничнаяToolStripMenuItem.Size = new System.Drawing.Size(414, 34);
+            this.розничнаяToolStripMenuItem.Text = "Оформление розничной продажи";
             this.розничнаяToolStripMenuItem.Click += new System.EventHandler(this.розничнаяToolStripMenuItem_Click);
             // 
             // оптоваяToolStripMenuItem
             // 
             this.оптоваяToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.оптоваяToolStripMenuItem.Name = "оптоваяToolStripMenuItem";
-            this.оптоваяToolStripMenuItem.Size = new System.Drawing.Size(188, 34);
-            this.оптоваяToolStripMenuItem.Text = "Оптовая";
+            this.оптоваяToolStripMenuItem.Size = new System.Drawing.Size(414, 34);
+            this.оптоваяToolStripMenuItem.Text = "Оформление оптовой продажи";
             this.оптоваяToolStripMenuItem.Click += new System.EventHandler(this.оптоваяToolStripMenuItem_Click);
             // 
             // клиентToolStripMenuItem
             // 
+            this.клиентToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
-            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(188, 34);
-            this.клиентToolStripMenuItem.Text = "Клиент";
+            this.клиентToolStripMenuItem.Size = new System.Drawing.Size(414, 34);
+            this.клиентToolStripMenuItem.Text = "Добавление нового клиента";
             this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
             // поступлениеToolStripMenuItem
@@ -254,18 +248,10 @@ namespace AutoMir2022
             // 
             // приходРасходToolStripMenuItem
             // 
-            this.приходРасходToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.приходТоваровToolStripMenuItem});
             this.приходРасходToolStripMenuItem.Name = "приходРасходToolStripMenuItem";
             this.приходРасходToolStripMenuItem.Size = new System.Drawing.Size(232, 30);
             this.приходРасходToolStripMenuItem.Text = "Приход/Расход";
-            // 
-            // приходТоваровToolStripMenuItem
-            // 
-            this.приходТоваровToolStripMenuItem.Name = "приходТоваровToolStripMenuItem";
-            this.приходТоваровToolStripMenuItem.Size = new System.Drawing.Size(294, 30);
-            this.приходТоваровToolStripMenuItem.Text = "Приход-расход товаров";
-            this.приходТоваровToolStripMenuItem.Click += new System.EventHandler(this.приходТоваровToolStripMenuItem_Click);
+            this.приходРасходToolStripMenuItem.Click += new System.EventHandler(this.приходРасходToolStripMenuItem_Click);
             // 
             // обменТоварамиToolStripMenuItem
             // 
@@ -318,12 +304,7 @@ namespace AutoMir2022
             // 
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.отчетПоМестуНаСкладеToolStripMenuItem,
-            this.списокЗадолжниковToolStripMenuItem,
-            this.списокТоваровПоМиндопускколичествеToolStripMenuItem,
-            this.списокТоваровToolStripMenuItem,
-            this.продажиПоТоварамToolStripMenuItem,
-            this.продажиПоСотрудникамToolStripMenuItem,
-            this.дополнительныйАльтернативToolStripMenuItem});
+            this.оПродажеТовараToolStripMenuItem});
             this.отчетыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
@@ -332,52 +313,14 @@ namespace AutoMir2022
             // отчетПоМестуНаСкладеToolStripMenuItem
             // 
             this.отчетПоМестуНаСкладеToolStripMenuItem.Name = "отчетПоМестуНаСкладеToolStripMenuItem";
-            this.отчетПоМестуНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
+            this.отчетПоМестуНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
             this.отчетПоМестуНаСкладеToolStripMenuItem.Text = "Об остатках товара";
             this.отчетПоМестуНаСкладеToolStripMenuItem.Click += new System.EventHandler(this.отчетПоМестуНаСкладеToolStripMenuItem_Click);
-            // 
-            // списокЗадолжниковToolStripMenuItem
-            // 
-            this.списокЗадолжниковToolStripMenuItem.Name = "списокЗадолжниковToolStripMenuItem";
-            this.списокЗадолжниковToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.списокЗадолжниковToolStripMenuItem.Text = "Список задолжников";
-            // 
-            // списокТоваровПоМиндопускколичествеToolStripMenuItem
-            // 
-            this.списокТоваровПоМиндопускколичествеToolStripMenuItem.Name = "списокТоваровПоМиндопускколичествеToolStripMenuItem";
-            this.списокТоваровПоМиндопускколичествеToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.списокТоваровПоМиндопускколичествеToolStripMenuItem.Text = "Список товаров по мин.допуск.количестве";
-            // 
-            // списокТоваровToolStripMenuItem
-            // 
-            this.списокТоваровToolStripMenuItem.Name = "списокТоваровToolStripMenuItem";
-            this.списокТоваровToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.списокТоваровToolStripMenuItem.Text = "Список товаров";
-            // 
-            // продажиПоТоварамToolStripMenuItem
-            // 
-            this.продажиПоТоварамToolStripMenuItem.Name = "продажиПоТоварамToolStripMenuItem";
-            this.продажиПоТоварамToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.продажиПоТоварамToolStripMenuItem.Text = "Продажи по товарам";
-            // 
-            // продажиПоСотрудникамToolStripMenuItem
-            // 
-            this.продажиПоСотрудникамToolStripMenuItem.Name = "продажиПоСотрудникамToolStripMenuItem";
-            this.продажиПоСотрудникамToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.продажиПоСотрудникамToolStripMenuItem.Text = "Продажи по сотрудникам";
-            // 
-            // дополнительныйАльтернативToolStripMenuItem
-            // 
-            this.дополнительныйАльтернативToolStripMenuItem.Name = "дополнительныйАльтернативToolStripMenuItem";
-            this.дополнительныйАльтернативToolStripMenuItem.Size = new System.Drawing.Size(456, 30);
-            this.дополнительныйАльтернативToolStripMenuItem.Text = "Дополнительный альтернатив";
             // 
             // возвратToolStripMenuItem
             // 
             this.возвратToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.возвратToolStripMenuItem1,
-            this.возвратДняToolStripMenuItem,
-            this.отменаДняToolStripMenuItem});
+            this.возвратToolStripMenuItem1});
             this.возвратToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.возвратToolStripMenuItem.Name = "возвратToolStripMenuItem";
             this.возвратToolStripMenuItem.Size = new System.Drawing.Size(93, 29);
@@ -386,21 +329,9 @@ namespace AutoMir2022
             // возвратToolStripMenuItem1
             // 
             this.возвратToolStripMenuItem1.Name = "возвратToolStripMenuItem1";
-            this.возвратToolStripMenuItem1.Size = new System.Drawing.Size(189, 30);
-            this.возвратToolStripMenuItem1.Text = "Возврат";
+            this.возвратToolStripMenuItem1.Size = new System.Drawing.Size(281, 30);
+            this.возвратToolStripMenuItem1.Text = "Оформление возврата";
             this.возвратToolStripMenuItem1.Click += new System.EventHandler(this.возвратToolStripMenuItem1_Click);
-            // 
-            // возвратДняToolStripMenuItem
-            // 
-            this.возвратДняToolStripMenuItem.Name = "возвратДняToolStripMenuItem";
-            this.возвратДняToolStripMenuItem.Size = new System.Drawing.Size(189, 30);
-            this.возвратДняToolStripMenuItem.Text = "Возврат дня";
-            // 
-            // отменаДняToolStripMenuItem
-            // 
-            this.отменаДняToolStripMenuItem.Name = "отменаДняToolStripMenuItem";
-            this.отменаДняToolStripMenuItem.Size = new System.Drawing.Size(189, 30);
-            this.отменаДняToolStripMenuItem.Text = "Отмена дня";
             // 
             // конфигурацияToolStripMenuItem
             // 
@@ -441,7 +372,8 @@ namespace AutoMir2022
             this.назначениеПроцентаДляПродавцаToolStripMenuItem,
             this.распродажаИБонусыToolStripMenuItem,
             this.пользователиToolStripMenuItem1,
-            this.доступПользователейToolStripMenuItem});
+            this.доступПользователейToolStripMenuItem,
+            this.списокДолговКлиентовToolStripMenuItem});
             this.администраторToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
             this.администраторToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
@@ -495,6 +427,19 @@ namespace AutoMir2022
             this.panelData.Name = "panelData";
             this.panelData.Size = new System.Drawing.Size(1069, 698);
             this.panelData.TabIndex = 3;
+            // 
+            // оПродажеТовараToolStripMenuItem
+            // 
+            this.оПродажеТовараToolStripMenuItem.Name = "оПродажеТовараToolStripMenuItem";
+            this.оПродажеТовараToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
+            this.оПродажеТовараToolStripMenuItem.Text = "О продаже товара";
+            this.оПродажеТовараToolStripMenuItem.Click += new System.EventHandler(this.оПродажеТовараToolStripMenuItem_Click);
+            // 
+            // списокДолговКлиентовToolStripMenuItem
+            // 
+            this.списокДолговКлиентовToolStripMenuItem.Name = "списокДолговКлиентовToolStripMenuItem";
+            this.списокДолговКлиентовToolStripMenuItem.Size = new System.Drawing.Size(401, 30);
+            this.списокДолговКлиентовToolStripMenuItem.Text = "Список долгов клиентов";
             // 
             // logo
             // 
@@ -563,27 +508,20 @@ namespace AutoMir2022
         private System.Windows.Forms.ToolStripMenuItem отчетПоМестуНаСкладеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem возвратToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem возвратToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem возвратДняToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem конфигурацияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem базаДанныхToolStripMenuItem;
         private System.Windows.Forms.RichTextBox info;
         private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.ToolStripMenuItem очисткаБазыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem клиентToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem приходТоваровToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокЗадолжниковToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокТоваровПоМиндопускколичествеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокТоваровToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem продажиПоТоварамToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem продажиПоСотрудникамToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem дополнительныйАльтернативToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem администраторToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem назначениеПроцентаДляПродавцаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem распродажаИБонусыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem отменаДняToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem доступПользователейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem доступКТаблицамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПродажеТовараToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокДолговКлиентовToolStripMenuItem;
     }
 
 }

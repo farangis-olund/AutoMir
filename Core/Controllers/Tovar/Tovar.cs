@@ -48,6 +48,13 @@ namespace Core.Controllers.Tovar
             return db.GetByQuery("Select * FROM public.товар ORDER BY артикул ASC");
         }
 
+        public DataTable GetSpisokTovarov()
+        {
+            return db.GetByQuery("Select артикул, наименование, группа, бренд, марка, модель, альтернатива, " +
+                "количество, розн_цена__euro_ as розн_цена, опт_цена__euro_ as опт_цена," +
+                " мин_допустимое_кол as мин_допуск FROM public.товар ORDER BY артикул ASC");
+        }
+
         public bool IsTovarExist(string artikul)
         {
             DataTable dt= db.GetByQuery("SELECT exists (SELECT 1 FROM public.товар WHERE артикул = '" + artikul + "' LIMIT 1)");
@@ -116,7 +123,7 @@ namespace Core.Controllers.Tovar
 
         public DataTable GetBrand()
         {
-            return db.GetByQuery("Select DISTINCT бренд FROM public.товар WHERE бренд IS NOT NULL");
+            return db.GetByQuery("Select DISTINCT f.фирма FROM public.товар t, public.фирмы f WHERE t.бренд=f.бренд");
         }
 
     }

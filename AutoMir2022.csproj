@@ -24,6 +24,8 @@
     <None Remove="Reports\ChekReportVozvratProshRozn.rdlc" />
     <None Remove="Reports\ItogiProdazhi.rdlc" />
     <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
+    <None Remove="Reports\ItogiRoznProdazhi.rdlc" />
+    <None Remove="Reports\NeaktivnieTovariSklada.rdlc" />
     <None Remove="Reports\ObnovlenieTovara.rdlc" />
     <None Remove="Reports\ObnovlenieTovaraExport.rdlc" />
     <None Remove="Reports\PoMestoNaSklade.rdlc" />
@@ -31,10 +33,20 @@
     <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
     <None Remove="Reports\PriyomSdachaTovara.rdlc" />
     <None Remove="Reports\ReportOstatokTovara.rdlc" />
+    <None Remove="Reports\SpisokTovarov.rdlc" />
     <None Remove="Reports\TotalReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reports\ChekRaskhodi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiRoznProdazhi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\NeaktivnieTovariSklada.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\SpisokTovarov.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\PriyomSdachaTovara.rdlc">

@@ -120,8 +120,33 @@ namespace Core.Controllers
 
         }
 
+        public DataTable GetPradazhaByPeriod(DateTime startDate, DateTime endDate, string firma, int kol)
+        {
+            return db.GetByParametrPeriod("SELECT * FROM" +
+                
+                "(Select pt.артикул, t.наименование, t.бренд, t.марка, t.модель, " +
+                "t.количество, t.место_на_складе as место, Sum(pt.количество) as продажа, Sum(pt.количество*pt.цена) as сумма " +
+                
+                "FROM public.продажа p, public.продажа_товара pt, public.товар t " +
+                
+                "WHERE pt.кодпродажи=p.кодпродажи AND pt.артикул=t.артикул AND " +
+                 "p.дата>=@dataStart AND p.дата<=@dataEnd" +
 
+                 " GROUP BY pt.артикул, t.наименование, t.бренд, t.марка, t.модель, t.количество, t.место_на_складе) prodazha,  public.фирмы f " +
 
+                 "WHERE prodazha.бренд=f.бренд AND f.фирма='" + firma + "' AND prodazha.продажа<= '" + kol + "'", startDate, endDate);
+            
+        }
 
+        public DataTable GetDopAlternativ(int kol)
+        {
+            
+            return db.GetByQuery("SELECT альтернатива, количество FROM " +
+                
+                "(SELECT альтернатива, count(альтернатива) as количество " +
+                "FROM public.товар WHERE количество>0 GROUP BY альтернатива) alter " +
+                
+                "WHERE alter.количество>='" + kol + "'");
+        }
     }
 }

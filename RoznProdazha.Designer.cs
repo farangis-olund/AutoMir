@@ -294,9 +294,9 @@ namespace AutoMir2022
             this.oformitZakaz.BackColor = System.Drawing.Color.Transparent;
             this.oformitZakaz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.oformitZakaz.ForeColor = System.Drawing.Color.ForestGreen;
-            this.oformitZakaz.Location = new System.Drawing.Point(1187, 9);
+            this.oformitZakaz.Location = new System.Drawing.Point(1187, 12);
             this.oformitZakaz.Name = "oformitZakaz";
-            this.oformitZakaz.Size = new System.Drawing.Size(162, 54);
+            this.oformitZakaz.Size = new System.Drawing.Size(162, 42);
             this.oformitZakaz.TabIndex = 8;
             this.oformitZakaz.Text = "Оформить заказ";
             this.oformitZakaz.UseVisualStyleBackColor = false;

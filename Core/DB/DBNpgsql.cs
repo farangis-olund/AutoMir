@@ -347,21 +347,26 @@ namespace Core.DB
             comm.CommandText = query;
             comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
             comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
-
-            try
+            NpgsqlDataReader dr = comm.ExecuteReader();
+            if (dr.HasRows)
             {
-                NpgsqlDataReader dr = comm.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    dataTable.Load(dr);
-                }
-
+                dataTable.Load(dr);
             }
-            catch
-            {
-                MessageBox.Show("Ошибка в запросе!");
 
-            }
+            //try
+            //{
+            //    NpgsqlDataReader dr = comm.ExecuteReader();
+            //    if (dr.HasRows)
+            //    {
+            //        dataTable.Load(dr);
+            //    }
+
+            //}
+            //catch (InvalidCastException e)
+            //{
+            //    MessageBox.Show("Ошибка в запросе! " + e.ToString());
+
+            //}
 
 
 

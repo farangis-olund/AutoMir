@@ -126,8 +126,7 @@ namespace AutoMir2022
 
         private void приходТоваровToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrikhodRaskhodTovara myform = new PrikhodRaskhodTovara();
-            myform.Show();
+           
         }
 
         private void администраторToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,6 +169,18 @@ namespace AutoMir2022
         private void отчетПоМестуНаСкладеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OtchetOstatokTovarov myform = new OtchetOstatokTovarov();
+            myform.Show();
+        }
+
+        private void приходРасходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrikhodRaskhodTovara myform = new PrikhodRaskhodTovara();
+            myform.Show();
+        }
+
+        private void оПродажеТовараToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OtchetProdazhaTovarov myform = new OtchetProdazhaTovarov();
             myform.Show();
         }
     }
