@@ -1384,6 +1384,9 @@
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
                       <KeepWithGroup>After</KeepWithGroup>
                     </TablixMember>
                     <TablixMember>
@@ -1402,7 +1405,7 @@
             <Top>0.36372cm</Top>
             <Left>0.381cm</Left>
             <Height>2.49965cm</Height>
-            <Width>20.53963cm</Width>
+            <Width>20.53962cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1788,7 +1791,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>5.79438cm</Height>
+          <Height>6.98501cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1878,7 +1881,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox42</rd:DefaultName>
-                  <Top>1.21559cm</Top>
+                  <Top>2.16809cm</Top>
                   <Left>1.64561cm</Left>
                   <Height>0.6cm</Height>
                   <Width>3.23176cm</Width>
@@ -1913,7 +1916,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox43</rd:DefaultName>
-                  <Top>1.19972cm</Top>
+                  <Top>2.15222cm</Top>
                   <Left>5.10204cm</Left>
                   <Height>0.67938cm</Height>
                   <Width>2.91042cm</Width>
@@ -1936,7 +1939,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>Расходы:</Value>
+                          <Value>Остаток:</Value>
                           <Style>
                             <FontSize>11pt</FontSize>
                           </Style>
@@ -1946,7 +1949,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox42</rd:DefaultName>
-                  <Top>2.12093cm</Top>
+                  <Top>3.87963cm</Top>
                   <Left>1.63194cm</Left>
                   <Height>0.6cm</Height>
                   <Width>3.23176cm</Width>
@@ -1968,7 +1971,7 @@
                     <Paragraph>
                       <TextRuns>
                         <TextRun>
-                          <Value>=Parameters!raskhodi.Value</Value>
+                          <Value>=Parameters!ostatok.Value</Value>
                           <Style>
                             <FontSize>12pt</FontSize>
                             <FontWeight>Bold</FontWeight>
@@ -1981,7 +1984,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox43</rd:DefaultName>
-                  <Top>2.10506cm</Top>
+                  <Top>3.86376cm</Top>
                   <Left>5.08838cm</Left>
                   <Height>0.67938cm</Height>
                   <Width>2.91042cm</Width>
@@ -2014,7 +2017,7 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox42</rd:DefaultName>
-                  <Top>2.94142cm</Top>
+                  <Top>4.70012cm</Top>
                   <Left>1.63194cm</Left>
                   <Height>0.6cm</Height>
                   <Width>3.23176cm</Width>
@@ -2049,11 +2052,79 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox43</rd:DefaultName>
-                  <Top>2.92555cm</Top>
+                  <Top>4.68425cm</Top>
                   <Left>5.08838cm</Left>
                   <Height>0.67938cm</Height>
                   <Width>2.91042cm</Width>
                   <ZIndex>7</ZIndex>
+                  <Style>
+                    <Border>
+                      <Color>Silver</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox52">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>Платежи:</Value>
+                          <Style>
+                            <FontSize>11pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox42</rd:DefaultName>
+                  <Top>1.2206cm</Top>
+                  <Left>1.61396cm</Left>
+                  <Height>0.6cm</Height>
+                  <Width>3.23176cm</Width>
+                  <ZIndex>8</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="Textbox60">
+                  <CanGrow>true</CanGrow>
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>=Parameters!platezhi.Value</Value>
+                          <Style>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style>
+                        <TextAlign>Right</TextAlign>
+                      </Style>
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>Textbox43</rd:DefaultName>
+                  <Top>1.20473cm</Top>
+                  <Left>5.07039cm</Left>
+                  <Height>0.67938cm</Height>
+                  <Width>2.91042cm</Width>
+                  <ZIndex>9</ZIndex>
                   <Style>
                     <Border>
                       <Color>Silver</Color>
@@ -2082,11 +2153,11 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox42</rd:DefaultName>
-                  <Top>3.79719cm</Top>
-                  <Left>1.61396cm</Left>
+                  <Top>3.02386cm</Top>
+                  <Left>1.64561cm</Left>
                   <Height>0.6cm</Height>
                   <Width>3.23176cm</Width>
-                  <ZIndex>8</ZIndex>
+                  <ZIndex>10</ZIndex>
                   <Style>
                     <Border>
                       <Style>None</Style>
@@ -2117,11 +2188,11 @@
                     </Paragraph>
                   </Paragraphs>
                   <rd:DefaultName>Textbox43</rd:DefaultName>
-                  <Top>3.78132cm</Top>
-                  <Left>5.0704cm</Left>
+                  <Top>3.00799cm</Top>
+                  <Left>5.10205cm</Left>
                   <Height>0.67938cm</Height>
                   <Width>2.91042cm</Width>
-                  <ZIndex>9</ZIndex>
+                  <ZIndex>11</ZIndex>
                   <Style>
                     <Border>
                       <Color>Silver</Color>
@@ -2137,8 +2208,8 @@
               <KeepTogether>true</KeepTogether>
               <Top>0.56777cm</Top>
               <Left>13.0305cm</Left>
-              <Height>4.78896cm</Height>
-              <Width>8.01246cm</Width>
+              <Height>5.74146cm</Height>
+              <Width>8.01247cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -2152,8 +2223,8 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
         <LeftMargin>0cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
         <TopMargin>0cm</TopMargin>
@@ -2192,15 +2263,19 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="raskhodi">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
     <ReportParameter Name="protsentProdazha">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="kassa">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ostatok">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="platezhi">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -2246,11 +2321,6 @@
           <ParameterName>vozvrat</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>raskhodi</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>protsentProdazha</ParameterName>
@@ -2259,6 +2329,16 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>kassa</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>ostatok</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>platezhi</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

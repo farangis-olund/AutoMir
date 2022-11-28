@@ -67,7 +67,7 @@ namespace Core.Reports.ReportPoItogom
         {
             DataTable dt = db.GetByParametrDate("SELECT Sum(d.количество*d.цена) as сумма FROM public.продажа e , public.продажа_товара d" +
                                      " WHERE d.кодпродажи=e.кодпродажи " +
-                                     "AND e.оптовая_продажа=false AND e.дата=@data", "data");
+                                     "AND e.оптовая_продажа=false AND e.код_клиента IS NULL AND e.дата=@data", "data");
             prodazhaOpt = 0;
             var b = dt.Rows[0][0].ToString();
             if (b != "")
@@ -77,10 +77,10 @@ namespace Core.Reports.ReportPoItogom
 
         public double GetPlatezhRozn()
         {
-            DataTable dt = db.GetByParametrDate("SELECT Sum(сумма_платежа) " +
-                                    " FROM public.платежи" +
-                                    " WHERE код_клиента IS NULL " +
-                                    "AND дата=@data", "data");
+            DataTable dt = db.GetByParametrDate("SELECT Sum(d.количество*d.цена) as сумма FROM public.продажа e , public.продажа_товара d" +
+                      " WHERE d.кодпродажи=e.кодпродажи " +
+                      "AND e.оптовая_продажа=false AND e.код_клиента IS NULL AND e.дата=@data", "data");
+
             platezhRozn = 0;
             var b = dt.Rows[0][0].ToString();
             if (b != "")

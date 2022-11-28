@@ -26,8 +26,7 @@ namespace AutoMir2022
             
             DataTable dt = klientObj.GetKodKlienta();
             klientVibor.Items.Clear();
-            klientVibor.Items.Add("Новый клиент");
-            if (dt.Rows.Count > 0)
+           if (dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -44,8 +43,8 @@ namespace AutoMir2022
             tel.Text = "";
             adres.Text = "";
             zadolzhnost.Text = "";
-            
 
+            addKlient.Enabled = false;
         }
 
 
@@ -54,7 +53,7 @@ namespace AutoMir2022
 
             DataTable dt = klientObj.GetKodKlienta();
             klientVibor.Items.Clear();
-            klientVibor.Items.Add("Новый клиент");
+           
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -63,23 +62,13 @@ namespace AutoMir2022
                 }
 
             }
-
+            addKlient.Enabled = false;
 
         }
         private void klientVibor_SelectionChangeCommitted(object sender, EventArgs e)
         {
             klientVibor.Text = klientVibor.GetItemText(klientVibor.SelectedItem);
-            if (klientVibor.Text== "Новый клиент")
-            {
-                uroven.Text = null;
-                kodKlienta.Text = "";
-                fio.Text = "";
-                tel.Text = "";
-                adres.Text = "";
-                zadolzhnost.Text = "";
-            }
-            else
-            {
+            
                 int first = klientVibor.Text.IndexOf("|");
                 kodKl = klientVibor.Text.Remove(first - 1);
 
@@ -99,17 +88,26 @@ namespace AutoMir2022
 
                 }
 
-            }
+            
             
         }
 
        
         private void addKlient_Click(object sender, EventArgs e)
         {
-              klientObj.InsertNewKlient(kodKlienta.Text, fio.Text, tel.Text,
+            if (kodKlienta.Text!=null && uroven.Text != null)
+            {
+                klientObj.InsertNewKlient(kodKlienta.Text, fio.Text, tel.Text,
               adres.Text, Convert.ToDouble(zadolzhnost.Text), uroven.Text);
-              MessageBox.Show("Клиент добавлен!");
-            restartKlient();
+                MessageBox.Show("Клиент добавлен!");
+                restartKlient();
+            }
+            else
+            {
+                MessageBox.Show("Обязательные поля не заполнены!");
+
+            }
+
         }
 
         private void updateKlient_Click(object sender, EventArgs e)
@@ -131,6 +129,20 @@ namespace AutoMir2022
         private void closeKlient_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void new_klient_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Перед добавлением, заполните все обязательные поля!");
+                uroven.Text = null;
+                kodKlienta.Text = "";
+                fio.Text = "";
+                tel.Text = "";
+                adres.Text = "";
+                zadolzhnost.Text = "";
+                addKlient.Enabled = true;
+          
+            
         }
     }
 }

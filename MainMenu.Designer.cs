@@ -38,6 +38,7 @@ namespace AutoMir2022
             this.userPassword = new System.Windows.Forms.TextBox();
             this.userName = new System.Windows.Forms.TextBox();
             this.TitleFormMenu = new System.Windows.Forms.Label();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.panelSwich = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +56,8 @@ namespace AutoMir2022
             this.курсВалютыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетПоМестуНаСкладеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПродажеТовараToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.долгиКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.возвратToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.конфигурацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,15 +71,12 @@ namespace AutoMir2022
             this.доступПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
-            this.оПродажеТовараToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокДолговКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.panelSwich.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBar
@@ -164,6 +164,16 @@ namespace AutoMir2022
             this.TitleFormMenu.TabIndex = 0;
             this.TitleFormMenu.Text = "Добро пожаловать!";
             // 
+            // logo
+            // 
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.Location = new System.Drawing.Point(30, 9);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(170, 59);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
             // panelSwich
             // 
             this.panelSwich.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -171,7 +181,7 @@ namespace AutoMir2022
             this.panelSwich.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSwich.Location = new System.Drawing.Point(238, 0);
             this.panelSwich.Name = "panelSwich";
-            this.panelSwich.Size = new System.Drawing.Size(1069, 41);
+            this.panelSwich.Size = new System.Drawing.Size(1069, 35);
             this.panelSwich.TabIndex = 2;
             // 
             // menuStrip1
@@ -225,7 +235,7 @@ namespace AutoMir2022
             this.клиентToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.клиентToolStripMenuItem.Name = "клиентToolStripMenuItem";
             this.клиентToolStripMenuItem.Size = new System.Drawing.Size(414, 34);
-            this.клиентToolStripMenuItem.Text = "Добавление нового клиента";
+            this.клиентToolStripMenuItem.Text = "Клиенты";
             this.клиентToolStripMenuItem.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
             // поступлениеToolStripMenuItem
@@ -304,7 +314,8 @@ namespace AutoMir2022
             // 
             this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.отчетПоМестуНаСкладеToolStripMenuItem,
-            this.оПродажеТовараToolStripMenuItem});
+            this.оПродажеТовараToolStripMenuItem,
+            this.долгиКлиентовToolStripMenuItem});
             this.отчетыToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
             this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
@@ -316,6 +327,20 @@ namespace AutoMir2022
             this.отчетПоМестуНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
             this.отчетПоМестуНаСкладеToolStripMenuItem.Text = "Об остатках товара";
             this.отчетПоМестуНаСкладеToolStripMenuItem.Click += new System.EventHandler(this.отчетПоМестуНаСкладеToolStripMenuItem_Click);
+            // 
+            // оПродажеТовараToolStripMenuItem
+            // 
+            this.оПродажеТовараToolStripMenuItem.Name = "оПродажеТовараToolStripMenuItem";
+            this.оПродажеТовараToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
+            this.оПродажеТовараToolStripMenuItem.Text = "О продаже товара";
+            this.оПродажеТовараToolStripMenuItem.Click += new System.EventHandler(this.оПродажеТовараToolStripMenuItem_Click);
+            // 
+            // долгиКлиентовToolStripMenuItem
+            // 
+            this.долгиКлиентовToolStripMenuItem.Name = "долгиКлиентовToolStripMenuItem";
+            this.долгиКлиентовToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
+            this.долгиКлиентовToolStripMenuItem.Text = "Долги клиентов";
+            this.долгиКлиентовToolStripMenuItem.Click += new System.EventHandler(this.долгиКлиентовToolStripMenuItem_Click);
             // 
             // возвратToolStripMenuItem
             // 
@@ -372,8 +397,7 @@ namespace AutoMir2022
             this.назначениеПроцентаДляПродавцаToolStripMenuItem,
             this.распродажаИБонусыToolStripMenuItem,
             this.пользователиToolStripMenuItem1,
-            this.доступПользователейToolStripMenuItem,
-            this.списокДолговКлиентовToolStripMenuItem});
+            this.доступПользователейToolStripMenuItem});
             this.администраторToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.администраторToolStripMenuItem.Name = "администраторToolStripMenuItem";
             this.администраторToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
@@ -391,6 +415,7 @@ namespace AutoMir2022
             this.распродажаИБонусыToolStripMenuItem.Name = "распродажаИБонусыToolStripMenuItem";
             this.распродажаИБонусыToolStripMenuItem.Size = new System.Drawing.Size(401, 30);
             this.распродажаИБонусыToolStripMenuItem.Text = "Распродажа и бонусы";
+            this.распродажаИБонусыToolStripMenuItem.Click += new System.EventHandler(this.распродажаИБонусыToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem1
             // 
@@ -423,33 +448,10 @@ namespace AutoMir2022
             // 
             this.panelData.Controls.Add(this.info);
             this.panelData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelData.Location = new System.Drawing.Point(238, 41);
+            this.panelData.Location = new System.Drawing.Point(238, 35);
             this.panelData.Name = "panelData";
-            this.panelData.Size = new System.Drawing.Size(1069, 698);
+            this.panelData.Size = new System.Drawing.Size(1069, 704);
             this.panelData.TabIndex = 3;
-            // 
-            // оПродажеТовараToolStripMenuItem
-            // 
-            this.оПродажеТовараToolStripMenuItem.Name = "оПродажеТовараToolStripMenuItem";
-            this.оПродажеТовараToolStripMenuItem.Size = new System.Drawing.Size(253, 30);
-            this.оПродажеТовараToolStripMenuItem.Text = "О продаже товара";
-            this.оПродажеТовараToolStripMenuItem.Click += new System.EventHandler(this.оПродажеТовараToolStripMenuItem_Click);
-            // 
-            // списокДолговКлиентовToolStripMenuItem
-            // 
-            this.списокДолговКлиентовToolStripMenuItem.Name = "списокДолговКлиентовToolStripMenuItem";
-            this.списокДолговКлиентовToolStripMenuItem.Size = new System.Drawing.Size(401, 30);
-            this.списокДолговКлиентовToolStripMenuItem.Text = "Список долгов клиентов";
-            // 
-            // logo
-            // 
-            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(30, 9);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(170, 59);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
             // 
             // MainMenu
             // 
@@ -469,12 +471,12 @@ namespace AutoMir2022
             this.SideBar.PerformLayout();
             this.loginBox.ResumeLayout(false);
             this.loginBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.panelSwich.ResumeLayout(false);
             this.panelSwich.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -521,7 +523,7 @@ namespace AutoMir2022
         private System.Windows.Forms.ToolStripMenuItem доступПользователейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem доступКТаблицамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПродажеТовараToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списокДолговКлиентовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem долгиКлиентовToolStripMenuItem;
     }
 
 }

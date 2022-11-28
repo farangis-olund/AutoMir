@@ -183,5 +183,18 @@ namespace AutoMir2022
             OtchetProdazhaTovarov myform = new OtchetProdazhaTovarov();
             myform.Show();
         }
+
+        private void долгиКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DolgiKlienta myform = new DolgiKlienta();
+            myform.Show();
+
+        }
+
+        private void распродажаИБонусыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Rasprodazha myform = new Rasprodazha();
+            myform.Show();
+        }
     }
 }

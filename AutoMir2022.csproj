@@ -22,9 +22,13 @@
     <None Remove="Reports\ChekReportVozvrat.rdlc" />
     <None Remove="Reports\ChekReportVozvratProshOpt.rdlc" />
     <None Remove="Reports\ChekReportVozvratProshRozn.rdlc" />
+    <None Remove="Reports\ItogiOptProdazhi.rdlc" />
+    <None Remove="Reports\ItogiOptProdazhiProsmotr.rdlc" />
+    <None Remove="Reports\ItogiProdavets.rdlc" />
     <None Remove="Reports\ItogiProdazhi.rdlc" />
     <None Remove="Reports\ItogiProdazhiPeriod.rdlc" />
     <None Remove="Reports\ItogiRoznProdazhi.rdlc" />
+    <None Remove="Reports\ItogiRoznProdazhiProsmotr.rdlc" />
     <None Remove="Reports\NeaktivnieTovariSklada.rdlc" />
     <None Remove="Reports\ObnovlenieTovara.rdlc" />
     <None Remove="Reports\ObnovlenieTovaraExport.rdlc" />
@@ -33,11 +37,28 @@
     <None Remove="Reports\PrikhodRaskhodOshibka.rdlc" />
     <None Remove="Reports\PriyomSdachaTovara.rdlc" />
     <None Remove="Reports\ReportOstatokTovara.rdlc" />
+    <None Remove="Reports\SkidkaSpetsPredlozhenie.rdlc" />
     <None Remove="Reports\SpisokTovarov.rdlc" />
     <None Remove="Reports\TotalReport.rdlc" />
+    <None Remove="Reports\TotalReportPeriod.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reports\ChekRaskhodi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiOptProdazhi.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiOptProdazhiProsmotr.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiProdavets.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\SkidkaSpetsPredlozhenie.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\ItogiRoznProdazhiProsmotr.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ItogiRoznProdazhi.rdlc">
@@ -62,6 +83,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\ReportOstatokTovara.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\TotalReportPeriod.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\TotalReport.rdlc">

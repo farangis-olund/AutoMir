@@ -9,11 +9,10 @@ namespace Core.Controllers.Klient
     class Klient
     {
         private DBNpgsql db = new DBNpgsql();
-
         
         public DataTable GetKodKlienta()
         {
-            return db.GetByQuery("Select код_клиента, фио FROM public.customers ");            
+            return db.GetByQuery("Select код_клиента, фио, задолжность FROM public.customers order by код_клиента ASC");            
         }
 
         public DataTable GetUrovenKlienta()
@@ -26,6 +25,8 @@ namespace Core.Controllers.Klient
            return db.GetByQuery("Select * FROM public.customers " +
                                                "WHERE код_клиента='" + kodKlienta + "'");
         }
+
+        
 
         public DataTable GetAllKlientInfo()
         {
@@ -67,6 +68,12 @@ namespace Core.Controllers.Klient
 
         }
 
+        public void UpdateKlientDolg(string kodKlienta, double zadolzhnost)
+        {
+            db.insertWithParametrDouble("UPDATE public.customers " +
+                        "SET задолжность = @zadolg " +
+                        "WHERE код_клиента ='" + kodKlienta + "'", "zadolg", zadolzhnost);
+        }
 
 
 

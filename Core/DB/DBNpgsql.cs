@@ -100,9 +100,10 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
+            comm.ExecuteNonQuery();
             try
             {
-                comm.ExecuteNonQuery();
+            
             }
             catch
             {
@@ -123,11 +124,12 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
+            comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
+            comm.ExecuteNonQuery();
+
             try
             {
-                comm.Parameters.Add(parametr, NpgsqlDbType.Double).Value = suma;
-                comm.ExecuteNonQuery();
-
+            
             }
             catch
             {

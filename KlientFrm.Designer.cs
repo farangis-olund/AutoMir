@@ -48,12 +48,14 @@ namespace AutoMir2022
             this.zadolzhnost = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.uroven = new System.Windows.Forms.ComboBox();
+            this.new_klient = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.new_klient);
             this.panel1.Controls.Add(this.closeKlient);
             this.panel1.Controls.Add(this.deleteKlient);
             this.panel1.Controls.Add(this.updateKlient);
@@ -64,14 +66,14 @@ namespace AutoMir2022
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 66);
+            this.panel1.Size = new System.Drawing.Size(811, 66);
             this.panel1.TabIndex = 0;
             // 
             // closeKlient
             // 
-            this.closeKlient.Location = new System.Drawing.Point(688, 12);
+            this.closeKlient.Location = new System.Drawing.Point(699, 12);
             this.closeKlient.Name = "closeKlient";
-            this.closeKlient.Size = new System.Drawing.Size(112, 34);
+            this.closeKlient.Size = new System.Drawing.Size(99, 34);
             this.closeKlient.TabIndex = 3;
             this.closeKlient.Text = "Закрыть";
             this.closeKlient.UseVisualStyleBackColor = true;
@@ -80,9 +82,9 @@ namespace AutoMir2022
             // deleteKlient
             // 
             this.deleteKlient.ForeColor = System.Drawing.Color.DarkRed;
-            this.deleteKlient.Location = new System.Drawing.Point(570, 12);
+            this.deleteKlient.Location = new System.Drawing.Point(594, 12);
             this.deleteKlient.Name = "deleteKlient";
-            this.deleteKlient.Size = new System.Drawing.Size(112, 34);
+            this.deleteKlient.Size = new System.Drawing.Size(96, 34);
             this.deleteKlient.TabIndex = 4;
             this.deleteKlient.Text = "Удалить";
             this.deleteKlient.UseVisualStyleBackColor = true;
@@ -90,7 +92,7 @@ namespace AutoMir2022
             // 
             // updateKlient
             // 
-            this.updateKlient.Location = new System.Drawing.Point(452, 13);
+            this.updateKlient.Location = new System.Drawing.Point(468, 13);
             this.updateKlient.Name = "updateKlient";
             this.updateKlient.Size = new System.Drawing.Size(112, 34);
             this.updateKlient.TabIndex = 3;
@@ -100,8 +102,9 @@ namespace AutoMir2022
             // 
             // addKlient
             // 
-            this.addKlient.ForeColor = System.Drawing.Color.SeaGreen;
-            this.addKlient.Location = new System.Drawing.Point(334, 13);
+            this.addKlient.Enabled = false;
+            this.addKlient.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addKlient.Location = new System.Drawing.Point(346, 13);
             this.addKlient.Name = "addKlient";
             this.addKlient.Size = new System.Drawing.Size(112, 34);
             this.addKlient.TabIndex = 2;
@@ -125,7 +128,8 @@ namespace AutoMir2022
             this.klientVibor.Location = new System.Drawing.Point(77, 15);
             this.klientVibor.Margin = new System.Windows.Forms.Padding(6);
             this.klientVibor.Name = "klientVibor";
-            this.klientVibor.Size = new System.Drawing.Size(173, 32);
+            this.klientVibor.Size = new System.Drawing.Size(125, 32);
+            this.klientVibor.Sorted = true;
             this.klientVibor.TabIndex = 0;
             this.klientVibor.SelectionChangeCommitted += new System.EventHandler(this.klientVibor_SelectionChangeCommitted);
             // 
@@ -140,11 +144,12 @@ namespace AutoMir2022
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Brown;
             this.label2.Location = new System.Drawing.Point(9, 97);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Код клиента";
+            this.label2.Text = "Код клиента*";
             // 
             // label3
             // 
@@ -218,11 +223,12 @@ namespace AutoMir2022
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.Brown;
             this.label7.Location = new System.Drawing.Point(524, 142);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 20);
+            this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Уровень";
+            this.label7.Text = "Уровень*";
             // 
             // uroven
             // 
@@ -232,11 +238,22 @@ namespace AutoMir2022
             this.uroven.Size = new System.Drawing.Size(189, 32);
             this.uroven.TabIndex = 12;
             // 
+            // new_klient
+            // 
+            this.new_klient.ForeColor = System.Drawing.Color.SeaGreen;
+            this.new_klient.Location = new System.Drawing.Point(226, 12);
+            this.new_klient.Name = "new_klient";
+            this.new_klient.Size = new System.Drawing.Size(112, 34);
+            this.new_klient.TabIndex = 5;
+            this.new_klient.Text = "Новый";
+            this.new_klient.UseVisualStyleBackColor = true;
+            this.new_klient.Click += new System.EventHandler(this.new_klient_Click);
+            // 
             // KlientFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 222);
+            this.ClientSize = new System.Drawing.Size(811, 222);
             this.ControlBox = false;
             this.Controls.Add(this.uroven);
             this.Controls.Add(this.label7);
@@ -284,5 +301,6 @@ namespace AutoMir2022
         private System.Windows.Forms.TextBox zadolzhnost;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox uroven;
+        private System.Windows.Forms.Button new_klient;
     }
 }
