@@ -50,6 +50,7 @@ namespace AutoMir2022
             // 
             // panelTop
             // 
+            this.panelTop.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelTop.Controls.Add(this.clean);
             this.panelTop.Controls.Add(this.add);
             this.panelTop.Controls.Add(this.sumTjs);

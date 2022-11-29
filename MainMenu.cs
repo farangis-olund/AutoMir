@@ -196,5 +196,11 @@ namespace AutoMir2022
             Rasprodazha myform = new Rasprodazha();
             myform.Show();
         }
+
+        private void назначениеПроцентаДляПродавцаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProdavstiProtsent myform = new ProdavstiProtsent();
+            myform.Show();
+        }
     }
 }

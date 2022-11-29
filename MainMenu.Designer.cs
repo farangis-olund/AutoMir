@@ -409,6 +409,7 @@ namespace AutoMir2022
             this.назначениеПроцентаДляПродавцаToolStripMenuItem.Name = "назначениеПроцентаДляПродавцаToolStripMenuItem";
             this.назначениеПроцентаДляПродавцаToolStripMenuItem.Size = new System.Drawing.Size(401, 30);
             this.назначениеПроцентаДляПродавцаToolStripMenuItem.Text = "Назначение процента для продавца";
+            this.назначениеПроцентаДляПродавцаToolStripMenuItem.Click += new System.EventHandler(this.назначениеПроцентаДляПродавцаToolStripMenuItem_Click);
             // 
             // распродажаИБонусыToolStripMenuItem
             // 
