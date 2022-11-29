@@ -40,15 +40,41 @@ namespace Core.Controllers
 
             string query = "INSERT INTO public.распродажа (артикул, количество) Values";
             string sub_query = "";
-            for (int i=0; i<dgv.RowCount; i++)
+            int b = 0;
+            for (int i=0; i<dgv.RowCount-1; i++)
             {
-                sub_query = sub_query +" ("+ dgv.Rows[i].Cells[0].Value.ToString() + ", " + dgv.Rows[i].Cells[0].Value.ToString() + "),";
+                if (dgv.Rows[i].Cells[1].Value.ToString() != "")
+                {
+                    b = Convert.ToInt32(dgv.Rows[i].Cells[1].Value.ToString());
+                }
+                sub_query = sub_query + " ('" + dgv.Rows[i].Cells[0].Value.ToString() + "', '" + b + "'),";
             }
             sub_query = sub_query + sub_query.Remove(sub_query.Length-1,1);
-        db.insertUpdateToDB(query);
+        db.insertUpdateToDB(query+ sub_query);
             
         }
 
+        public DataTable GetBonusByPeriodAndProdovets(DateTime startDate, DateTime endDate, int bonus)
+        {
+            return db.GetByParametrPeriod("SELECT p.продавец, pt.артикул, Sum(pt.количество) as количество, " +
+                "Sum(pt.количество*pt.цена) as сумма, Sum(pt.количество*pt.цена)*" + bonus + "/100 as бонус " +
+                "FROM public.продажа p, public.продажа_товара pt, public.распродажа t " +
+                 "WHERE pt.кодпродажи=p.кодпродажи AND pt.артикул=t.артикул AND " +
+                 "p.дата>=@dataStart AND p.дата<=@dataEnd" +
+                 " GROUP BY p.продавец, pt.артикул", startDate, endDate);
 
-}
+        }
+
+        public void InsertBonus(DateTime startDate, DateTime endDate, int bonus)
+        {
+            DataTable dt = GetBonusByPeriodAndProdovets(startDate, endDate, bonus);
+            double summa=Convert.ToDouble(dt.Compute("Sum(сумма)", string.Empty));
+            double summa_bonus = Convert.ToDouble(dt.Compute("Sum(бонус)", string.Empty));
+            
+            db.insertWithParametrTwoDoubleAndDate("INSERT INTO public.бонусы (дата, сумма, процент_бонуса, сумма_бонуса) " +
+                "VALUES (@date, @summa, '" + bonus + "', @summa_bonus)","summa", summa, "summa_bonus", summa_bonus, "date", endDate);
+
+        }
+
+    }
 }

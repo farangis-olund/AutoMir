@@ -114,6 +114,34 @@ namespace Core.DB
             conn.Close();
         }
 
+        public void insertUpdateToDBDateParametr(string query, DateTime dataStart, DateTime dataEnd)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
+            comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
+
+            comm.ExecuteNonQuery();
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            }
+
+            comm.Dispose();
+            conn.Close();
+        }
+
+
         public void insertWithParametrDouble(string query, string parametr, double suma)
         {
             NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
@@ -151,12 +179,13 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
+            comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
+            comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
+            comm.ExecuteNonQuery();
+
             try
             {
-                comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
-                comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
-                comm.ExecuteNonQuery();
-
+            
             }
             catch
             {
@@ -167,6 +196,33 @@ namespace Core.DB
             conn.Close();
         }
 
+        public void insertWithParametrTwoDoubleAndDate(string query, string parametr1, double suma1, string parametr2, double suma2, string parametr3, DateTime date1)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            comm.Parameters.Add(parametr1, NpgsqlDbType.Double).Value = suma1;
+            comm.Parameters.Add(parametr2, NpgsqlDbType.Double).Value = suma2;
+            comm.Parameters.Add(parametr3, NpgsqlDbType.Date).Value = date1;
+            comm.ExecuteNonQuery();
+
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+
+            }
+            comm.Dispose();
+            conn.Close();
+        }
 
         public void InsertWithParametrDate(string query, string parametr, DateTime date)
         {

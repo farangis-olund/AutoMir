@@ -2902,6 +2902,10 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             private global::System.Data.DataColumn columnальтернатива;
             
+            private global::System.Data.DataColumn columnпродавец;
+            
+            private global::System.Data.DataColumn columnбонус;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public OtchetOstatokTovaraDataTable() {
@@ -3073,6 +3077,22 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn продавецColumn {
+                get {
+                    return this.columnпродавец;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn бонусColumn {
+                get {
+                    return this.columnбонус;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3125,7 +3145,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         string группа, 
                         string опт_цена, 
                         string розн_цена, 
-                        string альтернатива) {
+                        string альтернатива, 
+                        string продавец, 
+                        string бонус) {
                 OtchetOstatokTovaraRow rowOtchetOstatokTovaraRow = ((OtchetOstatokTovaraRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         артикул,
@@ -3144,7 +3166,9 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                         группа,
                         опт_цена,
                         розн_цена,
-                        альтернатива};
+                        альтернатива,
+                        продавец,
+                        бонус};
                 rowOtchetOstatokTovaraRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOtchetOstatokTovaraRow);
                 return rowOtchetOstatokTovaraRow;
@@ -3184,6 +3208,8 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 this.columnопт_цена = base.Columns["опт_цена"];
                 this.columnрозн_цена = base.Columns["розн_цена"];
                 this.columnальтернатива = base.Columns["альтернатива"];
+                this.columnпродавец = base.Columns["продавец"];
+                this.columnбонус = base.Columns["бонус"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3223,6 +3249,10 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
                 base.Columns.Add(this.columnрозн_цена);
                 this.columnальтернатива = new global::System.Data.DataColumn("альтернатива", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnальтернатива);
+                this.columnпродавец = new global::System.Data.DataColumn("продавец", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnпродавец);
+                this.columnбонус = new global::System.Data.DataColumn("бонус", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnбонус);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6258,6 +6288,38 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string продавец {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.продавецColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'продавец\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.продавецColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string бонус {
+                get {
+                    try {
+                        return ((string)(this[this.tableOtchetOstatokTovara.бонусColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'бонус\' in table \'OtchetOstatokTovara\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOtchetOstatokTovara.бонусColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsартикулNull() {
                 return this.IsNull(this.tableOtchetOstatokTovara.артикулColumn);
             }
@@ -6458,6 +6520,30 @@ namespace AutoMir2022.Core.Controllers.ReportsController.ReportDataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetальтернативаNull() {
                 this[this.tableOtchetOstatokTovara.альтернативаColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsпродавецNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.продавецColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetпродавецNull() {
+                this[this.tableOtchetOstatokTovara.продавецColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsбонусNull() {
+                return this.IsNull(this.tableOtchetOstatokTovara.бонусColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetбонусNull() {
+                this[this.tableOtchetOstatokTovara.бонусColumn] = global::System.Convert.DBNull;
             }
         }
         
