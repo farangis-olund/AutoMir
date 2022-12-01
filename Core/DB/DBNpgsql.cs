@@ -29,19 +29,25 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            try
+            NpgsqlDataReader dr = comm.ExecuteReader();
+            if (dr.HasRows)
             {
-                NpgsqlDataReader dr = comm.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    dataTable.Load(dr);
-                }
+                dataTable.Load(dr);
             }
-            catch
-            {
-                MessageBox.Show("Ошибка в запросе!");
+
+            //try
+            //{
+            //    NpgsqlDataReader dr = comm.ExecuteReader();
+            //    if (dr.HasRows)
+            //    {
+            //        dataTable.Load(dr);
+            //    }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Ошибка в запросе!");
             
-            }
+            //}
             
 
             comm.Dispose();
@@ -100,10 +106,10 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            comm.ExecuteNonQuery();
+          
             try
             {
-            
+                comm.ExecuteNonQuery();
             }
             catch
             {
@@ -131,6 +137,50 @@ namespace Core.DB
             try
             {
 
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка в запросе!");
+            }
+
+            comm.Dispose();
+            conn.Close();
+        }
+
+        public void insertUpdateToDBbyArrayParametr(string query, string [,] array)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+            NpgsqlCommand comm = new NpgsqlCommand();
+
+            // Connect to a PostgreSQL database
+            conn.Open();
+            comm.Connection = conn;
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = query;
+            for (int i=0; i<array.Length/3; i++)
+            {
+                if (array[i, 1] == "double precision" )
+                {
+                    if (array[i, 2] == "") { array[i, 2] = "0"; }
+
+                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Double).Value = Convert.ToDouble(array[i, 2]);
+                }
+                else if (array[i, 1] == "character varying")
+                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Text).Value = array[i, 2].ToString();
+                else if (array[i, 1] == "date")
+                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Date).Value = Convert.ToDateTime(array[i, 2]);
+                else if (array[i, 1] == "integer")
+                {
+                    if (array[i, 2] == "") { array[i, 2] = "0"; }
+                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Integer).Value = Convert.ToInt64(array[i, 2]);
+                } 
+
+            }
+
+            comm.ExecuteNonQuery();
+            try
+            {
+              
             }
             catch
             {

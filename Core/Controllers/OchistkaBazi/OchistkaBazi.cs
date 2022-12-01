@@ -10,6 +10,10 @@ namespace Core.Controllers.OchistkaBazi
     {
         private DBNpgsql db = new DBNpgsql();
 
+        public DataTable ProsmotrTable(string tableName)
+        {
+            return db.GetByQuery("SELECT * FROM public." + tableName + "");
+        }
 
         public void DeleteRowsInTable(string tableName)
         {
