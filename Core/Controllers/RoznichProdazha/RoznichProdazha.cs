@@ -322,14 +322,6 @@ namespace Core.Controllers.RoznichProdazha
 
 
 
-        public void someFunction()
-        {
-            // do some action         
-        }
-
-
-
-
         public string GetColumnName(int index)
         {
             const int alphabetsCount = 26;

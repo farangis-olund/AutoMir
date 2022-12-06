@@ -15,14 +15,16 @@ namespace Core.Controllers
             return db.GetByQuery("Select продавец, процент FROM public.продавцы ORDER BY продавец ASC");
             
         }
+
        
+
 
         public void UpdateProdavets(string fio, int protsent)
         {
             db.insertUpdateToDB("UPDATE public.продавцы SET процент='" + protsent + "' WHERE продавец='" + fio + "'");
         }
 
-        
        
+
     }
 }

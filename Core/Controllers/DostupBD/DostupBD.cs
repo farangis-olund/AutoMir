@@ -80,13 +80,29 @@ namespace Core.Controllers.DostupBD
             db.insertUpdateToDB("DELETE FROM public." + db_name + "");
 
             DataTable dt = GetTableInfo(db_name);
-            string [,] columnArray = new string [dt.Rows.Count, 2];
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr[0].ToString().Contains("id") == true)
+                {
+                    db.insertUpdateToDB("ALTER SEQUENCE " + db_name + "_" + dr[0] + "_seq RESTART WITH 1");
+                    break;
+                }
+            }
+            
+
+                string [,] columnArray = new string [dt.Rows.Count, 2];
             string[,] dataArray = new string[dt.Rows.Count, 3];
+
+
 
             for (int i=0; i<dt.Rows.Count; i++)
             {
-                columnArray[i, 0] = dt.Rows[i][0].ToString();
-                columnArray[i, 1] = dt.Rows[i][1].ToString();
+                if (dt.Rows[i][0].ToString().Contains("id") == false)
+                {
+                    columnArray[i, 0] = dt.Rows[i][0].ToString();
+                    columnArray[i, 1] = dt.Rows[i][1].ToString();
+                }
+                
             }
 
             
@@ -94,25 +110,34 @@ namespace Core.Controllers.DostupBD
             
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                query = query + dgv.Columns[i].Name + ", ";
+                if (dgv.Columns[i].Name.Contains("id") == false)
+                {
+                    query = query + dgv.Columns[i].Name + ", ";
+                }
             }
 
             query = query.Remove(query.Length - 2, 2) + ") VALUES (";
             
             for (int i = 0; i < dgv.Columns.Count; i++)
             {
-                query = query + "@"+ dgv.Columns[i].Name + ", ";
+                if (dgv.Columns[i].Name.Contains("id") == false)
+                {
+                    query = query + "@" + dgv.Columns[i].Name + ", ";
+                }
             }
             query = query.Remove(query.Length - 2, 2) + ")";
 
-
-            for (int i = 0; i < dgv.RowCount -1; i++)
+            
+            for (int i = 0; i < dgv.Rows.Count-1; i++)
             {
                 for (int j = 0; j < dgv.Columns.Count; j++)
                 {
-                    dataArray[j, 0] = columnArray[j, 0];
-                    dataArray[j, 1] = columnArray[j, 1];
-                    dataArray[j, 2] = dgv.Rows[i].Cells[dgv.Columns[j].Name].Value.ToString();
+                    if (dgv.Columns[j].Name.Contains("id") == false )
+                    {
+                        dataArray[j, 0] = columnArray[j, 0];
+                        dataArray[j, 1] = columnArray[j, 1];
+                        dataArray[j, 2] = dgv.Rows[i].Cells[dgv.Columns[j].Name].Value.ToString();
+                    }
                 }
                 db.insertUpdateToDBbyArrayParametr(query, dataArray);
             }

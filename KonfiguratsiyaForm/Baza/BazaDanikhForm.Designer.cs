@@ -30,6 +30,8 @@ namespace AutoMir2022
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -47,8 +49,7 @@ namespace AutoMir2022
             this.paste = new System.Windows.Forms.Button();
             this.show = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,6 +58,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.radioButton9);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.radioButton8);
             this.panel1.Controls.Add(this.radioButton7);
@@ -73,6 +75,27 @@ namespace AutoMir2022
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(266, 510);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(38, 345);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "клиенты  ";
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(22, 344);
+            this.radioButton8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(101, 24);
+            this.radioButton8.TabIndex = 8;
+            this.radioButton8.TabStop = true;
+            this.radioButton8.Text = "customers";
+            this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // radioButton7
             // 
@@ -262,26 +285,17 @@ namespace AutoMir2022
             this.dataGridView1.Size = new System.Drawing.Size(995, 418);
             this.dataGridView1.TabIndex = 3;
             // 
-            // radioButton8
+            // radioButton9
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(22, 344);
-            this.radioButton8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(101, 24);
-            this.radioButton8.TabIndex = 8;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "customers";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 345);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "клиенты  ";
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(22, 378);
+            this.radioButton9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(167, 24);
+            this.radioButton9.TabIndex = 10;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.Text = "доступ_категории";
+            this.radioButton9.UseVisualStyleBackColor = true;
             // 
             // BazaDanikhForm
             // 
@@ -328,5 +342,6 @@ namespace AutoMir2022
         private System.Windows.Forms.Button copyBtn;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton radioButton9;
     }
 }

@@ -106,10 +106,10 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-          
+            comm.ExecuteNonQuery();
             try
             {
-                comm.ExecuteNonQuery();
+                
             }
             catch
             {

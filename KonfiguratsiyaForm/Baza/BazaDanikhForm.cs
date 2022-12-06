@@ -20,7 +20,7 @@ namespace AutoMir2022
     public partial class BazaDanikhForm : Form
     {
         private DostupBD dostupBDObj = new DostupBD();
-        private int DGVrowNum;
+       
         public BazaDanikhForm()
         {
             InitializeComponent();
@@ -120,7 +120,7 @@ namespace AutoMir2022
 
                 {
 
-                    dgv.Rows.Add(r + rowsInClipboard.Length - dgv.Rows.Count);
+                    dgv.Rows.Add(r + (rowsInClipboard.Length+1) - dgv.Rows.Count);
 
                 }
 
@@ -164,14 +164,7 @@ namespace AutoMir2022
 
         private void paste_Click(object sender, EventArgs e)
         {
-           
-            
-            if (dataGridView1.SelectedRows.Count==0)
-            {
-                dataGridView1.Rows[0].Cells[0].Selected = true;
-            }
-            
-            PasteClipboard(ref dataGridView1);
+            PasteClipboard(ref dataGridView1); 
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -181,6 +174,7 @@ namespace AutoMir2022
             {
                 if (dataGridView1.Rows.Count > 0)
                 {
+                    
                     var checkedButton = panel1.Controls.OfType<RadioButton>()
                                     .FirstOrDefault(r => r.Checked);
                     dostupBDObj.InsertAllDBFromDGV(ref dataGridView1, checkedButton.Text);

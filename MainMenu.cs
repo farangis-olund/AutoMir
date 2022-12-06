@@ -46,52 +46,25 @@ namespace AutoMir2022
 
         private void складToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //SkladFrm myForm = new SkladFrm();
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
-
-            //myForm.Show();
-
             var SkladFrm = new SkladFrm();
             SkladFrm.Show();
         }
 
         private void кассаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //info.Visible = false;
             Kassa myForm = new Kassa();
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
             myForm.Show();
-
-
         }
 
         private void возвратToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //info.Visible = false;
-            
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
             Vozvrat myForm = new Vozvrat();
             myForm.Show();
         }
 
         private void очисткаБазыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //info.Visible = false;
             Konfiguratsiya.Baza.OchistkaBD myForm = new Konfiguratsiya.Baza.OchistkaBD();
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
-            
             myForm.Show();
         }
 
@@ -99,44 +72,20 @@ namespace AutoMir2022
         {
             
             KlientFrm myForm = new KlientFrm();
-            //info.Visible = false;
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
             myForm.Show();
 
         }
-    public void openFrm(ref Form myForm)
-        {
-            
-        }
+   
 
         private void оптоваяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OptProdazha myForm = new OptProdazha();
-            //info.Visible = false;
-            //myForm.TopLevel = false;
-            //myForm.AutoScroll = true;
-            //myForm.FormBorderStyle = FormBorderStyle.None;
-            //this.panelData.Controls.Add(myForm);
             myForm.Show();
-
-        }
-
-        private void приходТоваровToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void администраторToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
         }
 
         private void добавитьИзБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             DobavitTovarIsBDForm.DobavitIsBD myform = new DobavitTovarIsBDForm.DobavitIsBD();
             myform.Show();
         }
@@ -201,6 +150,81 @@ namespace AutoMir2022
         {
             ProdavstiProtsent myform = new ProdavstiProtsent();
             myform.Show();
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+
+            EnabledMenuStripContents(menuStrip1, true);
+
+            
+
+        }
+
+        private void EnabledMenuStripContents(MenuStrip obj, bool enabled)
+        {
+            char[] spliter = { '_' };
+            DostupOgranichenie dostupOgranichenieObj = new DostupOgranichenie();
+            DataTable dt = dostupOgranichenieObj.GetDostupUser(userName.Text, userPassword.Text);
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Пользователь или пароль задан не правильно!");
+                userPassword.Text = null;
+            } else
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string[] enableItems = dr[0].ToString().Split(spliter);
+
+                    foreach (ToolStripMenuItem item in obj.Items)
+                    {
+                        if (enableItems.Contains(item.Name))
+                        {
+                            item.Enabled = enabled;
+                        }
+
+                        foreach (ToolStripMenuItem dropItem in item.DropDownItems)
+                        {
+                            if (enableItems.Contains(dropItem.Name))
+                            {
+                                dropItem.Enabled = enabled;
+                            }
+                        }
+                    
+                    }
+                    
+                }
+            }
+            
+
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            //Закривать все меню в Menustrip
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            { 
+                item.Enabled = false;
+                foreach (ToolStripMenuItem dropItem in item.DropDownItems)
+                {   
+                    dropItem.Enabled = false;
+                    
+                }
+            }
+            info.Text = "Добро пожаловать в систему управление учёта! Для начало работы входите в систему!";
+            
+            
+        }
+        private void доступПользователейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Dostup myform = new Dostup();
+            myform.Show();
+
+        }
+
+        private void bd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
