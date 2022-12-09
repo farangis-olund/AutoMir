@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Globalization;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers.RoznichProdazha;
 using Core.Controllers.OtmenaProdazhi;
@@ -24,7 +19,7 @@ namespace AutoMir2022
 
     {
         private RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-        private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+        //private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
         private Klient klientObj = new Klient();
         private Optoviy optoviyObj = new Optoviy();
         private Dolg dolgObj = new Dolg();
@@ -58,9 +53,9 @@ namespace AutoMir2022
         public void showAllTovar()
         {
             //dataGridView1.AutoGenerateColumns = true;
-            DataTable mydataTable = new DataTable();
-            mydataTable = roznProdazhaObj.Index();
-            //dataGridView1.DataSource = mydataTable;
+            //DataTable mydataTable = new DataTable();
+            //mydataTable = roznProdazhaObj.Index();
+            ////dataGridView1.DataSource = mydataTable;
 
             artikul.DisplayMember = "артикул";
             artikul.DataSource = optoviyObj.SelectAllArtikul();
@@ -139,7 +134,6 @@ namespace AutoMir2022
             //проверка на ошибки
             for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
             {
-
                 listArtikulKarzina3 = optoviyObj.getviborVariant(dataGridView2.Rows[i].Cells[variantvibor].Value.ToString(), GetUrovenTsena());
 
                 foreach (DataRow dr in listArtikulKarzina3.Rows)
@@ -241,10 +235,6 @@ namespace AutoMir2022
             {
                 roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
                 ochiskta();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
             }
 
            
@@ -416,11 +406,6 @@ namespace AutoMir2022
                 dataGridView1.DataSource = null;
                 dataGridView1.Rows.Clear();
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-
             
         }
 
@@ -728,11 +713,6 @@ namespace AutoMir2022
             return urovenTsena;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void rozntsena_CheckedChanged(object sender, EventArgs e)
         {
             if (rozntsena.Checked == true && dataGridView1.Rows.Count>0)
@@ -759,18 +739,9 @@ namespace AutoMir2022
             zakazDGV.DataSource = dolgObj.GetProdazhaDgv(kodKlienta.Text);
 
         }
-
-        private void zakazDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void zakazDGV_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-          
             chekZakaz.Enabled = true;
-
-
         }
 
         private void chekZakaz_Click(object sender, EventArgs e)
@@ -839,10 +810,6 @@ namespace AutoMir2022
             chekPlatezh.Enabled = true;
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
         Bitmap bmp;
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {

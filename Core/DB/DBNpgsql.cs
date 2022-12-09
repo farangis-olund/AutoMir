@@ -120,32 +120,32 @@ namespace Core.DB
             conn.Close();
         }
 
-        public void insertUpdateToDBDateParametr(string query, DateTime dataStart, DateTime dataEnd)
-        {
-            NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
-            NpgsqlCommand comm = new NpgsqlCommand();
+        //public void insertUpdateToDBDateParametr(string query, DateTime dataStart, DateTime dataEnd)
+        //{
+        //    NpgsqlConnection conn = new NpgsqlConnection(CONNECTION_STRING);
+        //    NpgsqlCommand comm = new NpgsqlCommand();
 
-            // Connect to a PostgreSQL database
-            conn.Open();
-            comm.Connection = conn;
-            comm.CommandType = CommandType.Text;
-            comm.CommandText = query;
-            comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
-            comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
+        //    // Connect to a PostgreSQL database
+        //    conn.Open();
+        //    comm.Connection = conn;
+        //    comm.CommandType = CommandType.Text;
+        //    comm.CommandText = query;
+        //    comm.Parameters.Add("dataStart", NpgsqlDbType.Date).Value = dataStart;
+        //    comm.Parameters.Add("dataEnd", NpgsqlDbType.Date).Value = dataEnd;
 
-            comm.ExecuteNonQuery();
-            try
-            {
+        //    comm.ExecuteNonQuery();
+        //    try
+        //    {
 
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка в запросе!");
-            }
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Ошибка в запросе!");
+        //    }
 
-            comm.Dispose();
-            conn.Close();
-        }
+        //    comm.Dispose();
+        //    conn.Close();
+        //}
 
         public void insertUpdateToDBbyArrayParametr(string query, string [,] array)
         {

@@ -107,9 +107,9 @@ namespace AutoMir2022
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.nakNomerTxb);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(27, 76);
+            this.groupBox1.Location = new System.Drawing.Point(27, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(627, 76);
+            this.groupBox1.Size = new System.Drawing.Size(627, 69);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             // 
@@ -163,10 +163,10 @@ namespace AutoMir2022
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AutoMir2022.Reports.ChekReportPeriod.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(33, 179);
+            this.reportViewer1.Location = new System.Drawing.Point(30, 141);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(782, 591);
+            this.reportViewer1.Size = new System.Drawing.Size(782, 486);
             this.reportViewer1.TabIndex = 9;
             this.reportViewer1.Visible = false;
             // 

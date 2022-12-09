@@ -42,6 +42,11 @@ namespace AutoMir2022
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.userDgv = new System.Windows.Forms.DataGridView();
+            this.vibor = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фио = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.пароль = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.opisanie = new System.Windows.Forms.RichTextBox();
@@ -52,11 +57,7 @@ namespace AutoMir2022
             this.user = new System.Windows.Forms.ComboBox();
             this.addUser = new System.Windows.Forms.Button();
             this.newUser = new System.Windows.Forms.Button();
-            this.vibor = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фио = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.пароль = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_пользователь = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addAll = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uslovieGruppiDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDgv)).BeginInit();
@@ -155,9 +156,9 @@ namespace AutoMir2022
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(15, 125);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 20);
+            this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Категории доступа";
+            this.label2.Text = "Категории";
             // 
             // label3
             // 
@@ -183,6 +184,40 @@ namespace AutoMir2022
             this.userDgv.Name = "userDgv";
             this.userDgv.Size = new System.Drawing.Size(592, 358);
             this.userDgv.TabIndex = 7;
+            // 
+            // vibor
+            // 
+            this.vibor.HeaderText = "";
+            this.vibor.Name = "vibor";
+            this.vibor.Width = 30;
+            // 
+            // пользователь
+            // 
+            this.пользователь.HeaderText = "пользователь";
+            this.пользователь.Name = "пользователь";
+            this.пользователь.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.пользователь.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.пользователь.Width = 200;
+            // 
+            // фио
+            // 
+            this.фио.HeaderText = "фио";
+            this.фио.Name = "фио";
+            this.фио.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.фио.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.фио.Width = 200;
+            // 
+            // пароль
+            // 
+            this.пароль.HeaderText = "пароль";
+            this.пароль.Name = "пароль";
+            this.пароль.Width = 200;
+            // 
+            // id_пользователь
+            // 
+            this.id_пользователь.HeaderText = "id_пользователь";
+            this.id_пользователь.Name = "id_пользователь";
+            this.id_пользователь.Visible = false;
             // 
             // name
             // 
@@ -220,9 +255,9 @@ namespace AutoMir2022
             // 
             // add_kategoria
             // 
-            this.add_kategoria.Location = new System.Drawing.Point(532, 120);
+            this.add_kategoria.Location = new System.Drawing.Point(575, 120);
             this.add_kategoria.Name = "add_kategoria";
-            this.add_kategoria.Size = new System.Drawing.Size(119, 30);
+            this.add_kategoria.Size = new System.Drawing.Size(76, 30);
             this.add_kategoria.TabIndex = 14;
             this.add_kategoria.Text = "Новый";
             this.add_kategoria.UseVisualStyleBackColor = true;
@@ -234,14 +269,14 @@ namespace AutoMir2022
             this.kategorii.DropDownWidth = 450;
             this.kategorii.FormattingEnabled = true;
             this.kategorii.IntegralHeight = false;
-            this.kategorii.Location = new System.Drawing.Point(176, 122);
+            this.kategorii.Location = new System.Drawing.Point(110, 122);
             this.kategorii.Name = "kategorii";
             this.kategorii.Size = new System.Drawing.Size(218, 28);
             this.kategorii.TabIndex = 15;
             // 
             // addToList
             // 
-            this.addToList.Location = new System.Drawing.Point(431, 120);
+            this.addToList.Location = new System.Drawing.Point(334, 120);
             this.addToList.Name = "addToList";
             this.addToList.Size = new System.Drawing.Size(95, 30);
             this.addToList.TabIndex = 16;
@@ -278,45 +313,22 @@ namespace AutoMir2022
             this.newUser.UseVisualStyleBackColor = true;
             this.newUser.Click += new System.EventHandler(this.newUser_Click);
             // 
-            // vibor
+            // addAll
             // 
-            this.vibor.HeaderText = "";
-            this.vibor.Name = "vibor";
-            this.vibor.Width = 30;
-            // 
-            // пользователь
-            // 
-            this.пользователь.HeaderText = "пользователь";
-            this.пользователь.Name = "пользователь";
-            this.пользователь.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.пользователь.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.пользователь.Width = 200;
-            // 
-            // фио
-            // 
-            this.фио.HeaderText = "фио";
-            this.фио.Name = "фио";
-            this.фио.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.фио.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.фио.Width = 200;
-            // 
-            // пароль
-            // 
-            this.пароль.HeaderText = "пароль";
-            this.пароль.Name = "пароль";
-            this.пароль.Width = 200;
-            // 
-            // id_пользователь
-            // 
-            this.id_пользователь.HeaderText = "id_пользователь";
-            this.id_пользователь.Name = "id_пользователь";
-            this.id_пользователь.Visible = false;
+            this.addAll.Location = new System.Drawing.Point(435, 120);
+            this.addAll.Name = "addAll";
+            this.addAll.Size = new System.Drawing.Size(134, 30);
+            this.addAll.TabIndex = 20;
+            this.addAll.Text = "Добавить всё";
+            this.addAll.UseVisualStyleBackColor = true;
+            this.addAll.Click += new System.EventHandler(this.addAll_Click);
             // 
             // Dostup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1256, 523);
+            this.Controls.Add(this.addAll);
             this.Controls.Add(this.newUser);
             this.Controls.Add(this.addUser);
             this.Controls.Add(this.user);
@@ -376,5 +388,6 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn фио;
         private System.Windows.Forms.DataGridViewTextBoxColumn пароль;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_пользователь;
+        private System.Windows.Forms.Button addAll;
     }
 }

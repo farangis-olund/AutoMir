@@ -40,7 +40,8 @@ namespace AutoMir2022
             string dateString = "";
             string dataStart = startPeriod.Value.ToString("dd.MM.yyyy");
             string dataEnd = endPeriod.Value.ToString("dd.MM.yyyy");
-            int b = 0; 
+            int b = 0;
+           
             //отчет о возврате
             if (date.Text != "" && vozvrat.Checked == true)
             {

@@ -222,9 +222,13 @@ namespace AutoMir2022
 
         }
 
-        private void bd_Click(object sender, EventArgs e)
-        {
 
+        private void userPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+               loginButton.PerformClick();
+            }
         }
     }
 }

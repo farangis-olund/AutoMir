@@ -108,7 +108,7 @@ namespace AutoMir2022
             this.loginButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.loginButton.Location = new System.Drawing.Point(116, 147);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(87, 29);
+            this.loginButton.Size = new System.Drawing.Size(87, 39);
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Вход";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -144,6 +144,7 @@ namespace AutoMir2022
             this.userPassword.Size = new System.Drawing.Size(194, 33);
             this.userPassword.TabIndex = 2;
             this.userPassword.UseSystemPasswordChar = true;
+            this.userPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userPassword_KeyPress);
             // 
             // userName
             // 

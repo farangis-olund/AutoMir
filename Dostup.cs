@@ -235,5 +235,25 @@ namespace AutoMir2022
                     MessageBox.Show("Название не может быть пустой!");
             }
         }
+
+        private void addAll_Click(object sender, EventArgs e)
+        {
+            DataTable datatable= dostupObj.GetAllKategoriaDostupa();
+            for (int i=0; i < datatable.Rows.Count;i++)
+            {
+                dostupObj.InsertKategoriaToDostupPolzovatey(datatable.Rows[i][0].ToString(), Convert.ToInt32(id_gruppa.Text));
+                DataTable dt = dostupObj.GetKategoriaDostupaByNameKategorii(datatable.Rows[i][0].ToString(), Convert.ToInt32(id_gruppa.Text));
+                int index = uslovieGruppiDgv.Rows.Add();
+                foreach (DataRow dr in dt.Rows)
+                {
+                    uslovieGruppiDgv.Rows[index].Cells[0].Value = true;
+                    uslovieGruppiDgv.Rows[index].Cells["id_категория"].Value = dr["id_категория"];
+                    uslovieGruppiDgv.Rows[index].Cells["название_категории"].Value = dr["название_категории"];
+                    uslovieGruppiDgv.Rows[index].Cells["контроль"].Value = dr["контроль"];
+
+                }
+            }
+            
+        }
     }
 }

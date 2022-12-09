@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutoMir2022.Properties {
+namespace My.Resources {
     using System;
     
     

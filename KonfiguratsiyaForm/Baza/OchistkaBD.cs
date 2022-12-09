@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Core.Controllers.OchistkaBazi;
 
@@ -27,13 +20,15 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             {
                 if (vozvrat.Checked == true)
                 {
-                    ochistkaBaziObj.DeleteRowsInTable(vozvrat.Text);
-                    ochistkaBaziObj.RestartIdColumn(vozvrat.Text, "код_возврата");
+                    ochistkaBaziObj.DeleteRowsInTableWithCascade("возврат");
+                    
+                    ochistkaBaziObj.RestartIdColumn("возврат", "код_возврата");
                 }
                 if (prodazha.Checked == true)
                 {
-                    ochistkaBaziObj.DeleteRowsInTable("продажа");
+                    ochistkaBaziObj.DeleteRowsInTableWithCascade("продажа");
                     ochistkaBaziObj.RestartIdColumn("продажа", "кодпродажи");
+                    
                 }
 
                 if (proshVozvrat.Checked == true)
@@ -60,7 +55,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
                 if (otmenaProdazhi.Checked == true)
                 {
                     ochistkaBaziObj.DeleteRowsInTable("отмена_продажи");
-                    ochistkaBaziObj.RestartIdColumn("отмена_продажи", "код_отмени");
+                    //ochistkaBaziObj.RestartIdColumn("отмена_продажи", "код_отмена");
 
                 }
                 if (bonusi.Checked == true)

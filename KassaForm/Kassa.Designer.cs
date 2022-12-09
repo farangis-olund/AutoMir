@@ -51,7 +51,6 @@ namespace AutoMir2022
             this.vozvrat = new System.Windows.Forms.Button();
             this.otmena = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.Close = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prodazhaDGV)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -137,7 +136,7 @@ namespace AutoMir2022
             this.prodazhaDGV.Location = new System.Drawing.Point(11, 126);
             this.prodazhaDGV.Name = "prodazhaDGV";
             this.prodazhaDGV.ReadOnly = true;
-            this.prodazhaDGV.Size = new System.Drawing.Size(672, 305);
+            this.prodazhaDGV.Size = new System.Drawing.Size(672, 375);
             this.prodazhaDGV.TabIndex = 6;
             // 
             // date
@@ -237,7 +236,7 @@ namespace AutoMir2022
             // prodazha
             // 
             this.prodazha.BackColor = System.Drawing.SystemColors.Info;
-            this.prodazha.Location = new System.Drawing.Point(13, 85);
+            this.prodazha.Location = new System.Drawing.Point(13, 22);
             this.prodazha.Name = "prodazha";
             this.prodazha.Size = new System.Drawing.Size(231, 49);
             this.prodazha.TabIndex = 10;
@@ -248,7 +247,7 @@ namespace AutoMir2022
             // vozvrat
             // 
             this.vozvrat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.vozvrat.Location = new System.Drawing.Point(250, 85);
+            this.vozvrat.Location = new System.Drawing.Point(250, 22);
             this.vozvrat.Name = "vozvrat";
             this.vozvrat.Size = new System.Drawing.Size(233, 49);
             this.vozvrat.TabIndex = 11;
@@ -259,7 +258,7 @@ namespace AutoMir2022
             // otmena
             // 
             this.otmena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.otmena.Location = new System.Drawing.Point(492, 85);
+            this.otmena.Location = new System.Drawing.Point(492, 22);
             this.otmena.Name = "otmena";
             this.otmena.Size = new System.Drawing.Size(219, 49);
             this.otmena.TabIndex = 12;
@@ -275,29 +274,18 @@ namespace AutoMir2022
             this.groupBox3.Controls.Add(this.prodazhaData);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 151);
+            this.groupBox3.Location = new System.Drawing.Point(12, 88);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(699, 445);
+            this.groupBox3.Size = new System.Drawing.Size(699, 507);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Visible = false;
-            // 
-            // Close
-            // 
-            this.Close.Location = new System.Drawing.Point(591, 19);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(119, 37);
-            this.Close.TabIndex = 14;
-            this.Close.Text = "Закрыть";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
             // 
             // Kassa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 607);
-            this.Controls.Add(this.Close);
             this.Controls.Add(this.otmena);
             this.Controls.Add(this.vozvrat);
             this.Controls.Add(this.prodazha);
@@ -305,6 +293,7 @@ namespace AutoMir2022
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Kassa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Касса";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -340,6 +329,5 @@ namespace AutoMir2022
         private System.Windows.Forms.Button vozvrat;
         private System.Windows.Forms.Button otmena;
         private System.Windows.Forms.GroupBox groupBox3;
-        private new System.Windows.Forms.Button Close;
     }
 }

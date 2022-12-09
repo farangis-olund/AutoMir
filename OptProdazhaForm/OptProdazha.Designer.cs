@@ -1036,7 +1036,6 @@ namespace AutoMir2022
             this.label10.Size = new System.Drawing.Size(69, 23);
             this.label10.TabIndex = 0;
             this.label10.Text = "Заказы:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // groupBox4
             // 
@@ -1126,7 +1125,6 @@ namespace AutoMir2022
             this.zakazDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.zakazDGV.Size = new System.Drawing.Size(353, 272);
             this.zakazDGV.TabIndex = 4;
-           this.zakazDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.zakazDGV_CellEndEdit);
             this.zakazDGV.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.zakazDGV_MouseDoubleClick);
             // 
             // itogi
@@ -1160,7 +1158,6 @@ namespace AutoMir2022
             this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
             this.printPreviewDialog1.Document = this.printDocument1;
             this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.ShowIcon = false;
             this.printPreviewDialog1.Visible = false;
