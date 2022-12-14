@@ -735,8 +735,23 @@ namespace AutoMir2022
             itogoPlatezh.Text = platezh.ToString("0.00");
             ostatok.Text = (prodazha + zadolzhnost - platezh).ToString("0.00");
 
-            platezhDGV.DataSource = dolgObj.GetPlatezhDgv(kodKlienta.Text);
-            zakazDGV.DataSource = dolgObj.GetProdazhaDgv(kodKlienta.Text);
+            //если категория указывает отчет только для текущего то в датагриде показываем за текущей день 
+
+            DataRow[] rows = MainMenu.userKategori.Select($"{"контроль"} LIKE '%{"OptProdazha_platezhi_zakazDGV_platezhiDGV_currentDate"}%'");
+
+            // Check if any rows were found
+            if (rows.Length > 0)
+            {
+                platezhDGV.DataSource = dolgObj.GetPlatezhDgvCurrentDate(kodKlienta.Text);
+                zakazDGV.DataSource = dolgObj.GetProdazhaDgvCurrentDate(kodKlienta.Text);
+            }
+            else
+            {
+                platezhDGV.DataSource = dolgObj.GetPlatezhDgv(kodKlienta.Text);
+                zakazDGV.DataSource = dolgObj.GetProdazhaDgv(kodKlienta.Text);
+
+            }
+
 
         }
         private void zakazDGV_MouseDoubleClick(object sender, MouseEventArgs e)

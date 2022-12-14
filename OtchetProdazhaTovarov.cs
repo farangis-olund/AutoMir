@@ -21,8 +21,60 @@ namespace AutoMir2022
             InitializeComponent();
         }
 
+        private void EnabledCloseRadioButton(Panel panel)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control is RadioButton)
+                {
+                    RadioButton radioButton = (RadioButton)control;
+                    // perform operations on the radio button here
+                    radioButton.Enabled = false;
+                }
+            }
+
+
+
+        }
+
+        private void EnabledRadioButton(Panel panel, bool enabled)
+        {
+            char[] spliter = { '_' };
+            foreach (DataRow dr in MainMenu.userKategori.Rows)
+            {
+                string[] enableItems = dr[0].ToString().Split(spliter);
+
+                foreach (RadioButton radioButton in panel.Controls.OfType<RadioButton>())
+                {
+                    // perform operations on the radio button here
+                    if (enableItems.Contains(radioButton.Name))
+                    {
+                        radioButton.Enabled = enabled;
+                    }
+                }
+            }
+        }
+
         private void OtchetProdazhaTovarov_Load(object sender, EventArgs e)
         {
+            //закрываем все радиобаттаны
+
+
+
+            EnabledCloseRadioButton(panel1);
+            //если категории для какойто опции открыт для текушего пользователя
+            //то открываем доступ 
+            EnabledRadioButton(panel1, true);
+            //если категория пользователя только для распечатки текущего дня то закрываем выбор даты
+            DataRow[] rows = MainMenu.userKategori.Select($"{"контроль"} LIKE '%{"OtchetProdazhaTovarov_startDate_endDate_currentDate"}%'");
+
+            // Check if any rows were found
+            if (rows.Length > 0)
+            {
+                startData.Enabled = false;
+                endData.Enabled = false;
+            }
+
             prosentOpt.Text = prodazhaItogObj.GetProtsent().Item2.ToString();
             protsentRozn.Text = prodazhaItogObj.GetProtsent().Item1.ToString();
             this.reportViewer1.RefreshReport();
@@ -185,11 +237,20 @@ namespace AutoMir2022
                     goto endProcess;
                 }
             }
+            else
+            {
+                MessageBox.Show("Не указан вид отчета!");
+                goto endProcess;
+            }
 
 
             rp.reportVeiwerPrint(ref this.reportViewer1, reportName, parametr, reportDataSet, dt, "no");
             
         endProcess: { }
         }
+
+
+        
+
     }
 }

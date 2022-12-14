@@ -16,9 +16,14 @@ namespace AutoMir2022
         RasprodazhaBonus rasprodazhaBonusObj = new RasprodazhaBonus();
         private void Rasprodazha_Load(object sender, EventArgs e)
         {
-            dateLabel.Text = Convert.ToDateTime(rasprodazhaBonusObj.GetBonusInfo().Rows[0][0]).ToString("dd.MM.yyyy");
-            protsBonusa.Text= rasprodazhaBonusObj.GetBonusInfo().Rows[0][1].ToString();
-            this.reportViewer1.RefreshReport();
+            DataTable dt = rasprodazhaBonusObj.GetBonusInfo();
+            if (dt.Rows.Count > 0)
+            {
+                dateLabel.Text = Convert.ToDateTime(dt.Rows[0][0]).ToString("dd.MM.yyyy");
+                protsBonusa.Text = dt.Rows[0][1].ToString();
+                this.reportViewer1.RefreshReport();
+            }
+            
              
         }
 

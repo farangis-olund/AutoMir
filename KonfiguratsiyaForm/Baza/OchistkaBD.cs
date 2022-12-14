@@ -76,6 +76,12 @@ namespace AutoMir2022.Konfiguratsiya.Baza
                   
                 }
 
+                if (raskhodi.Checked == true)
+                {
+                    ochistkaBaziObj.DeleteRowsInTable("расходы");
+
+                }
+
                 MessageBox.Show("Данные таблицы успешно удалены!");
             }
             else if (dialogResult == DialogResult.No)
@@ -163,6 +169,13 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             }
         }
 
+        private void raskhodi_Click(object sender, EventArgs e)
+        {
+            if (bonusi.Checked == true)
+            {
+                dataGridView1.DataSource = ochistkaBaziObj.ProsmotrTable("расходы");
+            }
+        }
         private void checkBox4_Click(object sender, EventArgs e)
         {
             if (checkBox4.Checked == true)
@@ -177,6 +190,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
                 otmenaProdazhi.Checked = true;
                 platezhi.Checked = true;
                 rasprodazha.Checked = true;
+                raskhodi.Checked = true;
 
             }
             else
@@ -191,6 +205,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
                 otmenaProdazhi.Checked = false;
                 platezhi.Checked = false;
                 rasprodazha.Checked = false;
+                raskhodi.Checked = false;
             }
         }
 

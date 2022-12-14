@@ -18,6 +18,9 @@ namespace AutoMir2022
     public partial class MainMenu : Form
     {
         public string userGroup;
+        public static string user;
+        public static string password;
+        public static DataTable userKategori;
         public MainMenu()
         {
        
@@ -130,7 +133,9 @@ namespace AutoMir2022
         private void оПродажеТовараToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OtchetProdazhaTovarov myform = new OtchetProdazhaTovarov();
+          
             myform.Show();
+            
         }
 
         private void долгиКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,27 +159,40 @@ namespace AutoMir2022
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            //Закривать все меню в Menustrip
+            foreach (ToolStripMenuItem item in menuStrip1.Items)
+            {
+                item.Enabled = false;
+                foreach (ToolStripMenuItem dropItem in item.DropDownItems)
+                {
+                    dropItem.Enabled = false;
 
+                }
+            }
+
+            user = userName.Text;
+            password = userPassword.Text;
             EnabledMenuStripContents(menuStrip1, true);
 
             
 
         }
-
+        
         private void EnabledMenuStripContents(MenuStrip obj, bool enabled)
         {
             char[] spliter = { '_' };
             DostupOgranichenie dostupOgranichenieObj = new DostupOgranichenie();
-            DataTable dt = dostupOgranichenieObj.GetDostupUser(userName.Text, userPassword.Text);
-            if (dt.Rows.Count == 0)
+            userKategori = dostupOgranichenieObj.GetDostupUser(userName.Text, userPassword.Text);
+            if (userKategori.Rows.Count == 0)
             {
                 MessageBox.Show("Пользователь или пароль задан не правильно!");
                 userPassword.Text = null;
             } else
             {
-                foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in userKategori.Rows)
                 {
-                    string[] enableItems = dr[0].ToString().Split(spliter);
+                    
+                   string [] enableItems = dr[0].ToString().Split(spliter);
 
                     foreach (ToolStripMenuItem item in obj.Items)
                     {
@@ -199,20 +217,21 @@ namespace AutoMir2022
 
         }
 
+        
         private void MainMenu_Load(object sender, EventArgs e)
         {
             //Закривать все меню в Menustrip
             foreach (ToolStripMenuItem item in menuStrip1.Items)
-            { 
+            {
                 item.Enabled = false;
                 foreach (ToolStripMenuItem dropItem in item.DropDownItems)
-                {   
+                {
                     dropItem.Enabled = false;
-                    
+
                 }
             }
             info.Text = "Добро пожаловать в систему управление учёта! Для начало работы входите в систему!";
-            
+
             
         }
         private void доступПользователейToolStripMenuItem_Click(object sender, EventArgs e)

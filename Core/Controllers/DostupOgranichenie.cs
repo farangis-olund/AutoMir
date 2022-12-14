@@ -72,7 +72,7 @@ namespace Core.Controllers
 
         public DataTable GetGruppaDostupa()
         {
-            return db.GetByQuery("Select DISTINCT dg.название FROM public.доступ_пользователей dp, public.доступ_группа dg WHERE dp.id_доступа=dg.id_доступа ORDER BY dg.название ASC");
+            return db.GetByQuery("Select DISTINCT название FROM public.доступ_группа ORDER BY название ASC");
         }
 
 
@@ -84,9 +84,14 @@ namespace Core.Controllers
 
         public DataTable GetGruppaDostupaByName(string name)
         {
+
             return db.GetByQuery("Select dg.id_доступа, dg.описание_группы FROM " +
-                "public.доступ_пользователей dp, public.доступ_группа dg " +
-                "WHERE dp.id_доступа=dg.id_доступа AND dg.название='" + name + "' ORDER BY dg.название ASC");
+                "public.доступ_группа dg " +
+                "WHERE dg.название='" + name + "'");
+
+            //return db.GetByQuery("Select dg.id_доступа, dg.описание_группы FROM " +
+            //    "public.доступ_пользователей dp, public.доступ_группа dg " +
+            //    "WHERE dp.id_доступа=dg.id_доступа AND dg.название='" + name + "' ORDER BY dg.название ASC");
         }
 
         public DataTable GetAllKategoriaDostupa()
@@ -160,6 +165,7 @@ namespace Core.Controllers
                 "AND dp.id_доступа='" + id_dostupa + "' LIMIT 1)");
             return Convert.ToBoolean(dt.Rows[0][0].ToString());
         }
+
         
 
 

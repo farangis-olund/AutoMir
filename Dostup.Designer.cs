@@ -265,6 +265,8 @@ namespace AutoMir2022
             // 
             // kategorii
             // 
+            this.kategorii.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.kategorii.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
             this.kategorii.DropDownHeight = 200;
             this.kategorii.DropDownWidth = 450;
             this.kategorii.FormattingEnabled = true;

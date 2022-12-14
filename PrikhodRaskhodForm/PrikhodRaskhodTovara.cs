@@ -45,9 +45,9 @@ namespace AutoMir2022
 
        
 
-        private void PrikhodRaskhodUpdate(string prikhodRaskhod)
+        private void PrikhodRaskhodUpdate(string prikhodRaskhod, string filePath)
         {
-            DataTable dt= report.OpenFile(ref ofd);
+            DataTable dt= report.OpenFile(/*ref ofd*/filePath);
             int countTovar = 0;
             if (dt.Rows.Count!=0)
             {
@@ -55,7 +55,6 @@ namespace AutoMir2022
                 spisokIzmeneniyDGV.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
-
                     if (tovarObj.IsTovarExist(dr[0].ToString()) == true)
                     {
 
@@ -91,11 +90,13 @@ namespace AutoMir2022
                 tovarObj.InsertPrikhodTovara(countTovar);
                 MessageBox.Show("Приход товара завершен!");
             }
-            else
+            else if (countTovar != 0 && prikhodRaskhod == "raskhod")
             {
                 tovarObj.InsertPrikhodTovara(countTovar);
                 MessageBox.Show("Погащение долга завершен!");
             }
+            else 
+                MessageBox.Show("Файл не указан!");
         }
 
         private void artikul_SelectionChangeCommitted(object sender, EventArgs e)
@@ -146,17 +147,21 @@ namespace AutoMir2022
                 {
                     MessageBox.Show("Количество указан неправильном формате!"); 
                 }
-            
+                kolIzmeneniy.Text = null;
             }
         endProcess: { }
-            kolIzmeneniy.Text = null;
+            
         }
 
         private void prikhod_Click(object sender, EventArgs e)
         {
             if (tovarObj.IsPrikhodExist(dateVibor.Value) == false)
             {
-                PrikhodRaskhodUpdate("prikhod");
+                string orgKod = org.org_kod;
+                string date = dateVibor.Value.ToString("dd.MM.yyyy");
+                string filePath = org.importPath + "Новый товар " + orgKod + " " + date + ".xlsx";
+
+                PrikhodRaskhodUpdate("prikhod", filePath);
             }
             else MessageBox.Show("На эту дату приход товара оформлен!");
         }
@@ -165,7 +170,11 @@ namespace AutoMir2022
         {
             if (tovarObj.IsRaskhodExist(dateVibor.Value) == false)
             {
-                PrikhodRaskhodUpdate("raskhod");
+                string orgKod = org.org_kod;
+                string date = dateVibor.Value.ToString("dd.MM.yyyy");
+                string filePath = org.importPath + orgKod + "_" + date + "_долг.xlsx";
+
+                PrikhodRaskhodUpdate("raskhod", filePath);
             }
             else MessageBox.Show("На эту дату погащение долга оформлен!");
         }

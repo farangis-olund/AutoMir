@@ -16,6 +16,7 @@ namespace Core.Reports.ReportPrint
         public void reportVeiwerPrint(ref ReportViewer reportViewer, string reportName, string [,] parametrs, string dataset, DataTable dt, string printYesNo)
         {
 
+            
             reportViewer.Reset();
             reportViewer.LocalReport.DataSources.Clear();
 
@@ -105,14 +106,14 @@ namespace Core.Reports.ReportPrint
 
         }
 
-        public DataTable OpenFile(ref OpenFileDialog ofd)
+        public DataTable OpenFile(/*ref OpenFileDialog ofd,*/ string sFileName)
         { DataTable dt = new DataTable();
-            ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string sFileName = ofd.FileName;
-                dt = LoadData(sFileName, "Sheet1");
-            }
+            //ofd.Filter = "Excel Worksheets|*.xls; *.xlsx";
+            //if (ofd.ShowDialog() == DialogResult.OK)
+            //{
+            //    string sFileName = ofd.FileName;
+            dt = LoadData(sFileName, "Sheet1");
+            //}
             return dt;
         }
             public DataTable LoadData(string FileName, string SheetName)

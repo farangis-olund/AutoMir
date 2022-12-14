@@ -23,8 +23,50 @@ namespace AutoMir2022
         private Tovar tovarObj = new Tovar();
         private OtchetOstatokTovar OtchetOstatokTovarObj = new OtchetOstatokTovar();
 
+        private void EnabledCloseRadioButton(Panel panel)
+        {
+            foreach (Control control in panel.Controls)
+            {
+                if (control is RadioButton)
+                {
+                    RadioButton radioButton = (RadioButton)control;
+                    // perform operations on the radio button here
+                    radioButton.Enabled = false;
+                }
+            }
+
+
+
+        }
+
+        private void EnabledRadioButton(Panel panel, bool enabled)
+        {
+            char[] spliter = { '_' };
+            foreach (DataRow dr in MainMenu.userKategori.Rows)
+            {
+                string[] enableItems = dr[0].ToString().Split(spliter);
+
+                foreach (RadioButton radioButton in panel.Controls.OfType<RadioButton>())
+                {
+                    // perform operations on the radio button here
+                    if (enableItems.Contains(radioButton.Name))
+                    {
+                        radioButton.Enabled = enabled;
+                    }
+                }
+            }
+        }
+
+
+
         private void OtchetOstatokTovarov_Load(object sender, EventArgs e)
         {
+            EnabledCloseRadioButton(panel1);
+            //если категории для какойто опции открыт для текушего пользователя
+            //то открываем доступ 
+            EnabledRadioButton(panel1, true);
+
+
             vozvrat.Checked = false;
             this.reportViewer1.RefreshReport();
         }
@@ -115,6 +157,10 @@ namespace AutoMir2022
                 reportName = "SpisokTovarov";
                 dateString = "date";
 
+            } else
+            {
+                MessageBox.Show("Вид отчета не указан!");
+                goto endProcess;
             }
 
             OrgInfo org = new OrgInfo();

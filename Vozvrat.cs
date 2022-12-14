@@ -71,27 +71,24 @@ namespace AutoMir2022
 
         public void show_all()
         {
-            nakladnoyNaitiCmb.DisplayMember = "накладной_текст";
             nakladnoyNaitiCmb.DataSource = vozvratObj.SelectNomerNakladnoy();
+            nakladnoyNaitiCmb.DisplayMember = "накладной_текст";
             nakladnoyNaitiCmb.Text = "";
 
-            nakladnoyVozvratCmb.DisplayMember = "накладной_текст";
             nakladnoyVozvratCmb.DataSource = vozvratObj.SelectNomerNakladnoy();
+            nakladnoyVozvratCmb.DisplayMember = "накладной_текст";
             nakladnoyVozvratCmb.Text = "";
-
-
-            kodKlientaNaitiCmb.DisplayMember = "код_клиента";
             
             kodKlientaNaitiCmb.DataSource = vozvratObj.SelectKodKlienta();
+            kodKlientaNaitiCmb.DisplayMember = "код_клиента";
             kodKlientaNaitiCmb.Text = "";
 
-            kodKlientaProzhCmb.DisplayMember = "код_клиента";
-
             kodKlientaProzhCmb.DataSource = vozvratObj.SelectAllKodKlienta();
+            kodKlientaProzhCmb.DisplayMember = "код_клиента";
             kodKlientaProzhCmb.Text = "";
 
-            artikulCmb.DisplayMember = "артикул";
             artikulCmb.DataSource = vozvratObj.SelectArtikul();
+            artikulCmb.DisplayMember = "артикул";
             artikulCmb.Text = "";
 
             show_all_dataDGV.Visible = false;

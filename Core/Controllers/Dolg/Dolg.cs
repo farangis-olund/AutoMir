@@ -192,5 +192,18 @@ namespace Core.Controllers.Dolg
                                          "WHERE код_клиента='" + kodKlienta + "' ORDER BY дата DESC");
         }
 
+
+        public DataTable GetProdazhaDgvCurrentDate(string kodKlienta)
+        {
+            return db.GetByParametrDate("Select p.дата, p.накладной_текст, Sum(pt.количество*pt.цена) as сумма FROM public.продажа p, public.продажа_товара pt " +
+                                       "WHERE pt.кодпродажи=p.кодпродажи AND p.дата=@data AND p.код_клиента='" + kodKlienta + "' GROUP BY p.дата, p.накладной_текст ORDER BY p.дата DESC","data");
+        }
+
+
+        public DataTable GetPlatezhDgvCurrentDate(string kodKlienta)
+        {
+            return db.GetByParametrDate("Select дата, №_платежа, сумма_платежа FROM public.платежи " +
+                                         "WHERE код_клиента='" + kodKlienta + "' AND дата=@data ORDER BY дата DESC", "data");
+        }
     }
 }

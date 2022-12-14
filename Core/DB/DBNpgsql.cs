@@ -70,8 +70,7 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
-            try
-            {
+            
                 comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = Convert.ToDateTime(DateTime.Now.ToString("dd.MM.yyyy"));
 
                 NpgsqlDataReader dr = comm.ExecuteReader();
@@ -79,6 +78,9 @@ namespace Core.DB
                 {
                     dataTable.Load(dr);
                 }
+            try
+            {
+
             }
             catch
             {
@@ -284,11 +286,12 @@ namespace Core.DB
             comm.Connection = conn;
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
+            comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = date;
+            comm.ExecuteNonQuery();
+
             try
             {
-                comm.Parameters.Add(parametr, NpgsqlDbType.Date).Value = date;
-                comm.ExecuteNonQuery();
-
+            
             }
             catch
             {
@@ -495,15 +498,17 @@ namespace Core.DB
             comm.CommandType = CommandType.Text;
             comm.CommandText = query;
             comm.Parameters.Add("data", NpgsqlDbType.Date).Value = data;
+            NpgsqlDataReader dr = comm.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dataTable.Load(dr);
+            }
+
+
 
             try
             {
-                NpgsqlDataReader dr = comm.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    dataTable.Load(dr);
-                }
-
+            
             }
             catch
             {

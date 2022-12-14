@@ -20,7 +20,9 @@ namespace Core.Controllers
             using (XLWorkbook workBook=new XLWorkbook())
             {
                 string excelFilePath=exportPath + org_kod + "_" + date + ".xlsx";
-                var ws = workBook.Worksheets.Add(dt, "Sklad");
+                dt.Columns[0].ColumnName = "артикул";
+                dt.Columns[1].ColumnName = "количество";
+                var ws = workBook.Worksheets.Add(dt, "Лист1");
                 ws.Cells().Style.Fill.BackgroundColor= XLColor.White;
                 ws.Cells().Style.Font.FontColor = XLColor.White;
                 ws.Protect("1234");

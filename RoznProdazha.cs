@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers.RoznichProdazha;
 using Core.Controllers.OtmenaProdazhi;
-
 using Core.DB;
-using Microsoft.Reporting.WinForms;
-using System.IO;
-using System.Drawing.Printing;
 using Core.Controllers.ProverkaNaOshibku;
 using Core.Controllers;
 

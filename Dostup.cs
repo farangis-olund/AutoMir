@@ -59,6 +59,12 @@ namespace AutoMir2022
            if (name.Text != "")
             {
                 DataTable dt = dostupObj.GetGruppaDostupaByName(name.Text);
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Данная группа не существует, создайте группа, а затем добавьте категории!");
+                    goto endProcess;
+
+                }
                 id_gruppa.Text = dt.Rows[0][0].ToString();
                 opisanie.Text = dt.Rows[0][1].ToString();
                 dt = dostupObj.GetKategoriaDostupa(Convert.ToInt32(id_gruppa.Text));
@@ -84,7 +90,7 @@ namespace AutoMir2022
 
             }
             
-             
+             endProcess: { }
         }
 
         private void create_Click(object sender, EventArgs e)
@@ -144,6 +150,12 @@ namespace AutoMir2022
 
         private void add_kategoria_Click(object sender, EventArgs e)
         {
+            if (id_gruppa.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
+                goto endProcess;
+            }
+
             InputBox inputBoxObj = new InputBox();
             string value = "";
             if (inputBoxObj.GetInputBox("Создать категорию для выбранной группе доступа", "Введите название категории:", ref value) == DialogResult.OK)
@@ -167,10 +179,17 @@ namespace AutoMir2022
                 else
                     MessageBox.Show("Название не может быть пустой!");
             }
+        endProcess: { }
         }
 
         private void addToList_Click(object sender, EventArgs e)
         {
+            if (id_gruppa.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
+                goto endProcess;
+            }
+            
             if (dostupObj.IsKategoriExist(kategorii.Text, Convert.ToInt32(id_gruppa.Text))==true)
             {
                 MessageBox.Show("Категория уже имеется в данной группе ограничений!");
@@ -189,11 +208,17 @@ namespace AutoMir2022
                     
                 }
             }
-            
+            endProcess:{  }
         }
 
         private void addUser_Click(object sender, EventArgs e)
         {
+            if (id_gruppa.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
+                goto endProcess;
+            }
+
             dostupObj.UpdateUserAddDostup(Convert.ToInt32(id_gruppa.Text), user.Text);
             DataTable dt = dostupObj.GetUserByFio(Convert.ToInt32(id_gruppa.Text), user.Text);
             
@@ -206,11 +231,17 @@ namespace AutoMir2022
                 userDgv.Rows[index].Cells["id_пользователь"].Value = dr["id_пользователь"];
                 userDgv.Rows[index].Cells["пароль"].Value = dr["пароль"];
             }
-            
+        endProcess: { }
         }
 
         private void newUser_Click(object sender, EventArgs e)
         {
+            if (id_gruppa.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
+                goto endProcess;
+            }
+
             InputBox inputBoxObj = new InputBox();
             string value = "";
             if (inputBoxObj.GetInputBox("Добавить пользователя", "Введите фио пользователя:", ref value) == DialogResult.OK)
@@ -234,10 +265,17 @@ namespace AutoMir2022
                 else
                     MessageBox.Show("Название не может быть пустой!");
             }
+        endProcess: { }
         }
 
         private void addAll_Click(object sender, EventArgs e)
         {
+            if (id_gruppa.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
+                goto endProcess;
+            }
+
             DataTable datatable= dostupObj.GetAllKategoriaDostupa();
             for (int i=0; i < datatable.Rows.Count;i++)
             {
@@ -253,7 +291,7 @@ namespace AutoMir2022
 
                 }
             }
-            
+        endProcess: { }
         }
     }
 }

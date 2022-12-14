@@ -43,6 +43,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             this.prodazha = new System.Windows.Forms.CheckBox();
             this.ochistka = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.raskhodi = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +62,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.raskhodi);
             this.groupBox1.Controls.Add(this.rasprodazha);
             this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.prikhodTovara);
@@ -223,6 +225,18 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             this.dataGridView1.Size = new System.Drawing.Size(785, 592);
             this.dataGridView1.TabIndex = 3;
             // 
+            // raskhodi
+            // 
+            this.raskhodi.AutoSize = true;
+            this.raskhodi.Location = new System.Drawing.Point(17, 413);
+            this.raskhodi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.raskhodi.Name = "raskhodi";
+            this.raskhodi.Size = new System.Drawing.Size(93, 24);
+            this.raskhodi.TabIndex = 16;
+            this.raskhodi.Text = "Расходы";
+            this.raskhodi.UseVisualStyleBackColor = true;
+            this.raskhodi.Click += new System.EventHandler(this.raskhodi_Click);
+            // 
             // OchistkaBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -258,5 +272,6 @@ namespace AutoMir2022.Konfiguratsiya.Baza
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox rasprodazha;
+        private System.Windows.Forms.CheckBox raskhodi;
     }
 }

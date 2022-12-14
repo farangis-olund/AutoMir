@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Core.Controllers;
 using Core.Controllers.Chek;
 using Core.Controllers.RoznichProdazha;
 using Microsoft.Reporting.WinForms;
@@ -70,13 +71,32 @@ namespace AutoMir2022
             DataTable dt = chekObj.GetByParametrDate(DateTime.Parse(dataStart), DateTime.Parse(dataEnd));
 
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DtReportPeriod", dt));
-            
-            //report.SetParameters(parms);
-            
 
+           
+            char[] spliter = { '_' };
             this.reportViewer1.RefreshReport();
-            reportViewer1.Visible = true;
+            //получаем категории доступа для пользовательских ограничений
 
+            //DostupOgranichenie dostupOgranichenieObj = new DostupOgranichenie();
+            //DataTable userKategori = dostupOgranichenieObj.GetDostupUser(MainMenu.user, MainMenu.password);
+
+            //    foreach (DataRow dr in userKategori.Rows)
+            //    {
+
+            //        string[] enableItems = dr[0].ToString().Split(spliter);
+
+            DataRow[] rows = MainMenu.userKategori.Select($"{"контроль"} LIKE '%{"ChekFrm_reportView1_enable_true"}%'");
+
+            // Check if any rows were found
+            if (rows.Length > 0)
+                   reportViewer1.Enabled = true;
+            else
+                   reportViewer1.Enabled = false;
+                //}
+
+
+            reportViewer1.Visible = true;
+            reportViewer1.LocalReport.PrintToPrinter();
         }
 
         private void ChekFrm_Load(object sender, EventArgs e)
