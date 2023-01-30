@@ -170,7 +170,7 @@ namespace Core.DB
                 else if (array[i, 1] == "character varying")
                     comm.Parameters.Add(array[i, 0], NpgsqlDbType.Text).Value = array[i, 2].ToString();
                 else if (array[i, 1] == "date")
-                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Date).Value = Convert.ToDateTime(array[i, 2]);
+                    comm.Parameters.Add(array[i, 0], NpgsqlDbType.Date).Value = Convert.ToDateTime(Convert.ToDateTime(array[i, 2]).ToString("dd.MM.yyyy"));
                 else if (array[i, 1] == "integer")
                 {
                     if (array[i, 2] == "") { array[i, 2] = "0"; }
@@ -209,7 +209,7 @@ namespace Core.DB
 
             try
             {
-            
+
             }
             catch
             {
@@ -524,5 +524,5 @@ namespace Core.DB
 
 
 
+        }
     }
-}

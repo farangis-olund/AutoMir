@@ -1001,6 +1001,7 @@ namespace AutoMir2022
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeight = 35;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.artikulKarzina3,
@@ -1014,6 +1015,7 @@ namespace AutoMir2022
             this.mestoKarzina3});
             this.dataGridView3.Location = new System.Drawing.Point(6, 50);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowTemplate.Height = 25;
             this.dataGridView3.Size = new System.Drawing.Size(1339, 478);
             this.dataGridView3.TabIndex = 4;
@@ -1048,12 +1050,14 @@ namespace AutoMir2022
             // 
             this.markaKarzina3.HeaderText = "марка";
             this.markaKarzina3.Name = "markaKarzina3";
+            this.markaKarzina3.ReadOnly = true;
             this.markaKarzina3.Width = 140;
             // 
             // modelKarzina3
             // 
             this.modelKarzina3.HeaderText = "модель";
             this.modelKarzina3.Name = "modelKarzina3";
+            this.modelKarzina3.ReadOnly = true;
             this.modelKarzina3.Width = 220;
             // 
             // kolZakazaKarzina3
@@ -1064,11 +1068,13 @@ namespace AutoMir2022
             this.kolZakazaKarzina3.DefaultCellStyle = dataGridViewCellStyle21;
             this.kolZakazaKarzina3.HeaderText = "колЗаказа";
             this.kolZakazaKarzina3.Name = "kolZakazaKarzina3";
+            this.kolZakazaKarzina3.ReadOnly = true;
             // 
             // tsenaKarzina3
             // 
             this.tsenaKarzina3.HeaderText = "цена";
             this.tsenaKarzina3.Name = "tsenaKarzina3";
+            this.tsenaKarzina3.ReadOnly = true;
             // 
             // sumaKarzina3
             // 
@@ -1085,6 +1091,7 @@ namespace AutoMir2022
             // 
             this.mestoKarzina3.HeaderText = "место";
             this.mestoKarzina3.Name = "mestoKarzina3";
+            this.mestoKarzina3.ReadOnly = true;
             // 
             // ochistkaKorzini3
             // 

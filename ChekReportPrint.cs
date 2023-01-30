@@ -20,8 +20,8 @@ namespace AutoMir2022
             this.reportViewer1.LocalReport.DataSources.Clear();
             string checkType = retail.nameOfReport;
             double vozvratDolg = Vozvrat.dolg;
-            double optProdazhaDolg = OptProdazha.dolgKlienta;
-            double optPlatezhi = OptProdazha.platezhiKlienta;
+            double optProdazhaDolg = OptovayaProdazha.dolgKlienta;
+            double optPlatezhi = OptovayaProdazha.platezhiKlienta;
            
             string exeFolder = Application.StartupPath;
             string reportPath = Path.Combine(exeFolder, @"Reports\" + checkType + ".rdlc");

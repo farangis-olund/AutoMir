@@ -82,7 +82,7 @@ namespace AutoMir2022
 
         private void оптоваяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OptProdazha myForm = new OptProdazha();
+            OptovayaProdazha myForm = new OptovayaProdazha();
             myForm.Show();
 
         }
@@ -230,7 +230,9 @@ namespace AutoMir2022
 
                 }
             }
-            info.Text = "Добро пожаловать в систему управление учёта! Для начало работы входите в систему!";
+            info.Text = "Данная система  позволяет вести управленческий учет" +
+                " по торговому предприятию в целом. Прогамма рассчитана на управлением продажи, кассы," +
+                "и различные виды отчётов. Для начало работы необходимо создать группу пользователей и их регламент!";
 
             
         }

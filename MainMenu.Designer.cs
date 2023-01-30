@@ -426,7 +426,7 @@ namespace AutoMir2022
             this.info.Margin = new System.Windows.Forms.Padding(10);
             this.info.Name = "info";
             this.info.ReadOnly = true;
-            this.info.Size = new System.Drawing.Size(648, 271);
+            this.info.Size = new System.Drawing.Size(844, 271);
             this.info.TabIndex = 0;
             this.info.Text = "";
             // 

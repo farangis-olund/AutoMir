@@ -42,10 +42,11 @@ namespace Core.Controllers.Klient
         public void InsertNewKlient(string kodKlienta, string fio, string tel, string addres,
             double zadolzhnost, string uroven)
         {
-            db.insertWithParametrDouble ("INSERT INTO public.customers (код_клиента, фио, рабочий_телефон, " +
-                "адрес, задолжность, уровень) " +
-                "VALUES ('" + kodKlienta + "', '" + fio + "','" + tel + "'," +
-                "'" + addres + "', @zadolg, '" + uroven + "')", "zadolg", zadolzhnost);
+
+            db.insertWithParametrDouble("INSERT INTO public.customers (код_клиента, фио, рабочий_телефон, " +
+                            "адрес, задолжность, уровень) " +
+                            "VALUES ('" + kodKlienta + "', '" + fio + "','" + tel + "'," +
+                            "'" + addres + "', @zadolg, '" + uroven + "')", "zadolg", zadolzhnost);
         }
 
 

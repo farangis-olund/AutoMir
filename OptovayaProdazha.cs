@@ -12,28 +12,15 @@ using Core.Controllers.Optoviy;
 using Core.Controllers.Dolg;
 using Core.Controllers;
 
+
 namespace AutoMir2022
 {
-    public partial class OptProdazha : Form
-
-
+    public partial class OptovayaProdazha : Form
     {
-        private RoznichProdazha roznProdazhaObj = new RoznichProdazha();
-        //private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
-        private Klient klientObj = new Klient();
-        private Optoviy optoviyObj = new Optoviy();
-        private Dolg dolgObj = new Dolg();
-        private double kurs;
-        public static double dolgKlienta;
-        public static double platezhiKlienta;
-        //public static DataTable dtForCHekReport;
-        //public static string nameOfReport;
-        public OptProdazha()
+        public OptovayaProdazha()
         {
-        
-            
             InitializeComponent();
-            
+
             showAllTovar();
 
             // add course valuty
@@ -45,10 +32,19 @@ namespace AutoMir2022
             viborProdovets.DataSource = roznProdazhaObj.getNameSeller();
             viborProdovets.Text = null;
 
-           
-
         }
 
+        private RoznichProdazha roznProdazhaObj = new RoznichProdazha();
+        //private OtmenaProdazhi otmenaProdazhiObj = new OtmenaProdazhi();
+        private Klient klientObj = new Klient();
+        private Optoviy optoviyObj = new Optoviy();
+        private Dolg dolgObj = new Dolg();
+        private double kurs;
+        public static double dolgKlienta;
+        public static double platezhiKlienta;
+        //public static DataTable dtForCHekReport;
+        //public static string nameOfReport;
+       
 
         public void showAllTovar()
         {
@@ -68,9 +64,9 @@ namespace AutoMir2022
 
             //клиент информация
             kodKlienta.DataSource = klientObj.GetKodKlienta();
-            kodKlienta.DisplayMember="код_клиента";
+            kodKlienta.DisplayMember = "код_клиента";
             kodKlienta.Text = null;
-            
+
             fioKlienta.DataSource = klientObj.GetKodKlienta();
             fioKlienta.DisplayMember = "фио";
             fioKlienta.Text = null;
@@ -80,7 +76,7 @@ namespace AutoMir2022
         //datagrid2 karzina2       
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (dataGridView2.Columns[e.ColumnIndex].Name == "kolZakaza")
             {
                 int b = 0;
@@ -110,7 +106,7 @@ namespace AutoMir2022
                     MessageBox.Show("Количество задан неправельно!");
                     dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value = null;
                 }
-              
+
             }
         endProcess: { }
         }
@@ -119,9 +115,9 @@ namespace AutoMir2022
 
         private void variantVibor_Click(object sender, EventArgs e)
         {
-            
+
             string variantvibor = "";
-            
+
             if (variant1.Checked == true) variantvibor = "artikul1";
             else if (variant2.Checked == true) variantvibor = "artikul2";
             else if (variant3.Checked == true) variantvibor = "artikul3";
@@ -138,7 +134,7 @@ namespace AutoMir2022
 
                 foreach (DataRow dr in listArtikulKarzina3.Rows)
                 {
-                
+
                     bool artikulIsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView1, dr[0].ToString(), "artikulKarz1");
 
                     if (artikulIsExist == true)
@@ -161,11 +157,12 @@ namespace AutoMir2022
                     {
                         MessageBox.Show("Количество заказа не указан!");
                         ochiskta();
-                        goto endProsess; 
+                        goto endProsess;
                     }
-                    int b=0;
+                    int b = 0;
                     if (int.TryParse(dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString(), out b))
-                    { if (b == 0)
+                    {
+                        if (b == 0)
                         {
                             MessageBox.Show("Количество заказа не указан или указан не правельном формате!");
                             ochiskta();
@@ -212,18 +209,18 @@ namespace AutoMir2022
                     //    данные из карзини 2 количество заказа, цена и сумма
                     this.dataGridView1.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[6]) * kurs);
                     this.dataGridView1.Rows[index].Cells[7].Value = dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString();
-                    
+
                     this.dataGridView1.Rows[index].Cells[8].Value = roznProdazhaObj.getRoundDecimal(
                         Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs);
-                    
+
                 }
 
             }
 
             roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 0);
-            
-        endProsess: {  }
-        
+
+        endProsess: { }
+
 
         }
 
@@ -237,7 +234,7 @@ namespace AutoMir2022
                 ochiskta();
             }
 
-           
+
 
         }
 
@@ -247,7 +244,7 @@ namespace AutoMir2022
             variant2.Checked = false;
             variant3.Checked = false;
             variant4.Checked = false;
-            
+
 
         }
 
@@ -256,7 +253,7 @@ namespace AutoMir2022
         {
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
-                
+
                 //проверка остатка на складе достаточен ли для оформление заказа количество товара
 
                 DataTable kolTovara = roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[0].Value.ToString());
@@ -286,7 +283,7 @@ namespace AutoMir2022
 
         private void oformitZakaz_Click(object sender, EventArgs e)
         {
-           
+
             if (viborProdovets.Text == "")
             {
                 MessageBox.Show("Перед оформлением, укажите продавца!");
@@ -294,7 +291,7 @@ namespace AutoMir2022
 
             }
 
-           
+
             if (dataGridView1.Rows.Count == 0)
             {
                 MessageBox.Show("Вы не выбрали товар в карзину, заказ не оформлен!");
@@ -337,7 +334,7 @@ namespace AutoMir2022
                 }
                 //////////////
 
-                summaKontrakta = summaKontrakta +Convert.ToDouble( roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value)));
+                summaKontrakta = summaKontrakta + Convert.ToDouble(roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value)));
 
 
             }
@@ -345,7 +342,7 @@ namespace AutoMir2022
             DBNpgsql db = new DBNpgsql();
 
             int nakKod = roznProdazhaObj.getLastNakladnoyText();
-            string nakText = roznProdazhaObj.GetColumnName(nakKod+1);  
+            string nakText = roznProdazhaObj.GetColumnName(nakKod + 1);
             optoviyObj.InsertProdazha(kurs, viborProdovets.Text, roznProdazhaObj.SummaPropis(summaKontrakta), nakText, kodKlienta.Text);
 
             /// получаем код номер накладной
@@ -356,7 +353,7 @@ namespace AutoMir2022
 
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                double tsenaSql =Convert.ToDouble( roznProdazhaObj.getRoundDecimal(Convert.ToDouble(
+                double tsenaSql = Convert.ToDouble(roznProdazhaObj.getRoundDecimal(Convert.ToDouble(
                     dataGridView1.Rows[i].Cells[6].Value.ToString())));
                 int kolSql = Convert.ToInt32(dataGridView1.Rows[i].Cells[7].Value);
                 db.insertProdazhaTovar(
@@ -397,7 +394,7 @@ namespace AutoMir2022
             }
         }
 
-       
+
         private void ochistitKarzina1Btn_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите очистить карзину?", "Очистка карзины", MessageBoxButtons.YesNo);
@@ -406,7 +403,7 @@ namespace AutoMir2022
                 dataGridView1.DataSource = null;
                 dataGridView1.Rows.Clear();
             }
-            
+
         }
 
 
@@ -431,36 +428,36 @@ namespace AutoMir2022
                     this.dataGridView1.Rows.Remove(this.dataGridView1.Rows[rowNum - 1]);
                 }
             }
-            
-            DataTable dt= optoviyObj.SelectTovarByArtikulDGV(GetUrovenTsena(), artikul.Text);
 
-                int index = dataGridView1.Rows.Add();
+            DataTable dt = optoviyObj.SelectTovarByArtikulDGV(GetUrovenTsena(), artikul.Text);
 
-                foreach (DataRow dr in dt.Rows)
+            int index = dataGridView1.Rows.Add();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //    Select артикул, наименование, бренд, марка,
+                //    модель,  место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул
+
+                bool artikulIsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView1, dr[0].ToString(), "artikulKarz1");
+
+                if (artikulIsExist == true)
                 {
-                    //    Select артикул, наименование, бренд, марка,
-                    //    модель,  место_на_складе, розн_цена__euro_  FROM public.товар WHERE артикул
-
-                    bool artikulIsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView1, dr[0].ToString(), "artikulKarz1");
-
-                    if (artikulIsExist == true)
-                    {
-                        MessageBox.Show("Данный артикул уже добавлен в карзину!");
-                        this.dataGridView1.Rows.Remove(this.dataGridView1.Rows[index]);
-                        goto endProsess;
-                    }
-
-
-                    this.dataGridView1.Rows[index].Cells[0].Value = dr[0];
-                    this.dataGridView1.Rows[index].Cells[1].Value = dr[1];
-                    this.dataGridView1.Rows[index].Cells[2].Value = dr[2];
-                    this.dataGridView1.Rows[index].Cells[3].Value = dr[3];
-                    this.dataGridView1.Rows[index].Cells[4].Value = dr[4];
-                    this.dataGridView1.Rows[index].Cells[5].Value = dr[5];
-                    this.dataGridView1.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal(
-                            Convert.ToDouble(dr[6]) * kurs);
-   
+                    MessageBox.Show("Данный артикул уже добавлен в карзину!");
+                    this.dataGridView1.Rows.Remove(this.dataGridView1.Rows[index]);
+                    goto endProsess;
                 }
+
+
+                this.dataGridView1.Rows[index].Cells[0].Value = dr[0];
+                this.dataGridView1.Rows[index].Cells[1].Value = dr[1];
+                this.dataGridView1.Rows[index].Cells[2].Value = dr[2];
+                this.dataGridView1.Rows[index].Cells[3].Value = dr[3];
+                this.dataGridView1.Rows[index].Cells[4].Value = dr[4];
+                this.dataGridView1.Rows[index].Cells[5].Value = dr[5];
+                this.dataGridView1.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal(
+                        Convert.ToDouble(dr[6]) * kurs);
+
+            }
 
 
             roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 0);
@@ -490,9 +487,9 @@ namespace AutoMir2022
                     }
                     itogiPlatezhProdazha();
                 }
-                
+
             }
-           
+
         }
 
         private void newKlient_Click(object sender, EventArgs e)
@@ -522,7 +519,7 @@ namespace AutoMir2022
                     itogiPlatezhProdazha();
                 }
 
-               
+
             }
 
         }
@@ -530,7 +527,7 @@ namespace AutoMir2022
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "kolZakazaKarz1")
-                
+
             {
                 int b = 0;
 
@@ -540,11 +537,11 @@ namespace AutoMir2022
 
 
                 if (int.TryParse(dataGridView1.Rows[e.RowIndex].Cells["kolZakazaKarz1"].Value.ToString(), out b))
-                
+
                 {
                     double a = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["tsena"].Value);
                     dataGridView1.Rows[e.RowIndex].Cells["sumaKarz1"].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
-                    
+
                     roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 1);
                 }
                 else
@@ -589,16 +586,16 @@ namespace AutoMir2022
 
             //проверка на наличие артикула в карзине 2
             DataTable alternativa = new DataTable();
-            
+
             //add array data to karzina 2... info about tovar
             string[,] arrayForfilter = new string[1, 2];
 
             //get alternativa from table tovar for geting all possibla alternativ goods
-            
+
             arrayForfilter[0, 0] = "альтернатива";
             arrayForfilter[0, 1] = optoviyObj.GetAlternativa(artikulKarz2.Text);
 
-            
+
             alternativa = optoviyObj.SelectTovarByAlternativa(arrayForfilter, GetUrovenTsena());
 
             int i = 0;
@@ -617,7 +614,7 @@ namespace AutoMir2022
             foreach (DataRow dr in alternativa.Rows)
             {
 
-              if (i == 4) break;
+                if (i == 4) break;
 
                 this.dataGridView2.Rows[index].Cells[0].Value = dr[5];
                 this.dataGridView2.Rows[index].Cells[1].Value = dr[1];
@@ -669,7 +666,7 @@ namespace AutoMir2022
                 i = i + 1;
                 sumaRowCounter = sumaRowCounter + 2;
             }
-            if (i < 4 )
+            if (i < 4)
             {
                 for (int k = i; k < 4; k++)
                 {
@@ -699,12 +696,12 @@ namespace AutoMir2022
 
             roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
 
-            
+
         endProsess: { }
 
         }
 
-       private string GetUrovenTsena()
+        private string GetUrovenTsena()
         {
             string urovenTsena;
             if (rozntsena.Checked == true)
@@ -715,7 +712,7 @@ namespace AutoMir2022
 
         private void rozntsena_CheckedChanged(object sender, EventArgs e)
         {
-            if (rozntsena.Checked == true && dataGridView1.Rows.Count>0)
+            if (rozntsena.Checked == true && dataGridView1.Rows.Count > 0)
             {
                 MessageBox.Show("Опцию розн.цена укажите перед добавлением товара в карзину!");
                 dataGridView1.Rows.Clear();
@@ -726,7 +723,7 @@ namespace AutoMir2022
 
         private void itogiPlatezhProdazha()
         {
-            
+
             double prodazha = dolgObj.GetPradazha(kodKlienta.Text);
             double platezh = dolgObj.GetPlatezh(kodKlienta.Text);
             double zadolzhnost = dolgObj.GetZadolzhnost(kodKlienta.Text);
@@ -764,12 +761,12 @@ namespace AutoMir2022
             int index = zakazDGV.CurrentCell.RowIndex;
             string nakText = zakazDGV.Rows[index].Cells[1].Value.ToString();
 
-            dolgKlienta =dolgObj.GetStariyDolg(kodKlienta.Text, nakText);
+            dolgKlienta = dolgObj.GetStariyDolg(kodKlienta.Text, nakText);
 
-            platezhiKlienta = dolgObj.GetPlatezhTekushiy(kodKlienta.Text,nakText);
+            platezhiKlienta = dolgObj.GetPlatezhTekushiy(kodKlienta.Text, nakText);
             retail.dtForCHekReport = optoviyObj.printCkekQuery(nakText);
             retail.nameOfReport = "ChekReportOpt";
-             
+
             ChekReportPrint reportPrintObj = new ChekReportPrint();
             reportPrintObj.Show();
 
@@ -777,7 +774,7 @@ namespace AutoMir2022
 
         private void oformitPlatezh_Click(object sender, EventArgs e)
         {
-            string nakText=optoviyObj.getLastNakladnoyText();
+            string nakText = optoviyObj.getLastNakladnoyText();
             double b = 0;
             if (nakText == "")
             {
@@ -797,20 +794,22 @@ namespace AutoMir2022
 
 
             }
-            else { MessageBox.Show("Платеж указан не правильно!");
+            else
+            {
+                MessageBox.Show("Платеж указан не правильно!");
                 sumaPlatezh.Text = "";
             }
 
-            endProcess: { }
+        endProcess: { }
         }
 
         private void chekPlatezh_Click(object sender, EventArgs e)
         {
             int index = platezhDGV.CurrentCell.RowIndex;
-            int nomerPlat =Convert.ToInt32(platezhDGV.Rows[index].Cells[1].Value);
-            dolgKlienta = dolgObj.GetPradazha(kodKlienta.Text)-dolgObj.GetPlatezhExceptTheLast(kodKlienta.Text,nomerPlat)
-                +dolgObj.GetZadolzhnost(kodKlienta.Text);
-            
+            int nomerPlat = Convert.ToInt32(platezhDGV.Rows[index].Cells[1].Value);
+            dolgKlienta = dolgObj.GetPradazha(kodKlienta.Text) - dolgObj.GetPlatezhExceptTheLast(kodKlienta.Text, nomerPlat)
+                + dolgObj.GetZadolzhnost(kodKlienta.Text);
+
             platezhiKlienta = dolgObj.GetPlatezhByNomerPlatezh(kodKlienta.Text, nomerPlat);
             retail.dtForCHekReport = optoviyObj.printCkekQueryPlatezh(nomerPlat);
             retail.nameOfReport = "ChekReportOptPlatezh";
@@ -846,12 +845,18 @@ namespace AutoMir2022
             myForm.TopLevel = false;
             myForm.AutoScroll = true;
             myForm.FormBorderStyle = FormBorderStyle.None;
-            
+
             this.itogiPanel.Controls.Add(myForm);
-            myForm.Show(); 
-           
+            myForm.Show();
+
         }
 
-        
+        private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 1);
+            }
+        }
     }
 }

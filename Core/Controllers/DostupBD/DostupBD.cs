@@ -90,7 +90,7 @@ namespace Core.Controllers.DostupBD
             }
             
 
-                string [,] columnArray = new string [dt.Rows.Count, 2];
+            string [,] columnArray = new string [dt.Rows.Count, 2];
             string[,] dataArray = new string[dt.Rows.Count, 3];
 
 
