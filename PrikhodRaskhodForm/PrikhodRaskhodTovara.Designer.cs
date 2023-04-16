@@ -29,15 +29,10 @@ namespace AutoMir2022
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.prikhodBtn = new System.Windows.Forms.Button();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.cleanBtn = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateVibor = new System.Windows.Forms.DateTimePicker();
-            this.neoprikhodBtn = new System.Windows.Forms.Button();
-            this.zadolzhnostBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.spisokIzmeneniyDGV = new System.Windows.Forms.DataGridView();
             this.artikulIzmen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolichestvo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +41,12 @@ namespace AutoMir2022
             this.naimenovanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cleanBtn = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateVibor = new System.Windows.Forms.DateTimePicker();
+            this.neoprikhodBtn = new System.Windows.Forms.Button();
+            this.zadolzhnostBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.print = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,8 +60,8 @@ namespace AutoMir2022
             this.dataPanel = new System.Windows.Forms.Panel();
             this.tovarDGV = new System.Windows.Forms.DataGridView();
             this.topPanel.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spisokIzmeneniyDGV)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.dataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tovarDGV)).BeginInit();
@@ -73,6 +74,7 @@ namespace AutoMir2022
             // prikhodBtn
             // 
             this.prikhodBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.prikhodBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.prikhodBtn.Location = new System.Drawing.Point(157, 16);
             this.prikhodBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.prikhodBtn.Name = "prikhodBtn";
@@ -84,6 +86,7 @@ namespace AutoMir2022
             // 
             // topPanel
             // 
+            this.topPanel.BackColor = System.Drawing.Color.DarkCyan;
             this.topPanel.Controls.Add(this.spisokIzmeneniyDGV);
             this.topPanel.Controls.Add(this.cleanBtn);
             this.topPanel.Controls.Add(this.groupBox2);
@@ -91,15 +94,98 @@ namespace AutoMir2022
             this.topPanel.Controls.Add(this.print);
             this.topPanel.Controls.Add(this.groupBox1);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(1093, 206);
             this.topPanel.TabIndex = 1;
             // 
+            // spisokIzmeneniyDGV
+            // 
+            this.spisokIzmeneniyDGV.AllowUserToAddRows = false;
+            this.spisokIzmeneniyDGV.AllowUserToDeleteRows = false;
+            this.spisokIzmeneniyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.spisokIzmeneniyDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artikulIzmen,
+            this.kolichestvo,
+            this.prikhod_raskhod,
+            this.itog,
+            this.naimenovanie,
+            this.brand,
+            this.mesto});
+            this.spisokIzmeneniyDGV.Location = new System.Drawing.Point(488, 28);
+            this.spisokIzmeneniyDGV.Name = "spisokIzmeneniyDGV";
+            this.spisokIzmeneniyDGV.ReadOnly = true;
+            this.spisokIzmeneniyDGV.RowHeadersWidth = 62;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.spisokIzmeneniyDGV.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.spisokIzmeneniyDGV.Size = new System.Drawing.Size(554, 95);
+            this.spisokIzmeneniyDGV.TabIndex = 4;
+            // 
+            // artikulIzmen
+            // 
+            this.artikulIzmen.HeaderText = "артикул";
+            this.artikulIzmen.MinimumWidth = 8;
+            this.artikulIzmen.Name = "artikulIzmen";
+            this.artikulIzmen.ReadOnly = true;
+            this.artikulIzmen.Width = 160;
+            // 
+            // kolichestvo
+            // 
+            this.kolichestvo.HeaderText = "кол-во";
+            this.kolichestvo.MinimumWidth = 8;
+            this.kolichestvo.Name = "kolichestvo";
+            this.kolichestvo.ReadOnly = true;
+            this.kolichestvo.Width = 150;
+            // 
+            // prikhod_raskhod
+            // 
+            this.prikhod_raskhod.HeaderText = "приход/расход";
+            this.prikhod_raskhod.MinimumWidth = 8;
+            this.prikhod_raskhod.Name = "prikhod_raskhod";
+            this.prikhod_raskhod.ReadOnly = true;
+            this.prikhod_raskhod.Width = 120;
+            // 
+            // itog
+            // 
+            this.itog.HeaderText = "итого";
+            this.itog.MinimumWidth = 8;
+            this.itog.Name = "itog";
+            this.itog.ReadOnly = true;
+            this.itog.Width = 150;
+            // 
+            // naimenovanie
+            // 
+            this.naimenovanie.HeaderText = "наименование";
+            this.naimenovanie.MinimumWidth = 8;
+            this.naimenovanie.Name = "naimenovanie";
+            this.naimenovanie.ReadOnly = true;
+            this.naimenovanie.Visible = false;
+            this.naimenovanie.Width = 150;
+            // 
+            // brand
+            // 
+            this.brand.HeaderText = "бренд";
+            this.brand.MinimumWidth = 8;
+            this.brand.Name = "brand";
+            this.brand.ReadOnly = true;
+            this.brand.Visible = false;
+            this.brand.Width = 150;
+            // 
+            // mesto
+            // 
+            this.mesto.HeaderText = "место";
+            this.mesto.MinimumWidth = 8;
+            this.mesto.Name = "mesto";
+            this.mesto.ReadOnly = true;
+            this.mesto.Visible = false;
+            this.mesto.Width = 150;
+            // 
             // cleanBtn
             // 
             this.cleanBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cleanBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cleanBtn.Location = new System.Drawing.Point(802, 0);
             this.cleanBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cleanBtn.Name = "cleanBtn";
@@ -127,13 +213,14 @@ namespace AutoMir2022
             this.dateVibor.Location = new System.Drawing.Point(6, 25);
             this.dateVibor.Name = "dateVibor";
             this.dateVibor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateVibor.Size = new System.Drawing.Size(143, 26);
+            this.dateVibor.Size = new System.Drawing.Size(143, 35);
             this.dateVibor.TabIndex = 0;
             // 
             // neoprikhodBtn
             // 
             this.neoprikhodBtn.Enabled = false;
             this.neoprikhodBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.neoprikhodBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.neoprikhodBtn.Location = new System.Drawing.Point(546, 16);
             this.neoprikhodBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.neoprikhodBtn.Name = "neoprikhodBtn";
@@ -146,6 +233,7 @@ namespace AutoMir2022
             // zadolzhnostBtn
             // 
             this.zadolzhnostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.zadolzhnostBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.zadolzhnostBtn.Location = new System.Drawing.Point(304, 16);
             this.zadolzhnostBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.zadolzhnostBtn.Name = "zadolzhnostBtn";
@@ -160,79 +248,14 @@ namespace AutoMir2022
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(488, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 20);
+            this.label2.Size = new System.Drawing.Size(238, 29);
             this.label2.TabIndex = 5;
             this.label2.Text = "Список изменений";
-            // 
-            // spisokIzmeneniyDGV
-            // 
-            this.spisokIzmeneniyDGV.AllowUserToAddRows = false;
-            this.spisokIzmeneniyDGV.AllowUserToDeleteRows = false;
-            this.spisokIzmeneniyDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.spisokIzmeneniyDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.artikulIzmen,
-            this.kolichestvo,
-            this.prikhod_raskhod,
-            this.itog,
-            this.naimenovanie,
-            this.brand,
-            this.mesto});
-            this.spisokIzmeneniyDGV.Location = new System.Drawing.Point(488, 28);
-            this.spisokIzmeneniyDGV.Name = "spisokIzmeneniyDGV";
-            this.spisokIzmeneniyDGV.ReadOnly = true;
-            this.spisokIzmeneniyDGV.Size = new System.Drawing.Size(554, 95);
-            this.spisokIzmeneniyDGV.TabIndex = 4;
-            // 
-            // artikulIzmen
-            // 
-            this.artikulIzmen.HeaderText = "артикул";
-            this.artikulIzmen.Name = "artikulIzmen";
-            this.artikulIzmen.ReadOnly = true;
-            this.artikulIzmen.Width = 160;
-            // 
-            // kolichestvo
-            // 
-            this.kolichestvo.HeaderText = "кол-во";
-            this.kolichestvo.Name = "kolichestvo";
-            this.kolichestvo.ReadOnly = true;
-            // 
-            // prikhod_raskhod
-            // 
-            this.prikhod_raskhod.HeaderText = "приход/расход";
-            this.prikhod_raskhod.Name = "prikhod_raskhod";
-            this.prikhod_raskhod.ReadOnly = true;
-            this.prikhod_raskhod.Width = 120;
-            // 
-            // itog
-            // 
-            this.itog.HeaderText = "итого";
-            this.itog.Name = "itog";
-            this.itog.ReadOnly = true;
-            // 
-            // naimenovanie
-            // 
-            this.naimenovanie.HeaderText = "наименование";
-            this.naimenovanie.Name = "naimenovanie";
-            this.naimenovanie.ReadOnly = true;
-            this.naimenovanie.Visible = false;
-            // 
-            // brand
-            // 
-            this.brand.HeaderText = "бренд";
-            this.brand.Name = "brand";
-            this.brand.ReadOnly = true;
-            this.brand.Visible = false;
-            // 
-            // mesto
-            // 
-            this.mesto.HeaderText = "место";
-            this.mesto.Name = "mesto";
-            this.mesto.ReadOnly = true;
-            this.mesto.Visible = false;
             // 
             // print
             // 
             this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.print.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.print.Location = new System.Drawing.Point(926, 0);
             this.print.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.print.Name = "print";
@@ -264,7 +287,7 @@ namespace AutoMir2022
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(365, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 20);
+            this.label4.Size = new System.Drawing.Size(149, 29);
             this.label4.TabIndex = 7;
             this.label4.Text = "Кол-во в БД";
             // 
@@ -273,7 +296,7 @@ namespace AutoMir2022
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(298, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 20);
+            this.label3.Size = new System.Drawing.Size(93, 29);
             this.label3.TabIndex = 6;
             this.label3.Text = "Кол-во";
             // 
@@ -282,7 +305,7 @@ namespace AutoMir2022
             this.raskhodRb.AutoSize = true;
             this.raskhodRb.Location = new System.Drawing.Point(19, 58);
             this.raskhodRb.Name = "raskhodRb";
-            this.raskhodRb.Size = new System.Drawing.Size(80, 24);
+            this.raskhodRb.Size = new System.Drawing.Size(116, 33);
             this.raskhodRb.TabIndex = 5;
             this.raskhodRb.TabStop = true;
             this.raskhodRb.Text = "расход";
@@ -293,7 +316,7 @@ namespace AutoMir2022
             this.prikhodRb.AutoSize = true;
             this.prikhodRb.Location = new System.Drawing.Point(19, 28);
             this.prikhodRb.Name = "prikhodRb";
-            this.prikhodRb.Size = new System.Drawing.Size(81, 24);
+            this.prikhodRb.Size = new System.Drawing.Size(121, 33);
             this.prikhodRb.TabIndex = 4;
             this.prikhodRb.TabStop = true;
             this.prikhodRb.Text = "приход";
@@ -304,14 +327,14 @@ namespace AutoMir2022
             this.kolTovara.Location = new System.Drawing.Point(379, 44);
             this.kolTovara.Name = "kolTovara";
             this.kolTovara.ReadOnly = true;
-            this.kolTovara.Size = new System.Drawing.Size(70, 26);
+            this.kolTovara.Size = new System.Drawing.Size(70, 35);
             this.kolTovara.TabIndex = 3;
             // 
             // kolIzmeneniy
             // 
             this.kolIzmeneniy.Location = new System.Drawing.Point(302, 44);
             this.kolIzmeneniy.Name = "kolIzmeneniy";
-            this.kolIzmeneniy.Size = new System.Drawing.Size(65, 26);
+            this.kolIzmeneniy.Size = new System.Drawing.Size(65, 35);
             this.kolIzmeneniy.TabIndex = 2;
             this.kolIzmeneniy.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.kolIzmeneniy_PreviewKeyDown);
             // 
@@ -320,7 +343,7 @@ namespace AutoMir2022
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(131, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 20);
+            this.label1.Size = new System.Drawing.Size(107, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Артикул";
             // 
@@ -329,7 +352,7 @@ namespace AutoMir2022
             this.artikul.FormattingEnabled = true;
             this.artikul.Location = new System.Drawing.Point(126, 44);
             this.artikul.Name = "artikul";
-            this.artikul.Size = new System.Drawing.Size(161, 28);
+            this.artikul.Size = new System.Drawing.Size(161, 37);
             this.artikul.TabIndex = 0;
             this.artikul.SelectionChangeCommitted += new System.EventHandler(this.artikul_SelectionChangeCommitted);
             // 
@@ -347,17 +370,19 @@ namespace AutoMir2022
             // 
             this.tovarDGV.AllowUserToAddRows = false;
             this.tovarDGV.AllowUserToDeleteRows = false;
+            this.tovarDGV.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.tovarDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tovarDGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tovarDGV.Location = new System.Drawing.Point(0, 0);
             this.tovarDGV.Name = "tovarDGV";
             this.tovarDGV.ReadOnly = true;
+            this.tovarDGV.RowHeadersWidth = 62;
             this.tovarDGV.Size = new System.Drawing.Size(1093, 486);
             this.tovarDGV.TabIndex = 1;
             // 
             // PrikhodRaskhodTovara
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 692);
             this.Controls.Add(this.dataPanel);
@@ -370,8 +395,8 @@ namespace AutoMir2022
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spisokIzmeneniyDGV)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.dataPanel.ResumeLayout(false);

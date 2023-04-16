@@ -30,6 +30,9 @@ namespace AutoMir2022
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.spisokTovarov = new System.Windows.Forms.RadioButton();
+            this.dopAlternativ = new System.Windows.Forms.RadioButton();
+            this.minDopusk = new System.Windows.Forms.RadioButton();
             this.neaktivnie = new System.Windows.Forms.RadioButton();
             this.mestoNaSklade = new System.Windows.Forms.RadioButton();
             this.otmena = new System.Windows.Forms.RadioButton();
@@ -55,9 +58,6 @@ namespace AutoMir2022
             this.sector = new System.Windows.Forms.ComboBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.minDopusk = new System.Windows.Forms.RadioButton();
-            this.dopAlternativ = new System.Windows.Forms.RadioButton();
-            this.spisokTovarov = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.neakTovariGroup.SuspendLayout();
@@ -67,6 +67,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.spisokTovarov);
             this.panel1.Controls.Add(this.dopAlternativ);
             this.panel1.Controls.Add(this.minDopusk);
@@ -81,9 +82,49 @@ namespace AutoMir2022
             this.panel1.Size = new System.Drawing.Size(300, 659);
             this.panel1.TabIndex = 0;
             // 
+            // spisokTovarov
+            // 
+            this.spisokTovarov.AutoSize = true;
+            this.spisokTovarov.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.spisokTovarov.Location = new System.Drawing.Point(12, 295);
+            this.spisokTovarov.Name = "spisokTovarov";
+            this.spisokTovarov.Size = new System.Drawing.Size(145, 24);
+            this.spisokTovarov.TabIndex = 7;
+            this.spisokTovarov.TabStop = true;
+            this.spisokTovarov.Text = "список товаров";
+            this.spisokTovarov.UseVisualStyleBackColor = true;
+            this.spisokTovarov.Click += new System.EventHandler(this.spisokTovarov_Click);
+            // 
+            // dopAlternativ
+            // 
+            this.dopAlternativ.AutoSize = true;
+            this.dopAlternativ.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dopAlternativ.Location = new System.Drawing.Point(12, 254);
+            this.dopAlternativ.Name = "dopAlternativ";
+            this.dopAlternativ.Size = new System.Drawing.Size(263, 24);
+            this.dopAlternativ.TabIndex = 6;
+            this.dopAlternativ.TabStop = true;
+            this.dopAlternativ.Text = "дополнительный альтернатив";
+            this.dopAlternativ.UseVisualStyleBackColor = true;
+            this.dopAlternativ.Click += new System.EventHandler(this.dopAlternativ_Click);
+            // 
+            // minDopusk
+            // 
+            this.minDopusk.AutoSize = true;
+            this.minDopusk.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.minDopusk.Location = new System.Drawing.Point(12, 213);
+            this.minDopusk.Name = "minDopusk";
+            this.minDopusk.Size = new System.Drawing.Size(255, 24);
+            this.minDopusk.TabIndex = 5;
+            this.minDopusk.TabStop = true;
+            this.minDopusk.Text = "по мин.допуск.кол-ве товаров";
+            this.minDopusk.UseVisualStyleBackColor = true;
+            this.minDopusk.Click += new System.EventHandler(this.minDopusk_Click);
+            // 
             // neaktivnie
             // 
             this.neaktivnie.AutoSize = true;
+            this.neaktivnie.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.neaktivnie.Location = new System.Drawing.Point(12, 178);
             this.neaktivnie.Name = "neaktivnie";
             this.neaktivnie.Size = new System.Drawing.Size(196, 24);
@@ -96,6 +137,7 @@ namespace AutoMir2022
             // mestoNaSklade
             // 
             this.mestoNaSklade.AutoSize = true;
+            this.mestoNaSklade.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.mestoNaSklade.Location = new System.Drawing.Point(12, 141);
             this.mestoNaSklade.Name = "mestoNaSklade";
             this.mestoNaSklade.Size = new System.Drawing.Size(174, 24);
@@ -108,6 +150,7 @@ namespace AutoMir2022
             // otmena
             // 
             this.otmena.AutoSize = true;
+            this.otmena.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.otmena.Location = new System.Drawing.Point(12, 99);
             this.otmena.Name = "otmena";
             this.otmena.Size = new System.Drawing.Size(282, 24);
@@ -121,6 +164,7 @@ namespace AutoMir2022
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(8, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 25);
@@ -130,6 +174,7 @@ namespace AutoMir2022
             // vozvrat
             // 
             this.vozvrat.AutoSize = true;
+            this.vozvrat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.vozvrat.Location = new System.Drawing.Point(12, 58);
             this.vozvrat.Name = "vozvrat";
             this.vozvrat.Size = new System.Drawing.Size(218, 24);
@@ -147,14 +192,15 @@ namespace AutoMir2022
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(300, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1007, 82);
+            this.panel2.Size = new System.Drawing.Size(984, 82);
             this.panel2.TabIndex = 1;
             // 
             // show
             // 
-            this.show.Location = new System.Drawing.Point(821, 8);
+            this.show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.show.Location = new System.Drawing.Point(820, 20);
             this.show.Name = "show";
-            this.show.Size = new System.Drawing.Size(174, 37);
+            this.show.Size = new System.Drawing.Size(150, 37);
             this.show.TabIndex = 0;
             this.show.Text = "Показать отчёт";
             this.show.UseVisualStyleBackColor = true;
@@ -170,7 +216,7 @@ namespace AutoMir2022
             this.neakTovariGroup.Controls.Add(this.label6);
             this.neakTovariGroup.Controls.Add(this.brand);
             this.neakTovariGroup.Controls.Add(this.label7);
-            this.neakTovariGroup.Location = new System.Drawing.Point(6, 0);
+            this.neakTovariGroup.Location = new System.Drawing.Point(7, 9);
             this.neakTovariGroup.Name = "neakTovariGroup";
             this.neakTovariGroup.Size = new System.Drawing.Size(729, 61);
             this.neakTovariGroup.TabIndex = 10;
@@ -324,55 +370,22 @@ namespace AutoMir2022
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(300, 88);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1007, 559);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 568);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.Visible = false;
-            // 
-            // minDopusk
-            // 
-            this.minDopusk.AutoSize = true;
-            this.minDopusk.Location = new System.Drawing.Point(12, 213);
-            this.minDopusk.Name = "minDopusk";
-            this.minDopusk.Size = new System.Drawing.Size(255, 24);
-            this.minDopusk.TabIndex = 5;
-            this.minDopusk.TabStop = true;
-            this.minDopusk.Text = "по мин.допуск.кол-ве товаров";
-            this.minDopusk.UseVisualStyleBackColor = true;
-            this.minDopusk.Click += new System.EventHandler(this.minDopusk_Click);
-            // 
-            // dopAlternativ
-            // 
-            this.dopAlternativ.AutoSize = true;
-            this.dopAlternativ.Location = new System.Drawing.Point(12, 254);
-            this.dopAlternativ.Name = "dopAlternativ";
-            this.dopAlternativ.Size = new System.Drawing.Size(263, 24);
-            this.dopAlternativ.TabIndex = 6;
-            this.dopAlternativ.TabStop = true;
-            this.dopAlternativ.Text = "дополнительный альтернатив";
-            this.dopAlternativ.UseVisualStyleBackColor = true;
-            this.dopAlternativ.Click += new System.EventHandler(this.dopAlternativ_Click);
-            // 
-            // spisokTovarov
-            // 
-            this.spisokTovarov.AutoSize = true;
-            this.spisokTovarov.Location = new System.Drawing.Point(12, 295);
-            this.spisokTovarov.Name = "spisokTovarov";
-            this.spisokTovarov.Size = new System.Drawing.Size(145, 24);
-            this.spisokTovarov.TabIndex = 7;
-            this.spisokTovarov.TabStop = true;
-            this.spisokTovarov.Text = "список товаров";
-            this.spisokTovarov.UseVisualStyleBackColor = true;
-            this.spisokTovarov.Click += new System.EventHandler(this.spisokTovarov_Click);
             // 
             // OtchetOstatokTovarov
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1307, 659);
+            this.ClientSize = new System.Drawing.Size(1284, 659);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);

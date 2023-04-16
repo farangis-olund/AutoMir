@@ -65,6 +65,7 @@ namespace AutoMir2022
             // 
             // dateBigin
             // 
+            this.dateBigin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateBigin.Location = new System.Drawing.Point(30, 23);
             this.dateBigin.Name = "dateBigin";
             this.dateBigin.Size = new System.Drawing.Size(133, 26);
@@ -73,6 +74,7 @@ namespace AutoMir2022
             // 
             // dateEnd
             // 
+            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(218, 23);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(128, 26);
@@ -158,6 +160,7 @@ namespace AutoMir2022
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(850, 603);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.reportViewer1);

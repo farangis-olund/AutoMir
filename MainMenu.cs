@@ -20,6 +20,9 @@ namespace AutoMir2022
         public string userGroup;
         public static string user;
         public static string password;
+        public static bool userPrintFree;
+        public static bool userUpdateFree;
+        public static bool userExportFree;
         public static DataTable userKategori;
         public MainMenu()
         {
@@ -172,6 +175,7 @@ namespace AutoMir2022
 
             user = userName.Text;
             password = userPassword.Text;
+
             EnabledMenuStripContents(menuStrip1, true);
 
             
@@ -180,6 +184,10 @@ namespace AutoMir2022
         
         private void EnabledMenuStripContents(MenuStrip obj, bool enabled)
         {
+            userExportFree = false;
+            userPrintFree = false;
+            userUpdateFree = false;
+
             char[] spliter = { '_' };
             DostupOgranichenie dostupOgranichenieObj = new DostupOgranichenie();
             userKategori = dostupOgranichenieObj.GetDostupUser(userName.Text, userPassword.Text);
@@ -194,12 +202,26 @@ namespace AutoMir2022
                     
                    string [] enableItems = dr[0].ToString().Split(spliter);
 
+                    //если пользователь имеет категорию повторная печать, то переменная истина
+                    if (enableItems.Contains("DobavitIsBDprint"))
+                        userPrintFree = true;
+            
+                    //если пользователь имеет категорию повторный экспорт, то переменная истина
+                    if (enableItems.Contains("DobavitIsBDexport"))
+                        userExportFree = true;
+                    
+                    //если пользователь имеет категорию откытого обновление, то переменная истина
+                    if (enableItems.Contains("DobavitIsBDupdate"))
+                        userUpdateFree = true;
+
+
                     foreach (ToolStripMenuItem item in obj.Items)
                     {
                         if (enableItems.Contains(item.Name))
                         {
                             item.Enabled = enabled;
                         }
+                        
 
                         foreach (ToolStripMenuItem dropItem in item.DropDownItems)
                         {
@@ -207,8 +229,10 @@ namespace AutoMir2022
                             {
                                 dropItem.Enabled = enabled;
                             }
+
+
                         }
-                    
+
                     }
                     
                 }
@@ -250,6 +274,11 @@ namespace AutoMir2022
             {
                loginButton.PerformClick();
             }
+        }
+
+        private void info_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

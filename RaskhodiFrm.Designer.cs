@@ -50,7 +50,7 @@ namespace AutoMir2022
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelTop.BackColor = System.Drawing.Color.DarkCyan;
             this.panelTop.Controls.Add(this.clean);
             this.panelTop.Controls.Add(this.add);
             this.panelTop.Controls.Add(this.sumTjs);
@@ -140,6 +140,7 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(13, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";

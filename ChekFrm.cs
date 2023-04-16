@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,9 +55,18 @@ namespace AutoMir2022
             this.reportViewer1.Reset();
             this.reportViewer1.LocalReport.DataSources.Clear();
 
+
+
             Chek chekObj = new Chek();
-            string path = Path.GetDirectoryName(Application.StartupPath);
-            string fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 10) + @"\Reports\ChekReportPeriod.rdlc";
+
+            //string exeFolder = Application.StartupPath;
+            //string fullPath = Path.Combine(exeFolder, @"\Reports\ChekReportPeriod.rdlc");
+           
+            string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);          
+            string fullPath = path + @"\Reports\ChekReportPeriod.rdlc";
+
+            //string path = Path.GetDirectoryName(Application.StartupPath);
+            //string fullPath = Path.GetDirectoryName(Application.StartupPath).Remove(path.Length - 11) + @"\Reports\ChekReportPeriod.rdlc";
 
             reportViewer1.LocalReport.ReportPath = fullPath;
 

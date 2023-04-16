@@ -42,7 +42,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.update);
             this.panel1.Controls.Add(this.column2);
             this.panel1.Controls.Add(this.label2);
@@ -75,6 +75,7 @@ namespace AutoMir2022
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(209, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 20);
@@ -84,6 +85,7 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(25, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 20);

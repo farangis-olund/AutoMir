@@ -44,7 +44,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.update);
             this.panel1.Controls.Add(this.column3);
             this.panel1.Controls.Add(this.label3);
@@ -53,14 +53,16 @@ namespace AutoMir2022
             this.panel1.Controls.Add(this.column1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 72);
+            this.panel1.Size = new System.Drawing.Size(599, 72);
             this.panel1.TabIndex = 0;
             // 
             // update
             // 
+            this.update.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.update.Location = new System.Drawing.Point(479, 26);
             this.update.Name = "update";
             this.update.Size = new System.Drawing.Size(101, 33);
@@ -129,8 +131,9 @@ namespace AutoMir2022
             this.dataGridView1.Location = new System.Drawing.Point(0, 72);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(581, 303);
+            this.dataGridView1.Size = new System.Drawing.Size(599, 303);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
             // 
@@ -138,7 +141,7 @@ namespace AutoMir2022
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 375);
+            this.ClientSize = new System.Drawing.Size(599, 375);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

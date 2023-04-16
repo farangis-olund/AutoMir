@@ -153,6 +153,11 @@ namespace Core.Controllers
                    "WHERE id_категория='" + id_kategoria + "' AND id_доступа='" + id_dostupa + "'");
         }
 
+        public void InsertKategoria(string name)
+        {
+            db.insertUpdateToDB("INSERT INTO public.доступ_категории (название_категории) VALUES ('" + name + "')");
+        }
+
         public void InsertKategoriaToDostupPolzovatey(string name, int id_dostupa)
         {
             int id_kategoria=Convert.ToInt32(GetKategoriaDostupa(name).Rows[0][0]);

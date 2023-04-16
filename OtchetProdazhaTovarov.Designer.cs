@@ -61,6 +61,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.prodazhaProdavtsev);
             this.panel1.Controls.Add(this.label8);
@@ -84,6 +85,7 @@ namespace AutoMir2022
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label9.Location = new System.Drawing.Point(4, 289);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(185, 24);
@@ -93,6 +95,7 @@ namespace AutoMir2022
             // prodazhaProdavtsev
             // 
             this.prodazhaProdavtsev.AutoSize = true;
+            this.prodazhaProdavtsev.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.prodazhaProdavtsev.Location = new System.Drawing.Point(19, 256);
             this.prodazhaProdavtsev.Name = "prodazhaProdavtsev";
             this.prodazhaProdavtsev.Size = new System.Drawing.Size(100, 24);
@@ -105,6 +108,7 @@ namespace AutoMir2022
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(4, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 24);
@@ -114,6 +118,7 @@ namespace AutoMir2022
             // skidkaOtchet
             // 
             this.skidkaOtchet.AutoSize = true;
+            this.skidkaOtchet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.skidkaOtchet.Location = new System.Drawing.Point(19, 348);
             this.skidkaOtchet.Name = "skidkaOtchet";
             this.skidkaOtchet.Size = new System.Drawing.Size(185, 24);
@@ -125,6 +130,7 @@ namespace AutoMir2022
             // itogiProdazhiAll
             // 
             this.itogiProdazhiAll.AutoSize = true;
+            this.itogiProdazhiAll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.itogiProdazhiAll.Location = new System.Drawing.Point(19, 318);
             this.itogiProdazhiAll.Name = "itogiProdazhiAll";
             this.itogiProdazhiAll.Size = new System.Drawing.Size(150, 24);
@@ -136,6 +142,7 @@ namespace AutoMir2022
             // optOtchet
             // 
             this.optOtchet.AutoSize = true;
+            this.optOtchet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.optOtchet.Location = new System.Drawing.Point(19, 196);
             this.optOtchet.Name = "optOtchet";
             this.optOtchet.Size = new System.Drawing.Size(72, 24);
@@ -148,6 +155,7 @@ namespace AutoMir2022
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(5, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 24);
@@ -158,6 +166,7 @@ namespace AutoMir2022
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(4, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 24);
@@ -167,6 +176,7 @@ namespace AutoMir2022
             // optProsmotr
             // 
             this.optProsmotr.AutoSize = true;
+            this.optProsmotr.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.optProsmotr.Location = new System.Drawing.Point(19, 172);
             this.optProsmotr.Name = "optProsmotr";
             this.optProsmotr.Size = new System.Drawing.Size(100, 24);
@@ -178,6 +188,7 @@ namespace AutoMir2022
             // roznOtchet
             // 
             this.roznOtchet.AutoSize = true;
+            this.roznOtchet.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.roznOtchet.Location = new System.Drawing.Point(19, 104);
             this.roznOtchet.Name = "roznOtchet";
             this.roznOtchet.Size = new System.Drawing.Size(72, 24);
@@ -189,6 +200,7 @@ namespace AutoMir2022
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(5, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 20);
@@ -198,6 +210,7 @@ namespace AutoMir2022
             // roznProsmotr
             // 
             this.roznProsmotr.AutoSize = true;
+            this.roznProsmotr.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.roznProsmotr.Location = new System.Drawing.Point(19, 81);
             this.roznProsmotr.Name = "roznProsmotr";
             this.roznProsmotr.Size = new System.Drawing.Size(100, 24);
@@ -289,7 +302,7 @@ namespace AutoMir2022
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 14);
+            this.label2.Location = new System.Drawing.Point(262, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 3;
@@ -307,7 +320,7 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 14);
+            this.label1.Location = new System.Drawing.Point(2, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 20);
             this.label1.TabIndex = 1;

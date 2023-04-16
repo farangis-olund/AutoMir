@@ -77,7 +77,7 @@ namespace AutoMir2022
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.LightSlateGray;
+            this.TopPanel.BackColor = System.Drawing.Color.DarkCyan;
             this.TopPanel.Controls.Add(this.button1);
             this.TopPanel.Controls.Add(this.oplachenoChk);
             this.TopPanel.Controls.Add(this.SkladChek);

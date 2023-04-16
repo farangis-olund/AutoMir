@@ -30,6 +30,7 @@ namespace AutoMir2022
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
@@ -49,7 +50,6 @@ namespace AutoMir2022
             this.paste = new System.Windows.Forms.Button();
             this.show = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -58,6 +58,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.radioButton9);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.radioButton8);
@@ -70,11 +71,24 @@ namespace AutoMir2022
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(266, 510);
             this.panel1.TabIndex = 0;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(22, 378);
+            this.radioButton9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(167, 24);
+            this.radioButton9.TabIndex = 10;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.Text = "доступ_категории";
+            this.radioButton9.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -203,7 +217,7 @@ namespace AutoMir2022
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.copyBtn);
             this.groupBox2.Controls.Add(this.cleanTable);
             this.groupBox2.Controls.Add(this.save);
@@ -278,24 +292,13 @@ namespace AutoMir2022
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(266, 92);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(995, 418);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(22, 378);
-            this.radioButton9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(167, 24);
-            this.radioButton9.TabIndex = 10;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "доступ_категории";
-            this.radioButton9.UseVisualStyleBackColor = true;
             // 
             // BazaDanikhForm
             // 

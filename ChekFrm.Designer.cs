@@ -66,6 +66,7 @@ namespace AutoMir2022
             // 
             // dateBigin
             // 
+            this.dateBigin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateBigin.Location = new System.Drawing.Point(110, 17);
             this.dateBigin.Name = "dateBigin";
             this.dateBigin.Size = new System.Drawing.Size(133, 26);
@@ -74,6 +75,7 @@ namespace AutoMir2022
             // 
             // dateEnd
             // 
+            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(292, 17);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(128, 26);

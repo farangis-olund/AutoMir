@@ -35,20 +35,41 @@ namespace AutoMir2022.DobavitTovarIsBDForm
 
         private void dateZakaz_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            PriyomSdacha priyomSdachaObj = new PriyomSdacha();
 
+            dateZakaz.Text = dateZakaz.GetItemText(dateZakaz.SelectedItem);
+            
             dataGridView1.DataSource = zakaziObj.GetZakazByDate(Convert.ToDateTime(dateZakaz.Text));
             dataGridView1.Columns[1].Width = 160;
             dataGridView1.Columns[2].Width = 70;
             dataGridView1.Columns[5].Width = 200;
             
-            //if (user_group!="administrator") { }
-            //PriyomSdacha priyomSdachaObj = new PriyomSdacha();
-            //if (priyomSdachaObj.IsObnovlenieExportExist(Convert.ToDateTime(dateZakaz.Text)) == true)
-            //    export.Enabled = false;
-            //if (priyomSdachaObj.IsObnovleniePrintExist(Convert.ToDateTime(dateZakaz.Text)) == true)
-            ////    print.Enabled = false;
-            //obnovlenieReport.Enabled = false;
-            //totalReport.Enabled = false;
+            //administrator has a privilage to print the report how much he wants the other user only one time,
+            //the status will be saved if report is printed once 
+            if (MainMenu.userPrintFree == true)
+            {
+                print.Enabled = true;
+            }
+            
+            if (MainMenu.userUpdateFree == true)
+            {
+                update.Enabled = true;
+            }
+            
+            if (MainMenu.userExportFree == true)
+            {
+                export.Enabled = true;
+            }
+
+            if (MainMenu.userPrintFree == false && priyomSdachaObj.IsPrintTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
+            {
+                print.Enabled = true;
+            }
+            if (MainMenu.userExportFree == false && priyomSdachaObj.IsExportTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
+            {
+                export.Enabled = true;
+            }
+
 
         }
 
@@ -83,23 +104,7 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             
             if (dateZakaz.Text != "" || dateZakaz.Text is null)
             {
-                //THIS CODE FOR SHOWING REPORT IN REPORTVIEW
-                //ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
-                //OrgInfo org = new OrgInfo();
-
-                //string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
-                //{ "date", Convert.ToDateTime(dateZakaz.Text).ToString("dd.MM.yyyy") }};
-                //reportPrikhodRaskhod.StartReport("ObnovlenieTovaraExport", "PrikhodRaskhod", parametr, dt);
-
-
-                //if user is admin then can export the report otherwise not. the other user can export one time 
-                //if (user_group!="administrator")
-                //{
-                //
-                //} else
-                //{
-                //}
-
+                
                 PriyomSdacha priyomSdachaObj = new PriyomSdacha();
                 if (priyomSdachaObj.IsObnovlenieExportExist(Convert.ToDateTime(dateZakaz.Text)) == true)
                 {
@@ -116,6 +121,12 @@ namespace AutoMir2022.DobavitTovarIsBDForm
                         priyomSdachaObj.InsertObnovlenieExport(Convert.ToDateTime(dateZakaz.Text));
 
                 }
+                //если у пользователя нет открытого экспорта, кнопка экспорт
+                //будет закрыть после первого экспорта
+                if (MainMenu.userExportFree == false && priyomSdachaObj.IsExportTrue(Convert.ToDateTime(dateZakaz.Text)) == true)
+                {
+                    export.Enabled = false;
+                }
 
             }
             else MessageBox.Show("Укажите дату!");
@@ -129,36 +140,14 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             if (dateZakaz.Text != "" || dateZakaz.Text is null)
             {
                 PriyomSdacha priyomSdachaObj = new PriyomSdacha();
-                if (priyomSdachaObj.IsObnovleniePrintExist(Convert.ToDateTime(dateZakaz.Text)) == true)
-                {
-                    MessageBox.Show("Отчет по выбранной дате уже распечатан!");
-                    goto endProcess;
-                }
+                
                 OrgInfo org = new OrgInfo();
 
                 string[,] parametr = {{ "kod_org", org.org_kod }, { "name_org", org.org_name },
                 { "date", Convert.ToDateTime(dateZakaz.Text).ToString("dd.MM.yyyy") }};
                 ReportPrikhodRaskhod reportPrikhodRaskhod = new ReportPrikhodRaskhod();
 
-                //administrator has a privilage to print the report how much he wants the other user only one time,
-                //the status will be saved if report is printed once 
-                //if (user_group!="administrator")
-                //{
-                //
-                //} else
-                //{
-                //}
-                
-                 if (priyomSdachaObj.IsObnovlenieExportPrintExist(Convert.ToDateTime(dateZakaz.Text))==true)
-                        priyomSdachaObj.UpdateObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
-                    else
-                        priyomSdachaObj.InsertObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
-                
-
-
-
-                if (totalReport.Checked == true)
-                {
+                //печать итогового отчета 
                     ReportPoItogom ReportPoItogomObj = new ReportPoItogom(); 
                     dt.Columns.Add("prodazhaRozn");
                     dt.Columns.Add("prodazhaOpt");
@@ -188,22 +177,39 @@ namespace AutoMir2022.DobavitTovarIsBDForm
                     dt.Rows[0][11] = ReportPoItogomObj.ConverterToDoubleWithDot(ReportPoItogomObj.ostatok);
                 
                     reportPrikhodRaskhod.StartReport("TotalReport", "ItogoviyOtchet", parametr, dt, "yes");
-
-                }
-                if (obnovlenieReport.Checked == true)
-                {
-                    dt = zakaziObj.GetZakazReportByDate(Convert.ToDateTime(dateZakaz.Text));
+                
+                
+                //печать отчета об обновлении
+                dt = zakaziObj.GetZakazReportByDate(Convert.ToDateTime(dateZakaz.Text));
                     reportPrikhodRaskhod.StartReport("ObnovlenieTovara", "PrikhodRaskhod", parametr, dt, "yes");
 
-                }
+        
                 
-                reportPrikhodRaskhod.Show();
+                //сохраняем статус печати, если пользователь (кроме админ) уже распечатал то
+                //вторично не сможет распечатать
+                if (priyomSdachaObj.IsObnovlenieExportPrintExist(Convert.ToDateTime(dateZakaz.Text)) == true)
+                    priyomSdachaObj.UpdateObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
+                else
+                    priyomSdachaObj.InsertObnovleniePrint(Convert.ToDateTime(dateZakaz.Text));
+
+
+                //administrator has a privilage to print the report how much he wants the other user only one time,
+                //the status will be saved if report is printed once 
+                if (MainMenu.userPrintFree == true)
+                {
+                    print.Enabled = true;
+                    reportPrikhodRaskhod.Show();
+                }
+                else if (MainMenu.userPrintFree == false && priyomSdachaObj.IsPrintTrue(Convert.ToDateTime(dateZakaz.Text)) == true)
+                {
+                    print.Enabled = false;
+                }
+
+                
 
             }
-        endProcess: { }
         }
 
-
-
+        
     }
 }

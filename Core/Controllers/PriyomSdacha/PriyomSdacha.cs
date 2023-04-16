@@ -58,6 +58,20 @@ namespace Core.Controllers.PriyomSdacha
             return Convert.ToBoolean(dt.Rows[0][0].ToString());
         }
 
+        public bool IsExportTrue(DateTime date)
+        {
+            DataTable dt = db.GetByParametrDateByUser("SELECT exists (SELECT 1 FROM public.обновление_товара_статус" +
+                " WHERE дата=@data AND экспорт=true LIMIT 1)", date);
+            return Convert.ToBoolean(dt.Rows[0][0].ToString());
+        }
+
+        public bool IsPrintTrue(DateTime date)
+        {
+            DataTable dt = db.GetByParametrDateByUser("SELECT exists (SELECT 1 FROM public.обновление_товара_статус" +
+                " WHERE дата=@data AND печать=true LIMIT 1)", date);
+            return Convert.ToBoolean(dt.Rows[0][0].ToString());
+        }
+
         public void InsertObnovleniePrint(DateTime date)
         {
             db.InsertWithParametrDate("INSERT INTO public.обновление_товара_статус (дата, печать) VALUES (@data, true)", "data", date);

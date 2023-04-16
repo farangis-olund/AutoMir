@@ -208,7 +208,7 @@ namespace Core.Controllers.RoznichProdazha
                 {
                     dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
                 }
-                dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+                dataGridView.Rows[index].DefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Bold);
             }
 
             return dataGridView;

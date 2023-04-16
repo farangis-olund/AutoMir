@@ -30,9 +30,6 @@ namespace AutoMir2022.DobavitTovarIsBDForm
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.totalReport = new System.Windows.Forms.RadioButton();
-            this.obnovlenieReport = new System.Windows.Forms.RadioButton();
             this.print = new System.Windows.Forms.Button();
             this.export = new System.Windows.Forms.Button();
             this.update = new System.Windows.Forms.Button();
@@ -41,13 +38,13 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
+            this.panel1.Controls.Add(this.print);
             this.panel1.Controls.Add(this.export);
             this.panel1.Controls.Add(this.update);
             this.panel1.Controls.Add(this.label1);
@@ -59,44 +56,11 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             this.panel1.Size = new System.Drawing.Size(889, 89);
             this.panel1.TabIndex = 0;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.totalReport);
-            this.groupBox1.Controls.Add(this.obnovlenieReport);
-            this.groupBox1.Controls.Add(this.print);
-            this.groupBox1.Location = new System.Drawing.Point(176, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 73);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            // 
-            // totalReport
-            // 
-            this.totalReport.AutoSize = true;
-            this.totalReport.Location = new System.Drawing.Point(5, 39);
-            this.totalReport.Name = "totalReport";
-            this.totalReport.Size = new System.Drawing.Size(150, 24);
-            this.totalReport.TabIndex = 6;
-            this.totalReport.TabStop = true;
-            this.totalReport.Text = "Итоговый отчет";
-            this.totalReport.UseVisualStyleBackColor = true;
-            // 
-            // obnovlenieReport
-            // 
-            this.obnovlenieReport.AutoSize = true;
-            this.obnovlenieReport.Checked = true;
-            this.obnovlenieReport.Location = new System.Drawing.Point(5, 15);
-            this.obnovlenieReport.Name = "obnovlenieReport";
-            this.obnovlenieReport.Size = new System.Drawing.Size(259, 24);
-            this.obnovlenieReport.TabIndex = 5;
-            this.obnovlenieReport.TabStop = true;
-            this.obnovlenieReport.Text = "Отчет об обновлении товаров";
-            this.obnovlenieReport.UseVisualStyleBackColor = true;
-            // 
             // print
             // 
-            this.print.Font = new System.Drawing.Font("Liberation Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.print.Location = new System.Drawing.Point(264, 15);
+            this.print.Enabled = false;
+            this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.print.Location = new System.Drawing.Point(451, 18);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(132, 49);
             this.print.TabIndex = 3;
@@ -106,8 +70,9 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             // 
             // export
             // 
-            this.export.Font = new System.Drawing.Font("Liberation Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.export.Location = new System.Drawing.Point(589, 18);
+            this.export.Enabled = false;
+            this.export.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.export.Location = new System.Drawing.Point(597, 18);
             this.export.Name = "export";
             this.export.Size = new System.Drawing.Size(132, 49);
             this.export.TabIndex = 4;
@@ -117,7 +82,8 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             // 
             // update
             // 
-            this.update.Font = new System.Drawing.Font("Liberation Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.update.Enabled = false;
+            this.update.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.update.Location = new System.Drawing.Point(743, 17);
             this.update.Name = "update";
             this.update.Size = new System.Drawing.Size(132, 49);
@@ -129,6 +95,7 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(14, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 20);
@@ -148,6 +115,7 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 89);
@@ -181,8 +149,6 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             this.Load += new System.EventHandler(this.DobavitIsBD_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -198,8 +164,5 @@ namespace AutoMir2022.DobavitTovarIsBDForm
         private System.Windows.Forms.Button print;
         private System.Windows.Forms.Button update;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton totalReport;
-        private System.Windows.Forms.RadioButton obnovlenieReport;
     }
 }

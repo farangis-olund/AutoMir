@@ -58,18 +58,18 @@ namespace AutoMir2022
             this.ochistkaVozvratBtn = new System.Windows.Forms.Button();
             this.artikulVibor = new System.Windows.Forms.ComboBox();
             this.vozvratDGV = new System.Windows.Forms.DataGridView();
-            this.naitiDGV = new System.Windows.Forms.DataGridView();
-            this.show_all_dataDGV = new System.Windows.Forms.DataGridView();
             this.artikulVozvrat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kolich = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsenaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolVozvrata = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumaVozv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naitiDGV = new System.Windows.Forms.DataGridView();
             this.artikul = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.show_all_dataDGV = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,7 +80,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.showAll);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.kodVozvrataTxb);
@@ -117,7 +117,7 @@ namespace AutoMir2022
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(569, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 20);
@@ -169,7 +169,7 @@ namespace AutoMir2022
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label6.ForeColor = System.Drawing.Color.DarkCyan;
             this.label6.Location = new System.Drawing.Point(5, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 20);
@@ -180,6 +180,7 @@ namespace AutoMir2022
             // 
             this.optRb.AutoSize = true;
             this.optRb.Enabled = false;
+            this.optRb.ForeColor = System.Drawing.Color.DarkCyan;
             this.optRb.Location = new System.Drawing.Point(243, 51);
             this.optRb.Name = "optRb";
             this.optRb.Size = new System.Drawing.Size(57, 24);
@@ -192,6 +193,7 @@ namespace AutoMir2022
             // 
             this.roznRb.AutoSize = true;
             this.roznRb.Enabled = false;
+            this.roznRb.ForeColor = System.Drawing.Color.DarkCyan;
             this.roznRb.Location = new System.Drawing.Point(243, 22);
             this.roznRb.Name = "roznRb";
             this.roznRb.Size = new System.Drawing.Size(63, 24);
@@ -213,7 +215,7 @@ namespace AutoMir2022
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
             this.label1.Location = new System.Drawing.Point(123, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 20);
@@ -234,7 +236,7 @@ namespace AutoMir2022
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(569, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 20);
@@ -258,7 +260,7 @@ namespace AutoMir2022
             this.groupBox1.Controls.Add(this.dateStart);
             this.groupBox1.Controls.Add(this.dateEnd);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox1.Location = new System.Drawing.Point(405, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(152, 100);
@@ -268,6 +270,7 @@ namespace AutoMir2022
             // 
             // dateStart
             // 
+            this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateStart.Location = new System.Drawing.Point(18, 29);
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(121, 26);
@@ -275,6 +278,7 @@ namespace AutoMir2022
             // 
             // dateEnd
             // 
+            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateEnd.Location = new System.Drawing.Point(18, 61);
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(121, 26);
@@ -293,8 +297,8 @@ namespace AutoMir2022
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label4.Location = new System.Drawing.Point(246, 21);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(246, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 6;
@@ -313,8 +317,8 @@ namespace AutoMir2022
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label3.Location = new System.Drawing.Point(132, 21);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(132, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 20);
             this.label3.TabIndex = 4;
@@ -334,8 +338,8 @@ namespace AutoMir2022
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label2.Location = new System.Drawing.Point(8, 21);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(8, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 20);
             this.label2.TabIndex = 2;
@@ -394,38 +398,10 @@ namespace AutoMir2022
             this.sumaVozv});
             this.vozvratDGV.Location = new System.Drawing.Point(572, 188);
             this.vozvratDGV.Name = "vozvratDGV";
+            this.vozvratDGV.RowHeadersWidth = 20;
             this.vozvratDGV.Size = new System.Drawing.Size(557, 381);
             this.vozvratDGV.TabIndex = 0;
             this.vozvratDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.vozvratDGV_CellEndEdit);
-            // 
-            // naitiDGV
-            // 
-            this.naitiDGV.AllowUserToAddRows = false;
-            this.naitiDGV.AllowUserToDeleteRows = false;
-            this.naitiDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.naitiDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.artikul,
-            this.kol,
-            this.tsena,
-            this.suma,
-            this.data});
-            this.naitiDGV.Location = new System.Drawing.Point(8, 189);
-            this.naitiDGV.Name = "naitiDGV";
-            this.naitiDGV.ReadOnly = true;
-            this.naitiDGV.Size = new System.Drawing.Size(550, 380);
-            this.naitiDGV.TabIndex = 0;
-            // 
-            // show_all_dataDGV
-            // 
-            this.show_all_dataDGV.AllowUserToAddRows = false;
-            this.show_all_dataDGV.AllowUserToDeleteRows = false;
-            this.show_all_dataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.show_all_dataDGV.Location = new System.Drawing.Point(8, 189);
-            this.show_all_dataDGV.Name = "show_all_dataDGV";
-            this.show_all_dataDGV.ReadOnly = true;
-            this.show_all_dataDGV.Size = new System.Drawing.Size(550, 380);
-            this.show_all_dataDGV.TabIndex = 1;
-            this.show_all_dataDGV.Visible = false;
             // 
             // artikulVozvrat
             // 
@@ -460,6 +436,24 @@ namespace AutoMir2022
             this.sumaVozv.Name = "sumaVozv";
             this.sumaVozv.ReadOnly = true;
             // 
+            // naitiDGV
+            // 
+            this.naitiDGV.AllowUserToAddRows = false;
+            this.naitiDGV.AllowUserToDeleteRows = false;
+            this.naitiDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.naitiDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artikul,
+            this.kol,
+            this.tsena,
+            this.suma,
+            this.data});
+            this.naitiDGV.Location = new System.Drawing.Point(8, 189);
+            this.naitiDGV.Name = "naitiDGV";
+            this.naitiDGV.ReadOnly = true;
+            this.naitiDGV.RowHeadersWidth = 20;
+            this.naitiDGV.Size = new System.Drawing.Size(550, 380);
+            this.naitiDGV.TabIndex = 0;
+            // 
             // artikul
             // 
             this.artikul.HeaderText = "Артикул";
@@ -492,6 +486,18 @@ namespace AutoMir2022
             this.data.Name = "data";
             this.data.ReadOnly = true;
             this.data.Visible = false;
+            // 
+            // show_all_dataDGV
+            // 
+            this.show_all_dataDGV.AllowUserToAddRows = false;
+            this.show_all_dataDGV.AllowUserToDeleteRows = false;
+            this.show_all_dataDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.show_all_dataDGV.Location = new System.Drawing.Point(8, 189);
+            this.show_all_dataDGV.Name = "show_all_dataDGV";
+            this.show_all_dataDGV.ReadOnly = true;
+            this.show_all_dataDGV.Size = new System.Drawing.Size(550, 380);
+            this.show_all_dataDGV.TabIndex = 1;
+            this.show_all_dataDGV.Visible = false;
             // 
             // Vozvrat
             // 

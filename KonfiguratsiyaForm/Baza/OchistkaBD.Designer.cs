@@ -31,6 +31,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
         {
             this.vozvrat = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.raskhodi = new System.Windows.Forms.CheckBox();
             this.rasprodazha = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.prikhodTovara = new System.Windows.Forms.CheckBox();
@@ -43,7 +44,6 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             this.prodazha = new System.Windows.Forms.CheckBox();
             this.ochistka = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.raskhodi = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.DarkCyan;
             this.groupBox1.Controls.Add(this.raskhodi);
             this.groupBox1.Controls.Add(this.rasprodazha);
             this.groupBox1.Controls.Add(this.checkBox4);
@@ -76,12 +77,25 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             this.groupBox1.Controls.Add(this.ochistka);
             this.groupBox1.Controls.Add(this.vozvrat);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(237, 592);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Таблицы";
+            // 
+            // raskhodi
+            // 
+            this.raskhodi.AutoSize = true;
+            this.raskhodi.Location = new System.Drawing.Point(17, 413);
+            this.raskhodi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.raskhodi.Name = "raskhodi";
+            this.raskhodi.Size = new System.Drawing.Size(93, 24);
+            this.raskhodi.TabIndex = 16;
+            this.raskhodi.Text = "Расходы";
+            this.raskhodi.UseVisualStyleBackColor = true;
+            this.raskhodi.Click += new System.EventHandler(this.raskhodi_Click);
             // 
             // rasprodazha
             // 
@@ -205,6 +219,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             // ochistka
             // 
+            this.ochistka.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ochistka.Location = new System.Drawing.Point(106, 16);
             this.ochistka.Name = "ochistka";
             this.ochistka.Size = new System.Drawing.Size(121, 38);
@@ -217,6 +232,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(237, 0);
@@ -224,18 +240,6 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(785, 592);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // raskhodi
-            // 
-            this.raskhodi.AutoSize = true;
-            this.raskhodi.Location = new System.Drawing.Point(17, 413);
-            this.raskhodi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.raskhodi.Name = "raskhodi";
-            this.raskhodi.Size = new System.Drawing.Size(93, 24);
-            this.raskhodi.TabIndex = 16;
-            this.raskhodi.Text = "Расходы";
-            this.raskhodi.UseVisualStyleBackColor = true;
-            this.raskhodi.Click += new System.EventHandler(this.raskhodi_Click);
             // 
             // OchistkaBD
             // 

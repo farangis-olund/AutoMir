@@ -58,7 +58,7 @@ namespace AutoMir2022
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.save_bonus);
             this.panel1.Controls.Add(this.create_bonus);
             this.panel1.Controls.Add(this.change_rasprodazha);
@@ -111,7 +111,7 @@ namespace AutoMir2022
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Controls.Add(this.dateLabel);
             this.panel2.Controls.Add(this.protsBonusa);
             this.panel2.Controls.Add(this.label8);
@@ -127,6 +127,7 @@ namespace AutoMir2022
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.Location = new System.Drawing.Point(0, 51);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(184, 619);
@@ -135,10 +136,11 @@ namespace AutoMir2022
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateLabel.ForeColor = System.Drawing.Color.Red;
             this.dateLabel.Location = new System.Drawing.Point(6, 189);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(109, 20);
+            this.dateLabel.Size = new System.Drawing.Size(101, 18);
             this.dateLabel.TabIndex = 14;
             this.dateLabel.Text = "Обновлен до";
             // 
@@ -205,10 +207,11 @@ namespace AutoMir2022
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.DarkRed;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
             this.label4.Location = new System.Drawing.Point(5, 166);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 20);
+            this.label4.Size = new System.Drawing.Size(101, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "Обновлен до";
             // 
@@ -269,6 +272,7 @@ namespace AutoMir2022
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(184, 51);

@@ -10,14 +10,14 @@ namespace Core.DB
 
     class DBNpgsql
     {
-        public const string CONNECTION_STRING = "server=localhost;" +
+        public const string CONNECTION_STRING = "server=localhost;" + /*192.168.90.1*/
                                                     "port=5432;" +
                                                     "user id=postgres;" +
                                                     "password=1234;" +
                                                     "database=AutoMir2022;";
 
-           
 
+        
         // return query to datatable
         public DataTable GetByQuery(string query)
         {

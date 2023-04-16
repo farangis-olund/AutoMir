@@ -150,18 +150,19 @@ namespace AutoMir2022
 
         private void add_kategoria_Click(object sender, EventArgs e)
         {
-            if (id_gruppa.Text == "")
-            {
-                MessageBox.Show("Вы не выбрали группу, перед выбором категории укажите группу!");
-                goto endProcess;
-            }
+           
 
             InputBox inputBoxObj = new InputBox();
             string value = "";
-            if (inputBoxObj.GetInputBox("Создать категорию для выбранной группе доступа", "Введите название категории:", ref value) == DialogResult.OK)
+            if (inputBoxObj.GetInputBox("Создать новую категорию", "Введите название категории:", ref value) == DialogResult.OK)
             {
                 if (value != "")
                 {
+                    //добавить новую категорию
+                    dostupObj.InsertKategoria(value);
+                    //обновить каталог категории в комбобоксе
+                    kategorii.DataSource = dostupObj.GetAllKategoriaDostupa();
+
                     dostupObj.InsertKategoriaToDostupPolzovatey(value, Convert.ToInt32( id_gruppa.Text));
                     DataTable dt = dostupObj.GetKategoriaDostupaByNameKategorii(value, Convert.ToInt32(id_gruppa.Text));
                     int index = uslovieGruppiDgv.Rows.Add();

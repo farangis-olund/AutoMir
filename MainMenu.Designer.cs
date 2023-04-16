@@ -69,6 +69,7 @@ namespace AutoMir2022
             this.dostupPolzovateley = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
+            this.просмотрБазыДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -79,7 +80,7 @@ namespace AutoMir2022
             // 
             // SideBar
             // 
-            this.SideBar.BackColor = System.Drawing.Color.LightSlateGray;
+            this.SideBar.BackColor = System.Drawing.Color.DarkCyan;
             this.SideBar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SideBar.Controls.Add(this.loginBox);
             this.SideBar.Controls.Add(this.TitleFormMenu);
@@ -87,7 +88,7 @@ namespace AutoMir2022
             this.SideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.SideBar.Location = new System.Drawing.Point(0, 0);
             this.SideBar.Name = "SideBar";
-            this.SideBar.Size = new System.Drawing.Size(238, 739);
+            this.SideBar.Size = new System.Drawing.Size(202, 562);
             this.SideBar.TabIndex = 0;
             // 
             // loginBox
@@ -99,14 +100,14 @@ namespace AutoMir2022
             this.loginBox.Controls.Add(this.userName);
             this.loginBox.Location = new System.Drawing.Point(9, 118);
             this.loginBox.Name = "loginBox";
-            this.loginBox.Size = new System.Drawing.Size(209, 192);
+            this.loginBox.Size = new System.Drawing.Size(179, 192);
             this.loginBox.TabIndex = 1;
             this.loginBox.TabStop = false;
             // 
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.loginButton.Location = new System.Drawing.Point(116, 147);
+            this.loginButton.Location = new System.Drawing.Point(72, 147);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(87, 39);
             this.loginButton.TabIndex = 3;
@@ -138,20 +139,20 @@ namespace AutoMir2022
             // 
             // userPassword
             // 
-            this.userPassword.Font = new System.Drawing.Font("Arial Unicode MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userPassword.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userPassword.Location = new System.Drawing.Point(9, 108);
             this.userPassword.Name = "userPassword";
-            this.userPassword.Size = new System.Drawing.Size(194, 33);
+            this.userPassword.Size = new System.Drawing.Size(150, 29);
             this.userPassword.TabIndex = 2;
             this.userPassword.UseSystemPasswordChar = true;
             this.userPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.userPassword_KeyPress);
             // 
             // userName
             // 
-            this.userName.Font = new System.Drawing.Font("Arial Unicode MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userName.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userName.Location = new System.Drawing.Point(9, 47);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(194, 33);
+            this.userName.Size = new System.Drawing.Size(150, 29);
             this.userName.TabIndex = 1;
             // 
             // TitleFormMenu
@@ -168,7 +169,7 @@ namespace AutoMir2022
             // logo
             // 
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(30, 9);
+            this.logo.Location = new System.Drawing.Point(12, 9);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(170, 59);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -180,15 +181,16 @@ namespace AutoMir2022
             this.panelSwich.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelSwich.Controls.Add(this.menuStrip1);
             this.panelSwich.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSwich.Location = new System.Drawing.Point(238, 0);
+            this.panelSwich.Location = new System.Drawing.Point(202, 0);
             this.panelSwich.Name = "panelSwich";
-            this.panelSwich.Size = new System.Drawing.Size(1069, 35);
+            this.panelSwich.Size = new System.Drawing.Size(857, 35);
             this.panelSwich.TabIndex = 2;
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.MintCream;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prodazha,
             this.postuplenie,
@@ -200,7 +202,7 @@ namespace AutoMir2022
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1069, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(857, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -210,32 +212,32 @@ namespace AutoMir2022
             this.roznichnaya,
             this.optovaya,
             this.klient});
-            this.prodazha.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.prodazha.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.prodazha.Name = "prodazha";
-            this.prodazha.Size = new System.Drawing.Size(104, 29);
+            this.prodazha.Size = new System.Drawing.Size(94, 27);
             this.prodazha.Text = "Продажа";
             // 
             // roznichnaya
             // 
-            this.roznichnaya.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.roznichnaya.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.roznichnaya.Name = "roznichnaya";
-            this.roznichnaya.Size = new System.Drawing.Size(414, 34);
+            this.roznichnaya.Size = new System.Drawing.Size(326, 26);
             this.roznichnaya.Text = "Оформление розничной продажи";
             this.roznichnaya.Click += new System.EventHandler(this.розничнаяToolStripMenuItem_Click);
             // 
             // optovaya
             // 
-            this.optovaya.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.optovaya.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.optovaya.Name = "optovaya";
-            this.optovaya.Size = new System.Drawing.Size(414, 34);
+            this.optovaya.Size = new System.Drawing.Size(326, 26);
             this.optovaya.Text = "Оформление оптовой продажи";
             this.optovaya.Click += new System.EventHandler(this.оптоваяToolStripMenuItem_Click);
             // 
             // klient
             // 
-            this.klient.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.klient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.klient.Name = "klient";
-            this.klient.Size = new System.Drawing.Size(414, 34);
+            this.klient.Size = new System.Drawing.Size(326, 26);
             this.klient.Text = "Клиенты";
             this.klient.Click += new System.EventHandler(this.клиентToolStripMenuItem_Click);
             // 
@@ -245,29 +247,32 @@ namespace AutoMir2022
             this.dobavitBd,
             this.prikhodRaskhod,
             this.obmenTovarami});
-            this.postuplenie.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.postuplenie.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.postuplenie.Name = "postuplenie";
-            this.postuplenie.Size = new System.Drawing.Size(138, 29);
+            this.postuplenie.Size = new System.Drawing.Size(124, 27);
             this.postuplenie.Text = "Поступление";
             // 
             // dobavitBd
             // 
+            this.dobavitBd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dobavitBd.Name = "dobavitBd";
-            this.dobavitBd.Size = new System.Drawing.Size(232, 30);
+            this.dobavitBd.Size = new System.Drawing.Size(202, 26);
             this.dobavitBd.Text = "Добавить из БД";
             this.dobavitBd.Click += new System.EventHandler(this.добавитьИзБДToolStripMenuItem_Click);
             // 
             // prikhodRaskhod
             // 
+            this.prikhodRaskhod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.prikhodRaskhod.Name = "prikhodRaskhod";
-            this.prikhodRaskhod.Size = new System.Drawing.Size(232, 30);
+            this.prikhodRaskhod.Size = new System.Drawing.Size(202, 26);
             this.prikhodRaskhod.Text = "Приход/Расход";
             this.prikhodRaskhod.Click += new System.EventHandler(this.приходРасходToolStripMenuItem_Click);
             // 
             // obmenTovarami
             // 
+            this.obmenTovarami.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.obmenTovarami.Name = "obmenTovarami";
-            this.obmenTovarami.Size = new System.Drawing.Size(232, 30);
+            this.obmenTovarami.Size = new System.Drawing.Size(202, 26);
             this.obmenTovarami.Text = "Обмен товарами";
             this.obmenTovarami.Click += new System.EventHandler(this.обменТоварамиToolStripMenuItem_Click);
             // 
@@ -278,29 +283,32 @@ namespace AutoMir2022
             this.sklad,
             this.raskhodi,
             this.kurs});
-            this.operatsii.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.operatsii.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.operatsii.Name = "operatsii";
-            this.operatsii.Size = new System.Drawing.Size(113, 29);
+            this.operatsii.Size = new System.Drawing.Size(103, 27);
             this.operatsii.Text = "Операции";
             // 
             // kassa
             // 
+            this.kassa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.kassa.Name = "kassa";
-            this.kassa.Size = new System.Drawing.Size(195, 30);
+            this.kassa.Size = new System.Drawing.Size(181, 28);
             this.kassa.Text = "Касса";
             this.kassa.Click += new System.EventHandler(this.кассаToolStripMenuItem_Click);
             // 
             // sklad
             // 
+            this.sklad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.sklad.Name = "sklad";
-            this.sklad.Size = new System.Drawing.Size(195, 30);
+            this.sklad.Size = new System.Drawing.Size(181, 28);
             this.sklad.Text = "Склад";
             this.sklad.Click += new System.EventHandler(this.складToolStripMenuItem_Click);
             // 
             // raskhodi
             // 
+            this.raskhodi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.raskhodi.Name = "raskhodi";
-            this.raskhodi.Size = new System.Drawing.Size(195, 30);
+            this.raskhodi.Size = new System.Drawing.Size(181, 28);
             this.raskhodi.Text = "Расходы";
             this.raskhodi.Click += new System.EventHandler(this.расходыToolStripMenuItem_Click);
             // 
@@ -308,7 +316,7 @@ namespace AutoMir2022
             // 
             this.kurs.Enabled = false;
             this.kurs.Name = "kurs";
-            this.kurs.Size = new System.Drawing.Size(195, 30);
+            this.kurs.Size = new System.Drawing.Size(181, 28);
             this.kurs.Text = "Курс валюты";
             this.kurs.Click += new System.EventHandler(this.курсВалютыToolStripMenuItem_Click);
             // 
@@ -318,29 +326,32 @@ namespace AutoMir2022
             this.otchetOstatok,
             this.otchetProdazha,
             this.dolgiKlienta});
-            this.otcheti.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.otcheti.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.otcheti.Name = "otcheti";
-            this.otcheti.Size = new System.Drawing.Size(88, 29);
+            this.otcheti.Size = new System.Drawing.Size(80, 27);
             this.otcheti.Text = "Отчеты";
             // 
             // otchetOstatok
             // 
+            this.otchetOstatok.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.otchetOstatok.Name = "otchetOstatok";
-            this.otchetOstatok.Size = new System.Drawing.Size(253, 30);
+            this.otchetOstatok.Size = new System.Drawing.Size(219, 26);
             this.otchetOstatok.Text = "Об остатках товара";
             this.otchetOstatok.Click += new System.EventHandler(this.отчетПоМестуНаСкладеToolStripMenuItem_Click);
             // 
             // otchetProdazha
             // 
+            this.otchetProdazha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.otchetProdazha.Name = "otchetProdazha";
-            this.otchetProdazha.Size = new System.Drawing.Size(253, 30);
+            this.otchetProdazha.Size = new System.Drawing.Size(219, 26);
             this.otchetProdazha.Text = "О продаже товара";
             this.otchetProdazha.Click += new System.EventHandler(this.оПродажеТовараToolStripMenuItem_Click);
             // 
             // dolgiKlienta
             // 
+            this.dolgiKlienta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dolgiKlienta.Name = "dolgiKlienta";
-            this.dolgiKlienta.Size = new System.Drawing.Size(253, 30);
+            this.dolgiKlienta.Size = new System.Drawing.Size(219, 26);
             this.dolgiKlienta.Text = "Долги клиентов";
             this.dolgiKlienta.Click += new System.EventHandler(this.долгиКлиентовToolStripMenuItem_Click);
             // 
@@ -348,15 +359,16 @@ namespace AutoMir2022
             // 
             this.vozvrat.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.vozvratOformlenie});
-            this.vozvrat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.vozvrat.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vozvrat.Name = "vozvrat";
-            this.vozvrat.Size = new System.Drawing.Size(93, 29);
+            this.vozvrat.Size = new System.Drawing.Size(85, 27);
             this.vozvrat.Text = "Возврат";
             // 
             // vozvratOformlenie
             // 
+            this.vozvratOformlenie.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.vozvratOformlenie.Name = "vozvratOformlenie";
-            this.vozvratOformlenie.Size = new System.Drawing.Size(281, 30);
+            this.vozvratOformlenie.Size = new System.Drawing.Size(242, 26);
             this.vozvratOformlenie.Text = "Оформление возврата";
             this.vozvratOformlenie.Click += new System.EventHandler(this.возвратToolStripMenuItem1_Click);
             // 
@@ -364,23 +376,26 @@ namespace AutoMir2022
             // 
             this.konfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dostupTablitsam,
-            this.ochistkaBazi});
-            this.konfig.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ochistkaBazi,
+            this.просмотрБазыДанныхToolStripMenuItem});
+            this.konfig.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.konfig.Name = "konfig";
-            this.konfig.Size = new System.Drawing.Size(150, 29);
+            this.konfig.Size = new System.Drawing.Size(137, 27);
             this.konfig.Text = "Конфигурация";
             // 
             // dostupTablitsam
             // 
+            this.dostupTablitsam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dostupTablitsam.Name = "dostupTablitsam";
-            this.dostupTablitsam.Size = new System.Drawing.Size(248, 30);
+            this.dostupTablitsam.Size = new System.Drawing.Size(269, 28);
             this.dostupTablitsam.Text = "Доступ к таблицам";
             this.dostupTablitsam.Click += new System.EventHandler(this.доступКТаблицамToolStripMenuItem_Click);
             // 
             // ochistkaBazi
             // 
+            this.ochistkaBazi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ochistkaBazi.Name = "ochistkaBazi";
-            this.ochistkaBazi.Size = new System.Drawing.Size(248, 30);
+            this.ochistkaBazi.Size = new System.Drawing.Size(269, 28);
             this.ochistkaBazi.Text = "Очистка базы";
             this.ochistkaBazi.Click += new System.EventHandler(this.очисткаБазыToolStripMenuItem_Click);
             // 
@@ -390,29 +405,32 @@ namespace AutoMir2022
             this.protsenti,
             this.rasprodazhaBonus,
             this.dostupPolzovateley});
-            this.admin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.admin.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(162, 29);
+            this.admin.Size = new System.Drawing.Size(147, 27);
             this.admin.Text = "Администрация";
             // 
             // protsenti
             // 
+            this.protsenti.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.protsenti.Name = "protsenti";
-            this.protsenti.Size = new System.Drawing.Size(401, 30);
+            this.protsenti.Size = new System.Drawing.Size(342, 26);
             this.protsenti.Text = "Назначение процента для продавца";
             this.protsenti.Click += new System.EventHandler(this.назначениеПроцентаДляПродавцаToolStripMenuItem_Click);
             // 
             // rasprodazhaBonus
             // 
+            this.rasprodazhaBonus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rasprodazhaBonus.Name = "rasprodazhaBonus";
-            this.rasprodazhaBonus.Size = new System.Drawing.Size(401, 30);
+            this.rasprodazhaBonus.Size = new System.Drawing.Size(342, 26);
             this.rasprodazhaBonus.Text = "Распродажа и бонусы";
             this.rasprodazhaBonus.Click += new System.EventHandler(this.распродажаИБонусыToolStripMenuItem_Click);
             // 
             // dostupPolzovateley
             // 
+            this.dostupPolzovateley.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dostupPolzovateley.Name = "dostupPolzovateley";
-            this.dostupPolzovateley.Size = new System.Drawing.Size(401, 30);
+            this.dostupPolzovateley.Size = new System.Drawing.Size(342, 26);
             this.dostupPolzovateley.Text = "Ограничение и Доступ";
             this.dostupPolzovateley.Click += new System.EventHandler(this.доступПользователейToolStripMenuItem_Click);
             // 
@@ -420,30 +438,37 @@ namespace AutoMir2022
             // 
             this.info.BackColor = System.Drawing.SystemColors.Menu;
             this.info.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.info.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.info.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.info.Location = new System.Drawing.Point(61, 100);
-            this.info.Margin = new System.Windows.Forms.Padding(10);
+            this.info.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.info.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.info.Location = new System.Drawing.Point(47, 66);
+            this.info.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.info.Name = "info";
             this.info.ReadOnly = true;
-            this.info.Size = new System.Drawing.Size(844, 271);
+            this.info.Size = new System.Drawing.Size(507, 271);
             this.info.TabIndex = 0;
             this.info.Text = "";
+            this.info.TextChanged += new System.EventHandler(this.info_TextChanged);
             // 
             // panelData
             // 
             this.panelData.Controls.Add(this.info);
             this.panelData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelData.Location = new System.Drawing.Point(238, 35);
+            this.panelData.Location = new System.Drawing.Point(202, 35);
             this.panelData.Name = "panelData";
-            this.panelData.Size = new System.Drawing.Size(1069, 704);
+            this.panelData.Size = new System.Drawing.Size(857, 527);
             this.panelData.TabIndex = 3;
+            // 
+            // просмотрБазыДанныхToolStripMenuItem
+            // 
+            this.просмотрБазыДанныхToolStripMenuItem.Name = "просмотрБазыДанныхToolStripMenuItem";
+            this.просмотрБазыДанныхToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
+            this.просмотрБазыДанныхToolStripMenuItem.Text = "Просмотр Базы Данных";
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1307, 739);
+            this.ClientSize = new System.Drawing.Size(1059, 562);
             this.Controls.Add(this.panelData);
             this.Controls.Add(this.panelSwich);
             this.Controls.Add(this.SideBar);
@@ -509,6 +534,7 @@ namespace AutoMir2022
         private System.Windows.Forms.ToolStripMenuItem dolgiKlienta;
         private System.Windows.Forms.ToolStripMenuItem dostupTablitsam;
         private System.Windows.Forms.ToolStripMenuItem ochistkaBazi;
+        private System.Windows.Forms.ToolStripMenuItem просмотрБазыДанныхToolStripMenuItem;
     }
 
 }

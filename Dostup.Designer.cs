@@ -65,7 +65,7 @@ namespace AutoMir2022
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.BackColor = System.Drawing.Color.DarkCyan;
             this.panel2.Controls.Add(this.save);
             this.panel2.Controls.Add(this.create);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -107,6 +107,7 @@ namespace AutoMir2022
             this.id_доступа});
             this.uslovieGruppiDgv.Location = new System.Drawing.Point(15, 153);
             this.uslovieGruppiDgv.Name = "uslovieGruppiDgv";
+            this.uslovieGruppiDgv.RowHeadersWidth = 20;
             this.uslovieGruppiDgv.Size = new System.Drawing.Size(636, 358);
             this.uslovieGruppiDgv.TabIndex = 2;
             // 
@@ -182,6 +183,7 @@ namespace AutoMir2022
             this.id_пользователь});
             this.userDgv.Location = new System.Drawing.Point(664, 153);
             this.userDgv.Name = "userDgv";
+            this.userDgv.RowHeadersWidth = 20;
             this.userDgv.Size = new System.Drawing.Size(592, 358);
             this.userDgv.TabIndex = 7;
             // 

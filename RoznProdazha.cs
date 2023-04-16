@@ -319,13 +319,13 @@ namespace AutoMir2022
             naimenovanie.SelectedItem = null;
 
             dataGridView1.Columns[0].Width = 120;
-            dataGridView1.Columns[1].Width = 220;
+            dataGridView1.Columns[1].Width = 200;
             dataGridView1.Columns[2].Width = 80;
             dataGridView1.Columns[3].Width = 80;
-            dataGridView1.Columns[4].Width = 320;
+            dataGridView1.Columns[4].Width = 220;
             dataGridView1.Columns[5].Width = 120;
             dataGridView1.Columns[6].Width = 60;
-            dataGridView1.Columns[7].Width = 100;
+            dataGridView1.Columns[7].Width = 80;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -443,12 +443,13 @@ namespace AutoMir2022
                     this.dataGridView3.Rows[index].Cells[4].Value = dr[4];
                     this.dataGridView3.Rows[index].Cells[8].Value = dr[5];
 
-                    if (dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString() == "")
+                    if (Convert.ToString(dataGridView2.Rows[i].Cells["kolZakaza"].Value)=="")
                     {
                         MessageBox.Show("Количество заказа не указан!");
                         roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
 
                         ochiskta();
+                        goto endProsess;
                     }
 
                     //    данные из карзини 2 количество заказа, цена и сумма
