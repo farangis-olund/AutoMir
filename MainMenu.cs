@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using System.Windows.Forms;
 using Core.Controllers;
+using Core.DesignForms;
 using Core.DB;
 
 
@@ -31,7 +32,7 @@ namespace AutoMir2022
         InitializeComponent();
 
             this.WindowState = FormWindowState.Maximized;
-            // TestConnection();
+            
 
         }
 
@@ -279,6 +280,12 @@ namespace AutoMir2022
         private void info_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void просмотрБазыДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ProsmotrBDForm myForm = new ProsmotrBDForm();
+            //myForm.Show();
         }
     }
 }

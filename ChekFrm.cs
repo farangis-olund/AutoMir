@@ -112,7 +112,7 @@ namespace AutoMir2022
         private void ChekFrm_Load(object sender, EventArgs e)
         {
 
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
 
         private void proveritBtn_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using Core.Controllers.OtmenaProdazhi;
 using Core.DB;
 using Core.Controllers.ProverkaNaOshibku;
 using Core.Controllers;
+using Core.DesignForms;
 
 namespace AutoMir2022
 {
@@ -66,12 +67,27 @@ namespace AutoMir2022
             myFormSklad.Show();
 
             //forma mesto na sklade
-            ChekFrm myFormChek = new ChekFrm();
-            myFormChek.TopLevel = false;
-            myFormChek.AutoScroll = true;
-            myFormChek.FormBorderStyle = FormBorderStyle.None;
-            this.chekPanel.Controls.Add(myFormChek);
+
+            ChekFrm myFormChek = new ChekFrm()
+            {
+                TopLevel = false,
+                AutoScroll = true,
+                FormBorderStyle = FormBorderStyle.None
+            };
+
+            if (this.chekPanel != null)
+            {
+                this.chekPanel.Controls.Add(myFormChek);
+            }
+
             myFormChek.Show();
+
+            //ChekFrm myFormChek = new ChekFrm();
+            //myFormChek.TopLevel = false;
+            //myFormChek.AutoScroll = true;
+            //myFormChek.FormBorderStyle = FormBorderStyle.None;
+            //this.chekPanel.Controls.Add(myFormChek);
+            //myFormChek.Show();
 
 
 
@@ -86,25 +102,31 @@ namespace AutoMir2022
         }
 
         //add data from karizna 1 to karzina2 when user klicking to row of daagridview1
-        private void selectedRowsButton_Click(object sender, System.EventArgs e)
+        
+        
+        private void deleteFirstRowForSumTable(ref DataGridView dgv)
         {
             //удалаем строку с итогом суммой
             //
 
-            int rowNum = dataGridView2.Rows.Count;
+            int rowNum = dgv.Rows.Count;
 
             if (rowNum > 0)
             {
 
-                if (dataGridView2.Rows[rowNum - 1].Cells[0].Value == null)
+                if (dgv.Rows[rowNum - 1].Cells[0].Value == null)
                 {
-                    this.dataGridView2.Rows.Remove(this.dataGridView2.Rows[rowNum - 1]);
+                    dgv.Rows.Remove(dgv.Rows[rowNum - 1]);
 
                 }
             }
-
-
-
+        }
+        
+        
+        private void selectedRowsButton_Click(object sender, System.EventArgs e)
+        {
+            //удаляем строку сумму в таблице, чтобы добавить новую строку
+            deleteFirstRowForSumTable(ref dataGridView2);
 
             if (kursValyuti.Text.Trim() == "" || kursValyuti.Text.Trim() == "0")
             {
@@ -163,7 +185,7 @@ namespace AutoMir2022
             foreach (DataRow dr in alternativa.Rows)
             {
 
-                if (isChecked && i == 1) break;
+                if (isChecked && i == 1) break; /*ischecked is tolko odin artikul*/
 
                 if (i == 4) break;
 
@@ -214,6 +236,11 @@ namespace AutoMir2022
 
                 this.dataGridView2.Rows[index].Cells[15 + i].Value = dr[0];
 
+                //// проверяем на наличие распродажи для выбранного артикула
+                RasprodazhaBonus rasprodazhaBonusObj = new RasprodazhaBonus();
+
+                rasprodazhaBonusObj.RaspradazhaArtikulColor(ref dataGridView2, index, 7 + sumaRowCounter, dr[0].ToString());
+
                 i = i + 1;
                 sumaRowCounter = sumaRowCounter + 2;
             }
@@ -245,12 +272,13 @@ namespace AutoMir2022
 
             }
 
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
-
-            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+            
+            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].DefaultCellStyle.BackColor = Color.DodgerBlue;
 
 
         endProsess: { }
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
+           
 
         }
 
@@ -297,6 +325,8 @@ namespace AutoMir2022
             mydataTable = roznProdazhaObj.Index();
             dataGridView1.DataSource = mydataTable;
 
+            tolkoOdinArtikul.Checked = false;
+
             Brand.DisplayMember = "бренд";
             Brand.DataSource = roznProdazhaObj.selectColumnDistinct(mydataTable, "бренд");
 
@@ -318,14 +348,14 @@ namespace AutoMir2022
             artikul.SelectedItem = null;
             naimenovanie.SelectedItem = null;
 
-            dataGridView1.Columns[0].Width = 120;
-            dataGridView1.Columns[1].Width = 200;
-            dataGridView1.Columns[2].Width = 80;
-            dataGridView1.Columns[3].Width = 80;
+            dataGridView1.Columns[0].Width = 140;
+            dataGridView1.Columns[1].Width = 300;
+            dataGridView1.Columns[2].Width = 100;
+            dataGridView1.Columns[3].Width = 100;
             dataGridView1.Columns[4].Width = 220;
             dataGridView1.Columns[5].Width = 120;
-            dataGridView1.Columns[6].Width = 60;
-            dataGridView1.Columns[7].Width = 80;
+            dataGridView1.Columns[6].Width = 100;
+            dataGridView1.Columns[7].Width = 100;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -360,6 +390,8 @@ namespace AutoMir2022
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
                     dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
                     roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
+                    
+                    FormElementDesign.SetAligementDataGridview(ref dataGridView2, "kolZakaza", "bold");
                 }
                 else
                 {
@@ -371,9 +403,7 @@ namespace AutoMir2022
         endProcess: { }
         }
 
-
-
-        private void variantVibor_Click(object sender, EventArgs e)
+        private void addDataFromKarzina2ToKarzina3(bool groupVibor, int dgvRow, string dgvColName)
         {
             double skidka = 0;
             bool isChecked = prodazhaSoSkidkoy.Checked;
@@ -393,21 +423,38 @@ namespace AutoMir2022
             }
             string variantvibor = "";
             double kurs = Convert.ToDouble(kursValyuti.Text);
-            if (variant1.Checked == true) variantvibor = "artikul1";
-            else if (variant2.Checked == true) variantvibor = "artikul2";
-            else if (variant3.Checked == true) variantvibor = "artikul3";
-            else if (variant4.Checked == true) variantvibor = "artikul4";
-
-
-
+            if (variant1.Checked == true || dgvColName == "suma1") variantvibor = "artikul1";
+            else if (variant2.Checked == true || dgvColName == "suma2") variantvibor = "artikul2";
+            else if (variant3.Checked == true || dgvColName == "suma3") variantvibor = "artikul3";
+            else if (variant4.Checked == true || dgvColName == "suma4") variantvibor = "artikul4";
 
             //adding data from datagrizd2 (Karzina2) to datagrid3 (karzina3)
 
             DataTable listArtikulKarzina3 = new DataTable();
-
-            for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
+            int rowCounter;
+            if (groupVibor == true)
             {
-                listArtikulKarzina3 = roznProdazhaObj.getviborVariant(dataGridView2.Rows[i].Cells[variantvibor].Value.ToString());
+                rowCounter = dataGridView2.Rows.Count - 1;
+            }
+            else
+            {
+                rowCounter = 1;
+                //удалаем последную строку суммы, чтобы добавить новую строку для нового артикула
+                
+            }
+            for (int i = 0; i < rowCounter; i++)
+            {
+                int rowDgv;
+                //если вариант из radioButton выбран то будет в цикле перенесены все поля в датагрид3 
+                if (groupVibor == true) rowDgv = i;
+                else rowDgv = dgvRow;
+
+                listArtikulKarzina3 = roznProdazhaObj.getviborVariant(dataGridView2.Rows[rowDgv].Cells[variantvibor].Value.ToString());
+
+                //добавляем поле в datagrid3
+                //
+                deleteFirstRowForSumTable(ref dataGridView3);
+
                 int index = dataGridView3.Rows.Add();
 
                 foreach (DataRow dr in listArtikulKarzina3.Rows)
@@ -425,25 +472,25 @@ namespace AutoMir2022
                         goto endProsess;
                     }
 
-                    if (Convert.ToInt32(dr[7]) < Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value))
+                    if (Convert.ToInt32(dr[7]) < Convert.ToInt32(dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value))
                     {
                         MessageBox.Show("Количество заказа превышает количество товара в магазине!");
                         roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
                         ochiskta();
-                        dataGridView2.Rows[i].Cells["kolZakaza"].Value = "";
+                        dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value = "";
+                        
                         goto endProsess;
                     }
 
 
                     this.dataGridView3.Rows[index].Cells[0].Value = dr[0];
-
                     this.dataGridView3.Rows[index].Cells[1].Value = dr[1];
                     this.dataGridView3.Rows[index].Cells[2].Value = dr[2];
                     this.dataGridView3.Rows[index].Cells[3].Value = dr[3];
                     this.dataGridView3.Rows[index].Cells[4].Value = dr[4];
                     this.dataGridView3.Rows[index].Cells[8].Value = dr[5];
 
-                    if (Convert.ToString(dataGridView2.Rows[i].Cells["kolZakaza"].Value)=="")
+                    if (Convert.ToString(dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value) == "")
                     {
                         MessageBox.Show("Количество заказа не указан!");
                         roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
@@ -454,7 +501,7 @@ namespace AutoMir2022
 
                     //    данные из карзини 2 количество заказа, цена и сумма
 
-                    this.dataGridView3.Rows[index].Cells[5].Value = dataGridView2.Rows[i].Cells["kolZakaza"].Value.ToString();
+                    this.dataGridView3.Rows[index].Cells[5].Value = dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value.ToString();
 
 
                     if (skidka != 0)
@@ -463,25 +510,29 @@ namespace AutoMir2022
                             Convert.ToDouble(dr[6]) * kurs - Convert.ToDouble(dr[6]) * kurs * skidka / 100);
 
                         this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
-                        (Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * 
+                        (Convert.ToInt32(dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value) *
                         Convert.ToDouble(dr[6]) * kurs) -
-                        (Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100);
+                        (Convert.ToInt32(dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs) * skidka / 100);
                     }
                     else
                     {
                         this.dataGridView3.Rows[index].Cells[6].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[6]) * kurs);
                         this.dataGridView3.Rows[index].Cells[7].Value = roznProdazhaObj.getRoundDecimal(
-                        Convert.ToInt32(dataGridView2.Rows[i].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs);
+                        Convert.ToInt32(dataGridView2.Rows[rowDgv].Cells["kolZakaza"].Value) * Convert.ToDouble(dr[6]) * kurs);
                     }
                 }
 
             }
-
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
+            dataGridView2.Rows[dgvRow].Cells[dgvColName].Style.BackColor = Color.DodgerBlue;
 
         endProsess: { }
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
 
+        }
 
+        private void variantVibor_Click(object sender, EventArgs e)
+        {
+            addDataFromKarzina2ToKarzina3(true, 0, "");
         }
 
         private void ochistkaKorzini3_Click(object sender, EventArgs e)
@@ -490,6 +541,7 @@ namespace AutoMir2022
             if (dialogResult == DialogResult.Yes)
             {
                 roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+                roznProdazhaObj.ResetDataGridViewBackColor(ref dataGridView2);
                 ochiskta();
             }
             else if (dialogResult == DialogResult.No)
@@ -507,6 +559,7 @@ namespace AutoMir2022
             {
                 roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
                 roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
+                showAllTovar();
                 ochiskta();
             }
             else if (dialogResult == DialogResult.No)
@@ -526,6 +579,7 @@ namespace AutoMir2022
             kontrolProdazhaChek.Checked = false;
             skidkaValue.Text = "";
             prodazhaSoSkidkoy.Checked = false;
+
 
         }
 
@@ -678,7 +732,7 @@ namespace AutoMir2022
 
             roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView2);
             roznProdazhaObj.OchistkaDataGridVeiw(ref dataGridView3);
-
+            showAllTovar();
             ochiskta();
         endProsess: { }
         }
@@ -950,6 +1004,107 @@ namespace AutoMir2022
 
         }
 
-        
+        private void retail_Load(object sender, EventArgs e)
+        {
+           FormElementDesign.SetComboBoxProperties(this.Controls);
+        }
+
+        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridView2.Columns[e.ColumnIndex].Name.ToString();
+            int rowNum = e.RowIndex;
+            addDataFromKarzina2ToKarzina3(false, rowNum, colName);
+            
+        }
+
+       
+        private void dataGridView2_DoubleClick(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void findDataInDGVColumn(ref DataGridView dgv, string columnName, string searchValue, string columnColorChange)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.Cells[columnName].Value != null && row.Cells[columnName].Value.ToString().Equals(searchValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    // The search value was found in this row's cell
+                    // Do something with the row, e.g. select it
+                    row.Cells[columnColorChange].Style.BackColor = SystemColors.Window; 
+                    break;
+                }
+            }
+        }
+
+        private void findRowInDataGrid(ref DataGridView dgv, int columnNum, string searchValue)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.Cells[columnNum].Value != null && row.Cells[columnNum].Value.ToString().Equals(searchValue, StringComparison.OrdinalIgnoreCase))
+                {
+                    // The search value was found in this row's cell
+                    // Do something with the row, e.g. select it
+                    row.DefaultCellStyle.BackColor = SystemColors.Window;
+                    break;
+                }
+            }
+        }
+        private void dataGridView3_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                deleteFirstRowForSumTable(ref dataGridView3);
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
+
+            }
+        }
+
+        private void dataGridView2_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView3_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView3_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DataGridViewRow row = e.Row;
+            // access data of the row being deleted
+            string cellValue = row.Cells["artikulKarzina3"].Value.ToString();
+            //ищем артикул в карзине 2 и находя приводим выбранный цвет поумалчание 
+            findDataInDGVColumn(ref dataGridView2, "artikul1", cellValue, "suma1");
+            findDataInDGVColumn(ref dataGridView2, "artikul2", cellValue, "suma2");
+            findDataInDGVColumn(ref dataGridView2, "artikul3", cellValue, "suma3");
+            findDataInDGVColumn(ref dataGridView2, "artikul4", cellValue, "suma4");
+
+
+        }
+
+        private void dataGridView2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                deleteFirstRowForSumTable(ref dataGridView2);
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
+
+            }
+        }
+
+        private void dataGridView2_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            DataGridViewRow row = e.Row;
+            // access data of the row being deleted
+            string cellValue = row.Cells["alternativa"].Value.ToString();
+            //ищем артикул в карзине 2 и находя приводим выбранный цвет поумалчание 
+            findRowInDataGrid(ref dataGridView1, 0, cellValue);
+            
+        }
+
+       
     }
 }

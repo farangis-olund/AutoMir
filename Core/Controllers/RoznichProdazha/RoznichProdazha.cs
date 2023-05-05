@@ -121,10 +121,21 @@ namespace Core.Controllers.RoznichProdazha
             {
                 dataGridView.Rows.Clear();
             }
+            
             return dataGridView;
         }
 
-
+        public DataGridView ResetDataGridViewBackColor(ref DataGridView dataGridView)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = SystemColors.Window;
+                }
+            }
+            return dataGridView;
+        }
         public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4, int yesNo)
         {
             double summa1 = 0;

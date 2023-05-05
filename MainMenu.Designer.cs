@@ -63,13 +63,13 @@ namespace AutoMir2022
             this.konfig = new System.Windows.Forms.ToolStripMenuItem();
             this.dostupTablitsam = new System.Windows.Forms.ToolStripMenuItem();
             this.ochistkaBazi = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрБазыДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.admin = new System.Windows.Forms.ToolStripMenuItem();
             this.protsenti = new System.Windows.Forms.ToolStripMenuItem();
             this.rasprodazhaBonus = new System.Windows.Forms.ToolStripMenuItem();
             this.dostupPolzovateley = new System.Windows.Forms.ToolStripMenuItem();
             this.info = new System.Windows.Forms.RichTextBox();
             this.panelData = new System.Windows.Forms.Panel();
-            this.просмотрБазыДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SideBar.SuspendLayout();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -80,7 +80,7 @@ namespace AutoMir2022
             // 
             // SideBar
             // 
-            this.SideBar.BackColor = System.Drawing.Color.DarkCyan;
+            this.SideBar.BackColor = System.Drawing.Color.SandyBrown;
             this.SideBar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SideBar.Controls.Add(this.loginBox);
             this.SideBar.Controls.Add(this.TitleFormMenu);
@@ -188,7 +188,7 @@ namespace AutoMir2022
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.MintCream;
+            this.menuStrip1.BackColor = System.Drawing.Color.LemonChiffon;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -399,6 +399,13 @@ namespace AutoMir2022
             this.ochistkaBazi.Text = "Очистка базы";
             this.ochistkaBazi.Click += new System.EventHandler(this.очисткаБазыToolStripMenuItem_Click);
             // 
+            // просмотрБазыДанныхToolStripMenuItem
+            // 
+            this.просмотрБазыДанныхToolStripMenuItem.Name = "просмотрБазыДанныхToolStripMenuItem";
+            this.просмотрБазыДанныхToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
+            this.просмотрБазыДанныхToolStripMenuItem.Text = "Просмотр Базы Данных";
+            this.просмотрБазыДанныхToolStripMenuItem.Click += new System.EventHandler(this.просмотрБазыДанныхToolStripMenuItem_Click);
+            // 
             // admin
             // 
             this.admin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -436,12 +443,12 @@ namespace AutoMir2022
             // 
             // info
             // 
-            this.info.BackColor = System.Drawing.SystemColors.Menu;
+            this.info.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.info.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.info.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.info.ForeColor = System.Drawing.SystemColors.Desktop;
             this.info.Location = new System.Drawing.Point(47, 66);
-            this.info.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.info.Margin = new System.Windows.Forms.Padding(10);
             this.info.Name = "info";
             this.info.ReadOnly = true;
             this.info.Size = new System.Drawing.Size(507, 271);
@@ -451,18 +458,13 @@ namespace AutoMir2022
             // 
             // panelData
             // 
+            this.panelData.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.panelData.Controls.Add(this.info);
             this.panelData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelData.Location = new System.Drawing.Point(202, 35);
             this.panelData.Name = "panelData";
             this.panelData.Size = new System.Drawing.Size(857, 527);
             this.panelData.TabIndex = 3;
-            // 
-            // просмотрБазыДанныхToolStripMenuItem
-            // 
-            this.просмотрБазыДанныхToolStripMenuItem.Name = "просмотрБазыДанныхToolStripMenuItem";
-            this.просмотрБазыДанныхToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
-            this.просмотрБазыДанныхToolStripMenuItem.Text = "Просмотр Базы Данных";
             // 
             // MainMenu
             // 

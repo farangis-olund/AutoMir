@@ -16,6 +16,9 @@ namespace Core.Controllers
            return db.GetByQuery("SELECT дата, процент_бонуса FROM public.бонусы ORDER BY дата DESC LIMIT 1;");
         }
 
+        
+
+
         public void InsertRaspradazha(string uslovie, int uslovieValue)
         {
             db.insertUpdateToDB("DELETE FROM public.распродажа");
@@ -74,6 +77,23 @@ namespace Core.Controllers
             db.insertWithParametrTwoDoubleAndDate("INSERT INTO public.бонусы (дата, сумма, процент_бонуса, сумма_бонуса) " +
                 "VALUES (@date, @summa, '" + bonus + "', @summa_bonus)","summa", summa, "summa_bonus", summa_bonus, "date", endDate);
 
+        }
+
+        public bool GetRasprodazhaByArtikul(string artikul)
+        {
+
+            System.Data.DataTable dt = db.GetByQuery("SELECT exists (SELECT артикул, количество FROM public.распродажа " +
+            "WHERE артикул='" + artikul + "'LIMIT 1)");
+            return Convert.ToBoolean(dt.Rows[0][0].ToString());
+        }
+
+        public DataGridView RaspradazhaArtikulColor(ref DataGridView DGV, int rowNum, int columnNum, string artikul)
+        {
+            // проверяем на наличие распродажи для выбранного артикула
+            if (GetRasprodazhaByArtikul(artikul) == true)
+                DGV.Rows[rowNum].Cells[columnNum].Style.BackColor = Color.Red;
+
+            return DGV;
         }
 
     }
