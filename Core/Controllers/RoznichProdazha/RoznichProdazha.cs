@@ -136,26 +136,32 @@ namespace Core.Controllers.RoznichProdazha
             }
             return dataGridView;
         }
-        public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4, int yesNo)
+        public DataGridView SumOfColumnDataGridVeiw(ref DataGridView dataGridView, string columnName1, string columnName2, string columnName3, string columnName4, string columnName5, string columnName6, int yesNo)
         {
             double summa1 = 0;
             double summa2 = 0;
             double summa3 = 0;
             double summa4 = 0;
+            double summa5 = 0;
+            double summa6 = 0;
             if (dataGridView.Rows.Count>0)
             {
 
                 for (int i = 0; i < dataGridView.Rows.Count; i++)
                 {
-                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != ""
+                        && columnName5 != "" && columnName6 != "")
                     {
 
                         summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
                         summa2 = summa2 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName2].Value);
                         summa3 = summa3 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName3].Value);
                         summa4 = summa4 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName4].Value);
+                        summa5 = summa5 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName5].Value);
+                        summa6 = summa6 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName6].Value);
                     }
-                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == ""
+                        && columnName5 == "" && columnName6 == "")
                     {
 
                         summa1 = summa1 + Convert.ToDouble(dataGridView.Rows[i].Cells[columnName1].Value);
@@ -175,16 +181,20 @@ namespace Core.Controllers.RoznichProdazha
                 else
                 {
                     index = dataGridView.Rows.Count-1;
-                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                    if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != ""
+                        && columnName5 != "" && columnName6 != "")
                     {
                         summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
                         summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
                         summa3 = summa3 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName3].Value);
                         summa4 = summa4 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName4].Value);
+                        summa5 = summa5 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName5].Value);
+                        summa6 = summa6 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName6].Value);
 
                     }
 
-                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                    else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == ""
+                        && columnName5 == "" && columnName6 == "")
                     {
                         summa1 = summa1 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName1].Value);
                         summa2 = summa2 - Convert.ToDouble(dataGridView.Rows[index].Cells[columnName2].Value);
@@ -199,17 +209,19 @@ namespace Core.Controllers.RoznichProdazha
                 }
                 
 
-                if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != "")
+                if (columnName1 != "" && columnName2 != "" && columnName3 != "" && columnName4 != ""
+                    && columnName5 != "" && columnName6 != "")
                 {
                     dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
                     dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.00");
                     dataGridView.Rows[index].Cells[columnName3].Value = summa3.ToString("0.00");
                     dataGridView.Rows[index].Cells[columnName4].Value = summa4.ToString("0.00");
-                    
-                    
+                    dataGridView.Rows[index].Cells[columnName5].Value = summa5.ToString("0.00");
+                    dataGridView.Rows[index].Cells[columnName6].Value = summa6.ToString("0.00");
                 }
 
-                else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == "")
+                else if (columnName1 != "" && columnName2 != "" && columnName3 == "" && columnName4 == ""
+                    && columnName5 == "" && columnName6 == "")
                 {
                     dataGridView.Rows[index].Cells[columnName1].Value = summa1.ToString("0.00");
                     dataGridView.Rows[index].Cells[columnName2].Value = summa2.ToString("0.00");

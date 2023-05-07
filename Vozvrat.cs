@@ -57,7 +57,7 @@ namespace AutoMir2022
                         dataTxb.Text = Convert.ToDateTime(dr[4]).ToString("dd.MM.yyyy");
                     }
 
-                roznichProdazhaObj.SumOfColumnDataGridVeiw(ref naitiDGV, "suma", "", "", "", 0);
+                roznichProdazhaObj.SumOfColumnDataGridVeiw(ref naitiDGV, "suma", "", "", "", "", "", 0);
 
                 }
                 show_all_dataDGV.Visible = false;
@@ -214,7 +214,7 @@ namespace AutoMir2022
                         double a = Convert.ToDouble(vozvratDGV.Rows[e.RowIndex].Cells["tsenaVozv"].Value);
                         vozvratDGV.Rows[e.RowIndex].Cells["sumaVozv"].Value = roznichProdazhaObj.getRoundDecimal(a * b).ToString();
 
-                        roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", 1);
+                        roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", "", "", 1);
                     }
                     
                 }
@@ -387,7 +387,7 @@ namespace AutoMir2022
                             vozvratDGV.Rows[index].Cells[2].Value = dr[2];
                     }
 
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", 0);
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref vozvratDGV, "sumaVozv", "", "", "", "", "", 0);
                 }
             }
             

@@ -95,7 +95,7 @@ namespace AutoMir2022
                 {
                     oplachenoChk.Checked = true;
                     DataTxt.Text = Convert.ToDateTime(skladDGV.Rows[0].Cells[0].Value).ToString("D");
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref skladDGV, "suma", "", "", "", 0);
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref skladDGV, "suma", "", "", "", "", "", 0);
                 }
             }
         }

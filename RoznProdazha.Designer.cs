@@ -32,7 +32,7 @@ namespace AutoMir2022
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,12 +48,18 @@ namespace AutoMir2022
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.spetsPredlozhenieValue = new System.Windows.Forms.TextBox();
@@ -95,12 +101,15 @@ namespace AutoMir2022
             this.Brand = new System.Windows.Forms.ComboBox();
             this.showAll = new System.Windows.Forms.Button();
             this.karzina2 = new System.Windows.Forms.TabPage();
+            this.variant6 = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.variant5 = new System.Windows.Forms.RadioButton();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.variant4 = new System.Windows.Forms.RadioButton();
             this.variant3 = new System.Windows.Forms.RadioButton();
@@ -114,6 +123,8 @@ namespace AutoMir2022
             this.kol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kol4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kol5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kol6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolZakaza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suma1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,17 +134,26 @@ namespace AutoMir2022
             this.brand3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suma4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.brand4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suma5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suma6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brand6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artikul1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artikul2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artikul3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artikul4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artikul5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artikul6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsena1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsena2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsena3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsena4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsena5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsena6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.karzina3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.artikulKarzina3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -207,7 +227,7 @@ namespace AutoMir2022
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1361, 70);
+            this.topPanel.Size = new System.Drawing.Size(1546, 70);
             this.topPanel.TabIndex = 0;
             // 
             // groupBox3
@@ -371,7 +391,7 @@ namespace AutoMir2022
             this.panel2.Location = new System.Drawing.Point(0, 70);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1361, 505);
+            this.panel2.Size = new System.Drawing.Size(1546, 505);
             this.panel2.TabIndex = 1;
             // 
             // tabConteiner
@@ -388,7 +408,7 @@ namespace AutoMir2022
             this.tabConteiner.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tabConteiner.Name = "tabConteiner";
             this.tabConteiner.SelectedIndex = 0;
-            this.tabConteiner.Size = new System.Drawing.Size(1361, 505);
+            this.tabConteiner.Size = new System.Drawing.Size(1546, 505);
             this.tabConteiner.TabIndex = 0;
             // 
             // karzina1
@@ -400,7 +420,7 @@ namespace AutoMir2022
             this.karzina1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karzina1.Name = "karzina1";
             this.karzina1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.karzina1.Size = new System.Drawing.Size(1353, 472);
+            this.karzina1.Size = new System.Drawing.Size(1538, 472);
             this.karzina1.TabIndex = 0;
             this.karzina1.Text = "Карзина1";
             // 
@@ -411,7 +431,7 @@ namespace AutoMir2022
             this.karizna1DataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.karizna1DataPanel.Location = new System.Drawing.Point(169, 3);
             this.karizna1DataPanel.Name = "karizna1DataPanel";
-            this.karizna1DataPanel.Size = new System.Drawing.Size(1180, 466);
+            this.karizna1DataPanel.Size = new System.Drawing.Size(1365, 466);
             this.karizna1DataPanel.TabIndex = 1;
             // 
             // karzina1DataPanel
@@ -420,7 +440,7 @@ namespace AutoMir2022
             this.karzina1DataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.karzina1DataPanel.Location = new System.Drawing.Point(0, 42);
             this.karzina1DataPanel.Name = "karzina1DataPanel";
-            this.karzina1DataPanel.Size = new System.Drawing.Size(1180, 424);
+            this.karzina1DataPanel.Size = new System.Drawing.Size(1365, 424);
             this.karzina1DataPanel.TabIndex = 2;
             // 
             // dataGridView1
@@ -451,7 +471,7 @@ namespace AutoMir2022
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1180, 424);
+            this.dataGridView1.Size = new System.Drawing.Size(1365, 424);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.selectedRowsButton_Click);
             // 
@@ -468,7 +488,7 @@ namespace AutoMir2022
             this.karzina1TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.karzina1TopPanel.Location = new System.Drawing.Point(0, 0);
             this.karzina1TopPanel.Name = "karzina1TopPanel";
-            this.karzina1TopPanel.Size = new System.Drawing.Size(1180, 42);
+            this.karzina1TopPanel.Size = new System.Drawing.Size(1365, 42);
             this.karzina1TopPanel.TabIndex = 0;
             // 
             // artikul
@@ -666,12 +686,15 @@ namespace AutoMir2022
             // 
             // karzina2
             // 
+            this.karzina2.Controls.Add(this.variant6);
+            this.karzina2.Controls.Add(this.label18);
+            this.karzina2.Controls.Add(this.label17);
+            this.karzina2.Controls.Add(this.variant5);
             this.karzina2.Controls.Add(this.label16);
             this.karzina2.Controls.Add(this.label15);
             this.karzina2.Controls.Add(this.label5);
             this.karzina2.Controls.Add(this.label12);
             this.karzina2.Controls.Add(this.label4);
-            this.karzina2.Controls.Add(this.label3);
             this.karzina2.Controls.Add(this.label1);
             this.karzina2.Controls.Add(this.variant4);
             this.karzina2.Controls.Add(this.variant3);
@@ -679,20 +702,73 @@ namespace AutoMir2022
             this.karzina2.Controls.Add(this.variant1);
             this.karzina2.Controls.Add(this.ochistkaKarzina2);
             this.karzina2.Controls.Add(this.dataGridView2);
+            this.karzina2.Controls.Add(this.label3);
             this.karzina2.Location = new System.Drawing.Point(4, 29);
             this.karzina2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.karzina2.Name = "karzina2";
             this.karzina2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.karzina2.Size = new System.Drawing.Size(1353, 472);
+            this.karzina2.Size = new System.Drawing.Size(1538, 472);
             this.karzina2.TabIndex = 1;
             this.karzina2.Text = "Карзина2";
             this.karzina2.UseVisualStyleBackColor = true;
+            // 
+            // variant6
+            // 
+            this.variant6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.variant6.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.variant6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.variant6.Location = new System.Drawing.Point(1375, 29);
+            this.variant6.Name = "variant6";
+            this.variant6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.variant6.Size = new System.Drawing.Size(140, 40);
+            this.variant6.TabIndex = 18;
+            this.variant6.TabStop = true;
+            this.variant6.Text = "Вариант6";
+            this.variant6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.variant6.UseVisualStyleBackColor = false;
+            this.variant6.Click += new System.EventHandler(this.variantVibor_Click);
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(541, 30);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 39);
+            this.label18.TabIndex = 17;
+            this.label18.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(502, 30);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(35, 39);
+            this.label17.TabIndex = 16;
+            this.label17.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // variant5
+            // 
+            this.variant5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.variant5.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.variant5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.variant5.Location = new System.Drawing.Point(1232, 29);
+            this.variant5.Name = "variant5";
+            this.variant5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.variant5.Size = new System.Drawing.Size(140, 40);
+            this.variant5.TabIndex = 15;
+            this.variant5.TabStop = true;
+            this.variant5.Text = "Вариант5";
+            this.variant5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.variant5.UseVisualStyleBackColor = false;
+            this.variant5.Click += new System.EventHandler(this.variantVibor_Click);
             // 
             // label16
             // 
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(568, 30);
+            this.label16.Location = new System.Drawing.Point(463, 30);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(35, 39);
             this.label16.TabIndex = 14;
@@ -702,7 +778,7 @@ namespace AutoMir2022
             // 
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(530, 30);
+            this.label15.Location = new System.Drawing.Point(424, 30);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 39);
             this.label15.TabIndex = 13;
@@ -712,7 +788,7 @@ namespace AutoMir2022
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(492, 30);
+            this.label5.Location = new System.Drawing.Point(385, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 39);
             this.label5.TabIndex = 12;
@@ -731,28 +807,18 @@ namespace AutoMir2022
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(208, 49);
+            this.label4.Location = new System.Drawing.Point(139, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(154, 23);
             this.label4.TabIndex = 10;
             this.label4.Text = "Наименование";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(605, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 23);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "КолЗаказа";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(454, 30);
+            this.label1.Location = new System.Drawing.Point(346, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 39);
             this.label1.TabIndex = 0;
@@ -763,10 +829,10 @@ namespace AutoMir2022
             this.variant4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.variant4.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant4.Location = new System.Drawing.Point(1168, 30);
+            this.variant4.Location = new System.Drawing.Point(1089, 29);
             this.variant4.Name = "variant4";
             this.variant4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.variant4.Size = new System.Drawing.Size(150, 40);
+            this.variant4.Size = new System.Drawing.Size(140, 40);
             this.variant4.TabIndex = 8;
             this.variant4.TabStop = true;
             this.variant4.Text = "Вариант4";
@@ -779,9 +845,9 @@ namespace AutoMir2022
             this.variant3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.variant3.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant3.Location = new System.Drawing.Point(1009, 30);
+            this.variant3.Location = new System.Drawing.Point(946, 29);
             this.variant3.Name = "variant3";
-            this.variant3.Size = new System.Drawing.Size(150, 40);
+            this.variant3.Size = new System.Drawing.Size(140, 40);
             this.variant3.TabIndex = 7;
             this.variant3.TabStop = true;
             this.variant3.Text = "Вариант3";
@@ -794,9 +860,9 @@ namespace AutoMir2022
             this.variant2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.variant2.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant2.Location = new System.Drawing.Point(850, 29);
+            this.variant2.Location = new System.Drawing.Point(803, 29);
             this.variant2.Name = "variant2";
-            this.variant2.Size = new System.Drawing.Size(150, 40);
+            this.variant2.Size = new System.Drawing.Size(140, 40);
             this.variant2.TabIndex = 6;
             this.variant2.TabStop = true;
             this.variant2.Text = "Вариант2";
@@ -809,9 +875,9 @@ namespace AutoMir2022
             this.variant1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.variant1.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
             this.variant1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.variant1.Location = new System.Drawing.Point(691, 30);
+            this.variant1.Location = new System.Drawing.Point(660, 29);
             this.variant1.Name = "variant1";
-            this.variant1.Size = new System.Drawing.Size(150, 40);
+            this.variant1.Size = new System.Drawing.Size(140, 40);
             this.variant1.TabIndex = 5;
             this.variant1.TabStop = true;
             this.variant1.Text = "Вариант1";
@@ -841,6 +907,8 @@ namespace AutoMir2022
             this.kol2,
             this.kol3,
             this.kol4,
+            this.kol5,
+            this.kol6,
             this.kolZakaza,
             this.suma1,
             this.brand1,
@@ -850,24 +918,32 @@ namespace AutoMir2022
             this.brand3,
             this.suma4,
             this.brand4,
+            this.suma5,
+            this.brand5,
+            this.suma6,
+            this.brand6,
             this.artikul1,
             this.artikul2,
             this.artikul3,
             this.artikul4,
+            this.artikul5,
+            this.artikul6,
             this.tsena1,
             this.tsena2,
             this.tsena3,
             this.tsena4,
+            this.tsena5,
+            this.tsena6,
             this.dataGridViewTextBoxColumn1,
             this.model,
             this.mesto});
             this.dataGridView2.Location = new System.Drawing.Point(3, 75);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 20;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(1342, 364);
+            this.dataGridView2.Size = new System.Drawing.Size(1527, 364);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
@@ -884,7 +960,7 @@ namespace AutoMir2022
             this.alternativa.MinimumWidth = 8;
             this.alternativa.Name = "alternativa";
             this.alternativa.ReadOnly = true;
-            this.alternativa.Width = 180;
+            this.alternativa.Width = 120;
             // 
             // naimenov
             // 
@@ -894,7 +970,7 @@ namespace AutoMir2022
             this.naimenov.MinimumWidth = 8;
             this.naimenov.Name = "naimenov";
             this.naimenov.ReadOnly = true;
-            this.naimenov.Width = 250;
+            this.naimenov.Width = 200;
             // 
             // kol1
             // 
@@ -942,14 +1018,32 @@ namespace AutoMir2022
             this.kol4.ReadOnly = true;
             this.kol4.Width = 40;
             // 
-            // kolZakaza
+            // kol5
             // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.kolZakaza.DefaultCellStyle = dataGridViewCellStyle10;
+            this.kol5.DefaultCellStyle = dataGridViewCellStyle10;
+            this.kol5.HeaderText = "кол5";
+            this.kol5.Name = "kol5";
+            this.kol5.ReadOnly = true;
+            this.kol5.Width = 40;
+            // 
+            // kol6
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.kol6.DefaultCellStyle = dataGridViewCellStyle11;
+            this.kol6.HeaderText = "кол6";
+            this.kol6.Name = "kol6";
+            this.kol6.ReadOnly = true;
+            this.kol6.Width = 40;
+            // 
+            // kolZakaza
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.kolZakaza.DefaultCellStyle = dataGridViewCellStyle12;
             this.kolZakaza.HeaderText = "колЗаказа";
             this.kolZakaza.MinimumWidth = 8;
             this.kolZakaza.Name = "kolZakaza";
@@ -957,93 +1051,129 @@ namespace AutoMir2022
             // 
             // suma1
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.suma1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.suma1.DefaultCellStyle = dataGridViewCellStyle13;
             this.suma1.HeaderText = "сума1";
             this.suma1.MinimumWidth = 8;
             this.suma1.Name = "suma1";
             this.suma1.ReadOnly = true;
-            this.suma1.Width = 80;
+            this.suma1.Width = 75;
             // 
             // brand1
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            this.brand1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            this.brand1.DefaultCellStyle = dataGridViewCellStyle14;
             this.brand1.HeaderText = "бренд1";
             this.brand1.MinimumWidth = 8;
             this.brand1.Name = "brand1";
             this.brand1.ReadOnly = true;
-            this.brand1.Width = 80;
+            this.brand1.Width = 70;
             // 
             // suma2
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.suma2.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            this.suma2.DefaultCellStyle = dataGridViewCellStyle15;
             this.suma2.HeaderText = "сума2";
             this.suma2.MinimumWidth = 8;
             this.suma2.Name = "suma2";
             this.suma2.ReadOnly = true;
-            this.suma2.Width = 80;
+            this.suma2.Width = 75;
             // 
             // brand2
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            this.brand2.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.brand2.DefaultCellStyle = dataGridViewCellStyle16;
             this.brand2.HeaderText = "бренд2";
             this.brand2.MinimumWidth = 8;
             this.brand2.Name = "brand2";
             this.brand2.ReadOnly = true;
-            this.brand2.Width = 80;
+            this.brand2.Width = 70;
             // 
             // suma3
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            this.suma3.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.suma3.DefaultCellStyle = dataGridViewCellStyle17;
             this.suma3.HeaderText = "сума3";
             this.suma3.MinimumWidth = 8;
             this.suma3.Name = "suma3";
             this.suma3.ReadOnly = true;
-            this.suma3.Width = 80;
+            this.suma3.Width = 75;
             // 
             // brand3
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.brand3.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            this.brand3.DefaultCellStyle = dataGridViewCellStyle18;
             this.brand3.HeaderText = "бренд3";
             this.brand3.MinimumWidth = 8;
             this.brand3.Name = "brand3";
             this.brand3.ReadOnly = true;
-            this.brand3.Width = 80;
+            this.brand3.Width = 70;
             // 
             // suma4
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            this.suma4.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            this.suma4.DefaultCellStyle = dataGridViewCellStyle19;
             this.suma4.HeaderText = "сума4";
             this.suma4.MinimumWidth = 8;
             this.suma4.Name = "suma4";
             this.suma4.ReadOnly = true;
-            this.suma4.Width = 80;
+            this.suma4.Width = 75;
             // 
             // brand4
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            this.brand4.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            this.brand4.DefaultCellStyle = dataGridViewCellStyle20;
             this.brand4.HeaderText = "бренд4";
             this.brand4.MinimumWidth = 8;
             this.brand4.Name = "brand4";
             this.brand4.ReadOnly = true;
-            this.brand4.Width = 80;
+            this.brand4.Width = 70;
+            // 
+            // suma5
+            // 
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.suma5.DefaultCellStyle = dataGridViewCellStyle21;
+            this.suma5.HeaderText = "сума5";
+            this.suma5.Name = "suma5";
+            this.suma5.ReadOnly = true;
+            this.suma5.Width = 75;
+            // 
+            // brand5
+            // 
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.brand5.DefaultCellStyle = dataGridViewCellStyle22;
+            this.brand5.HeaderText = "бренд5";
+            this.brand5.Name = "brand5";
+            this.brand5.ReadOnly = true;
+            this.brand5.Width = 70;
+            // 
+            // suma6
+            // 
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.suma6.DefaultCellStyle = dataGridViewCellStyle23;
+            this.suma6.HeaderText = "сума6";
+            this.suma6.Name = "suma6";
+            this.suma6.ReadOnly = true;
+            this.suma6.Width = 75;
+            // 
+            // brand6
+            // 
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.brand6.DefaultCellStyle = dataGridViewCellStyle24;
+            this.brand6.HeaderText = "бренд6";
+            this.brand6.Name = "brand6";
+            this.brand6.ReadOnly = true;
+            this.brand6.Width = 70;
             // 
             // artikul1
             // 
@@ -1077,6 +1207,18 @@ namespace AutoMir2022
             this.artikul4.Visible = false;
             this.artikul4.Width = 150;
             // 
+            // artikul5
+            // 
+            this.artikul5.HeaderText = "артикул5";
+            this.artikul5.Name = "artikul5";
+            this.artikul5.Visible = false;
+            // 
+            // artikul6
+            // 
+            this.artikul6.HeaderText = "артикул6";
+            this.artikul6.Name = "artikul6";
+            this.artikul6.Visible = false;
+            // 
             // tsena1
             // 
             this.tsena1.HeaderText = "цена1";
@@ -1109,6 +1251,18 @@ namespace AutoMir2022
             this.tsena4.Visible = false;
             this.tsena4.Width = 150;
             // 
+            // tsena5
+            // 
+            this.tsena5.HeaderText = "цена5";
+            this.tsena5.Name = "tsena5";
+            this.tsena5.Visible = false;
+            // 
+            // tsena6
+            // 
+            this.tsena6.HeaderText = "цена6";
+            this.tsena6.Name = "tsena6";
+            this.tsena6.Visible = false;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "марка";
@@ -1133,6 +1287,16 @@ namespace AutoMir2022
             this.mesto.Visible = false;
             this.mesto.Width = 150;
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(577, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 23);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "КолЗаказа";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // karzina3
             // 
             this.karzina3.Controls.Add(this.dataGridView3);
@@ -1140,7 +1304,7 @@ namespace AutoMir2022
             this.karzina3.Location = new System.Drawing.Point(4, 29);
             this.karzina3.Name = "karzina3";
             this.karzina3.Padding = new System.Windows.Forms.Padding(3);
-            this.karzina3.Size = new System.Drawing.Size(1353, 472);
+            this.karzina3.Size = new System.Drawing.Size(1538, 472);
             this.karzina3.TabIndex = 2;
             this.karzina3.Text = "Карзина3";
             this.karzina3.UseVisualStyleBackColor = true;
@@ -1172,8 +1336,8 @@ namespace AutoMir2022
             // 
             // artikulKarzina3
             // 
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            this.artikulKarzina3.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.White;
+            this.artikulKarzina3.DefaultCellStyle = dataGridViewCellStyle26;
             this.artikulKarzina3.HeaderText = "артикул";
             this.artikulKarzina3.MinimumWidth = 8;
             this.artikulKarzina3.Name = "artikulKarzina3";
@@ -1182,8 +1346,8 @@ namespace AutoMir2022
             // 
             // naimenovanieKarzina3
             // 
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            this.naimenovanieKarzina3.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            this.naimenovanieKarzina3.DefaultCellStyle = dataGridViewCellStyle27;
             this.naimenovanieKarzina3.HeaderText = "наименование";
             this.naimenovanieKarzina3.MinimumWidth = 8;
             this.naimenovanieKarzina3.Name = "naimenovanieKarzina3";
@@ -1192,8 +1356,8 @@ namespace AutoMir2022
             // 
             // brandKarzina3
             // 
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
-            this.brandKarzina3.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
+            this.brandKarzina3.DefaultCellStyle = dataGridViewCellStyle28;
             this.brandKarzina3.HeaderText = "бренд";
             this.brandKarzina3.MinimumWidth = 8;
             this.brandKarzina3.Name = "brandKarzina3";
@@ -1217,10 +1381,10 @@ namespace AutoMir2022
             // 
             // kolZakazaKarzina3
             // 
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Format = "N0";
-            dataGridViewCellStyle23.NullValue = null;
-            this.kolZakazaKarzina3.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle29.Format = "N0";
+            dataGridViewCellStyle29.NullValue = null;
+            this.kolZakazaKarzina3.DefaultCellStyle = dataGridViewCellStyle29;
             this.kolZakazaKarzina3.HeaderText = "колЗаказа";
             this.kolZakazaKarzina3.MinimumWidth = 8;
             this.kolZakazaKarzina3.Name = "kolZakazaKarzina3";
@@ -1237,10 +1401,10 @@ namespace AutoMir2022
             // 
             // sumaKarzina3
             // 
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Format = "N2";
-            dataGridViewCellStyle24.NullValue = null;
-            this.sumaKarzina3.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.Format = "N2";
+            dataGridViewCellStyle30.NullValue = null;
+            this.sumaKarzina3.DefaultCellStyle = dataGridViewCellStyle30;
             this.sumaKarzina3.HeaderText = "сумма";
             this.sumaKarzina3.MinimumWidth = 8;
             this.sumaKarzina3.Name = "sumaKarzina3";
@@ -1270,7 +1434,7 @@ namespace AutoMir2022
             this.proverkaKasi.Location = new System.Drawing.Point(4, 29);
             this.proverkaKasi.Name = "proverkaKasi";
             this.proverkaKasi.Padding = new System.Windows.Forms.Padding(3);
-            this.proverkaKasi.Size = new System.Drawing.Size(1353, 472);
+            this.proverkaKasi.Size = new System.Drawing.Size(1538, 472);
             this.proverkaKasi.TabIndex = 3;
             this.proverkaKasi.Text = "Проверка кассы";
             this.proverkaKasi.UseVisualStyleBackColor = true;
@@ -1281,7 +1445,7 @@ namespace AutoMir2022
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(3, 3);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(1347, 466);
+            this.dataPanel.Size = new System.Drawing.Size(1532, 466);
             this.dataPanel.TabIndex = 0;
             // 
             // mestoSklad
@@ -1290,7 +1454,7 @@ namespace AutoMir2022
             this.mestoSklad.Location = new System.Drawing.Point(4, 29);
             this.mestoSklad.Name = "mestoSklad";
             this.mestoSklad.Padding = new System.Windows.Forms.Padding(3);
-            this.mestoSklad.Size = new System.Drawing.Size(1353, 472);
+            this.mestoSklad.Size = new System.Drawing.Size(1538, 472);
             this.mestoSklad.TabIndex = 4;
             this.mestoSklad.Text = "Место на складе";
             this.mestoSklad.UseVisualStyleBackColor = true;
@@ -1301,7 +1465,7 @@ namespace AutoMir2022
             this.mestoNaSkladePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mestoNaSkladePanel.Location = new System.Drawing.Point(3, 3);
             this.mestoNaSkladePanel.Name = "mestoNaSkladePanel";
-            this.mestoNaSkladePanel.Size = new System.Drawing.Size(1347, 466);
+            this.mestoNaSkladePanel.Size = new System.Drawing.Size(1532, 466);
             this.mestoNaSkladePanel.TabIndex = 0;
             // 
             // otmenaProdazhiRozn
@@ -1311,7 +1475,7 @@ namespace AutoMir2022
             this.otmenaProdazhiRozn.Location = new System.Drawing.Point(4, 29);
             this.otmenaProdazhiRozn.Name = "otmenaProdazhiRozn";
             this.otmenaProdazhiRozn.Padding = new System.Windows.Forms.Padding(3);
-            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1353, 472);
+            this.otmenaProdazhiRozn.Size = new System.Drawing.Size(1538, 472);
             this.otmenaProdazhiRozn.TabIndex = 5;
             this.otmenaProdazhiRozn.Text = "Отмена продажи";
             this.otmenaProdazhiRozn.UseVisualStyleBackColor = true;
@@ -1333,7 +1497,7 @@ namespace AutoMir2022
             this.otmenaProdazhiDGV.Location = new System.Drawing.Point(3, 71);
             this.otmenaProdazhiDGV.Name = "otmenaProdazhiDGV";
             this.otmenaProdazhiDGV.RowHeadersWidth = 20;
-            this.otmenaProdazhiDGV.Size = new System.Drawing.Size(1347, 398);
+            this.otmenaProdazhiDGV.Size = new System.Drawing.Size(1532, 398);
             this.otmenaProdazhiDGV.TabIndex = 1;
             this.otmenaProdazhiDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.otmenaProdazhiDGV_CellEndEdit);
             // 
@@ -1371,8 +1535,8 @@ namespace AutoMir2022
             // 
             // kolVozvrata
             // 
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.kolVozvrata.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.kolVozvrata.DefaultCellStyle = dataGridViewCellStyle31;
             this.kolVozvrata.HeaderText = "кол.возв";
             this.kolVozvrata.MinimumWidth = 8;
             this.kolVozvrata.Name = "kolVozvrata";
@@ -1398,7 +1562,7 @@ namespace AutoMir2022
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1347, 68);
+            this.panel1.Size = new System.Drawing.Size(1532, 68);
             this.panel1.TabIndex = 0;
             // 
             // label14
@@ -1461,7 +1625,7 @@ namespace AutoMir2022
             this.kontCheka.Location = new System.Drawing.Point(4, 29);
             this.kontCheka.Name = "kontCheka";
             this.kontCheka.Padding = new System.Windows.Forms.Padding(3);
-            this.kontCheka.Size = new System.Drawing.Size(1353, 472);
+            this.kontCheka.Size = new System.Drawing.Size(1538, 472);
             this.kontCheka.TabIndex = 6;
             this.kontCheka.Text = "Контроль чека";
             this.kontCheka.UseVisualStyleBackColor = true;
@@ -1479,7 +1643,7 @@ namespace AutoMir2022
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Beige;
-            this.ClientSize = new System.Drawing.Size(1361, 575);
+            this.ClientSize = new System.Drawing.Size(1546, 575);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.topPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1612,12 +1776,18 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn tsenaKarzina3;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumaKarzina3;
         private System.Windows.Forms.DataGridViewTextBoxColumn mestoKarzina3;
+        private System.Windows.Forms.RadioButton variant6;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.RadioButton variant5;
         private System.Windows.Forms.DataGridViewTextBoxColumn alternativa;
         private System.Windows.Forms.DataGridViewTextBoxColumn naimenov;
         private System.Windows.Forms.DataGridViewTextBoxColumn kol1;
         private System.Windows.Forms.DataGridViewTextBoxColumn kol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn kol3;
         private System.Windows.Forms.DataGridViewTextBoxColumn kol4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kol5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kol6;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolZakaza;
         private System.Windows.Forms.DataGridViewTextBoxColumn suma1;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand1;
@@ -1627,14 +1797,22 @@ namespace AutoMir2022
         private System.Windows.Forms.DataGridViewTextBoxColumn brand3;
         private System.Windows.Forms.DataGridViewTextBoxColumn suma4;
         private System.Windows.Forms.DataGridViewTextBoxColumn brand4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suma5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn brand5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suma6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn brand6;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul1;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul2;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul3;
         private System.Windows.Forms.DataGridViewTextBoxColumn artikul4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artikul5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artikul6;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsena1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsena2;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsena3;
         private System.Windows.Forms.DataGridViewTextBoxColumn tsena4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tsena5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tsena6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn model;
         private System.Windows.Forms.DataGridViewTextBoxColumn mesto;

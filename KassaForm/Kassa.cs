@@ -213,7 +213,7 @@ namespace AutoMir2022
                         {
                             prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
 
-                            roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
+                            roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", "", "", 0);
                             updateProdazhaBtn.Enabled = true;
                             prodazhaChekBtn.Enabled = true;
                         }
@@ -332,7 +332,7 @@ namespace AutoMir2022
                 {
                     prodazhaData.Text = Convert.ToDateTime(prodazhaDGV.Rows[0].Cells[0].Value).ToString("D");
 
-                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", 0);
+                    roznichProdazhaObj.SumOfColumnDataGridVeiw(ref prodazhaDGV, "suma", "", "", "", "", "", 0);
                     updateProdazhaBtn.Enabled = true;
                 }
 

@@ -99,7 +99,7 @@ namespace AutoMir2022
 
                     a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
                     dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
-                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
+                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", "suma5", "suma6", 1);
                 }
                 else
                 {
@@ -217,7 +217,7 @@ namespace AutoMir2022
 
             }
 
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 0);
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", "", "", 0);
 
         endProsess: { }
 
@@ -460,7 +460,7 @@ namespace AutoMir2022
             }
 
 
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 0);
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", "", "", 0);
 
         endProsess: { }
 
@@ -542,7 +542,7 @@ namespace AutoMir2022
                     double a = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["tsena"].Value);
                     dataGridView1.Rows[e.RowIndex].Cells["sumaKarz1"].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
 
-                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 1);
+                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", "", "", 1);
                 }
                 else
                 {
@@ -694,7 +694,7 @@ namespace AutoMir2022
 
             }
 
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", "suma5", "suma6", 0);
 
 
         endProsess: { }
@@ -855,7 +855,7 @@ namespace AutoMir2022
         {
             if (e.KeyCode == Keys.Delete)
             {
-                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", 1);
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaKarz1", "", "", "", "", "", 1);
             }
         }
     }

@@ -187,18 +187,18 @@ namespace AutoMir2022
 
                 if (isChecked && i == 1) break; /*ischecked is tolko odin artikul*/
 
-                if (i == 4) break;
+                if (i == 6) break;
 
                 this.dataGridView2.Rows[index].Cells[0].Value = dr[5];
                 this.dataGridView2.Rows[index].Cells[1].Value = dr[1];
 
-                // kolichestvo 2,3,4,5
+                // kolichestvo 2,3,4,5,6,7
                 this.dataGridView2.Rows[index].Cells[2 + i].Value = dr[6];
 
-                // tsena 19,20,21,22
+                // tsena 27,28,29,30,31,32
                 if (dr[7].ToString() != "")
                 {
-                    this.dataGridView2.Rows[index].Cells[19 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+                    this.dataGridView2.Rows[index].Cells[27 + i].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
 
                 }
                 else
@@ -210,13 +210,13 @@ namespace AutoMir2022
                 }
 
 
-                // summa 7,9,11,13
-                this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
+                // summa 9,11,13,15,17,19  
+                this.dataGridView2.Rows[index].Cells[9 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(Convert.ToDouble(dr[7]) * kurs);
 
-                // brand 8,10,12,14
-                this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = dr[2];
+                // brand 10,12,14,16,18,20
+                this.dataGridView2.Rows[index].Cells[10 + sumaRowCounter].Value = dr[2];
 
-                // artikul 15,16,17,18
+                // artikul 21,22,23,24,25,26
 
                 if (dataGridView2.Rows.Count > 1)
                 {
@@ -224,8 +224,12 @@ namespace AutoMir2022
                     bool artikul2IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul2");
                     bool artikul3IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul3");
                     bool artikul4IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul4");
+                    bool artikul5IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul5");
+                    bool artikul6IsExist = roznProdazhaObj.searchDataInDataGridVeiw(ref dataGridView2, dr[0].ToString(), "artikul6");
 
-                    if (artikul1IsExist == true || artikul2IsExist == true || artikul3IsExist == true || artikul4IsExist == true)
+                    if (artikul1IsExist == true || artikul2IsExist == true || 
+                        artikul3IsExist == true || artikul4IsExist == true ||
+                        artikul5IsExist == true || artikul6IsExist == true)
                     {
                         MessageBox.Show("Данный артикул уже добавлен в карзину!");
                         this.dataGridView2.Rows.Remove(this.dataGridView2.Rows[index]);
@@ -233,39 +237,40 @@ namespace AutoMir2022
                         goto endProsess;
                     }
                 }
+                // artikul 21,22,23,24,25,26
 
-                this.dataGridView2.Rows[index].Cells[15 + i].Value = dr[0];
+                this.dataGridView2.Rows[index].Cells[21 + i].Value = dr[0];
 
                 //// проверяем на наличие распродажи для выбранного артикула
                 RasprodazhaBonus rasprodazhaBonusObj = new RasprodazhaBonus();
 
-                rasprodazhaBonusObj.RaspradazhaArtikulColor(ref dataGridView2, index, 7 + sumaRowCounter, dr[0].ToString());
+                rasprodazhaBonusObj.RaspradazhaArtikulColor(ref dataGridView2, index, 9 + sumaRowCounter, dr[0].ToString());
 
                 i = i + 1;
                 sumaRowCounter = sumaRowCounter + 2;
             }
-            if (i < 4 && tolkoOdinArtikul.Checked == false)
+            if (i < 6 && tolkoOdinArtikul.Checked == false)
             {
-                for (int k = i; k < 4; k++)
+                for (int k = i; k < 6; k++)
                 {
 
-                    // kolichestvo 2,3,4,5
+                    // kolichestvo 2,3,4,5,6,7
                     this.dataGridView2.Rows[index].Cells[2 + k].Value = this.dataGridView2.Rows[index].Cells[(2 + k) - 1].Value;
 
 
-                    // brand 8,10,12,14
-                    this.dataGridView2.Rows[index].Cells[8 + sumaRowCounter].Value = this.dataGridView2.Rows[index].Cells[(8 + sumaRowCounter) - 2].Value;
+                    // brand 10,12,14,16,18,20
+                    this.dataGridView2.Rows[index].Cells[10 + sumaRowCounter].Value = this.dataGridView2.Rows[index].Cells[(10 + sumaRowCounter) - 2].Value;
 
-                    // tsena 19,20,21,22
-                    this.dataGridView2.Rows[index].Cells[19 + k].Value = roznProdazhaObj.getRoundDecimal(
-                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(19 + k) - 1].Value));
+                    // tsena 27,28,29,30,31,32
+                    this.dataGridView2.Rows[index].Cells[27 + k].Value = roznProdazhaObj.getRoundDecimal(
+                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(27 + k) - 1].Value));
 
-                    // summa 7,9,11,13
-                    this.dataGridView2.Rows[index].Cells[7 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(
-                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(7 + sumaRowCounter) - 2].Value));
+                    // summa 9,11,13,15,17,19
+                    this.dataGridView2.Rows[index].Cells[9 + sumaRowCounter].Value = roznProdazhaObj.getRoundDecimal(
+                        Convert.ToDouble(this.dataGridView2.Rows[index].Cells[(9 + sumaRowCounter) - 2].Value));
 
-                    // artikul 15,16,17,18
-                    this.dataGridView2.Rows[index].Cells[15 + k].Value = this.dataGridView2.Rows[index].Cells[(15 + k) - 1].Value;
+                    // artikul 21,22,23,24,25,26
+                    this.dataGridView2.Rows[index].Cells[21 + k].Value = this.dataGridView2.Rows[index].Cells[(21 + k) - 1].Value;
                     sumaRowCounter = sumaRowCounter + 2;
                 }
 
@@ -277,7 +282,7 @@ namespace AutoMir2022
 
 
         endProsess: { }
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", "suma5", "suma6", 0);
            
 
         }
@@ -378,18 +383,27 @@ namespace AutoMir2022
 
                 if (int.TryParse(dataGridView2.Rows[e.RowIndex].Cells["kolZakaza"].Value.ToString(), out b))
                 {
+                    // tsena 19,20,21,22,23,24
+                    // summa 9,11,13,15,17,19  
                     double a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena1"].Value);
-                    dataGridView2.Rows[e.RowIndex].Cells[7].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
-
-                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
                     dataGridView2.Rows[e.RowIndex].Cells[9].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
-
-                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
+                    
+                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena2"].Value);
                     dataGridView2.Rows[e.RowIndex].Cells[11].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
 
-                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
+                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena3"].Value);
                     dataGridView2.Rows[e.RowIndex].Cells[13].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
-                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 1);
+
+                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena4"].Value);
+                    dataGridView2.Rows[e.RowIndex].Cells[15].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
+
+                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena5"].Value);
+                    dataGridView2.Rows[e.RowIndex].Cells[17].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
+
+                    a = Convert.ToDouble(dataGridView2.Rows[e.RowIndex].Cells["tsena6"].Value);
+                    dataGridView2.Rows[e.RowIndex].Cells[19].Value = roznProdazhaObj.getRoundDecimal(a * b).ToString();
+
+                    roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", "suma5", "suma6", 1);
                     
                     FormElementDesign.SetAligementDataGridview(ref dataGridView2, "kolZakaza", "bold");
                 }
@@ -418,6 +432,8 @@ namespace AutoMir2022
                 variant2.Checked = false;
                 variant3.Checked = false;
                 variant4.Checked = false;
+                variant5.Checked = false;
+                variant6.Checked = false;
                 MessageBox.Show("Вы выбрали продажой со скидкой, укажите процент скидки!");
                 goto endProsess;
             }
@@ -427,6 +443,8 @@ namespace AutoMir2022
             else if (variant2.Checked == true || dgvColName == "suma2") variantvibor = "artikul2";
             else if (variant3.Checked == true || dgvColName == "suma3") variantvibor = "artikul3";
             else if (variant4.Checked == true || dgvColName == "suma4") variantvibor = "artikul4";
+            else if (variant5.Checked == true || dgvColName == "suma5") variantvibor = "artikul5";
+            else if (variant6.Checked == true || dgvColName == "suma6") variantvibor = "artikul6";
 
             //adding data from datagrizd2 (Karzina2) to datagrid3 (karzina3)
 
@@ -523,10 +541,12 @@ namespace AutoMir2022
                 }
 
             }
-            dataGridView2.Rows[dgvRow].Cells[dgvColName].Style.BackColor = Color.DodgerBlue;
-
+            if (groupVibor == false)
+            {
+                dataGridView2.Rows[dgvRow].Cells[dgvColName].Style.BackColor = Color.DodgerBlue;
+            }
         endProsess: { }
-            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
+            roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", "", "", 0);
 
         }
 
@@ -802,7 +822,7 @@ namespace AutoMir2022
                     {
                         double a = Convert.ToDouble(otmenaProdazhiDGV.Rows[e.RowIndex].Cells["tsenaOtmena"].Value);
                         otmenaProdazhiDGV.Rows[e.RowIndex].Cells["sumaVozvrata"].Value = (a * b).ToString("0.00");
-                        roznProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", 1);
+                        roznProdazhaObj.SumOfColumnDataGridVeiw(ref otmenaProdazhiDGV, "sumaVozvrata", "", "", "", "", "", 1);
                     }
 
                 }
@@ -1056,7 +1076,7 @@ namespace AutoMir2022
             if (e.KeyCode == Keys.Delete)
             {
                 deleteFirstRowForSumTable(ref dataGridView3);
-                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", 0);
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView3, "sumaKarzina3", "", "", "", "", "", 0);
 
             }
         }
@@ -1081,6 +1101,8 @@ namespace AutoMir2022
             findDataInDGVColumn(ref dataGridView2, "artikul2", cellValue, "suma2");
             findDataInDGVColumn(ref dataGridView2, "artikul3", cellValue, "suma3");
             findDataInDGVColumn(ref dataGridView2, "artikul4", cellValue, "suma4");
+            findDataInDGVColumn(ref dataGridView2, "artikul5", cellValue, "suma5");
+            findDataInDGVColumn(ref dataGridView2, "artikul6", cellValue, "suma6");
 
 
         }
@@ -1090,7 +1112,7 @@ namespace AutoMir2022
             if (e.KeyCode == Keys.Delete)
             {
                 deleteFirstRowForSumTable(ref dataGridView2);
-                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", 0);
+                roznProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView2, "suma1", "suma2", "suma3", "suma4", "suma5", "suma6", 0);
 
             }
         }

@@ -83,7 +83,7 @@ namespace AutoMir2022
                 dataGridView1.Rows[index].Cells["sumaTJS"].Value = sumTjs.Text;
                 dataGridView1.Rows[index].Cells["sumaUSD"].Value = Math.Round(b / Convert.ToDouble(kursValyutiObj.GetKursValyuti()), 2);
                 RoznichProdazha roznichProdazhaObj = new RoznichProdazha();
-                roznichProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaTJS", "sumaUSD", "", "", 0);
+                roznichProdazhaObj.SumOfColumnDataGridVeiw(ref dataGridView1, "sumaTJS", "sumaUSD", "", "", "", "", 0);
                 Ochistka();
             }
             else
