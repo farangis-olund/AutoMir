@@ -62,7 +62,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.DarkCyan;
+            this.groupBox1.BackColor = System.Drawing.Color.SandyBrown;
             this.groupBox1.Controls.Add(this.raskhodi);
             this.groupBox1.Controls.Add(this.rasprodazha);
             this.groupBox1.Controls.Add(this.checkBox4);
@@ -232,7 +232,7 @@ namespace AutoMir2022.Konfiguratsiya.Baza
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(237, 0);

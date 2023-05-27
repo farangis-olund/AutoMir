@@ -15,6 +15,11 @@ namespace Core.Controllers.OchistkaBazi
             return db.GetByQuery("SELECT * FROM public." + tableName + "");
         }
 
+        public DataTable ProsmotrTableWithCondition(string tableName, string condition)
+        {
+            return db.GetByQuery("SELECT * FROM public." + tableName + " " + condition + "");
+        }
+
         public void DeleteRowsInTableWithCascade(string tableName)
         {
             db.insertUpdateToDB("TRUNCATE TABLE public." + tableName + " CASCADE");

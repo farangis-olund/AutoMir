@@ -195,14 +195,15 @@ namespace Core.Controllers.Dolg
 
         public DataTable GetProdazhaDgvCurrentDate(string kodKlienta)
         {
-            return db.GetByParametrDate("Select p.дата, p.накладной_текст, Sum(pt.количество*pt.цена) as сумма FROM public.продажа p, public.продажа_товара pt " +
+            return db.GetByParametrDate("Select p.дата, p.накладной_текст, " +
+                "ROUND(Sum(pt.количество*pt.цена),2) as сумма FROM public.продажа p, public.продажа_товара pt " +
                                        "WHERE pt.кодпродажи=p.кодпродажи AND p.дата=@data AND p.код_клиента='" + kodKlienta + "' GROUP BY p.дата, p.накладной_текст ORDER BY p.дата DESC","data");
         }
 
 
         public DataTable GetPlatezhDgvCurrentDate(string kodKlienta)
         {
-            return db.GetByParametrDate("Select дата, №_платежа, сумма_платежа FROM public.платежи " +
+            return db.GetByParametrDate("Select дата, №_платежа, ROUND(сумма_платежа,2) FROM public.платежи " +
                                          "WHERE код_клиента='" + kodKlienta + "' AND дата=@data ORDER BY дата DESC", "data");
         }
     }

@@ -100,7 +100,10 @@ namespace AutoMir2022.Konfiguratsiya.Baza
         {
             if (prodazha.Checked == true)
             {
-                dataGridView1.DataSource = ochistkaBaziObj.ProsmotrTable("продажа");
+                if (MainMenu.userOnlyChek==false)
+                    dataGridView1.DataSource = ochistkaBaziObj.ProsmotrTableWithCondition("продажа", "WHERE chek=true ");
+                else if (MainMenu.userOnlyChek == true)
+                    dataGridView1.DataSource = ochistkaBaziObj.ProsmotrTable("продажа");
             }
         }
 

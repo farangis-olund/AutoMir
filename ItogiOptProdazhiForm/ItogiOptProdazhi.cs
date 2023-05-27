@@ -49,7 +49,7 @@ namespace AutoMir2022
         {
             kodKlienta.DataSource= klientObj.GetKodKlienta();
             kodKlienta.DisplayMember = "код_клиента";
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
 
        

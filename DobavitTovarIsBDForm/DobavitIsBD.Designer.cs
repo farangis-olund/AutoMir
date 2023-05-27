@@ -109,7 +109,7 @@ namespace AutoMir2022.DobavitTovarIsBDForm
             this.dateZakaz.Location = new System.Drawing.Point(13, 39);
             this.dateZakaz.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateZakaz.Name = "dateZakaz";
-            this.dateZakaz.Size = new System.Drawing.Size(134, 28);
+            this.dateZakaz.Size = new System.Drawing.Size(158, 28);
             this.dateZakaz.TabIndex = 0;
             this.dateZakaz.SelectionChangeCommitted += new System.EventHandler(this.dateZakaz_SelectionChangeCommitted);
             // 

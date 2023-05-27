@@ -99,8 +99,9 @@ namespace AutoMir2022
             {
                 klientObj.InsertNewKlient(kodKlienta.Text, fio.Text, tel.Text,
               adres.Text, Convert.ToDouble(zadolzhnost.Text), uroven.Text);
-                MessageBox.Show("Клиент добавлен!");
+                MessageBox.Show("Клиент успешно добавлен!");
                 restartKlient();
+                klientVibor.Text = kodKlienta.Text + " | " + fio.Text;
             }
             else
             {
@@ -121,7 +122,8 @@ namespace AutoMir2022
         private void deleteKlient_Click(object sender, EventArgs e)
         {
             klientObj.DeleteKlient(kodKlienta.Text);
-            MessageBox.Show("Клиент удален!");
+            MessageBox.Show("Клиент успешно удален!");
+            klientVibor.Text = null;
             restartForm();
         
         }
@@ -139,7 +141,7 @@ namespace AutoMir2022
                 fio.Text = "";
                 tel.Text = "";
                 adres.Text = "";
-                zadolzhnost.Text = "";
+                zadolzhnost.Text = "0";
                 addKlient.Enabled = true;
           
             

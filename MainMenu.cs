@@ -24,6 +24,7 @@ namespace AutoMir2022
         public static bool userPrintFree;
         public static bool userUpdateFree;
         public static bool userExportFree;
+        public static bool userOnlyChek;
         public static DataTable userKategori;
         public MainMenu()
         {
@@ -188,7 +189,7 @@ namespace AutoMir2022
             userExportFree = false;
             userPrintFree = false;
             userUpdateFree = false;
-
+            userOnlyChek = false;
             char[] spliter = { '_' };
             DostupOgranichenie dostupOgranichenieObj = new DostupOgranichenie();
             userKategori = dostupOgranichenieObj.GetDostupUser(userName.Text, userPassword.Text);
@@ -214,6 +215,10 @@ namespace AutoMir2022
                     //если пользователь имеет категорию откытого обновление, то переменная истина
                     if (enableItems.Contains("DobavitIsBDupdate"))
                         userUpdateFree = true;
+                    
+                    //если пользователь имеет категорию только чек, то переменная истина
+                    if (enableItems.Contains("OnlyChek"))
+                        userOnlyChek = true;
 
 
                     foreach (ToolStripMenuItem item in obj.Items)

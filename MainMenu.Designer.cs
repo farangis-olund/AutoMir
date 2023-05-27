@@ -63,7 +63,6 @@ namespace AutoMir2022
             this.konfig = new System.Windows.Forms.ToolStripMenuItem();
             this.dostupTablitsam = new System.Windows.Forms.ToolStripMenuItem();
             this.ochistkaBazi = new System.Windows.Forms.ToolStripMenuItem();
-            this.просмотрБазыДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.admin = new System.Windows.Forms.ToolStripMenuItem();
             this.protsenti = new System.Windows.Forms.ToolStripMenuItem();
             this.rasprodazhaBonus = new System.Windows.Forms.ToolStripMenuItem();
@@ -376,8 +375,7 @@ namespace AutoMir2022
             // 
             this.konfig.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dostupTablitsam,
-            this.ochistkaBazi,
-            this.просмотрБазыДанныхToolStripMenuItem});
+            this.ochistkaBazi});
             this.konfig.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.konfig.Name = "konfig";
             this.konfig.Size = new System.Drawing.Size(137, 27);
@@ -387,7 +385,7 @@ namespace AutoMir2022
             // 
             this.dostupTablitsam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dostupTablitsam.Name = "dostupTablitsam";
-            this.dostupTablitsam.Size = new System.Drawing.Size(269, 28);
+            this.dostupTablitsam.Size = new System.Drawing.Size(217, 26);
             this.dostupTablitsam.Text = "Доступ к таблицам";
             this.dostupTablitsam.Click += new System.EventHandler(this.доступКТаблицамToolStripMenuItem_Click);
             // 
@@ -395,16 +393,9 @@ namespace AutoMir2022
             // 
             this.ochistkaBazi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ochistkaBazi.Name = "ochistkaBazi";
-            this.ochistkaBazi.Size = new System.Drawing.Size(269, 28);
-            this.ochistkaBazi.Text = "Очистка базы";
+            this.ochistkaBazi.Size = new System.Drawing.Size(217, 26);
+            this.ochistkaBazi.Text = "База данных";
             this.ochistkaBazi.Click += new System.EventHandler(this.очисткаБазыToolStripMenuItem_Click);
-            // 
-            // просмотрБазыДанныхToolStripMenuItem
-            // 
-            this.просмотрБазыДанныхToolStripMenuItem.Name = "просмотрБазыДанныхToolStripMenuItem";
-            this.просмотрБазыДанныхToolStripMenuItem.Size = new System.Drawing.Size(269, 28);
-            this.просмотрБазыДанныхToolStripMenuItem.Text = "Просмотр Базы Данных";
-            this.просмотрБазыДанныхToolStripMenuItem.Click += new System.EventHandler(this.просмотрБазыДанныхToolStripMenuItem_Click);
             // 
             // admin
             // 
@@ -536,7 +527,6 @@ namespace AutoMir2022
         private System.Windows.Forms.ToolStripMenuItem dolgiKlienta;
         private System.Windows.Forms.ToolStripMenuItem dostupTablitsam;
         private System.Windows.Forms.ToolStripMenuItem ochistkaBazi;
-        private System.Windows.Forms.ToolStripMenuItem просмотрБазыДанныхToolStripMenuItem;
     }
 
 }

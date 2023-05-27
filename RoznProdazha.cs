@@ -353,14 +353,14 @@ namespace AutoMir2022
             artikul.SelectedItem = null;
             naimenovanie.SelectedItem = null;
 
-            dataGridView1.Columns[0].Width = 140;
+            dataGridView1.Columns[0].Width = 180;
             dataGridView1.Columns[1].Width = 300;
             dataGridView1.Columns[2].Width = 100;
             dataGridView1.Columns[3].Width = 100;
             dataGridView1.Columns[4].Width = 220;
-            dataGridView1.Columns[5].Width = 120;
-            dataGridView1.Columns[6].Width = 100;
-            dataGridView1.Columns[7].Width = 100;
+            dataGridView1.Columns[5].Width = 220;
+            dataGridView1.Columns[6].Width = 120;
+            dataGridView1.Columns[7].Width = 120;
             dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[9].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

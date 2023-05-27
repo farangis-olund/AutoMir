@@ -56,19 +56,29 @@ namespace AutoMir2022.DobavitTovarIsBDForm
                 update.Enabled = true;
             }
             
-            if (MainMenu.userExportFree == true)
+            //if (MainMenu.userExportFree == true)
+            //{
+            //    export.Enabled = true;
+            //}
+
+            if (MainMenu.userPrintFree == false)
             {
-                export.Enabled = true;
+                if (priyomSdachaObj.IsPrintTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
+                    print.Enabled = true;
+                else
+                    print.Enabled = false;
             }
 
-            if (MainMenu.userPrintFree == false && priyomSdachaObj.IsPrintTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
-            {
-                print.Enabled = true;
-            }
-            if (MainMenu.userExportFree == false && priyomSdachaObj.IsExportTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
-            {
+            if (priyomSdachaObj.IsExportTrue(Convert.ToDateTime(dateZakaz.Text)) == false)
                 export.Enabled = true;
-            }
+            else
+                export.Enabled = false;
+
+            //if (MainMenu.userExportFree == false)
+                
+            //{
+                
+            //}
 
 
         }
@@ -89,6 +99,9 @@ namespace AutoMir2022.DobavitTovarIsBDForm
                     }
                     zakaziObj.InsertObnovlenieTovara(Convert.ToDateTime(dateZakaz.Text), countTovar);
                     MessageBox.Show("Обновление успешно завершено!");
+                    dataGridView1.Rows.Clear();
+                    dateZakaz.DataSource = zakaziObj.GetDateObnovlenieTovara();
+                    dateZakaz.Text = null;
                 }
                 else MessageBox.Show("Вы не выбрали данные для обновления");
 
